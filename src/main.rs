@@ -247,7 +247,123 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
 /// injects/replaces placeholders and components, and returns lists of files
 /// that require final compilation (TS and SCSS).
 /// This is the Rust version of the `compileAll` shell function.
+pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>)> {
+    let mut modified_ts_files_list = Vec::new();
+    let mut modified_scss_files_list = Vec::new();
+    let pages_regex = Regex::new(r"pages/[^/]+/")?;
 
+    // Read each file name line by line
+    for source_path_str in source_files_str.lines() {
+        // e.g. source_path=edit-me/pages/index/index.ts  //  edit-me/shared/reusables/top-bar/top-bar.scss
+
+        // Skip empty lines
+        if source_path_str.trim().is_empty() {
+            continue;
+        }
+        let source_path = Path::new(source_path_str);
+
+        // Step 0)a): Generate destination path
+        // In Rust, we build this path step-by-step, starting with the path relative to the source dir.
+        let path_relative_to_src = source_path
+            .strip_prefix(SOURCE_DIR)
+            .with_context(|| format!("Error stripping prefix '{}' from '{}'", SOURCE_DIR, source_path.display()))?;
+
+        // 1. Replace pages/.*/. with / (move two levels back if in pages)
+        // This solves the E0716 error by ensuring `relative_path_cow` lives long enough.
+        let relative_path_cow = path_relative_to_src.to_string_lossy();
+        let dest_path_str = pages_regex.replace(&relative_path_cow, ""); // e.g. index.ts // shared/reusables/top-bar/top-bar.scss
+
+        // 3. Add OUTPUT_DIRECTORY prefix
+        let path_relative_to_src_dir = Path::new(dest_path_str.as_ref());
+        let dest_path_with_swapped_ext = {
+            let mut p = path_relative_to_src_dir.as_os_str().to_owned();
+            if dest_path_str.ends_with(".ts") {
+                p.push(".js");
+                PathBuf::from(p.to_string_lossy().replace(".ts.js", ".js"))
+            } else if dest_path_str.ends_with(".scss") {
+                p.push(".css");
+                PathBuf::from(p.to_string_lossy().replace(".scss.css", ".css"))
+            } else {
+                PathBuf::from(path_relative_to_src_dir)
+            }
+        };
+        let dest_path = Path::new(OUTPUT_DIRECTORY).join(&dest_path_with_swapped_ext);
+        println!("dest_path: {}", dest_path.display());
+
+
+        // Step 0)b): Get uncompiled version of destination path
+        let dest_uncompiled = Path::new(OUTPUT_DIRECTORY).join(path_relative_to_src_dir);
+
+        // Add to the appropriate array, used for compilation later on
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("ts") {
+            modified_ts_files_list.push(dest_path.clone());
+        } else if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("scss") {
+            modified_scss_files_list.push(dest_path.clone());
+        }
+
+        println!("-------------------------------------");
+		println!("	1)");
+        
+        // Step 1: Copy across
+        // Delete existing compiled file if it exists (copy will overwrite, but this is for faithfulness)
+        if dest_path.exists() {
+            let _ = fs::remove_file(&dest_path);
+        }
+        
+        // Copy the file
+		if let Some(parent) = dest_uncompiled.parent() {
+            fs::create_dir_all(parent)
+                .with_context(|| format!("Failed to create parent directory for '{}'", dest_uncompiled.display()))?;
+        }
+        fs::copy(source_path, &dest_uncompiled)
+            .with_context(|| format!("Failed to copy '{}' to '{}'", source_path.display(), dest_uncompiled.display()))?;
+        
+        println!("Successfully copied file {} to its destination: {}", source_path.display(), dest_uncompiled.display());
+
+
+		println!("-------------------------------------");
+		println!("	2)");
+		// Step 2) Replace scss import placeholders
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("scss") {
+			println!("2222222! Is an scss file!");
+			replace_root_placeholder_with_relative_path_new(SCSS_IMPORT_START, ROOT_PLACEHOLDER, &dest_uncompiled)?;
+		}
+
+		println!("-------------------------------------");
+		println!("	3)");
+		// Step 3) Add reusable components to javascript files
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("ts") {
+			println!("33333333! Is a ts file!");
+			add_reusable_javascript_components(&dest_uncompiled, Path::new(OUTPUT_DIRECTORY), SHARED_CODE_FOLDER, RE_START, RE_END)?;
+		}
+
+		println!("-------------------------------------");
+		println!("	4)");
+		// Step 4) Add reusable components to html files
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
+			println!("4! Is a html file!");
+            replace_html_component_placeholders(
+                &dest_uncompiled,
+                Path::new(SOURCE_DIR),
+                RE_START,
+                RE_END,
+                ROOT_PLACEHOLDER,
+                HTML_COMPONENT_TEMPLATE_PREFIX,
+                HTML_COMPONENT_NONE_PREFIX,
+                RE_PARAM_S,
+                RE_PARAM_E,
+            )?;
+		}
+
+		println!("-------------------------------------");
+		println!("	5)");
+		// Step 5) Replace <root> placeholders with the relative path to root
+		// i.e. change <root>/shared/example.html in the file /pages/index.html to ../example.html
+		replace_root_placeholder_with_relative_path_new(ROOT_PLACEHOLDER, ROOT_PLACEHOLDER, &dest_uncompiled)?;
+    }
+
+    Ok((modified_ts_files_list, modified_scss_files_list))
+}
 
 
 

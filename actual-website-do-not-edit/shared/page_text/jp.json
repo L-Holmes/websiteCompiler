@@ -1,0 +1,26 @@
+{
+  "index": {
+	"opening-title":"最高の製品",
+    "welcome": "私たちのウェブサイトへようこそ！",
+    "intro": "最高の製品を提供します。",
+    "contact_us": "詳細についてはお問い合わせください",
+    "item-SappBoot-title": "サップブーツ（動的に追加！）",
+    "item-SappBoot-stats": "800g、本当にクール。",
+    "item-SappBoot-desc": "● ティア2登山用\n● 硬いソール\n● バッファローレザーアッパー",
+    "learn-more": "詳しく見る",
+    "buy-now": "今すぐ購入"
+  },
+  "products": {
+    "title": "私たちの製品",
+    "desc": "最高のお買い得商品を見つけましょう。"
+  },
+  "contact": {
+    "header": "お問い合わせ",
+    "message": "お気軽にご連絡ください！"
+  },
+  "shared":{
+	  "top-bar-products":"お問い合わせ",
+	  "top-bar-orders":"絡くださ",
+	  "top-bar-contact-questions":"たちの / 製品"
+	}
+}
