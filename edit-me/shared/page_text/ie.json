@@ -1,0 +1,15 @@
+{
+  "index": {
+    "welcome": "Fáilte go dtí ár suíomh Gréasáin!",
+    "intro": "Soláthraímid na táirgí is fearr.",
+    "contact_us": "Déan teagmháil linn le haghaidh tuilleadh eolais"
+  },
+  "products": {
+    "title": "Ár dTáirgí",
+    "desc": "Faigh na déileálacha is fearr ar ár n-earraí."
+  },
+  "contact": {
+    "header": "Déan Teagmháil Linn",
+    "message": "Ba bhreá linn cloisteáil uait!"
+  }
+}

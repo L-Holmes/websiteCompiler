@@ -1,0 +1,457 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FONTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//-- open dyslexic --
+@font-face {
+  font-family: 'OpenDyslexic-Bold';
+  src: url('<root>/shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf') format('opentype');
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'OpenDyslexic-BoldItalic';
+  src: url('<root>/shared/fonts/open-dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
+  font-display: swap;
+}
+
+ @font-face {
+   font-family: 'OpenDyslexic-Italic';
+   src: url('<root>/shared/fonts/open-dyslexic/OpenDyslexic-Italic.otf') format('opentype');
+  font-display: swap;
+ }
+ 
+ @font-face {
+   font-family: 'OpenDyslexic-Regular';
+   src: url('<root>/shared/fonts/open-dyslexic/OpenDyslexic-Regular.otf') format('opentype');
+  font-display: swap;
+ }
+
+ //sylexiad
+
+ @font-face {
+   font-family: 'SylexiadSerifThin-Bold';
+   src: url('<root>/shared/fonts/sylexiad/SylexiadSerifThin-Bold.woff') format('opentype');
+  font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'SylexiadSerifThin-BoldItalic';
+   src: url('<root>/shared/fonts/sylexiad/SylexiadSerifThin-BoldItalic.woff') format('opentype');
+  font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'SylexiadSerifThin-Italic';
+   src: url('<root>/shared/fonts/sylexiad/SylexiadSerifThin-Italic.woff') format('opentype');
+  font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'SylexiadSerifThin';
+   src: url('<root>/shared/fonts/sylexiad/SylexiadSerifThin.woff') format('opentype');
+  font-display: swap;
+ }
+
+ //merriweather sans 
+
+ @font-face {
+   font-family: 'MerriweatherSans-Medium';
+   src: url('<root>/shared/fonts/Merriweather-sans/MerriweatherSans-Medium.ttf') format('opentype');
+  font-display: swap;
+ }
+
+ //doppio one 
+
+ @font-face {
+   font-family: 'DoppioOne-Regular';
+   src: url('<root>/shared/fonts/doppio_one/DoppioOne-Regular.ttf') format('opentype');
+  font-display: swap;
+ }
+
+ //Suwannaphum
+
+ @font-face {
+   font-family: 'Suwannaphum-Regular';
+   src: url('<root>/shared/fonts/Suwannaphum/Suwannaphum-Regular.ttf') format('opentype');
+  font-display: swap;
+ }
+
+ @font-face {
+   font-family: 'Suwannaphum-Bold';
+   src: url('<root>/shared/fonts/Suwannaphum/Suwannaphum-Bold.ttf') format('opentype');
+  font-display: swap;
+ }
+
+
+// Cormorant Garamond
+@font-face {
+  font-family: 'CormorantGaramond-Bold';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-BoldItalic';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-BoldItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-Italic';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Italic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-Light';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-LightItalic';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-LightItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-Medium';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Medium.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-MediumItalic';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-MediumItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-Regular';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-SemiBold';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CormorantGaramond-SemiBoldItalic';
+  src: url('<root>/shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+
+//
+
+// Define font variables
+$open-dyslexic-bold: 'OpenDyslexic-Bold', sans-serif;
+$open-dyslexic-bolditalic: 'OpenDyslexic-BoldItalic', sans-serif;
+$open-dyslexic-italic: 'OpenDyslexic-Italic', sans-serif;
+$open-dyslexic-regular: 'OpenDyslexic-Regular', sans-serif;
+
+$sylexiad-regular: 'SylexiadSerifThin', sans-serif;
+$sylexiad-italic: 'SylexiadSerifThin-BoldItalic', sans-serif;
+$sylexiad-bold-italic:'SylexiadSerifThin-BoldItalic', sans-serif;
+$sylexiad-bold: 'SylexiadSerifThin-Bold', sans-serif;
+
+$merriweather-sans-regular: 'MerriweatherSans-Medium', sans-serif;
+
+$suwannaphum-regular: 'Suwannaphum-Regular', sans-serif;
+$suwannaphum-bold: 'Suwannaphum-Bold', sans-serif;
+
+$doppio-one-regular: 'DoppioOne-Regular', sans-serif;
+
+$cormorant-bold: 'CormorantGaramond-Bold', serif;
+$cormorant-bolditalic: 'CormorantGaramond-BoldItalic', serif;
+$cormorant-italic: 'CormorantGaramond-Italic', serif;
+$cormorant-light: 'CormorantGaramond-Light', serif;
+$cormorant-lightitalic: 'CormorantGaramond-LightItalic', serif;
+$cormorant-medium: 'CormorantGaramond-Medium', serif;
+$cormorant-mediumitalic: 'CormorantGaramond-MediumItalic', serif;
+$cormorant-regular: 'CormorantGaramond-Regular', serif;
+$cormorant-semibold: 'CormorantGaramond-SemiBold', serif;
+$cormorant-semibolditalic: 'CormorantGaramond-SemiBoldItalic', serif;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+html{
+	font-size:16px;
+}
+
+body {
+	margin: 0px;
+	font-family: $cormorant-regular;
+}
+
+h1{
+	color:#493DAF;
+	margin: 0px;
+	font-family: $cormorant-light;
+}
+
+h2{
+	color:#493DAF;
+	margin: 0px;
+	font-family: $cormorant-light;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	background-color:transparent;
+}
+
+button:hover {
+	background-color:transparent;
+}
+
+
+$font-size-xl:3rem;
+$font-size-l:2.5rem;
+$font-size-m-l:2rem;
+$font-size-m:1.5rem;
+$font-size-s-m:1.25rem;
+$font-size-s:1rem;
+$font-size-xs:0.75rem;
+
+
+$spacing-xl: 50px;
+$spacing-l: 30px;
+$spacing-m-l: 25px;
+$spacing-m: 20px;
+$spacing-s-m: 15px;
+$spacing-s: 10px;
+$spacing-xs: 5px;
+
+//primary = purple = (73, 61, 175) = #493DAF
+//secondary = pinkyRed = (255, 37, 80) = #FF2550
+//contrast = yellow = (255, 221, 86) = #FFDD56
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// REUSED VARS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//colors
+//colors -> main colours
+$colour-primary:#493DAF;
+$button-colour-primary:#FFDD56;
+
+//colors -> font colours
+$text-colour-secondary:#ffffff;
+
+
+//other
+$top-bar-height: 100px;
+$side-bar-width-mobile: calc($top-bar-height / 3);
+$side-bar-width:70px;
+
+$page-header-lateral-padding:20px;
+
+$section-intro-margin:20px 0px 0px 0px;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LAYOUTS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// -- LAYOUTS -- //
+
+// Grid:
+.ux-grid{
+    display: grid;
+    height: 100%;
+}
+
+.ux-grid-specific{
+    @extend .ux-grid;	
+    grid-template-columns: auto; 
+    grid-template-rows: 0.25fr 0.5fr 0.25fr; //This is above-and-below by default
+}
+
+//Flex 
+//	(don’t forget that the flex needs to be a wrapper!):
+.centre-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;    //(flex-end for bottom align)
+	width: 100%;
+	height: 100%;
+}
+
+.centre-at-top-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;    
+	width: 100%;
+	height: 100%;
+}
+
+@mixin two-thirds-centrerer {
+  height: auto;
+  width: 100%;
+
+  @media screen and (min-width: 700px) {
+    width: 75%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1080px;
+  }
+}
+
+// -- other definitions --
+.full-width-img{
+	border-radius:30px;
+	width: 100%;
+
+	max-width: 800px;
+
+	@media screen and (max-width: 860px){
+		max-width: 500px;
+	}
+
+	@media screen and (max-width: 720px){
+		max-width: 400px;
+	}
+}
+
+.half-width-img{
+	border-radius:30px;
+	width: 90%;
+
+	max-width: 800px;
+	margin: 8px 8px 8px 8px;
+
+	@media screen and (max-width: 860px){
+		max-width: 500px;
+	}
+
+	@media screen and (max-width: 720px){
+		max-width: 400px;
+	}
+}
+
+.ux-red{
+	background-color:red;
+}
+
+.circle{
+	border-radius:50%;
+	width: 100%;
+}
+
+.align-centre{
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center; /* Vertical center */
+}
+
+
+.vertically-centre{
+    display: flex;
+    align-items: center; /* Vertical center */
+}
+
+.centre-me-wrapper-no-overflow-block{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:100%;
+}
+
+.centre-me-wrapper{
+	@extend .centre-me-wrapper-no-overflow-block;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.align-middle-right{
+    display: flex;
+    justify-content: flex-end; /* Align contents to the right */
+    align-items: center; /* Vertical center */
+	width:100%;
+
+}
+
+$page-contents-margin:40px;
+$page-contents-margin-mobile:20px;
+$page-contents-margin-right:100px;
+
+.page-contents-wrapper{
+	margin: $page-contents-margin $page-contents-margin-right $page-contents-margin $page-contents-margin;
+
+	@media screen and (max-width: 720px){
+	  margin: $page-contents-margin-mobile  $page-contents-margin-mobile $page-contents-margin-mobile $page-contents-margin-mobile; /* top right bottom left */ 
+	}
+}
+
+.page-title{
+	margin-right:30px;
+}
+
+.page-header{
+	background:$colour-primary;
+	color:$text-colour-secondary;
+	border-radius: 15px 15px 15px 15px; 
+	padding: 30px $page-header-lateral-padding 30px $page-header-lateral-padding;
+	font-size: $font-size-m;
+}
+
+
+.page-intro{
+	margin:$section-intro-margin;
+
+	@media screen and (max-width: 720px){
+		margin-right:30px; /*stop the text from overlapping with the side bar on mobile */
+	}
+}
+
+.section-intro{
+	margin:$section-intro-margin;
+	padding: 0px $page-header-lateral-padding 0px $page-header-lateral-padding;
+}
+
+//vertical spacing medium 
+.vert-spacing-m{
+	padding: $spacing-m 0px $spacing-m 0px;
+}
+
+.vert-spacing-s{
+	padding: $spacing-s 0px $spacing-s 0px;
+}
+
+// standard things
+
+.standard-button{
+	background-color: $button-colour-primary;
+	border: 1px solid black;
+	border-radius:13px;
+	padding: 10px;
+	width: 150px;
+	height: 50px;
+	margin: 20px 0px 0px 20px;
+}
+
+.button-no-margin{
+  @extend .standard-button;
+  padding: 0px;
+  margin:20px 0px 0px 0px;
+}
+
+
+.full-width{
+	width:100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
