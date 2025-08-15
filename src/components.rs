@@ -416,7 +416,26 @@ pub fn compile_typescript_file(ts_source: &str, js_output: &str) -> Result<(), S
     let output = Command::new("tsc").arg("--target").arg("es2015").arg(ts_source).arg("--outfile").arg(js_output).output().map_err(|e| format!("failed to execute tsc command. Is `typescript` installed and in your PATH? Error: {}", e))?;
 
     if !output.status.success() {
-        let error_msg = format!( "error compiling typescript file: {}\nTSC Error Output:\n{}", ts_source, String::from_utf8_lossy(&output.stderr));
+        // Capture both stdout and stderr for complete error information
+        let stdout_str = String::from_utf8_lossy(&output.stdout);
+        let stderr_str = String::from_utf8_lossy(&output.stderr);
+
+        let mut error_output = String::new();
+        if !stdout_str.trim().is_empty() {
+            error_output.push_str(&stdout_str);
+        }
+        if !stderr_str.trim().is_empty() {
+            if !error_output.is_empty() {
+                error_output.push('\n');
+            }
+            error_output.push_str(&stderr_str);
+        }
+
+        let error_msg = format!(
+            "error compiling typescript file: {}\nTSC Error Output:\n{}", 
+            ts_source, 
+            error_output
+        );
         eprintln!("{}", error_msg);
         return Err(error_msg);
     }
