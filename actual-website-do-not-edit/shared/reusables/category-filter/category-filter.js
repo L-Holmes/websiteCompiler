@@ -25,9 +25,9 @@ const SELECTED_ALL_FILTER_IMG = "/shared/images/filtering/test-tube-full.avif";
 const SELECTED_SOME_FILTER_IMG = "/shared/images/filtering/test-tube-half.avif";
 const SELECTED_NONE_FILTER_IMG = "/shared/images/filtering/test-tube.avif";
 const filterStateImages = {
-    "/shared/images/filtering/test-tube-full.avif": "../../../../shared/images/filtering/test-tube.avif",
-    "/shared/images/filtering/test-tube-half.avif": "../../../../shared/images/filtering/test-tube.avif",
-    "/shared/images/filtering/test-tube.avif": "../../../../shared/images/filtering/test-tube-full.avif"
+    "/shared/images/filtering/test-tube-full.avif": "../../../shared/images/filtering/test-tube.avif",
+    "/shared/images/filtering/test-tube-half.avif": "../../../shared/images/filtering/test-tube.avif",
+    "/shared/images/filtering/test-tube.avif": "../../../shared/images/filtering/test-tube-full.avif"
 };
 const imagesToState = {
     "/shared/images/filtering/test-tube-full.avif": "SELECTING_ALL",

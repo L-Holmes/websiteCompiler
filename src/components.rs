@@ -75,10 +75,7 @@ pub fn only_modify_time_newer_than_last_compile_time( all_files: &Vec<PathBuf>, 
 pub fn get_relative_path(filepath: &Path) -> String {
     // Count the number of normal path segments (e.g., 'a', 'b', 'c'). This ignores things like './' or '/'.
     // The shell script's `sed` command effectively did this by counting non-empty segments ending in a slash.
-    let segment_count = filepath
-        .components()
-        .filter(|c| matches!(c, std::path::Component::Normal(_)))
-        .count();
+    let segment_count = filepath.components().filter(|c| matches!(c, std::path::Component::Normal(_))).count();
 
     // The original script's logic (`#../../`) removes two `../` segments.
     // We use saturating_sub to ensure the result is never negative; if count is 2 or less, the result is 0.
@@ -102,11 +99,7 @@ pub fn get_relative_path(filepath: &Path) -> String {
 /// @param root_placeholder = the actual placeholder. (i.e. '<root>')
 /// @param target_file = the path to the target file (either relative or absolute if it starts with '/')
 /// @what this does => Replaces '<root>' with the '../../..' etc. string required to get from that file to the root of the project, if using 'cd' in the terminal
-pub fn replace_root_placeholder_with_relative_path_new(
-    search_text: &str,
-    root_placeholder: &str,
-    target_file: &Path,
-) -> Result<()> {
+pub fn replace_root_placeholder_with_relative_path_new( search_text: &str, root_placeholder: &str, target_file: &Path,) -> Result<()> {
     if !target_file.is_file() {
         println!("-> Warning! the target file: {} is not a file...", target_file.display());
         return Ok(()); // Silently skip if the file doesn't exist.
@@ -128,7 +121,7 @@ pub fn replace_root_placeholder_with_relative_path_new(
     }
 
     // Append dummy to ensure same segment behavior as original
-    let path_with_slash = target_file.join("dummy");
+    let path_with_slash = target_file.join("");
     let sub_text = get_relative_path(&path_with_slash);
 
     let final_placeholder = format!("{}/", root_placeholder);

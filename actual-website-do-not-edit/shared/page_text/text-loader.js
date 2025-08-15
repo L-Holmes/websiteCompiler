@@ -22,7 +22,7 @@ function loadTranslations() {
             return;
         }
         try {
-            const response = yield fetch(`../../../shared/page_text/${lang}.json`);
+            const response = yield fetch(`../../shared/page_text/${lang}.json`);
             const translations = yield response.json();
             // Apply translations
             document.querySelectorAll("[add-text-section]").forEach((el) => {

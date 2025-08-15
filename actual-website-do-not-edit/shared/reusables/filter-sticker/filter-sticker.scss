@@ -1,4 +1,4 @@
-@use "../../../../shared/global.scss"  as *;
+@use "../../../shared/global.scss"  as *;
 
 
 //============================================================
@@ -106,7 +106,7 @@
 
 
 .filter-sticker {
-  background-image: url("../../../../shared/images/filtering/test-tube-full.avif");
+  background-image: url("../../../shared/images/filtering/test-tube-full.avif");
   background-size: contain;  
   background-position: center;
   background-repeat: no-repeat;

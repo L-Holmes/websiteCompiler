@@ -58,7 +58,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 // ====================================================================
 // LOADING DATA
 // ====================================================================
-const CATEGORIES_FILE = "../config/categories";
+const CATEGORIES_FILE = "config/categories";
 class Categories {
     /*
     This class mainly exists so that we can fetch categories easily
@@ -278,13 +278,13 @@ function get_filter_tile(filterFileName) {
     return __awaiter(this, void 0, void 0, function* () {
         /*
         Returns a single tile, used as part of the filtering system when a user is looking at the items
-        @param filterFileName the name of the file within the ../shared/images/filtering/filters directory
+        @param filterFileName the name of the file within the shared/images/filtering/filters directory
     
         */
-        let fullFilterImgPath = "../shared/images/filtering/filters/" + filterFileName;
+        let fullFilterImgPath = "shared/images/filtering/filters/" + filterFileName;
         let tile_html = "<div class='filter-tile'>";
-        //tile_html += "	<img class='filter-tile-bg-water' src='../shared/images/filtering/water-half-full.avif' alt='filtering test tubes water'>";
-        tile_html += "	<img class='filter-tile-bg-test-tube' src='../shared/images/filtering/test-tube-half.avif' alt='filtering test tube'>";
+        //tile_html += "	<img class='filter-tile-bg-water' src='shared/images/filtering/water-half-full.avif' alt='filtering test tubes water'>";
+        tile_html += "	<img class='filter-tile-bg-test-tube' src='shared/images/filtering/test-tube-half.avif' alt='filtering test tube'>";
         tile_html += "		<div class='filter-tile-content'>";
         tile_html += yield get_test_tube_sticker();
         // close off filter tile content
@@ -308,7 +308,7 @@ function get_categories() {
             "shoe.avif": null,
             "table.avif": null
         };
-        // each of the above is the name of a file within the ../shared/images/filtering/filters directory
+        // each of the above is the name of a file within the shared/images/filtering/filters directory
         // it is assumed that whatever code uses these will implicitly prepend the name of the entry with the above path, in order to be able to show the associated image itself.
         return categories;
     });
@@ -333,8 +333,8 @@ function get_icon_of_thing_being_filtered_for() {
         /*
         @return the html for the thing being filtered (e.g. a picture of a shoe)
         */
-        const infoImagePath = "../shared/images/filtering/info-icon.avif";
-        const filterTileImage = "../shared/images/filtering/filter-shoe.avif";
+        const infoImagePath = "shared/images/filtering/info-icon.avif";
+        const filterTileImage = "shared/images/filtering/filter-shoe.avif";
         let tile_heading_html = "<div class='filter-tile-img-wrapper'>";
         tile_heading_html += "	<div class='info-img-wrapper'>";
         tile_heading_html += `		<img class='info-img' src='${infoImagePath}' alt='info'>`;

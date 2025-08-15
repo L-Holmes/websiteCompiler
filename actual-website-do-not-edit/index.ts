@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", setDynamicElementsContent);
 // ====================================================================
 // LOADING DATA
 // ====================================================================
-const CATEGORIES_FILE: string = "../config/categories";
+const CATEGORIES_FILE: string = "config/categories";
 
 // Define a type for the category tree structure
 type CategoryNode = {
@@ -314,14 +314,14 @@ async function contentGetter_category_filter(): Promise<string> {
 async function get_filter_tile(filterFileName : string): Promise<string> {
 	/*
 	Returns a single tile, used as part of the filtering system when a user is looking at the items 
-	@param filterFileName the name of the file within the ../shared/images/filtering/filters directory 
+	@param filterFileName the name of the file within the shared/images/filtering/filters directory 
 
 	*/
-    let fullFilterImgPath = "../shared/images/filtering/filters/" + filterFileName
+    let fullFilterImgPath = "shared/images/filtering/filters/" + filterFileName
 
 	let tile_html: string = "<div class='filter-tile'>";
-	//tile_html += "	<img class='filter-tile-bg-water' src='../shared/images/filtering/water-half-full.avif' alt='filtering test tubes water'>";
-	tile_html += "	<img class='filter-tile-bg-test-tube' src='../shared/images/filtering/test-tube-half.avif' alt='filtering test tube'>";
+	//tile_html += "	<img class='filter-tile-bg-water' src='shared/images/filtering/water-half-full.avif' alt='filtering test tubes water'>";
+	tile_html += "	<img class='filter-tile-bg-test-tube' src='shared/images/filtering/test-tube-half.avif' alt='filtering test tube'>";
 	tile_html += "		<div class='filter-tile-content'>";
 
 	tile_html += await get_test_tube_sticker();
@@ -351,7 +351,7 @@ async function get_categories():Promise<CategoryNode>{
 			"table.avif":null
 	};
 
-	// each of the above is the name of a file within the ../shared/images/filtering/filters directory
+	// each of the above is the name of a file within the shared/images/filtering/filters directory
 	// it is assumed that whatever code uses these will implicitly prepend the name of the entry with the above path, in order to be able to show the associated image itself.
 
 	return categories
@@ -380,8 +380,8 @@ async function get_icon_of_thing_being_filtered_for(): Promise<string> {
 	@return the html for the thing being filtered (e.g. a picture of a shoe)
 	*/
 
-	const infoImagePath: string = "../shared/images/filtering/info-icon.avif";
-	const filterTileImage: string = "../shared/images/filtering/filter-shoe.avif";
+	const infoImagePath: string = "shared/images/filtering/info-icon.avif";
+	const filterTileImage: string = "shared/images/filtering/filter-shoe.avif";
 
 	let tile_heading_html: string = "<div class='filter-tile-img-wrapper'>";
 	tile_heading_html += "	<div class='info-img-wrapper'>"

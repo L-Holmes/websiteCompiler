@@ -1,17 +1,326 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @use "../shared/global.scss"  as *;
- *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   actual-website-do-not-edit/why-us.scss 1:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use \"../shared/global.scss\"  as *;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   actual-website-do-not-edit/why-us.scss 1:1  root stylesheet";
+@font-face {
+  font-family: "OpenDyslexic-Bold";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf") format("opentype");
+  font-display: swap;
 }
+@font-face {
+  font-family: "OpenDyslexic-BoldItalic";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-BoldItalic.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic-Italic";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Italic.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic-Regular";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Regular.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-Bold";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-Bold.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-BoldItalic";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-BoldItalic.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-Italic";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-Italic.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "MerriweatherSans-Medium";
+  src: url("../shared/fonts/Merriweather-sans/MerriweatherSans-Medium.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "DoppioOne-Regular";
+  src: url("../shared/fonts/doppio_one/DoppioOne-Regular.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suwannaphum-Regular";
+  src: url("../shared/fonts/Suwannaphum/Suwannaphum-Regular.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suwannaphum-Bold";
+  src: url("../shared/fonts/Suwannaphum/Suwannaphum-Bold.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Bold";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-BoldItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-BoldItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Italic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Italic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Light";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Light.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-LightItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-LightItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Medium";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-MediumItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-MediumItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Regular";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-SemiBold";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-SemiBoldItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf") format("truetype");
+  font-display: swap;
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0px;
+  font-family: "CormorantGaramond-Regular", serif;
+}
+
+h1 {
+  color: #493DAF;
+  margin: 0px;
+  font-family: "CormorantGaramond-Light", serif;
+}
+
+h2 {
+  color: #493DAF;
+  margin: 0px;
+  font-family: "CormorantGaramond-Light", serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: transparent;
+}
+
+button:hover {
+  background-color: transparent;
+}
+
+.ux-grid, .newsletter-wrapper, .ux-grid-specific {
+  display: grid;
+  height: 100%;
+}
+
+.ux-grid-specific {
+  grid-template-columns: auto;
+  grid-template-rows: 0.25fr 0.5fr 0.25fr;
+}
+
+.centre-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.centre-at-top-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.full-width-img {
+  border-radius: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+@media screen and (max-width: 860px) {
+  .full-width-img {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .full-width-img {
+    max-width: 400px;
+  }
+}
+
+.half-width-img {
+  border-radius: 30px;
+  width: 90%;
+  max-width: 800px;
+  margin: 8px 8px 8px 8px;
+}
+@media screen and (max-width: 860px) {
+  .half-width-img {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .half-width-img {
+    max-width: 400px;
+  }
+}
+
+.ux-red {
+  background-color: red;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.align-centre {
+  display: flex;
+  justify-content: center; /* Horizontal center */
+  align-items: center; /* Vertical center */
+}
+
+.vertically-centre {
+  display: flex;
+  align-items: center; /* Vertical center */
+}
+
+.centre-me-wrapper-no-overflow-block, .centre-me-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.centre-me-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.align-middle-right {
+  display: flex;
+  justify-content: flex-end; /* Align contents to the right */
+  align-items: center; /* Vertical center */
+  width: 100%;
+}
+
+.page-contents-wrapper {
+  margin: 40px 100px 40px 40px;
+}
+@media screen and (max-width: 720px) {
+  .page-contents-wrapper {
+    margin: 20px 20px 20px 20px; /* top right bottom left */
+  }
+}
+
+.page-title {
+  margin-right: 30px;
+}
+
+.page-header {
+  background: #493DAF;
+  color: #ffffff;
+  border-radius: 15px 15px 15px 15px;
+  padding: 30px 20px 30px 20px;
+  font-size: 1.5rem;
+}
+
+.page-intro {
+  margin: 20px 0px 0px 0px;
+}
+@media screen and (max-width: 720px) {
+  .page-intro {
+    margin-right: 30px; /*stop the text from overlapping with the side bar on mobile */
+  }
+}
+
+.section-intro {
+  margin: 20px 0px 0px 0px;
+  padding: 0px 20px 0px 20px;
+}
+
+.vert-spacing-m {
+  padding: 20px 0px 20px 0px;
+}
+
+.vert-spacing-s {
+  padding: 10px 0px 10px 0px;
+}
+
+.standard-button, .button-no-margin {
+  background-color: #FFDD56;
+  border: 1px solid black;
+  border-radius: 13px;
+  padding: 10px;
+  width: 150px;
+  height: 50px;
+  margin: 20px 0px 0px 20px;
+}
+
+.button-no-margin {
+  padding: 0px;
+  margin: 20px 0px 0px 0px;
+}
+
+.full-width {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.newsletter-wrapper {
+  grid-template-columns: 0.8fr 0.2fr;
+  height: 200px;
+}
+@media screen and (max-width: 830px) {
+  .newsletter-wrapper {
+    height: 200px;
+  }
+}
+
+.newsletter-img {
+  height: 200px;
+}
+@media screen and (max-width: 830px) {
+  .newsletter-img {
+    height: 200px;
+  }
+}
+
+/*# sourceMappingURL=why-us.css.map */

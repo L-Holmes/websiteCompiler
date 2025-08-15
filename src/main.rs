@@ -255,6 +255,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
     // Read each file name line by line
     for source_path_str in source_files_str.lines() {
         // e.g. source_path=edit-me/pages/index/index.ts  //  edit-me/shared/reusables/top-bar/top-bar.scss
+        println!(" ~~~ Compiling: {} ~~~", source_path_str);
 
         // Skip empty lines
         if source_path_str.trim().is_empty() {
@@ -264,9 +265,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
 
         // Step 0)a): Generate destination path
         // In Rust, we build this path step-by-step, starting with the path relative to the source dir.
-        let path_relative_to_src = source_path
-            .strip_prefix(SOURCE_DIR)
-            .with_context(|| format!("Error stripping prefix '{}' from '{}'", SOURCE_DIR, source_path.display()))?;
+        let path_relative_to_src = source_path.strip_prefix(SOURCE_DIR).with_context(|| format!("Error stripping prefix '{}' from '{}'", SOURCE_DIR, source_path.display()))?;
 
         // 1. Replace pages/.*/. with / (move two levels back if in pages)
         // This solves the E0716 error by ensuring `relative_path_cow` lives long enough.
@@ -301,7 +300,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
             modified_scss_files_list.push(dest_path.clone());
         }
 
-        println!("-------------------------------------");
+        println!("        -----------------------------");
 		println!("	1)");
         
         // Step 1: Copy across
@@ -321,7 +320,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
         println!("Successfully copied file {} to its destination: {}", source_path.display(), dest_uncompiled.display());
 
 
-		println!("-------------------------------------");
+		println!("        -----------------------------");
 		println!("	2)");
 		// Step 2) Replace scss import placeholders
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("scss") {
@@ -329,7 +328,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
 			replace_root_placeholder_with_relative_path_new(SCSS_IMPORT_START, ROOT_PLACEHOLDER, &dest_uncompiled)?;
 		}
 
-		println!("-------------------------------------");
+		println!("        -----------------------------");
 		println!("	3)");
 		// Step 3) Add reusable components to javascript files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("ts") {
@@ -337,7 +336,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
 			add_reusable_javascript_components(&dest_uncompiled, Path::new(OUTPUT_DIRECTORY), SHARED_CODE_FOLDER, RE_START, RE_END)?;
 		}
 
-		println!("-------------------------------------");
+		println!("        -----------------------------");
 		println!("	4)");
 		// Step 4) Add reusable components to html files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
@@ -355,11 +354,12 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
             )?;
 		}
 
-		println!("-------------------------------------");
+		println!("        -----------------------------");
 		println!("	5)");
 		// Step 5) Replace <root> placeholders with the relative path to root
 		// i.e. change <root>/shared/example.html in the file /pages/index.html to ../example.html
 		replace_root_placeholder_with_relative_path_new(ROOT_PLACEHOLDER, ROOT_PLACEHOLDER, &dest_uncompiled)?;
+        println!("        -----------------------------");
     }
 
     Ok((modified_ts_files_list, modified_scss_files_list))

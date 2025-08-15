@@ -5,26 +5,26 @@
 //-- open dyslexic --
 @font-face {
   font-family: 'OpenDyslexic-Bold';
-  src: url('../../shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf') format('opentype');
+  src: url('../shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf') format('opentype');
   font-display: swap;
 }
 
 
 @font-face {
   font-family: 'OpenDyslexic-BoldItalic';
-  src: url('../../shared/fonts/open-dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
+  src: url('../shared/fonts/open-dyslexic/OpenDyslexic-BoldItalic.otf') format('opentype');
   font-display: swap;
 }
 
  @font-face {
    font-family: 'OpenDyslexic-Italic';
-   src: url('../../shared/fonts/open-dyslexic/OpenDyslexic-Italic.otf') format('opentype');
+   src: url('../shared/fonts/open-dyslexic/OpenDyslexic-Italic.otf') format('opentype');
   font-display: swap;
  }
  
  @font-face {
    font-family: 'OpenDyslexic-Regular';
-   src: url('../../shared/fonts/open-dyslexic/OpenDyslexic-Regular.otf') format('opentype');
+   src: url('../shared/fonts/open-dyslexic/OpenDyslexic-Regular.otf') format('opentype');
   font-display: swap;
  }
 
@@ -32,25 +32,25 @@
 
  @font-face {
    font-family: 'SylexiadSerifThin-Bold';
-   src: url('../../shared/fonts/sylexiad/SylexiadSerifThin-Bold.woff') format('opentype');
+   src: url('../shared/fonts/sylexiad/SylexiadSerifThin-Bold.woff') format('opentype');
   font-display: swap;
  }
 
  @font-face {
    font-family: 'SylexiadSerifThin-BoldItalic';
-   src: url('../../shared/fonts/sylexiad/SylexiadSerifThin-BoldItalic.woff') format('opentype');
+   src: url('../shared/fonts/sylexiad/SylexiadSerifThin-BoldItalic.woff') format('opentype');
   font-display: swap;
  }
 
  @font-face {
    font-family: 'SylexiadSerifThin-Italic';
-   src: url('../../shared/fonts/sylexiad/SylexiadSerifThin-Italic.woff') format('opentype');
+   src: url('../shared/fonts/sylexiad/SylexiadSerifThin-Italic.woff') format('opentype');
   font-display: swap;
  }
 
  @font-face {
    font-family: 'SylexiadSerifThin';
-   src: url('../../shared/fonts/sylexiad/SylexiadSerifThin.woff') format('opentype');
+   src: url('../shared/fonts/sylexiad/SylexiadSerifThin.woff') format('opentype');
   font-display: swap;
  }
 
@@ -58,7 +58,7 @@
 
  @font-face {
    font-family: 'MerriweatherSans-Medium';
-   src: url('../../shared/fonts/Merriweather-sans/MerriweatherSans-Medium.ttf') format('opentype');
+   src: url('../shared/fonts/Merriweather-sans/MerriweatherSans-Medium.ttf') format('opentype');
   font-display: swap;
  }
 
@@ -66,7 +66,7 @@
 
  @font-face {
    font-family: 'DoppioOne-Regular';
-   src: url('../../shared/fonts/doppio_one/DoppioOne-Regular.ttf') format('opentype');
+   src: url('../shared/fonts/doppio_one/DoppioOne-Regular.ttf') format('opentype');
   font-display: swap;
  }
 
@@ -74,13 +74,13 @@
 
  @font-face {
    font-family: 'Suwannaphum-Regular';
-   src: url('../../shared/fonts/Suwannaphum/Suwannaphum-Regular.ttf') format('opentype');
+   src: url('../shared/fonts/Suwannaphum/Suwannaphum-Regular.ttf') format('opentype');
   font-display: swap;
  }
 
  @font-face {
    font-family: 'Suwannaphum-Bold';
-   src: url('../../shared/fonts/Suwannaphum/Suwannaphum-Bold.ttf') format('opentype');
+   src: url('../shared/fonts/Suwannaphum/Suwannaphum-Bold.ttf') format('opentype');
   font-display: swap;
  }
 
@@ -88,61 +88,61 @@
 // Cormorant Garamond
 @font-face {
   font-family: 'CormorantGaramond-Bold';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-BoldItalic';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-BoldItalic.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-BoldItalic.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-Italic';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Italic.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Italic.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-Light';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Light.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Light.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-LightItalic';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-LightItalic.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-LightItalic.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-Medium';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Medium.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Medium.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-MediumItalic';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-MediumItalic.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-MediumItalic.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-Regular';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-SemiBold';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBold.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBold.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'CormorantGaramond-SemiBoldItalic';
-  src: url('../../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf') format('truetype');
+  src: url('../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf') format('truetype');
   font-display: swap;
 }
 
