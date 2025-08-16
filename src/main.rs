@@ -16,7 +16,9 @@ const OUTPUT_DIRECTORY: &str = "actual-website-do-not-edit";
 const SOURCE_DIR: &str = "edit-me";
 const SHARED_CODE_FOLDER: &str = "code";
 const LAST_COMPILE_TIME_FILE: &str = ".last_compiled";
+const SHARED_DIR: &str = "edit-me/shared";
 const COMPONENTS_DIR: &str = "edit-me/shared/reusables";
+const COMPILATION_ORDER_FILE: &str = "reusables-compilation-order.txt";
 
 // --> Placeholders
 const ROOT_PLACEHOLDER: &str = "<root>";
@@ -115,9 +117,6 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     
     let all_files_that_are_to_be_compiled_str = get_all_files_that_need_recompiling( SOURCE_DIR, RE_START, RE_END, &newly_modified_files_str, COMPONENTS_DIR);
     
-    println!("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    println!("{}", &all_files_that_are_to_be_compiled_str);
-
     // (0); Load the prioritized components list
     let components_list = load_components_list()?;
     
@@ -140,17 +139,52 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     let mut all_scss_files = Vec::new();
 
     // a. Iterate through components in order of priority
+    // for component_name in &components_list {
+        // //e.g. component_name = reusables/top-bar (representing actual-website-do-not-edit/shared/reusables/top-bar)
+// 
+        // let component_path_in_src_dir = Path::new(SHARED_DIR).join(component_name).join(format!("{}.html", component_name));
+        // let component_path_str = component_path_in_src_dir.to_string_lossy();
+// 
+        // println!("....................checking whether the following path is in the list of new components that need compiling: {}", &component_path_str);
+// 
+        // // Check if it's in the list of new components by seeing if the string contains it as a whole line
+        // if new_components_that_need_compiling.lines().any(|line| line == component_path_str) {
+            // println!("\t~~~~~~~");
+            // println!("\tCompiling (prioritized): {}", &component_path_str);
+            // println!("\t~~~~~~~");
+            // let (ts_files, scss_files) = compile_all(&component_path_str)?;
+            // all_ts_files.extend(ts_files);
+            // all_scss_files.extend(scss_files);
+            // compiled_components.insert(component_path_str.to_string());
+        // }
+    // }
     for component_name in &components_list {
-        let component_path_in_src_dir = Path::new(COMPONENTS_DIR).join(component_name).join(format!("{}.html", component_name));
-        let component_path_str = component_path_in_src_dir.to_string_lossy();
+        // e.g. "reusables/top-bar"
+        let component_dir = Path::new(SHARED_DIR).join(component_name);
 
-        println!("....................checking whether the following path is in the list of new components that need compiling: {}", &component_path_str);
+        if !component_dir.is_dir() {
+            eprintln!("Warning: component directory not found: {}", component_dir.display());
+            continue;
+        }
 
-        // Check if it's in the list of new components by seeing if the string contains it as a whole line
-        if new_components_that_need_compiling.lines().any(|line| line == component_path_str) {
+        // Iterate over all files in the component’s folder
+        for entry in fs::read_dir(&component_dir)? {
+            let entry = entry?;
+            let path = entry.path();
+
+            // Skip subdirectories if you only want direct files in the component folder
+            if path.is_dir() {
+                continue;
+            }
+
+            let component_path_str = path.to_string_lossy();
+
+            println!("....................checking whether the following path is in the list of new components that need compiling: {}", &component_path_str);
+
             println!("\t~~~~~~~");
             println!("\tCompiling (prioritized): {}", &component_path_str);
             println!("\t~~~~~~~");
+
             let (ts_files, scss_files) = compile_all(&component_path_str)?;
             all_ts_files.extend(ts_files);
             all_scss_files.extend(scss_files);
@@ -255,7 +289,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
     // Read each file name line by line
     for source_path_str in source_files_str.lines() {
         // e.g. source_path=edit-me/pages/index/index.ts  //  edit-me/shared/reusables/top-bar/top-bar.scss
-        println!(" ~~~ Compiling: {} ~~~", source_path_str);
+        // println!(" \n~~~\n Compiling: {}\n~~~", source_path_str);
 
         // Skip empty lines
         if source_path_str.trim().is_empty() {
@@ -287,7 +321,7 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
             }
         };
         let dest_path = Path::new(OUTPUT_DIRECTORY).join(&dest_path_with_swapped_ext);
-        println!("dest_path: {}", dest_path.display());
+        // println!("dest_path: {}", dest_path.display());
 
 
         // Step 0)b): Get uncompiled version of destination path
@@ -300,8 +334,8 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
             modified_scss_files_list.push(dest_path.clone());
         }
 
-        println!("        -----------------------------");
-		println!("	1)");
+        // println!("        -----------------------------");
+		// println!("	1)");
         
         // Step 1: Copy across
         // Delete existing compiled file if it exists (copy will overwrite, but this is for faithfulness)
@@ -317,30 +351,30 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
         fs::copy(source_path, &dest_uncompiled)
             .with_context(|| format!("Failed to copy '{}' to '{}'", source_path.display(), dest_uncompiled.display()))?;
         
-        println!("Successfully copied file {} to its destination: {}", source_path.display(), dest_uncompiled.display());
+        // println!("Successfully copied file {} to its destination: {}", source_path.display(), dest_uncompiled.display());
 
 
-		println!("        -----------------------------");
-		println!("	2)");
+		// println!("        -----------------------------");
+		// println!("	2)");
 		// Step 2) Replace scss import placeholders
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("scss") {
-			println!("2222222! Is an scss file!");
+			// println!("2222222! Is an scss file!");
 			replace_root_placeholder_with_relative_path_new(SCSS_IMPORT_START, ROOT_PLACEHOLDER, &dest_uncompiled)?;
 		}
 
-		println!("        -----------------------------");
-		println!("	3)");
+		// println!("        -----------------------------");
+		// println!("	3)");
 		// Step 3) Add reusable components to javascript files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("ts") {
-			println!("33333333! Is a ts file!");
+			// println!("33333333! Is a ts file!");
 			add_reusable_javascript_components(&dest_uncompiled, Path::new(OUTPUT_DIRECTORY), SHARED_CODE_FOLDER, RE_START, RE_END)?;
 		}
 
-		println!("        -----------------------------");
-		println!("	4)");
+		// println!("        -----------------------------");
+		// println!("	4)");
 		// Step 4) Add reusable components to html files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
-			println!("4! Is a html file!");
+			// println!("4! Is a html file!");
             replace_html_component_placeholders(
                 &dest_uncompiled,
                 Path::new(SOURCE_DIR),
@@ -354,12 +388,12 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
             )?;
 		}
 
-		println!("        -----------------------------");
-		println!("	5)");
+		// println!("        -----------------------------");
+		// println!("	5)");
 		// Step 5) Replace <root> placeholders with the relative path to root
 		// i.e. change <root>/shared/example.html in the file /pages/index.html to ../example.html
 		replace_root_placeholder_with_relative_path_new(ROOT_PLACEHOLDER, ROOT_PLACEHOLDER, &dest_uncompiled)?;
-        println!("        -----------------------------");
+        // println!("        -----------------------------");
     }
 
     Ok((modified_ts_files_list, modified_scss_files_list))
@@ -396,15 +430,17 @@ fn check_command_exists(command: &str, error_message: &str) {
 
 /// Loads and validates the prioritized list of components from the compilation order file.
 fn load_components_list() -> Result<Vec<String>> {
-    let order_file_path = Path::new(COMPONENTS_DIR).join("reusables-compilation-order.txt");
+    let order_file_path = Path::new(SHARED_DIR).join(COMPILATION_ORDER_FILE);
     println!("><><><><><><><><><><>< loading the ordered components list from {} ><><><><><><><><><><><", order_file_path.display());
 
     if !order_file_path.is_file() {
         return Err(anyhow!("Error: Compilation order file not found at: {}", order_file_path.display()));
     }
 
-    // Get valid directory names in components_dir (basename only)
-    let valid_dirs: HashSet<String> = WalkDir::new(COMPONENTS_DIR).min_depth(1).max_depth(1).into_iter().filter_map(Result::ok).filter(|e| e.file_type().is_dir()).map(|e| e.file_name().to_string_lossy().into_owned()).collect();
+    //// Get valid directory names in components_dir (basename only)
+    //let valid_dirs: HashSet<String> = WalkDir::new(SHARED_DIR).min_depth(1).max_depth(1).into_iter().filter_map(Result::ok).filter(|e| e.file_type().is_dir()).map(|e| e.file_name().to_string_lossy().into_owned()).collect();
+    // Get all valid directory paths relative to SHARED_DIR (no max depth)
+    let valid_dirs: HashSet<String> = WalkDir::new(SHARED_DIR).min_depth(1).into_iter().filter_map(Result::ok).filter(|e| e.file_type().is_dir()).map(|e| e.path().strip_prefix(SHARED_DIR).unwrap().to_string_lossy().into_owned()).collect();
 
     // Read file, clean lines, and validate
     let file_content = fs::read_to_string(&order_file_path)?;

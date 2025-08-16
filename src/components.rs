@@ -150,6 +150,7 @@ pub fn add_reusable_javascript_components( javascript_file: &Path, root_folder: 
 
         if !component_path.is_file() {
             eprintln!("ERROR!!!!!!! Associated file ({}) for component '{}' not found.", component_path.display(), full_tag);
+            report_missing_file_error(&component_path, &component_name, &full_tag);
             continue;
         }
 
@@ -159,6 +160,36 @@ pub fn add_reusable_javascript_components( javascript_file: &Path, root_folder: 
 
     fs::write(javascript_file, content)?;
     Ok(())
+}
+
+fn report_missing_file_error(file_path: &std::path::Path, component_name: &str, full_tag: &str) {
+
+    if let Some(parent_dir) = file_path.parent() {
+        if parent_dir.exists() {
+            eprintln!("ERROR!!!!!!! Associated file ({}) for component '{}' not found. ({})", 
+                     file_path.display(), component_name, full_tag);
+            
+            // List contents of parent directory
+            if let Ok(entries) = std::fs::read_dir(parent_dir) {
+                eprintln!("Contents of parent directory {}:", parent_dir.display());
+                for entry in entries.flatten() {
+                    eprintln!("  {}", entry.file_name().to_string_lossy());
+                }
+            }
+        } else {
+            eprintln!("ERROR!!!!!!! Parent dir {} doesn't exist either!", parent_dir.display());
+        }
+    }
+
+
+    println!("/shared/code");
+    match std::fs::read_dir("actual-website-do-not-edit/shared/code") { Ok(entries) => entries.flatten().for_each(|e| println!("{}", e.file_name().to_string_lossy())), Err(e) => println!("Error: {}", e) }
+    println!("/shared/");
+    match std::fs::read_dir("actual-website-do-not-edit/shared") { Ok(entries) => entries.flatten().for_each(|e| println!("{}", e.file_name().to_string_lossy())), Err(e) => println!("Error: {}", e) }
+    println!("/");
+    match std::fs::read_dir("actual-website-do-not-edit") { Ok(entries) => entries.flatten().for_each(|e| println!("{}", e.file_name().to_string_lossy())), Err(e) => println!("Error: {}", e) }
+    println!(".");
+    match std::fs::read_dir(".") { Ok(entries) => entries.flatten().for_each(|e| println!("{}", e.file_name().to_string_lossy())), Err(e) => println!("Error: {}", e) }
 }
 
 
@@ -442,7 +473,7 @@ pub fn compile_typescript_file(ts_source: &str, js_output: &str) -> Result<(), S
     
     // remove the original .ts file
     // The `?` operator here will convert a file removal error into our `Err(String)`.
-    fs::remove_file(ts_source).map_err(|e| format!("successfully compiled but failed to remove source file {}: {}", ts_source, e))?;
+    // fs::remove_file(ts_source).map_err(|e| format!("successfully compiled but failed to remove source file {}: {}", ts_source, e))?; // TODO remove this? because of the js component import error!?!?!?!?
 
     // Corresponds to shell `return 0`
     Ok(())

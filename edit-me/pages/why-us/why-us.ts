@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", setDynamicElementsContent);
 
+
 //--content getters--
 
 async function contentGetter_text_lines() {
