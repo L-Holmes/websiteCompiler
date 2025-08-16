@@ -123,41 +123,25 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     // (2) split the newly_modified_files into newly_modified_components and newly_modified_pages_etc
     println!("\n()()()()()()()()()()()() splitting components ()()()()()()()()()()()()");
 
-    let (new_components_that_need_compiling, new_everything_else_that_needs_compiling) = split_into_new_component_and_new_other( &all_files_that_are_to_be_compiled_str, "edit-me/shared",);
+    // TODO -> instead of this, should we not just get the full list, and then remove everything that is contained in the list that is defined in the manual text file?
+    //      -> because that _becomes_ the prioritised files...
+    //      -> This code just becomes a waste...
+    //      -> So yeah, we just return  new_everything_else_that_needs_compiling instead.
+    // let (new_components_that_need_compiling, new_everything_else_that_needs_compiling) = split_into_new_component_and_new_other( &all_files_that_are_to_be_compiled_str, "edit-me/shared",);
 
-    println!("()()()()()()()()()()()() After splitting Components ()()()()()()()()()()()()");
-    println!("Components:\n{}", &new_components_that_need_compiling);
-    println!("Others:\n{}", &new_everything_else_that_needs_compiling);
-    println!("()()()()()()()()()()()() DONE ()()()()()()()()()()()()");
+    // println!("()()()()()()()()()()()() After splitting Components ()()()()()()()()()()()()");
+    // println!("Components:\n{}", &new_components_that_need_compiling);
+    // println!("Others:\n{}", &new_everything_else_that_needs_compiling);
+    // println!("()()()()()()()()()()()() DONE ()()()()()()()()()()()()");
 
     // (3) Compiles the components, in the order they should be compiled in.
     println!("\n<><><><><><><><><><><><> COMPILING THE *PRIORITIZED* REUSABLE COMPONENTS IN ORDER <><><><><><><><><><><><>");
-    println!("as a reminder, the list of new components:\n{}", &new_components_that_need_compiling);
     // ---------------------
     let mut compiled_components = HashSet::new();
     let mut all_ts_files = Vec::new();
     let mut all_scss_files = Vec::new();
 
     // a. Iterate through components in order of priority
-    // for component_name in &components_list {
-        // //e.g. component_name = reusables/top-bar (representing actual-website-do-not-edit/shared/reusables/top-bar)
-// 
-        // let component_path_in_src_dir = Path::new(SHARED_DIR).join(component_name).join(format!("{}.html", component_name));
-        // let component_path_str = component_path_in_src_dir.to_string_lossy();
-// 
-        // println!("....................checking whether the following path is in the list of new components that need compiling: {}", &component_path_str);
-// 
-        // // Check if it's in the list of new components by seeing if the string contains it as a whole line
-        // if new_components_that_need_compiling.lines().any(|line| line == component_path_str) {
-            // println!("\t~~~~~~~");
-            // println!("\tCompiling (prioritized): {}", &component_path_str);
-            // println!("\t~~~~~~~");
-            // let (ts_files, scss_files) = compile_all(&component_path_str)?;
-            // all_ts_files.extend(ts_files);
-            // all_scss_files.extend(scss_files);
-            // compiled_components.insert(component_path_str.to_string());
-        // }
-    // }
     for component_name in &components_list {
         // e.g. "reusables/top-bar"
         let component_dir = Path::new(SHARED_DIR).join(component_name);
@@ -193,23 +177,30 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     }
 
     // b. Compile any remaining components that weren't in the priority list (i.e. any of the standard pages // things not in the shared directory)
-    let mut unprioritized_to_compile = String::new();
-    for component_path in new_components_that_need_compiling.lines() {
-        if component_path.is_empty() { continue; }
-        if !compiled_components.contains(component_path) {
-            println!("Compiling (unprioritized NOT IN THE COMPILED COMPONENTS LIST): {}", component_path);
-            unprioritized_to_compile.push_str(component_path);
-            unprioritized_to_compile.push('\n');
-        } else {
-            println!("already compiled: {} skipping...", component_path);
-        }
-    }
-    if !unprioritized_to_compile.is_empty() {
-        let (ts_files, scss_files) = compile_all(&unprioritized_to_compile)?;
-        all_ts_files.extend(ts_files);
-        all_scss_files.extend(scss_files);
-    }
+    // let mut unprioritized_to_compile = String::new();
+    // for component_path in new_components_that_need_compiling.lines() {
+        // if component_path.is_empty() { continue; }
+        // if !compiled_components.contains(component_path) {
+            // println!("Compiling (unprioritized NOT IN THE COMPILED COMPONENTS LIST): {}", component_path);
+            // unprioritized_to_compile.push_str(component_path);
+            // unprioritized_to_compile.push('\n');
+        // } else {
+            // println!("already compiled: {} skipping...", component_path);
+        // }
+    // }
+    // if !unprioritized_to_compile.is_empty() {
+        // let (ts_files, scss_files) = compile_all(&unprioritized_to_compile)?;
+        // all_ts_files.extend(ts_files);
+        // all_scss_files.extend(scss_files);
+    // }
     // ---------------------
+
+    let new_everything_else_that_needs_compiling = get_non_prioritised_files_list(&all_files_that_are_to_be_compiled_str, &compiled_components);
+
+
+
+
+
     println!("<><><><><><><><><><><><> DONE <><><><><><><><><><><><>");
     println!("\n<><><><><><><><><><><><> COMPILING THE REGULAR COMPONENTS IN ORDER <><><><><><><><><><><><>");
 
@@ -276,6 +267,45 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     println!("done.");
     Ok(())
 }
+
+
+// TODO! the below function should perhaps be moved into the other file.
+/// Given all modified files and the set of already compiled components,
+/// returns a newline-separated list of the "non-prioritised" files (everything else).
+///
+/// # Arguments
+/// * `all_modified_files` - A newline-separated string of all files that changed.
+/// * `compiled_components` - A set of paths that were already compiled (prioritised).
+///
+/// # Returns
+/// * A single string with one file per line, containing everything that wasn’t already compiled.
+pub fn get_non_prioritised_files_list( all_modified_files: &str, compiled_components: &HashSet<String>,) -> String {
+    println!("-> filtering non-prioritised files");
+
+    let mut non_prioritised = String::new();
+
+    for source_path in all_modified_files.lines() {
+        // Skip empty lines
+        if source_path.trim().is_empty() {
+            continue;
+        }
+
+        println!("\t-> checking {}", source_path);
+
+        if compiled_components.contains(source_path) {
+            println!("\t\t--> already prioritised, skipping");
+        } else {
+            println!("\t\t--> adding to non-prioritised list");
+            non_prioritised.push_str(source_path);
+            non_prioritised.push('\n');
+        }
+    }
+
+    println!("///non-prioritised files: {}", non_prioritised);
+
+    non_prioritised
+}
+
 
 /// Pre-processes a list of source files: copies them to the output directory,
 /// injects/replaces placeholders and components, and returns lists of files

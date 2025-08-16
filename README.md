@@ -8,3 +8,9 @@
 # To run:
 cargo build
 cargo run
+
+
+
+# reference for me on running the server
+webfsd -F -p 8080 -r "$PWD" -i index.html
+
