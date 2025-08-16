@@ -1,9 +1,0 @@
-filter-sticker-extra
-filter-sticker
-
-filter-header
-filter-header-parent
-
-category-filter
-bottom-bar
-top-bar

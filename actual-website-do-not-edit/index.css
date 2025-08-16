@@ -114,19 +114,21 @@ html {
 
 body {
   margin: 0px;
-  font-family: "CormorantGaramond-Regular", serif;
+  font-family: "SylexiadSerifThin", sans-serif;
+  background-color: black;
+  color: #f5f5f5;
 }
 
 h1 {
-  color: #493DAF;
+  color: #f5f5f5;
   margin: 0px;
-  font-family: "CormorantGaramond-Light", serif;
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
 h2 {
-  color: #493DAF;
+  color: #f5f5f5;
   margin: 0px;
-  font-family: "CormorantGaramond-Light", serif;
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
 a {
@@ -136,6 +138,7 @@ a {
 
 button {
   background-color: transparent;
+  color: #f5f5f5;
 }
 
 button:hover {
@@ -255,7 +258,7 @@ button:hover {
 
 .page-header {
   background: #493DAF;
-  color: #ffffff;
+  color: #f5f5f5;
   border-radius: 15px 15px 15px 15px;
   padding: 30px 20px 30px 20px;
   font-size: 1.5rem;
@@ -492,7 +495,7 @@ button:hover {
 
 /* Background GIF styles */
 .background-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -537,11 +540,12 @@ button:hover {
   font-size: 4rem;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "CormorantGaramond-Light", serif;
 }
 
 /* Content below the hero section */
 .content {
-  background-color: white;
+  background-color: black;
   position: relative;
   z-index: 1;
   padding: 2rem;

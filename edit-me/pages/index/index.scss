@@ -187,7 +187,8 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 
 /* Background GIF styles */
 .background-container {
-    position: fixed;
+    //position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -234,11 +235,12 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
     font-size: 4rem;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: $cormorant-light;
 }
 
 /* Content below the hero section */
 .content {
-    background-color: white;
+    background-color: black;
     position: relative;
     z-index: 1;
     padding: 2rem;
