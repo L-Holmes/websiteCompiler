@@ -7,6 +7,8 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 use std::time::SystemTime;
+use std::borrow::Cow;
+use std::ffi::OsString;
 
 use websiteCompiler::components::*;
 
@@ -112,27 +114,14 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
 
     let all_files = files_in_source_dir(SOURCE_DIR)?;
     let newly_modified_files = only_modify_time_newer_than_last_compile_time(&all_files, last_compile_time)?;
+    let newly_modified_files_set: HashSet<String> = newly_modified_files.iter().map(|p| p.to_string_lossy().to_string()).collect();
+    let all_files_that_are_to_be_compiled: HashSet<String> = get_all_files_that_need_recompiling(SOURCE_DIR, RE_START, RE_END, &newly_modified_files_set, COMPONENTS_DIR);
 
-    let newly_modified_files_str: String = newly_modified_files.iter().map(|p| p.to_string_lossy()).collect::<Vec<_>>().join("\n");
-    
-    let all_files_that_are_to_be_compiled_str = get_all_files_that_need_recompiling( SOURCE_DIR, RE_START, RE_END, &newly_modified_files_str, COMPONENTS_DIR);
-    
     // (0); Load the prioritized components list
     let components_list = load_components_list()?;
     
     // (2) split the newly_modified_files into newly_modified_components and newly_modified_pages_etc
     println!("\n()()()()()()()()()()()() splitting components ()()()()()()()()()()()()");
-
-    // TODO -> instead of this, should we not just get the full list, and then remove everything that is contained in the list that is defined in the manual text file?
-    //      -> because that _becomes_ the prioritised files...
-    //      -> This code just becomes a waste...
-    //      -> So yeah, we just return  new_everything_else_that_needs_compiling instead.
-    // let (new_components_that_need_compiling, new_everything_else_that_needs_compiling) = split_into_new_component_and_new_other( &all_files_that_are_to_be_compiled_str, "edit-me/shared",);
-
-    // println!("()()()()()()()()()()()() After splitting Components ()()()()()()()()()()()()");
-    // println!("Components:\n{}", &new_components_that_need_compiling);
-    // println!("Others:\n{}", &new_everything_else_that_needs_compiling);
-    // println!("()()()()()()()()()()()() DONE ()()()()()()()()()()()()");
 
     // (3) Compiles the components, in the order they should be compiled in.
     println!("\n<><><><><><><><><><><><> COMPILING THE *PRIORITIZED* REUSABLE COMPONENTS IN ORDER <><><><><><><><><><><><>");
@@ -161,45 +150,29 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
                 continue;
             }
 
-            let component_path_str = path.to_string_lossy();
+            let component_path_str: String = path.to_string_lossy().to_string();
 
             println!("....................checking whether the following path is in the list of new components that need compiling: {}", &component_path_str);
+            if !all_files_that_are_to_be_compiled.contains(&component_path_str) {
+                continue;
+            }
 
             println!("\t~~~~~~~");
             println!("\tCompiling (prioritized): {}", &component_path_str);
             println!("\t~~~~~~~");
 
-            let (ts_files, scss_files) = compile_all(&component_path_str)?;
+            let mut single_file_set: HashSet<String> = HashSet::new();
+            single_file_set.insert(component_path_str.clone());
+            let (ts_files, scss_files) = compile_all(&single_file_set)?;
+
             all_ts_files.extend(ts_files);
             all_scss_files.extend(scss_files);
-            compiled_components.insert(component_path_str.to_string());
+            compiled_components.insert(component_path_str);
         }
     }
 
     // b. Compile any remaining components that weren't in the priority list (i.e. any of the standard pages // things not in the shared directory)
-    // let mut unprioritized_to_compile = String::new();
-    // for component_path in new_components_that_need_compiling.lines() {
-        // if component_path.is_empty() { continue; }
-        // if !compiled_components.contains(component_path) {
-            // println!("Compiling (unprioritized NOT IN THE COMPILED COMPONENTS LIST): {}", component_path);
-            // unprioritized_to_compile.push_str(component_path);
-            // unprioritized_to_compile.push('\n');
-        // } else {
-            // println!("already compiled: {} skipping...", component_path);
-        // }
-    // }
-    // if !unprioritized_to_compile.is_empty() {
-        // let (ts_files, scss_files) = compile_all(&unprioritized_to_compile)?;
-        // all_ts_files.extend(ts_files);
-        // all_scss_files.extend(scss_files);
-    // }
-    // ---------------------
-
-    let new_everything_else_that_needs_compiling = get_non_prioritised_files_list(&all_files_that_are_to_be_compiled_str, &compiled_components);
-
-
-
-
+    let new_everything_else_that_needs_compiling : HashSet<String> = get_non_prioritised_files_list(&all_files_that_are_to_be_compiled, &compiled_components);
 
     println!("<><><><><><><><><><><><> DONE <><><><><><><><><><><><>");
     println!("\n<><><><><><><><><><><><> COMPILING THE REGULAR COMPONENTS IN ORDER <><><><><><><><><><><><>");
@@ -212,6 +185,8 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     // ----------------------------------------------------------------------------------------
     // --- Final Compilation Step ---
     // ----------------------------------------------------------------------------------------
+
+    // -- compile scss ---
     let mut successful_scss_compilations = 0;
     for css_file in &all_scss_files {
         let scss_source = css_file.with_extension("scss");
@@ -221,6 +196,7 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     }
     println!("{} of {} SCSS file(s) compiled to CSS.", successful_scss_compilations, all_scss_files.len());
 
+    // --- compile typescript ---
     let mut successful_ts_compilations = 0;
     for js_file in &all_ts_files {
         let ts_source = js_file.with_extension("ts");
@@ -279,30 +255,20 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
 ///
 /// # Returns
 /// * A single string with one file per line, containing everything that wasn’t already compiled.
-pub fn get_non_prioritised_files_list( all_modified_files: &str, compiled_components: &HashSet<String>,) -> String {
+pub fn get_non_prioritised_files_list( all_modified_files: &HashSet<String>, compiled_components: &HashSet<String>,) -> HashSet<String> {
     println!("-> filtering non-prioritised files");
-
-    let mut non_prioritised = String::new();
-
-    for source_path in all_modified_files.lines() {
-        // Skip empty lines
-        if source_path.trim().is_empty() {
-            continue;
-        }
-
+    let mut non_prioritised = HashSet::new();
+    
+    for source_path in all_modified_files {
         println!("\t-> checking {}", source_path);
-
         if compiled_components.contains(source_path) {
             println!("\t\t--> already prioritised, skipping");
         } else {
             println!("\t\t--> adding to non-prioritised list");
-            non_prioritised.push_str(source_path);
-            non_prioritised.push('\n');
+            non_prioritised.insert(source_path.clone());
         }
     }
-
-    println!("///non-prioritised files: {}", non_prioritised);
-
+    println!("///non-prioritised files: {:?}", non_prioritised);
     non_prioritised
 }
 
@@ -311,13 +277,13 @@ pub fn get_non_prioritised_files_list( all_modified_files: &str, compiled_compon
 /// injects/replaces placeholders and components, and returns lists of files
 /// that require final compilation (TS and SCSS).
 /// This is the Rust version of the `compileAll` shell function.
-pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>)> {
+pub fn compile_all(source_files: &HashSet<String>) -> Result<(Vec<PathBuf>, Vec<PathBuf>)> {
     let mut modified_ts_files_list = Vec::new();
     let mut modified_scss_files_list = Vec::new();
-    let pages_regex = Regex::new(r"pages/[^/]+/")?;
+    let pages_regex : Regex = Regex::new(r"pages/[^/]+/")?;
 
-    // Read each file name line by line
-    for source_path_str in source_files_str.lines() {
+    // Iterate through each file path in the HashSet
+    for source_path_str in source_files {
         // e.g. source_path=edit-me/pages/index/index.ts  //  edit-me/shared/reusables/top-bar/top-bar.scss
         // println!(" \n~~~\n Compiling: {}\n~~~", source_path_str);
 
@@ -325,11 +291,11 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
         if source_path_str.trim().is_empty() {
             continue;
         }
-        let source_path = Path::new(source_path_str);
+        let source_path: &Path = Path::new(source_path_str);
 
         // Step 0)a): Generate destination path
         // In Rust, we build this path step-by-step, starting with the path relative to the source dir.
-        let path_relative_to_src = source_path.strip_prefix(SOURCE_DIR).with_context(|| format!("Error stripping prefix '{}' from '{}'", SOURCE_DIR, source_path.display()))?;
+        let path_relative_to_src: &Path = source_path.strip_prefix(SOURCE_DIR).with_context(|| format!("Error stripping prefix '{}' from '{}'", SOURCE_DIR, source_path.display()))?;
 
         // 1. Replace pages/.*/. with / (move two levels back if in pages)
         // This solves the E0716 error by ensuring `relative_path_cow` lives long enough.
@@ -337,8 +303,8 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
         let dest_path_str = pages_regex.replace(&relative_path_cow, ""); // e.g. index.ts // shared/reusables/top-bar/top-bar.scss
 
         // 3. Add OUTPUT_DIRECTORY prefix
-        let path_relative_to_src_dir = Path::new(dest_path_str.as_ref());
-        let dest_path_with_swapped_ext = {
+        let path_relative_to_src_dir : &Path= Path::new(dest_path_str.as_ref());
+        let dest_path_with_swapped_ext : PathBuf= {
             let mut p = path_relative_to_src_dir.as_os_str().to_owned();
             if dest_path_str.ends_with(".ts") {
                 p.push(".js");
@@ -350,12 +316,12 @@ pub fn compile_all(source_files_str: &str) -> Result<(Vec<PathBuf>, Vec<PathBuf>
                 PathBuf::from(path_relative_to_src_dir)
             }
         };
-        let dest_path = Path::new(OUTPUT_DIRECTORY).join(&dest_path_with_swapped_ext);
+        let dest_path : PathBuf = Path::new(OUTPUT_DIRECTORY).join(&dest_path_with_swapped_ext);
         // println!("dest_path: {}", dest_path.display());
 
 
         // Step 0)b): Get uncompiled version of destination path
-        let dest_uncompiled = Path::new(OUTPUT_DIRECTORY).join(path_relative_to_src_dir);
+        let dest_uncompiled : PathBuf = Path::new(OUTPUT_DIRECTORY).join(path_relative_to_src_dir);
 
         // Add to the appropriate array, used for compilation later on
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("ts") {

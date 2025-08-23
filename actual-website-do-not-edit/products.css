@@ -145,7 +145,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .newsletter-wrapper, .ux-grid-specific {
+.ux-grid, .index-intro-grid, .index-intro-mobile, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -155,7 +155,7 @@ button:hover {
   grid-template-rows: 0.25fr 0.5fr 0.25fr;
 }
 
-.centre-wrapper {
+.centre-wrapper, .opening-page-content-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -264,11 +264,11 @@ button:hover {
   font-size: 1.5rem;
 }
 
-.page-intro {
+.page-intro, .index-page-intro {
   margin: 20px 0px 0px 0px;
 }
 @media screen and (max-width: 720px) {
-  .page-intro {
+  .page-intro, .index-page-intro {
     margin-right: 30px; /*stop the text from overlapping with the side bar on mobile */
   }
 }
@@ -307,23 +307,198 @@ button:hover {
   overflow-y: hidden;
 }
 
-.newsletter-wrapper {
-  grid-template-columns: 0.8fr 0.2fr;
-  height: 200px;
+.temp {
+  display: none;
 }
-@media screen and (max-width: 830px) {
-  .newsletter-wrapper {
-    height: 200px;
+
+.index-main-wrapper {
+  height: auto;
+  width: 100%;
+}
+@media screen and (min-width: 700px) {
+  .index-main-wrapper {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .index-main-wrapper {
+    width: 1080px;
   }
 }
 
-.newsletter-img {
-  height: 200px;
+.intro-para-mobile {
+  margin-top: 20px;
+  margin-right: 40vw;
 }
-@media screen and (max-width: 830px) {
-  .newsletter-img {
-    height: 200px;
+
+.index-intro-grid {
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-rows: auto;
+  height: auto;
+  margin: 0px 0px 20px 0px;
+}
+@media screen and (max-width: 720px) {
+  .index-intro-grid {
+    grid-template-columns: 0.7fr 0.3fr;
+  }
+}
+@media screen and (max-width: 441px) {
+  .index-intro-grid {
+    display: none;
   }
 }
 
-/*# sourceMappingURL=product-finder.css.map */
+.index-intro-mobile {
+  grid-template-columns: 0.9fr 0.1fr;
+  grid-template-rows: auto;
+  height: auto;
+  margin: 0px 0px 20px 0px;
+  display: none;
+}
+@media screen and (max-width: 440px) {
+  .index-intro-mobile {
+    display: block;
+  }
+}
+
+.index-page-intro {
+  width: 100%;
+}
+@media screen and (max-width: 720px) {
+  .index-page-intro {
+    max-width: 70%;
+  }
+}
+
+.last-item-takes-remaining-vert-space {
+  display: grid;
+  grid-template-rows: auto auto 1fr; /* First two rows take content height, third row takes remaining space */
+  height: 100%;
+  overflow-y: hidden;
+}
+
+/* Background GIF styles */
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: fixed;
+}
+
+/* Hide mobile GIF by default */
+.background-gif.mobile {
+  display: none;
+}
+
+/* Center logo and title */
+.opening-centre-logo-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.opening-centre-logo {
+  width: 200px;
+  height: 200px;
+  background-image: url("/shared/images/page-images/startpage/logo-alt.avif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.opening-title {
+  font-size: 4rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: "CormorantGaramond-Light", serif;
+}
+
+/* Content below the hero section */
+.content {
+  background-color: black;
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .background-gif.desktop {
+    display: none;
+  }
+  .background-gif.mobile {
+    display: block;
+  }
+  .navbar {
+    padding: 0.5rem;
+  }
+  .nav-item span {
+    font-size: 0.9rem;
+  }
+  .main-title {
+    font-size: 2rem;
+  }
+}
+.top-bar-logo {
+  width: 50px;
+}
+
+.new-top-bar-grid {
+  grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-template-rows: auto;
+  height: auto;
+}
+
+.opening-page-content-wrapper {
+  background-color: black;
+  margin-top: -10px;
+}
+
+.wavy-divider {
+  width: 100%;
+  height: 300px;
+}
+
+.table-entry {
+  grid-template-columns: auto;
+  grid-template-rows: 0.1fr 0.1fr 0.8fr;
+  height: auto;
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+}
+
+.item-further {
+  grid-template-columns: 0.1fr 0.7fr 0.2fr;
+  grid-template-rows: auto;
+  height: auto;
+}
+
+.item-images {
+  width: 80px;
+  height: 80px;
+}
+
+.item-learn-or-buy {
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr 0.5fr;
+  height: auto;
+  padding: 5px 5px 5px 5px;
+}
+
+/*# sourceMappingURL=products.css.map */

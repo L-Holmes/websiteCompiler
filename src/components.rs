@@ -482,75 +482,6 @@ pub fn compile_typescript_file(ts_source: &str, js_output: &str) -> Result<(), S
 
 // === GETTING THE LIST OF MODIFIED COMPONENTS IN ORDER ===
 
-/// Takes the list of all new / modified files, which are to be compiled.
-/// Splits that list into new reusable components (e.g. top-bar) and new everything else (e.g. pages etc.)
-///
-/// # Arguments
-/// * `all_modified_files` - A newline-separated list of paths of all files that have changed.
-///   e.g.:
-///     edit-me/shared/reusables/bottom-bar/bottom-bar.html
-///     edit-me/shared/reusables/category-filter/category-filter-README.md
-///     edit-me/shared/reusables/category-filter/category-filter.html
-///     edit-me/shared/reusables/filter-sticker-extra/filter-sticker-extra.html
-///     edit-me/shared/reusables/filter-sticker/filter-sticker.html
-///     edit-me/shared/reusables/top-bar/top-bar.html
-/// * `components_dir` - Path to the reusables dir e.g. "edit-me/shared/".
-///
-/// # Returns
-///     A tuple containing two lists:
-///     1. A list of 'newly modified components' as a newline-separated String.
-///     2. A list of the rest of the 'newly modified files' as a newline-separated String.
-// usage: split_into_new_component_and_new_other "$all_files_that_are_to_be_compiled" "edit-me/shared" "new_components_that_need_compiling" "new_everything_else_that_needs_compiling"
-pub fn split_into_new_component_and_new_other( all_modified_files: &str, components_dir: &str,) -> (String, String) {
-    // Create two newline seperated lists:
-    //    1) that will be eval'd into the new_components_that_needs_compiling return value
-    //    2) that will be eval'd into the new_everything_else_that_needs_compiling return value
-    // Iterate through each of the all_modified_files:
-    //	If any are html files that are contained somewhere inside of the shared folder, add those to the new_components_that_needs_compiling
-    //  Otherwise, add to the new_everything_else_that_needs_compiling list.
-    // Eval the two return values at the end
-
-    println!("-> splitting components");
-
-    let mut new_components = String::new();
-    let mut everything_else = String::new();
-
-    // The components_dir path must end with a separator for correct matching.
-    let clean_components_dir = if !components_dir.ends_with('/') {
-        format!("{}/", components_dir)
-    } else {
-        components_dir.to_string()
-    };
-
-    for source_path in all_modified_files.lines() {
-        // Skip empty lines
-        if source_path.trim().is_empty() {
-            continue;
-        }
-
-        println!("\t-> {}", source_path);
-        // The original shell script used a glob: "$components_dir/"*".html"
-        // This translates to: starts with the components dir and ends with .html.
-        if source_path.starts_with(&clean_components_dir) && source_path.ends_with(".html") {
-            println!("\t\t--> It is a html file inside the components dir");
-            new_components.push_str(source_path);
-            new_components.push('\n');
-        } else {
-            println!("\t\t-->  ....                      no");
-            everything_else.push_str(source_path);
-            everything_else.push('\n');
-        }
-    }
-
-    println!("///new components: {}", new_components);
-    println!("///everything else: {}", everything_else);
-
-    // In Rust, we return the values directly instead of using eval.
-    (new_components, everything_else)
-}
-
-// TODO -> above function may need converting to just use lists rather than newline seperated...
-
 // ================================================================
 // CASCADING FILE THAT NEED TO BE UPDATED SINCE THE REUSABLE COMPONENTS THEY USE HAVE BEEN UPDATED
 // ==================================================================
@@ -589,12 +520,14 @@ pub fn split_into_new_component_and_new_other( all_modified_files: &str, compone
 /// - Looks for any html files which import those html files (i.e. assuming the original html was a component), and adds those to the list
 /// - Keeps doing this until its added all files which are linked 
 // Usage: get_all_files_that_need_recompiling "$SOURCE_DIR" "$RE_START" "$RE_END" "$newly_modified_files" "$COMPONENTS_DIR" "all_files_that_are_to_be_compiled"
-pub fn get_all_files_that_need_recompiling( source_dir: &str, re_start: &str, re_end: &str, all_new_files: &str, components_dir: &str,) -> String {
-
+pub fn get_all_files_that_need_recompiling( source_dir: &str, re_start: &str, re_end: &str, all_new_files: &HashSet<String>, components_dir: &str,) -> HashSet<String> {
     // TODO refactor to be like:
     // all_html_need_recompiling = ...
     // other_html_files_which_import_any_files_to_be_recompiled = until(notChanged(lenListBefore, lenListAfter) do: allHtmlFiles | doesImportFileBeingRecompiled(all_html_need_recompiling)
     // final_list = all_html_need_recompiling + other_html_files_which_import_any_files_to_be_recompiled
+
+    // TODO this function literally only adds html files that use reusable html files... 
+    //      refactor with lots of nested private functions to clearly show this 
     
     // allHtmlFiles = ...
     // allEdittedHtmlFiles = ...
@@ -605,43 +538,56 @@ pub fn get_all_files_that_need_recompiling( source_dir: &str, re_start: &str, re
         // }
     // finalList = allEdittedHtmlFiles + htmlFilesThatImportEdittedFiles
 
+    // Create a regex to find component tags. e.g., <r-.*?>
+    let tag_regex = Regex::new(&format!("{}{}{}", regex::escape(re_start), r"(.*?)", regex::escape(re_end))).expect("Failed to create regex.");
+
     println!("getting all files that need recompiling; splitting the new files into components and other");
 
     // === Step 1: Load the current modified list into a variable (HashSet for efficiency) ===
     // Using a HashSet automatically handles duplicates and provides fast lookups.
-    let mut current_modified: HashSet<String> = all_new_files.lines().filter(|s| !s.trim().is_empty()).map(String::from).collect();
+    let mut current_modified: HashSet<String> = all_new_files.clone();
     println!("1) current modified: {:?}", current_modified);
 
-    // Create a regex to find component tags. e.g., <r-.*?>
-    let tag_regex = Regex::new(&format!("{}{}{}", regex::escape(re_start), r"(.*?)", regex::escape(re_end))).expect("Failed to create regex.");
+    // ==========================================================
+    // 0) Are any of the items in the all_new_files list reusable *html* components?
+    //    If not, just end!
+    let mut modified_html_components: HashSet<String> = current_modified.iter().filter(|path| path.contains(components_dir)).cloned().collect();
 
-    // === Step 2: Start an infinite loop to scan and expand the list ===
-    println!("step 2");
-    loop {
-        let before_count = current_modified.len();
-		
-        println!("\t\t\tdoing step 3:");
-        // === Step 3: Loop through all HTML files in the source directory ===
-        let walker = WalkDir::new(source_dir).into_iter();
-        let html_files: Vec<_> = walker.filter_map(Result::ok).filter(|e| e.file_type().is_file() && e.path().extension().map_or(false, |ext| ext == "html")).collect();
+    // ==========================================================
 
-        for entry in &html_files {
-            let html_file_path = entry.path();
-            let html_file_str = html_file_path.to_string_lossy().to_string();
+    if !modified_html_components.is_empty() {
+        // === Get a list of all html files in the project ===
+        let walker: walkdir::IntoIter = WalkDir::new(source_dir).into_iter();
+        let html_files: Vec<walkdir::DirEntry> = walker.filter_map(Result::ok).filter(|e| e.file_type().is_file() && e.path().extension().map_or(false, |ext| ext == "html")).collect();
 
-            println!("\t\t\tdoing step 4:   checking the html file: {}", html_file_str);
+        // === Step 2: Start an infinite loop to scan and expand the list ===
+        println!("step 2");
+        loop {
+            let before_count:usize = current_modified.len();
 
-            // === Step 4: Skip if it's already in the modified list ===
-            if current_modified.contains(&html_file_str) {
-                 println!("\t\t.. the html file: {} is contained in the current modified list.", html_file_str);
-                 continue;
-            }
-			
-            println!("\tdoing step 5:");
+            // === Step 3: Loop through all HTML files in the source directory ===
+            for entry in &html_files {
+                let html_file_path:&Path = entry.path();
+                let html_file_str:String = html_file_path.to_string_lossy().to_string();
 
-            // So at this point, we have a html file that isn't in the list, which might contain a reference to one of the items in the list (if so, this html needs adding to that list as well!)
-            // === Step 5: Extract all tags that match the reusable component pattern (e.g. <r-...>) ===
-            if let Ok(content) = std::fs::read_to_string(html_file_path) {
+                println!("\t\t\tdoing step 3:   checking the html file: {}", html_file_str);
+
+                // === Step 4: Skip if it's already in the modified list ===
+                if current_modified.contains(&html_file_str) {
+                     println!("\t\t.. the html file: {} is contained in the current modified list.", html_file_str);
+                     continue;
+                }
+                
+                println!("\tdoing step 4:");
+
+                // So at this point, we have a html file that isn't in the list, which might contain a reference to one of the items in the list (if so, this html needs adding to that list as well!)
+                // i.e. this html file may import and use on the reusable html components
+                // === Step 5: Extract all tags that match the reusable component pattern (e.g. <r-...>) ===
+
+                let content : String = match std::fs::read_to_string(html_file_path) {
+                    Ok(c) => c,            // `content` is bound to this string
+                    Err(_) => continue,    // skip to next loop iteration
+                };
                 for cap in tag_regex.captures_iter(&content) {
                     let component_tag = &cap[0]; // The full match, e.g., "<r-top-bar>"
                     println!("\t\t!!!!!! step 5: found a tag: {}", component_tag);
@@ -649,64 +595,72 @@ pub fn get_all_files_that_need_recompiling( source_dir: &str, re_start: &str, re
                     // === GETTING THE NAME OF THAT COMPONENT ===
                     // Strip surrounding whitespace from the tag
                     // The regex capture group already gives us the inner content.
-                    let component_tag_contents = &cap[1];
+                    let component_tag_contents : &str = &cap[1];
                     println!("  ....(...) In the file {}, just found a tag... '{}'", html_file_str, component_tag);
 
                     // get the component name, which should be the first word
-                    let associated_reusable_name = component_tag_contents.split_whitespace().next().unwrap_or("");
+                    let associated_reusable_name : &str = component_tag_contents.split_whitespace().next().unwrap_or("");
                     if associated_reusable_name.is_empty() {
                         continue;
                     }
 
                     // === GET THE EXPECTED PATH WITHIN THE REUSABLES FOLDER OF THAT COMPONENT ===
-                    let associated_reusable_dir_path = Path::new(components_dir).join(associated_reusable_name).join(format!("{}.html", associated_reusable_name)).to_string_lossy().to_string();
+                    let associated_reusable_dir_path : String = Path::new(components_dir).join(associated_reusable_name).join(format!("{}.html", associated_reusable_name)).to_string_lossy().to_string();
 
                     println!("\t\tasoc reus dir: {}", associated_reusable_dir_path);
-					
+                    
                     // === Step 6: If any component in the modified list matches this one, add this HTML file ===
-                    println!("??? checking whether the current modified: {:?} contains the assoc reus...", current_modified);
-                    if current_modified.contains(&associated_reusable_dir_path) {
+                    //             i.e. The file being added *must* be a *html* file, which imports one of the reusable html components which has been modified!
+                    println!("6) ??? checking whether the current modified: {:?} contains the assoc reus...", current_modified);
+                    if modified_html_components.contains(&associated_reusable_dir_path) {
                         println!("!!!!!!!!!!!!!FOUND A NEW FILE !!!!!!!!!!!!!!!!");
                         println!("Adding the file: {} to the list of files to recompile, since it uses the modified component '{}'", html_file_str, associated_reusable_name);
                         current_modified.insert(html_file_str.clone());
+
+                        // Insert into modified_html_components only if it belongs in components_dir
+                        if html_file_str.contains(components_dir) {
+                            println!("Also a component! adding to the components list...");
+                            modified_html_components.insert(html_file_str.clone());
+                        }
                         println!("  ()()()()() updated modified after adding: {:?}", current_modified);
                         break; // Stop checking this file — it's already added
                     }
                     println!();
                 }
             }
+            
+            // TO NOTE:
+            // the next stages check whether the list has changed
+            // this is because 
+            // in the scenario:
+            //	- componentB), imports one of the components that was changed (componentA)
+            // componentB needs to be re-compiled, because the component it imports has changed, and so now that code is out of date 
+            // This then continues down the tree, for anything that imports componentB, and so on.
+            // So we keep looping until all of these have been resolved.
+
+            // === Step 7 & 8: If no new files were added, stop looping ===
+            // We just check if the size has changed.
+            println!(" 7777777777777777777777777777777777777777777777777");
+            println!("updated modified count: {}", current_modified.len());
+            println!("current modified count: {}", before_count);
+
+            if current_modified.len() == before_count {
+                break;
+            }
+
+            println!(" 8888888888888888888888888888888888888888888888888");
+            println!("8) the updated modified is not the same as the current modified, looping again.");
+            // === Step 9: Otherwise, continue the loop with the updated list ===
+            // No need to copy variables; the loop just continues with the modified `current_modified` HashSet.
         }
-        
-        // TO NOTE:
-		// the next stages check whether the list has changed
-		// this is because 
-		// in the scenario:
-        //	- componentB), imports one of the components that was changed (componentA)
-		// componentB needs to be re-compiled, because the component it imports has changed, and so now that code is out of date 
-        // This then continues down the tree, for anything that imports componentB, and so on.
-		// So we keep looping until all of these have been resolved.
-
-        // === Step 7 & 8: If no new files were added, stop looping ===
-        // We just check if the size has changed.
-        println!(" 7777777777777777777777777777777777777777777777777");
-        println!("updated modified count: {}", current_modified.len());
-        println!("current modified count: {}", before_count);
-
-        if current_modified.len() == before_count {
-            break;
-        }
-
-        println!(" 8888888888888888888888888888888888888888888888888");
-        println!("8) the updated modified is not the same as the current modified, looping again.");
-        // === Step 9: Otherwise, continue the loop with the updated list ===
-        // No need to copy variables; the loop just continues with the modified `current_modified` HashSet.
     }
 
     println!("()()()()()() returning the current modified: {:?}", current_modified);
 
-    // === Step 10: Output the final list ===
-    // Convert the HashSet back to a newline-separated string.
-    let mut final_list: Vec<String> = current_modified.into_iter().collect();
-    final_list.sort(); // Sort for deterministic output
-    final_list.join("\n")
+    // // === Step 10: Output the final list ===
+    // // Convert the HashSet back to a newline-separated string.
+    // let mut final_list: Vec<String> = current_modified.into_iter().collect();
+    // final_list.sort(); // Sort for deterministic output
+    // final_list.join("\n")
+    current_modified
 }

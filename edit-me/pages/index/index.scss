@@ -202,6 +202,7 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
     height: 100%;
     object-fit: cover;
     display: block;
+    position: fixed;         
 }
 
 /* Hide mobile GIF by default */
@@ -212,7 +213,7 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 
 /* Center logo and title */
 .opening-centre-logo-wrapper {
-    height: 100vh;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -280,6 +281,17 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 	grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr; 
 	grid-template-rows: auto;
 	height:auto;
+}
+
+.opening-page-content-wrapper{
+  @extend .centre-wrapper;	
+  background-color:black;
+  margin-top: -10px; // fixes weird gap bug between this and transition divider
+}
+
+.wavy-divider{
+  width:100%;
+  height:300px;
 }
 
 // =================

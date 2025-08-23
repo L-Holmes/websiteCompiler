@@ -12,5 +12,7 @@ cargo run
 
 
 # reference for me on running the server
-webfsd -F -p 8080 -r "$PWD" -i index.html
+NOT!!!!!!!!!!! webfsd -F -p 8080 -r "$PWD" -i index.html
+python3 -m http.server 8000
+sudo lsof -i :8000
 
