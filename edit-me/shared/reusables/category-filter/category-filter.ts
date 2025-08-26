@@ -152,7 +152,7 @@ function _updateTheFilterImage(element, nextImg:string){
 	*/
    if(nextImg === "nothing"){
 	   // if next img is none, that means that this is just a regular tile click
-	   // Therefore, we need to determine what the next state is an set the image accordingly.
+	   // Therefore, we need to determine what the next state is and set the image accordingly.
 	   // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
 	   // if to match its parent / ancestor.
 
@@ -234,10 +234,6 @@ function _updateDescendents(element, nextImg:string): void {
 	let descendents: string[] = _getAllDescendants(parentFilterThatWasClicked)
 
 	// For each descendant, find its corresponding HTML element and call the handler
-	descendents.forEach(filterName => {
-	});
-
-
 	for (const filterName of descendents) {
 		const element = _findFilterElementByName(filterName);
 		if (element) {
@@ -750,3 +746,56 @@ function isValidImagePath(path) {
     /\.(png|jpe?g|gif|svg|webp|avif)$/.test(path)
   );
 }
+
+
+// ============================================================================
+// ============================================================================
+// ============================================================================
+
+// TODO
+// Logic for filtering the actual items themselves will be here as well
+// It must be, since it uses the variables defined in this file.
+// The things being filtered (i.e. the 'id' within the html) may not be in the html file that corresponds to this file 
+//      (i.e. if this is category-filter.ts, then category-filter.html may have the filters that you click, but not necessaryly the items)
+
+
+function filterItems(){
+    /*
+    Changes which items are shown on screen, based on the filters that the user has selected.
+
+    Technical info:
+    - Simply hides items which aren't meant to be seen, by setting display:none;
+    */
+
+    // 1) filterTiers
+
+    // loop through every item
+    for item in items:
+        // loop through the tags. E.g. a tag may be 'furniture' or 'made of wood' etc.
+        for item_tag in item.tags:
+            // If any of the tags are being filtered out, DONT show this item
+            if filterTiers[item] == "SELECTING_NONE":
+                _hide_item(item)
+
+    // --- Utils ---
+    // -------------
+
+    function _hide_item(item){
+        /*
+        @param item = a reference to the html of an item being shown within a list of items. E.g. an item may be the 'jordan 1 shoe'
+        @whatItDoes = Removes that item from the screen by setting its 'display' value as 'none'
+       */
+
+    }
+}
+
+
+// TODO:
+// Need to think about how I'm going to link this in.
+// 1) In the html I'll need to add all of the items in a big list, in the same way that I did with the filter cards
+//      Perhaps for now just add this to this html?
+// 2) Add on-click functionality to the 'filter' button
+// 3) Add logic to a function which is able to get name of item / display none etc.
+    // _--> AM I STORING THE ITEMS IN THE JS? INSTEAD OF INEFFICIENT READING FROM HTML? LIKE I DID WITH THE FILTERS?
+// extra) Add a definition at the top of this file of common constants -> like the id of tags in html for an item / filter thing etc. to make it more reusable
+

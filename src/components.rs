@@ -196,7 +196,6 @@ fn report_missing_file_error(file_path: &std::path::Path, component_name: &str, 
 // === HTML COMPONENTS ===
 
 /// Recursively finds and replaces HTML component tags with their corresponding HTML, CSS, and JS.
-/// This is a faithful and robust port of the `replace_html_component_placeholders` and `add_html_component` logic.
 pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Path, re_start: &str, re_end: &str, root_placeholder: &str, template_prefix: &str, none_prefix: &str, re_param_s: &str, re_param_e: &str,) -> Result<()> {
     if !html_file.is_file() { return Ok(()); }
 
@@ -208,7 +207,6 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
     let param_component_regex = Regex::new(&format!(r"{}(.*?){}", regex::escape(re_param_s), regex::escape(re_param_e)))?; // Regex to find a param component, wrapped by re_param_s and re_param_e.
 
 
-    // This `loop` corresponds to the outer `while grep -q ...` loop in the shell script.
     // It keeps processing the file until no more component tags can be found.
     loop {
         let caps = match component_regex.captures(&content) {
@@ -216,7 +214,6 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
             None => break, // No match, so exit the loop
         };
 
-        // This section corresponds to the inner `grep ... | while read ...` loop.
         // By processing one match at a time, we faithfully replicate the original script's behavior.
         let full_tag = caps.get(0).unwrap().as_str().to_string();
         let component_name = caps.get(1).unwrap().as_str().to_string();
