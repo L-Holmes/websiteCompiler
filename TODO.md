@@ -1,6 +1,5 @@
 TODO;
-- continue implementing the filtering logic discussed at the bottom of:
-    - category-filter.ts
+- Add the ability for fuzzy tag defining for the products (e.g. colours.*)
 
 
 

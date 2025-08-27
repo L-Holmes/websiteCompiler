@@ -1,27 +1,24 @@
+// ===============================================
+// RULES & CHECKS
+// - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
+// - The names of the images of all items must be contained as keys in the 'allItems' map here. 
+
+
+
+
+// ===============================================
+
+
 const ALL_CATEGORY_NAME = "all"
 const filters_being_shown = ALL_CATEGORY_NAME
 
 const HEADER_FILTERS=[] //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
 
-const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper'
-const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'
+const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'id' of the div that wraps: a header filter
+const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'id' of the div that wraps: A filter element
+const ITEM_WRAPPER_CLASS:String=".table-entry"                                   // HTML 'id' of the div that wraps: An item that the user may buy.
+const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'id' of the img that: contains the item's image
 
-/**
- * A record of available filter tiers and their selection state.
- * Each key represents a filter name in dot notation.
- */
-const filterTiers: Record<string, string> = {
-  "all": "SELECTING_ALL",
-  "shoe": "SELECTING_ALL",
-  "boot": "SELECTING_ALL",
-  "table": "SELECTING_ALL",
-  "colours": "SELECTING_ALL",
-  "colours.red": "SELECTING_ALL",
-  "colours.orange": "SELECTING_ALL",
-  "colours.black": "SELECTING_ALL",
-  "colours.brown": "SELECTING_ALL",
-  "colours.purple": "SELECTING_ALL",
-};
 
 // Array of images to cycle through
 // each image points to the image url of the next image to show
@@ -46,6 +43,34 @@ const stateToImages = {
 	"SELECTING_PARTIAL":"/shared/images/filtering/test-tube-half.avif",
 	"SELECTING_NONE":"/shared/images/filtering/test-tube.avif"
 }
+
+
+//----------------------------------------------------------------------------------
+/**
+ * A record of available filter tiers and their selection state.
+ * Each key represents a filter name in dot notation.
+ */
+const filterTiers: Record<string, string> = {
+  "all": "SELECTING_ALL",
+  "shoe": "SELECTING_ALL",
+  "boot": "SELECTING_ALL",
+  "table": "SELECTING_ALL",
+  "colours": "SELECTING_ALL",
+  "colours.red": "SELECTING_ALL",
+  "colours.orange": "SELECTING_ALL",
+  "colours.black": "SELECTING_ALL",
+  "colours.brown": "SELECTING_ALL",
+  "colours.purple": "SELECTING_ALL",
+};
+
+/*
+Every item that the user may choose
+*/
+const allItems: Record<string, string[]> = {
+  "sapp-boot": ["shoe", "boot", "colours.*"],
+  "RaiseLowerTable": ["table", "colours.brown"],
+};
+//----------------------------------------------------------------------------------
 
 
 // ======================
@@ -650,38 +675,17 @@ function _getFilterCategory(element){
 	e.g.2. may return "tables.colours.orange"
 	*/
 
-    // Get the icon representing what is being filtered
-    const whatIsBeingFiltered = element.querySelector('.filter-icon');
+    const imageName = _getElementsImageName(element, ".filter-icon", "Filter icon");
 
-    if (!whatIsBeingFiltered) {
-        console.warn("Filter icon image not found.");
+
+    if (!(imageName in filterTiers)) {
+		console.warn(`Filter ${imageName} is not present within the filter tiers: ${JSON.stringify(filterTiers)}!`);
         return null;
     }
-
-    // Get the src attribute from the image element
-    const src = whatIsBeingFiltered.getAttribute('src');
-    
-    if (!src) {
-        console.warn("Filter icon src attribute not found.");
-        return null;
-    }
-
-    const filename = src.split('/').pop();
-    if (!filename) {
-        console.warn("Filename could not be extracted from path.");
-        return null;
-    }
-
-    const nameWithoutExtension = filename.replace(/\.[^/.]+$/, '');
-
-    if (!(nameWithoutExtension in filterTiers)) {
-		console.warn(`Filter ${nameWithoutExtension} is not present within the filter tiers: ${JSON.stringify(filterTiers)}!`);
-        return null;
-    }
-
-
-    return nameWithoutExtension;
+    return imageName
 }
+
+
 
 /**
  * Gets the filter category when clicked from a filter-under-filter element
@@ -737,7 +741,45 @@ function _get_fresh_filter_tiles(html_wrapper_class) {
 	return filterTiles
 }
 
+function _getElementsImageName(element, imgsHtmlClass, textNameOfElement) {
+    /*
+    @param imgsHtmlClass
+            e.g. imgsHtmlClass = .filter-icon
+    @param textNameOfElement = descriptive plain text name to represent the element 
+        e.g. "Filter icon" // "item"
+    @return the image path of the image element within that html block.
+    */
+    
+    console.log(`${textNameOfElement} being searched for. Looking for ${imgsHtmlClass}`)
 
+
+    // Get the icon representing what is being filtered
+    const itemsHtmlImgElement = element.querySelector(imgsHtmlClass);
+
+    if (!itemsHtmlImgElement) {
+        console.warn(`${textNameOfElement} image not found`);
+        return null;
+    }
+
+    // Get the src attribute from the image element
+    const imagePath = itemsHtmlImgElement.getAttribute('src');
+    if (!imagePath) {
+        console.warn(`${textNameOfElement} image path not found`);
+        return null;
+    }
+
+    const filename = imagePath.split('/').pop();
+    if (!filename) {
+        console.warn(`${textNameOfElement} src attribute not found`);
+        return null;
+    }
+
+    const nameWithoutExtension = filename.replace(/\.[^/.]+$/, '');
+
+
+
+    return nameWithoutExtension;
+}
 
 function isValidImagePath(path) {
   return (
@@ -751,51 +793,44 @@ function isValidImagePath(path) {
 // ============================================================================
 // ============================================================================
 // ============================================================================
+// ITEMS STUFF
 
-// TODO
-// Logic for filtering the actual items themselves will be here as well
-// It must be, since it uses the variables defined in this file.
-// The things being filtered (i.e. the 'id' within the html) may not be in the html file that corresponds to this file 
-//      (i.e. if this is category-filter.ts, then category-filter.html may have the filters that you click, but not necessaryly the items)
-
-
-function filterItems(){
+function filterItems():void{
     /*
-    Changes which items are shown on screen, based on the filters that the user has selected.
+   Changes which items are shown on screen, based on the filters that the user has selected.
 
-    Technical info:
-    - Simply hides items which aren't meant to be seen, by setting display:none;
-    */
+   Technical info:
+   - Simply hides items which aren't meant to be seen, by setting display:none;
+   */
 
     // 1) filterTiers
+    const allHtmlItemElements: HTMLElement[] = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS)
 
-    // loop through every item
-    for item in items:
-        // loop through the tags. E.g. a tag may be 'furniture' or 'made of wood' etc.
-        for item_tag in item.tags:
-            // If any of the tags are being filtered out, DONT show this item
-            if filterTiers[item] == "SELECTING_NONE":
-                _hide_item(item)
 
-    // --- Utils ---
-    // -------------
+    for (const item of allHtmlItemElements) {
+        const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'SappBoot'
+        const itemTags:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown', 'colours.black']
 
-    function _hide_item(item){
-        /*
-        @param item = a reference to the html of an item being shown within a list of items. E.g. an item may be the 'jordan 1 shoe'
-        @whatItDoes = Removes that item from the screen by setting its 'display' value as 'none'
-       */
+        if (!itemTags) {
+            console.error(`[ERROR] No Item tag found for '${itemName}'`);
+            console.error('Available item keys:');
+            console.error(`${JSON.stringify(allItems)}`);
+            continue; // No tags found for this item
+        }
 
+
+        let hidden = false;
+        for (const itemTag of itemTags) {
+            // E.g. a tag may be 'furniture' or 'made of wood' etc.
+            if (filterTiers[itemTag] === "SELECTING_NONE") {
+                hidden = true;
+                break; // No need to check other tags
+            }
+        }
+
+        // If none of the tags are filtered out, reset visibility
+        if (!hidden) {
+            item.style.display = ""; // Reset to default display
+        }
     }
 }
-
-
-// TODO:
-// Need to think about how I'm going to link this in.
-// 1) In the html I'll need to add all of the items in a big list, in the same way that I did with the filter cards
-//      Perhaps for now just add this to this html?
-// 2) Add on-click functionality to the 'filter' button
-// 3) Add logic to a function which is able to get name of item / display none etc.
-    // _--> AM I STORING THE ITEMS IN THE JS? INSTEAD OF INEFFICIENT READING FROM HTML? LIKE I DID WITH THE FILTERS?
-// extra) Add a definition at the top of this file of common constants -> like the id of tags in html for an item / filter thing etc. to make it more reusable
-
