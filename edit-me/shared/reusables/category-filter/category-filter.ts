@@ -67,7 +67,7 @@ const filterTiers: Record<string, string> = {
 Every item that the user may choose
 */
 const allItems: Record<string, string[]> = {
-  "sapp-boot": ["shoe", "boot", "colours.*"],
+  "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
   "RaiseLowerTable": ["table", "colours.brown"],
 };
 //----------------------------------------------------------------------------------
@@ -809,9 +809,9 @@ function filterItems():void{
 
     for (const item of allHtmlItemElements) {
         const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'SappBoot'
-        const itemTags:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown', 'colours.black']
+        const allTagsForItem:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
 
-        if (!itemTags) {
+        if (!allTagsForItem) {
             console.error(`[ERROR] No Item tag found for '${itemName}'`);
             console.error('Available item keys:');
             console.error(`${JSON.stringify(allItems)}`);
@@ -820,12 +820,28 @@ function filterItems():void{
 
 
         let hidden = false;
-        for (const itemTag of itemTags) {
-            // E.g. a tag may be 'furniture' or 'made of wood' etc.
-            if (filterTiers[itemTag] === "SELECTING_NONE") {
-                hidden = true;
-                break; // No need to check other tags
+        for (const itemTagsGroup of allTagsForItem) {
+            // e.g. itemTagsGroup = 'shoes' // 'colours.brown::colours.black' // etc.
+
+            const itemTags:string[] = itemTagsGroup.split("::"); // e.g. If we want to apply 'OR' for a group of tags, we join with '::'
+        
+            // -- if any in the group are selected, don't hide! --
+            // -- if none in the group are selected, hide! --
+
+            let shouldHide:boolean = true;
+            for (const itemTag of itemTags) {
+                // E.g. a tag may be 'furniture' or 'made of wood' etc.
+                if (filterTiers[itemTag] !== "SELECTING_NONE") {
+                    // If any of these are true, we want to show.
+                    shouldHide = false;
+                    break;
+                }
             }
+
+            if(shouldHide){
+                hidden = true;
+            }
+
         }
 
         // If none of the tags are filtered out, reset visibility
@@ -834,3 +850,4 @@ function filterItems():void{
         }
     }
 }
+

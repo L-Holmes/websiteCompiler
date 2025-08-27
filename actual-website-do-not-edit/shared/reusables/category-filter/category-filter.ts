@@ -45,6 +45,34 @@ const stateToImages = {
 }
 
 
+//----------------------------------------------------------------------------------
+/**
+ * A record of available filter tiers and their selection state.
+ * Each key represents a filter name in dot notation.
+ */
+const filterTiers: Record<string, string> = {
+  "all": "SELECTING_ALL",
+  "shoe": "SELECTING_ALL",
+  "boot": "SELECTING_ALL",
+  "table": "SELECTING_ALL",
+  "colours": "SELECTING_ALL",
+  "colours.red": "SELECTING_ALL",
+  "colours.orange": "SELECTING_ALL",
+  "colours.black": "SELECTING_ALL",
+  "colours.brown": "SELECTING_ALL",
+  "colours.purple": "SELECTING_ALL",
+};
+
+/*
+Every item that the user may choose
+*/
+const allItems: Record<string, string[]> = {
+  "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
+  "RaiseLowerTable": ["table", "colours.brown"],
+};
+//----------------------------------------------------------------------------------
+
+
 // ======================
 // INITIALISATION
 // ======================
@@ -765,39 +793,7 @@ function isValidImagePath(path) {
 // ============================================================================
 // ============================================================================
 // ============================================================================
-
-// TODO
-// Logic for filtering the actual items themselves will be here as well
-// It must be, since it uses the variables defined in this file.
-// The things being filtered (i.e. the 'id' within the html) may not be in the html file that corresponds to this file 
-//      (i.e. if this is category-filter.ts, then category-filter.html may have the filters that you click, but not necessaryly the items)
-
-//----------------------------------------------------------------------------------
-/**
- * A record of available filter tiers and their selection state.
- * Each key represents a filter name in dot notation.
- */
-const filterTiers: Record<string, string> = {
-  "all": "SELECTING_ALL",
-  "shoe": "SELECTING_ALL",
-  "boot": "SELECTING_ALL",
-  "table": "SELECTING_ALL",
-  "colours": "SELECTING_ALL",
-  "colours.red": "SELECTING_ALL",
-  "colours.orange": "SELECTING_ALL",
-  "colours.black": "SELECTING_ALL",
-  "colours.brown": "SELECTING_ALL",
-  "colours.purple": "SELECTING_ALL",
-};
-
-/*
-Every item that the user may choose
-*/
-const allItems: Record<string, string[]> = {
-  "sapp-boot": ["shoe", "boot", "colours.*"],
-  "RaiseLowerTable": ["table", "colours.brown"],
-};
-//----------------------------------------------------------------------------------
+// ITEMS STUFF
 
 function filterItems():void{
     /*
@@ -807,33 +803,45 @@ function filterItems():void{
    - Simply hides items which aren't meant to be seen, by setting display:none;
    */
 
-    console.log("filtering items");
-
     // 1) filterTiers
     const allHtmlItemElements: HTMLElement[] = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS)
 
 
     for (const item of allHtmlItemElements) {
         const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'SappBoot'
-        console.log(`Got the item name: ${itemName}`)
-        const itemTags:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown', 'colours.black']
+        const allTagsForItem:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
 
-        if (!itemTags) {
+        if (!allTagsForItem) {
             console.error(`[ERROR] No Item tag found for '${itemName}'`);
             console.error('Available item keys:');
             console.error(`${JSON.stringify(allItems)}`);
-
             continue; // No tags found for this item
         }
 
 
         let hidden = false;
-        for (const itemTag of itemTags) {
-            // E.g. a tag may be 'furniture' or 'made of wood' etc.
-            if (filterTiers[itemTag] === "SELECTING_NONE") {
-                hidden = true;
-                break; // No need to check other tags
+        for (const itemTagsGroup of allTagsForItem) {
+            // e.g. itemTagsGroup = 'shoes' // 'colours.brown::colours.black' // etc.
+
+            const itemTags:string[] = itemTagsGroup.split("::"); // e.g. If we want to apply 'OR' for a group of tags, we join with '::'
+        
+            // -- if any in the group are selected, don't hide! --
+            // -- if none in the group are selected, hide! --
+
+            let shouldHide:boolean = true;
+            for (const itemTag of itemTags) {
+                // E.g. a tag may be 'furniture' or 'made of wood' etc.
+                if (filterTiers[itemTag] !== "SELECTING_NONE") {
+                    // If any of these are true, we want to show.
+                    shouldHide = false;
+                    break;
+                }
             }
+
+            if(shouldHide){
+                hidden = true;
+            }
+
         }
 
         // If none of the tags are filtered out, reset visibility
@@ -841,22 +849,5 @@ function filterItems():void{
             item.style.display = ""; // Reset to default display
         }
     }
-
-    // --- Utils ---
-    // -------------
-
 }
 
-// TODO:
-// Need to think about how I'm going to link this in.
-// 1) In the html I'll need to add all of the items in a big list, in the same way that I did with the filter cards
-//      Perhaps for now just add this to this html?
-// 2) Add on-click functionality to the 'filter' button
-// 3) Add logic to a function which is able to get name of item / display none etc.
-// _--> AM I STORING THE ITEMS IN THE JS? INSTEAD OF INEFFICIENT READING FROM HTML? LIKE I DID WITH THE FILTERS?
-// extra) Add a definition at the top of this file of common constants -> like the id of tags in html for an item / filter thing etc. to make it more reusable
-
-
-// TODO IDEAS:
-// -- either activte after the user has selected items and has then scrolled
-// -- or after things have been selected, highlight with an animated border around the filter button to filter?
