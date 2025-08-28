@@ -3,13 +3,108 @@
 // - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
 // - The names of the images of all items must be contained as keys in the 'allItems' map here. 
 // ===============================================
+// FILTERING 
+const filters = ["price_high_to_low", "price_low_to_high", "date_added"];
+function handleSortClicked() {
+    reorderItemsWithFlexbox();
+    // Get all of the items on screen (by getting blocks wrapped by 'table-entry')
+    // through some abosolute magic, rearrange those blocks.
+}
+//----------------------------------
+/**
+ * Rearranges elements visually using the CSS Flexbox 'order' property.
+ * This is very fast as it only changes visual order, not the DOM structure.
+ */
+// function reorderItemsWithFlexbox() {
+//     console.log("reordering items");
+// 
+//     // 1. Define your desired order using unique keywords from the image sources.
+//     const desiredOrder = ['table', 'boot', 'sapp-boot'];
+// 
+//     // 2. Grab all the elements you want to sort.
+//     const allItems = document.querySelectorAll('.table-entry');
+// 
+//     // If there's nothing to sort, we can stop.
+//     if (allItems.length === 0) {
+//         return;
+//     }
+// 
+//     // 3. Get the parent container and apply flexbox styles directly.
+//     // This turns on the flexbox layout, enabling the `order` property to work.
+//     const container = document.getElementById('products-wrapper'); // Using the wrapper ID
+//     container.style.display = 'flex';
+//     container.style.flexDirection = 'column';
+// 
+//     // 4. Loop through all the items found on the page.
+//     for (let i = 0; i < allItems.length; i++) {
+//         const entry = allItems[i];
+//         const image = entry.querySelector('.item-images');
+//         const imageSource = image.src;
+//         
+//         // Find the position of this item in our desiredOrder array.
+//         // The `findIndex` method returns the index (0, 1, 2, etc.) or -1 if not found.
+//         const order = desiredOrder.findIndex(function(keyword) {
+//             return imageSource.includes(keyword);
+//         });
+// 
+//         // 5. Apply the order directly to the element's style.
+//         // If an item isn't in our list, we can give it a high order number to send it to the end.
+//         if (order !== -1) {
+//             entry.style.order = order;
+//         } else {
+//             entry.style.order = 99; // Put unsorted items last
+//         }
+//     }
+//     console.log("reordered items");
+// }
+function reorderItemsWithFlexbox() {
+    console.log("reordering items");
+    // 1. Define your desired order using unique keywords from the image sources.
+    const desiredOrder = ['table', 'boot', 'sapp-boot'];
+    // 2. Grab all the elements you want to sort.
+    const nodeList = document.querySelectorAll('.table-entry');
+    const allItems = Array.from(nodeList).map(el => el);
+    // If there's nothing to sort, we can stop.
+    if (allItems.length === 0) {
+        return;
+    }
+    // 3. Get the parent container and apply flexbox styles directly.
+    // This turns on the flexbox layout, enabling the `order` property to work.
+    const container = document.getElementById('products-wrapper');
+    if (!container) {
+        console.error('Container not found');
+        return;
+    }
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    // 4. Loop through all the items found on the page.
+    for (let i = 0; i < allItems.length; i++) {
+        const item = allItems[i];
+        const itemName = _getElementsImageName(item, ".item-images", "Item image"); // e.g. 'sapp-boot'
+        // Find the position of this item in our desiredOrder array.
+        const order = desiredOrder.indexOf(itemName);
+        // 5. Apply the order directly to the element's style.
+        // If an item isn't in our list, we can give it a high order number to send it to the end.
+        if (order === -1) {
+            item.style.order = '99'; // Put unsorted items last
+            console.error(`OOh dear! no order found for: ${itemName} to ${order}`);
+            continue;
+        }
+        item.style.order = order.toString();
+        console.log(`Just set the order of ${itemName} to ${order}`);
+    }
+    console.log("reordered items");
+}
+// ===============================================
+// ===============================================
+// ===============================================
 const ALL_CATEGORY_NAME = "all";
 const filters_being_shown = ALL_CATEGORY_NAME;
 const HEADER_FILTERS = []; //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
-const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-header-main-wrapper'; // HTML 'id' of the div that wraps: a header filter
-const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-main-wrapper'; // HTML 'id' of the div that wraps: A filter element
-const ITEM_WRAPPER_CLASS = ".table-entry"; // HTML 'id' of the div that wraps: An item that the user may buy.
-const ITEM_IMAGE_CLASS = ".item-images"; // HTML 'id' of the img that: contains the item's image
+const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-header-main-wrapper'; // HTML 'class' of the div that wraps: a header filter
+const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-main-wrapper'; // HTML 'class' of the div that wraps: A filter element
+const ITEM_WRAPPER_CLASS = ".table-entry"; // HTML 'class' of the div that wraps: An item that the user may buy.
+const ITEM_IMAGE_CLASS = ".item-images"; // HTML 'class' of the img that: contains the item's image
 // Array of images to cycle through
 // each image points to the image url of the next image to show
 const SELECTED_ALL_FILTER_IMG = "/shared/images/filtering/test-tube-full.avif";
@@ -52,7 +147,8 @@ Every item that the user may choose
 */
 const allItems = {
     "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
-    "RaiseLowerTable": ["table", "colours.brown"],
+    "boot": ["shoe", "boot", "colours.brown::colours.black"],
+    "table": ["table", "colours.brown"],
 };
 //----------------------------------------------------------------------------------
 // ======================
@@ -577,18 +673,36 @@ function _getFilterCategoryFromUnderFilter(element) {
     // Use the existing function to get the category from the filter sticker
     return _getFilterCategory(filterSticker);
 }
+// function _get_fresh_filter_tiles(html_wrapper_class) {
+// 	/*
+//    - hides all of the filter tiles
+//    - @returns the filter tiles
+//    */
+// 
+// 	// Get all filter tiles
+// 	const filterTiles = document.querySelectorAll(html_wrapper_class);
+// 
+// 	// Hide all filter tiles first
+// 	filterTiles.forEach((tile) => {
+// 		(tile as HTMLElement).style.display = 'none'; 
+// 	});
+// 
+// 	return filterTiles
+// }
 function _get_fresh_filter_tiles(html_wrapper_class) {
     /*
-   - hides all of the filter tiles
-   - @returns the filter tiles
-   */
+    - hides all of the filter tiles
+    - @returns the filter tiles
+    */
     // Get all filter tiles
     const filterTiles = document.querySelectorAll(html_wrapper_class);
+    // Convert NodeList to HTMLElement array
+    const filterTilesArray = Array.from(filterTiles).map(tile => tile);
     // Hide all filter tiles first
-    filterTiles.forEach((tile) => {
+    filterTilesArray.forEach((tile) => {
         tile.style.display = 'none';
     });
-    return filterTiles;
+    return filterTilesArray;
 }
 function _getElementsImageName(element, imgsHtmlClass, textNameOfElement) {
     /*
