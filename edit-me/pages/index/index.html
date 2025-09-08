@@ -1,67 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	<title> Awpen </title>
-	<head>
-		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="description" content="A cool website">
-		<link rel="preload" as="image" href="<root>/shared/images/page-images/startpage/logo-alt.avif" type="image/avif">
-		<link rel=stylesheet href="index.css">
+    <title> Awpen </title>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="A cool website">
+        <link rel=stylesheet href="index.css">
 
-		<!-- Non-critical CSS: deferred -->
-		<link rel="stylesheet" href="noncritical.css" media="print" onload="this.media='all'">
-		<noscript><link rel="stylesheet" href="noncritical.css"></noscript>
+        <!-- Non-critical CSS: deferred -->
+        <link rel="stylesheet" href="noncritical.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="noncritical.css"></noscript>
 
-		<!-- Early loading critical things -->
-		<link rel="preload" as="image" href="/shared/images/page-images/startpage/logo-alt.avif" type="image/avif">
-		<!-- Early loading critical things, end -->
-		<script defer src="<root>/shared/page_text/text-loader.js" defer></script>
-		<script defer src="index.js"></script>
-	</head>
-	<body data-page="index">
+        <!-- Early loading critical things, end -->
+        <script defer src="<root>/shared/page_text/text-loader.js" defer></script>
+        <script defer src="index.js"></script>
+    </head>
+    <body data-page="index">
 
-		<!-- Background GIF container -->
-		<div class="background-container">
-			<video autoplay loop muted playsinline  preload="metadata" class="background-gif desktop" poster="/shared/images/page-images/startpage/opening-background-placeholder.avif">
-				<source src="<root>/shared/images/page-images/startpage/opening-background-big-screen.mp4" type="video/mp4">
-			</video>
+        <!-- Navigation bar -->
+        <r-top-bar>
 
-			<video autoplay loop muted playsinline  preload="metadata" class="background-gif mobile" poster="/shared/images/page-images/startpage/opening-background-placeholder.avif">
-				<source src="<root>/shared/images/page-images/startpage/opening-background-small-screen.mp4" type="video/mp4">
-			</video>
-		</div>
+        <!-- Language Switch Links -->
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('jp')">Japanese</button>
+        <button onclick="setLanguage('ie')">Irish</button>
 
-
-		<!-- Navigation bar -->
-		<r-top-bar>
-
-		<!-- Hero section with centered logo and title -->
-		<div class="opening-centre-logo-wrapper">
-			<div class="opening-centre-logo"></div>
-			<h1 class="opening-title" add-text-section="opening-title"></h1>
-		</div>
-
-        <!-- wavy transition -->
-        <img class="wavy-divider" src="<root>/shared/images/page-images/startpage/wavy-divider-done.avif" alt="divider"  loading="lazy">
-
-		<div class="opening-page-content-wrapper">
-			<div class="index-main-wrapper">
-
-				<!-- Content section -->
-				<div class="content">
-
-					<h1 add-text-section="welcome"></h1>
-					<p add-text-section="intro"></p>
-
-					<!-- Language features -->
-					<a href="products.html" add-text-section="contact_us"></a>  
-
-					<!-- Language Switch Links -->
-					<button onclick="setLanguage('en')">English</button>
-					<button onclick="setLanguage('jp')">Japanese</button>
-					<button onclick="setLanguage('ie')">Irish</button>
-
-					<a class="" href="item-sapp-boot.html"> Sapp boot </a>
-				</div>
-			</div>
-	</body>
+        <a class="" href="item-sapp-boot.html"> Sapp boot </a>
+    </body>
 </html>

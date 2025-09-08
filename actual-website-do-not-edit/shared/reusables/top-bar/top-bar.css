@@ -307,28 +307,20 @@ button:hover {
   overflow-y: hidden;
 }
 
-.top-bar-logo {
-  width: 40px;
-  height: 40px;
-}
-
-.top-bar-img, .top-bar-contact-img, .top-bar-products-img {
+.top-bar-img, .top-bar-contact-img {
   width: 50px;
   height: 50px;
 }
 
-.top-bar-products-img {
-  height: 25px;
-}
-
 .top-bar-contact-img {
-  height: 47.5px;
+  height: 50px;
+  width: 47.5px;
 }
 
 .new-top-bar-grid {
   height: auto;
   width: 100%;
-  grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-template-columns: 0.25fr 0.5fr 0.25fr;
   grid-template-rows: auto;
   padding-top: 20px;
 }
@@ -347,6 +339,53 @@ button:hover {
   grid-template-columns: auto;
   grid-template-rows: 0.15fr 0.85fr;
   height: auto;
+}
+
+.search-bar {
+  width: 80%;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.search-bar:focus-within {
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.25);
+}
+
+.search-input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  background: transparent;
+  color: #f5f5f5;
+}
+.search-input::placeholder {
+  color: #6b7280;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-button svg {
+  width: 1.2em;
+  height: 1.2em;
+  stroke: #6b7280;
+  fill: none;
+  stroke-width: 2;
 }
 
 /*# sourceMappingURL=top-bar.css.map */

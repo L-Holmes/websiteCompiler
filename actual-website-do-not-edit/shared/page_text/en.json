@@ -18,8 +18,7 @@
 		"message": "We'd love to hear from you!"
 	},
 	"shared":{
-		"top-bar-products":"Products",
-		"top-bar-orders":"Orders",
+		"top-bar-shop":"Shop",
 		"top-bar-contact-questions":"Questions / Contact us",
 		"filter-search":"Search"
 	},

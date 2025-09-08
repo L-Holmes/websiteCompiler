@@ -24,31 +24,29 @@
 		<!-- Navigation bar -->
 		<div class="centre-wrapper">
 	<div class="new-top-bar-grid">
-		<a href="#">
-			<div class="centre-wrapper">
-				<img class="top-bar-logo" src="shared/images/page-images/startpage/firefly-logo.avif" alt="Company Logo" onclick="window.location.href='/index.html'" loading="lazy">
-			</div>
-		</a>
-		<a href="/products.html">
+
+		<a  href='products.html'>
 			<div class="centre-wrapper">
 				<div class="top-bar-item-wrapper">
-					<div add-text-section="top-bar-products"></div>
-					<div class="centre-wrapper">
-						<img class="top-bar-products-img" src="shared/images/page-images/products/shoe-icon.avif" alt="Products Logo" loading="lazy">
-					</div>
-				</div>
-			</div>
-		</a>
-		<a href="#orders">
-			<div class="centre-wrapper">
-				<div class="top-bar-item-wrapper">
-					<div add-text-section="top-bar-orders"></div>
+					<div add-text-section="top-bar-shop"></div>
 					<div class="centre-wrapper">
 						<img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
 					</div>
 				</div>
 			</div>
 		</a>
+
+        <form class="search-bar" action="/search" method="get" role="search">
+            <input type="search" name="q" class="search-input" placeholder="Search..." aria-label="Search" />
+            <button class="search-button" type="submit" aria-label="Submit search">
+                <!-- Simple magnifying glass -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" />
+                    <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                </svg>
+            </button>
+        </form>
+
 		<a href="#contact">
 			<div class="centre-wrapper">
 				<div class="top-bar-item-wrapper">
