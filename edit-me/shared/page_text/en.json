@@ -1,39 +1,46 @@
 {
-	"index": {
-	"opening-title":"The Manual",
-	"welcome": "Research-driven conclusions and products",
-	"intro": "We provide the best products.",
-	"products": "Products",
-	"contact_us": "Contact us for more info",
-	"item-SappBoot-title":"Sapp Boot (dynamically added!)",
-	"item-SappBoot-stats":"800g, real cool.",
-	"item-SappBoot-desc":"● Tier 2 Mountaineering\n● Stiff sole\n● buffalo leather upper",
-	"learn-more":"Learn more", "buy-now":"Buy now" },
-	"products": {
-		"title": "Our Products",
-		"desc": "Find the best deals on our items." 
-	},
-	"contact": {
-		"header": "Get in Touch",
-		"message": "We'd love to hear from you!"
-	},
-	"shared":{
-		"top-bar-shop":"Shop",
-		"top-bar-contact-questions":"Questions / Contact us",
-		"filter-search":"Search"
-	},
-	"tbd":{
-		"tbs":"Scared stitchless",
-		"tbs":"- Many shoes have exposed stitching inside. This gets wet when your feet sweat. Wet stitching causes rubbing. \n- Our no-sew design leaves only smooth edges inside, which become even more slippery when wet. ",
-		"tbs":"We never come last",
-		"tbs":"- Our unique lastless construction allows for us to create custom-fit shoes, without the extra cost. ",
-		"tbs":"Resister on the blister",
-		"tbs":"- blisters are caused by too much grip, causing your skin to move side to side (not from rubbing on the skin, a common misconception!).\n- many shoes use materials which, when wet, grip to your foot (polyester has a lower frictional coefficient when wet) \n- We use materials which have a lower frictional coefficient (less grippy) when wet"
-	},
-	"tbd2":{
-		"tbs":"We are proposing a more natural and beneficial walking technique now there's been studies done on tribes who haven't worn shoes that shows that they do have a heel strike but that is probably because they are living in places where the floor is nice and soft and the eye-tech in longest strides but other studies have shown that the straddlings are shorted and you are able to use a more body focused walking technique by swinging your hips and let in your foot come off the ground the dragging motion of the birdwood shoes which like most natural processes in the body uses the core is the origin point now I'm not enough that in lots of people aren't natural athletes so they don't use the best natural techniques like with throwing where you just push but then athletes of found ways using the body and usually a lot of them originate of the core able to generate more power and more efficiency and that's what we're going for in our recommendation of walking Why not any shoe call on well one we have formulated a production process that allows us to not require lots of complicated machinery that caused lots of extra cost too we don't use obviously's labor to make sure all of our employees are happy in what they're doing three that also means that a lot of the shoes are made in the country that you're in and we're working towards that and so people making them are then contributing back to you via the taxes the way it should be rather than it being distributed into another country say China's pockets \n 4) anti blister tech\n 5) ease of put on (protect you back, and your time)\n \n Why not ultra well the main things are that one you don't have the opportunities for heel/entire foot lifts like we do which means that your body will still be that different and angle and not putting the weight and aware that you can body can sustainable hold over time \n 2) ultras prevent you from having a natural foot striking technique has explored in our foot striking blog because of how the soil is very flat and it doesn't allow the forefoot heel strike that is required and for a lot of vital test is that means that their I can actually experience a lot of pain and discomfort when even were in something that's zero dropped with a thick sole \n 3) issue of the souls themselves did degradate getting over time which means that divider not gonna be zero drop when the first made because of that because needs allow flat compression or your heel is actually sinking below you for it which is a very non-natural thing\n \n \n Everything I know about shoe making:\n X main concepts:\n 1) How allow your body to absorb force, preventing injury\n - Force absorption\n - how it is aligning your body to take that force\n 2) Your willingness to wear them\n - Appearance \n 3) Level of discomfort you have whilst wearing them\n \n Bonus) price / willingness to buy\n - e.g. where the money goes to\n - if shoes are made ethically. \n Bonus) sports performance boost / allowing you to achieve a specific task / alleviate a specific issue\n \n Where modern shoes fail:\n - heels. \n - needing to break shoes in\n - mass production\n - generalising; not specific to your foot shape\n -> why this is an issue\n - complicated terms \n - no regulation: \n -> silly terms\n -> trekking how the shoe was made\n -> actual minimal cost on Chinese shoes \n -> modern materials\n -> lack of long term cost saving (no resoles) \n \n Shoe construction:\n - Connecting\n -> all possible methods\n -> and about Appearance\n \n - Appearance in general that people will accept\n -> older a shoe design, more chance it will be timeless \n -> only sewing on outside, no rivets etc. \n -> toe box\n \n Achieving the correct shaped toe box, whilst achieving comfort:\n"
-	},
-	"method":{
-		"tbs":"I don't follow the philosophy of what humans do naturally. Rather, I follow the philosophy of what the human body is designed to do. \n Mcleod method; \n Summary \n Negatives (research backed / when it may not apply)\n Positives (research backed / when it will apply / examples) \n Debunk what people may say against that / times when it may not apply \n"
-	}
+    "index": {
+        "opening-title":"The Manual",
+        "welcome": "Research-driven conclusions and products",
+        "intro": "We provide the best products.",
+        "products": "Products",
+        "contact_us": "Contact us for more info",
+        "item-SappBoot-title":"Sapp Boot (dynamically added!)",
+        "item-SappBoot-stats":"800g, real cool.",
+        "item-SappBoot-desc":"● Tier 2 Mountaineering\n● Stiff sole\n● buffalo leather upper",
+        "learn-more":"Learn more", "buy-now":"Buy now"
+    },
+    "products": {
+        "title": "Our Products",
+        "desc": "Find the best deals on our items." 
+    },
+    "contact": {
+        "header": "Get in Touch",
+        "message": "We'd love to hear from you!"
+    },
+    "shared":{
+        "top-bar-shop":"Shop",
+        "top-bar-contact-questions":"Questions / Contact us",
+        "top-bar-new-here":"New?\nClick Here!",
+        "top-bar-help":"Help / Contact",
+        "top-bar-blogs":"Articles and more",
+        "top-bar-change-lang":"Change language",
+        "top-bar-dyslexic-font":"Toggle dyslexia font",
+        "top-bar-increase-font-size":"Increase font size",
+        "filter-search":"Search"
+    },
+    "tbd":{
+        "tbs":"Scared stitchless",
+        "tbs":"- Many shoes have exposed stitching inside. This gets wet when your feet sweat. Wet stitching causes rubbing. \n- Our no-sew design leaves only smooth edges inside, which become even more slippery when wet. ",
+        "tbs":"We never come last",
+        "tbs":"- Our unique lastless construction allows for us to create custom-fit shoes, without the extra cost. ",
+        "tbs":"Resister on the blister",
+        "tbs":"- blisters are caused by too much grip, causing your skin to move side to side (not from rubbing on the skin, a common misconception!).\n- many shoes use materials which, when wet, grip to your foot (polyester has a lower frictional coefficient when wet) \n- We use materials which have a lower frictional coefficient (less grippy) when wet"
+    },
+    "tbd2":{
+        "tbs":"We are proposing a more natural and beneficial walking technique now there's been studies done on tribes who haven't worn shoes that shows that they do have a heel strike but that is probably because they are living in places where the floor is nice and soft and the eye-tech in longest strides but other studies have shown that the straddlings are shorted and you are able to use a more body focused walking technique by swinging your hips and let in your foot come off the ground the dragging motion of the birdwood shoes which like most natural processes in the body uses the core is the origin point now I'm not enough that in lots of people aren't natural athletes so they don't use the best natural techniques like with throwing where you just push but then athletes of found ways using the body and usually a lot of them originate of the core able to generate more power and more efficiency and that's what we're going for in our recommendation of walking Why not any shoe call on well one we have formulated a production process that allows us to not require lots of complicated machinery that caused lots of extra cost too we don't use obviously's labor to make sure all of our employees are happy in what they're doing three that also means that a lot of the shoes are made in the country that you're in and we're working towards that and so people making them are then contributing back to you via the taxes the way it should be rather than it being distributed into another country say China's pockets \n 4) anti blister tech\n 5) ease of put on (protect you back, and your time)\n \n Why not ultra well the main things are that one you don't have the opportunities for heel/entire foot lifts like we do which means that your body will still be that different and angle and not putting the weight and aware that you can body can sustainable hold over time \n 2) ultras prevent you from having a natural foot striking technique has explored in our foot striking blog because of how the soil is very flat and it doesn't allow the forefoot heel strike that is required and for a lot of vital test is that means that their I can actually experience a lot of pain and discomfort when even were in something that's zero dropped with a thick sole \n 3) issue of the souls themselves did degradate getting over time which means that divider not gonna be zero drop when the first made because of that because needs allow flat compression or your heel is actually sinking below you for it which is a very non-natural thing\n \n \n Everything I know about shoe making:\n X main concepts:\n 1) How allow your body to absorb force, preventing injury\n - Force absorption\n - how it is aligning your body to take that force\n 2) Your willingness to wear them\n - Appearance \n 3) Level of discomfort you have whilst wearing them\n \n Bonus) price / willingness to buy\n - e.g. where the money goes to\n - if shoes are made ethically. \n Bonus) sports performance boost / allowing you to achieve a specific task / alleviate a specific issue\n \n Where modern shoes fail:\n - heels. \n - needing to break shoes in\n - mass production\n - generalising; not specific to your foot shape\n -> why this is an issue\n - complicated terms \n - no regulation: \n -> silly terms\n -> trekking how the shoe was made\n -> actual minimal cost on Chinese shoes \n -> modern materials\n -> lack of long term cost saving (no resoles) \n \n Shoe construction:\n - Connecting\n -> all possible methods\n -> and about Appearance\n \n - Appearance in general that people will accept\n -> older a shoe design, more chance it will be timeless \n -> only sewing on outside, no rivets etc. \n -> toe box\n \n Achieving the correct shaped toe box, whilst achieving comfort:\n"
+    },
+    "method":{
+        "tbs":"I don't follow the philosophy of what humans do naturally. Rather, I follow the philosophy of what the human body is designed to do. \n Mcleod method; \n Summary \n Negatives (research backed / when it may not apply)\n Positives (research backed / when it will apply / examples) \n Debunk what people may say against that / times when it may not apply \n"
+    }
 }

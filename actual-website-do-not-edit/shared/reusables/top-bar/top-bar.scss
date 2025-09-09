@@ -11,13 +11,39 @@
   width: 47.5px;
 }
 
-.new-top-bar-grid{
+// --- START OF GRID --- 
+
+.top-bar-row-grid{
 	@extend .ux-grid;	
     @include two-thirds-centrerer;
-	grid-template-columns: 0.25fr 0.5fr 0.25fr; 
-	grid-template-rows: auto;
+	grid-template-columns: auto; 
+    grid-template-rows: 0.2ft 0.3fr 0.5fr;
     padding-top:20px;
 }
+
+
+.top-bar-row-1-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-2-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-3-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+// --- END OF GRID --- 
 
 .top-bar-item-wrapper{
 	@extend .ux-grid;	
