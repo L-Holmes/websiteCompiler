@@ -18,9 +18,12 @@ const OUTPUT_DIRECTORY: &str = "actual-website-do-not-edit";
 const SOURCE_DIR: &str = "edit-me";
 const SHARED_CODE_FOLDER: &str = "code";
 const LAST_COMPILE_TIME_FILE: &str = ".last_compiled";
-const SHARED_DIR: &str = "edit-me/shared";
-const COMPONENTS_DIR: &str = "edit-me/shared/reusables";
 const COMPILATION_ORDER_FILE: &str = "reusables-compilation-order.txt";
+
+const SHARED_DIR: &str = "edit-me/shared";
+
+const COMPONENTS_DIR: &str = "edit-me/shared/reusables";
+const PAGE_TEXT_DIRECTORY: &str = "edit-me/shared/page_text"; // Directory containing en.json, es.json, etc.
 
 // --> Placeholders
 const ROOT_PLACEHOLDER: &str = "<root>";
@@ -116,6 +119,16 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     let newly_modified_files = only_modify_time_newer_than_last_compile_time(&all_files, last_compile_time)?;
     let newly_modified_files_set: HashSet<String> = newly_modified_files.iter().map(|p| p.to_string_lossy().to_string()).collect();
     let all_files_that_are_to_be_compiled: HashSet<String> = get_all_files_that_need_recompiling(SOURCE_DIR, RE_START, RE_END, &newly_modified_files_set, COMPONENTS_DIR);
+
+
+    // TRANSLATION HTML FILES: Load all translation files from the translations directory
+    println!("Loading translation files...");
+    let translationsFiles: TranslationsFile = load_translation_files_from_directory(PAGE_TEXT_DIRECTORY)?;
+    
+    println!("Successfully loaded {} language translation files", translationsFiles.len());
+    for available_language_code in translationsFiles.keys() {
+        println!("  - Available language: {}", available_language_code);
+    }
 
     // (0); Load the prioritized components list
     let components_list = load_components_list()?;
@@ -371,17 +384,7 @@ pub fn compile_all(source_files: &HashSet<String>) -> Result<(Vec<PathBuf>, Vec<
 		// Step 4) Add reusable components to html files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
 			// println!("4! Is a html file!");
-            replace_html_component_placeholders(
-                &dest_uncompiled,
-                Path::new(SOURCE_DIR),
-                RE_START,
-                RE_END,
-                ROOT_PLACEHOLDER,
-                HTML_COMPONENT_TEMPLATE_PREFIX,
-                HTML_COMPONENT_NONE_PREFIX,
-                RE_PARAM_S,
-                RE_PARAM_E,
-            )?;
+            replace_html_component_placeholders( &dest_uncompiled, Path::new(SOURCE_DIR), RE_START, RE_END, ROOT_PLACEHOLDER, HTML_COMPONENT_TEMPLATE_PREFIX, HTML_COMPONENT_NONE_PREFIX, RE_PARAM_S, RE_PARAM_E,)?;
 		}
 
 		// println!("        -----------------------------");
@@ -390,6 +393,14 @@ pub fn compile_all(source_files: &HashSet<String>) -> Result<(Vec<PathBuf>, Vec<
 		// i.e. change <root>/shared/example.html in the file /pages/index.html to ../example.html
 		replace_root_placeholder_with_relative_path_new(ROOT_PLACEHOLDER, ROOT_PLACEHOLDER, &dest_uncompiled)?;
         // println!("        -----------------------------");
+
+        // Step 6) HTML files: generate all variations of that file in different languages
+        // TRANSLATION HTML FILES: Process all HTML template files and generate language-specific versions
+        println!("        -----------------------------");
+		println!("	6)");
+        process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translationsFiles)?;
+        println!("        _____________________________");
+
     }
 
     Ok((modified_ts_files_list, modified_scss_files_list))
@@ -461,4 +472,180 @@ fn load_components_list() -> Result<Vec<String>> {
     println!("Validated components list:\n{:?}", &components_list);
     println!("><><><><><><><><><><>< done ><><><><><><><><><><><");
     Ok(components_list)
+}
+
+
+// ============================================================
+// GENERATING TRANSLATION FILES
+// ============================================================
+
+use serde_json::Value;
+use std::collections::HashMap;
+use std::path::{Path, PathBuf};
+use std::fs;
+use std::io::{self, Write};
+use regex::Regex;
+
+// Object to represent the contents of the language files. e.g. en.json's contents
+type TranslationsFile = HashMap<String, HashMap<String, HashMap<String, String>>>;
+
+/// Process a single HTML template file for all available languages
+/// 
+/// @param `html_template_file_path` - Path to the HTML template file to process
+/// @param `output_directory_path` - Directory where the localized HTML files will be generated
+/// @param `translation_cache` - Map containing translations for different languages
+/// 
+/// @return `Ok(())` - If all language files are generated successfully; otherwise `Err(Box<dyn std::error::Error>)` - If any error occurs during processing
+/// 
+/// # Example
+/// let html_file = "template.html";
+/// let output_dir = "output";
+/// let translations = TranslationsFile::new();
+/// process_html_template_file_for_all_languages(html_file, output_dir, &translations)?;
+/// ```
+fn process_html_template_file_for_all_languages<P1: AsRef<Path>, P2: AsRef<Path>>( html_template_file_path: P1, output_directory_path: P2, translation_cache: &TranslationsFile) -> Result<(), Box<dyn std::error::Error>> {
+    let html_file_path_reference: &Path = html_template_file_path.as_ref();
+    let html_base_filename: &str = html_file_path_reference.file_stem().and_then(|os_string: &std::ffi::OsStr| os_string.to_str())
+        .ok_or_else(|| format!("Invalid HTML filename: {:?}", html_file_path_reference))?;
+    
+    // Generate a translated file for each available language
+    for target_language_code in translation_cache.keys() {
+        let localized_output_filename: String = format!("{}-{}.html", target_language_code, html_base_filename);
+        let localized_output_file_path: PathBuf = output_directory_path.as_ref().join(localized_output_filename);
+        
+        generate_language_file( html_file_path_reference, &localized_output_file_path, translation_cache, target_language_code)
+        .map_err(|error| {
+            format!( "Failed to generate language file for {} in {}: {}", target_language_code, html_base_filename, error)
+        })?;
+    }
+    
+    Ok(())
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    
+    
+    Ok(())
+}
+
+
+/// Load all JSON translation files from a directory containing language files like en.json, es.json
+fn load_translation_files_from_directory<P: AsRef<Path>>( translation_directory_path: P) -> Result<TranslationsFile, Box<dyn std::error::Error>> {
+    let directory_entries: fs::ReadDir = fs::read_dir(&translation_directory_path)
+        .map_err(|error: std::io::Error| {
+            format!("Failed to read translation directory {:?}: {}", translation_directory_path.as_ref(),
+            error)
+        })?;
+    
+    let mut json_file_paths: Vec<PathBuf> = Vec::new();
+    
+    for directory_entry in directory_entries {
+        let directory_entry: fs::DirEntry = directory_entry?;
+        let file_path: PathBuf = directory_entry.path();
+        
+        if let Some(file_extension) = file_path.extension() {
+            if file_extension == "json" {
+                json_file_paths.push(file_path);
+            }
+        }
+    }
+    
+    load_translation_files_from_paths(&json_file_paths)
+}
+
+/// Load translations from specific JSON file paths
+fn load_translation_files_from_paths<P: AsRef<Path>>( json_file_paths: &[P]) -> Result<TranslationsFile, Box<dyn std::error::Error>> {
+    let mut translation_cache_map: TranslationsFile = HashMap::with_capacity(json_file_paths.len());
+    
+    for json_file_path in json_file_paths {
+        let json_file_path_reference: &Path = json_file_path.as_ref();
+        
+        // Extract language code from filename (e.g., "en.json" -> "en")
+        let language_code: &str = json_file_path_reference.file_stem().and_then(|os_string: &std::ffi::OsStr| os_string.to_str()).ok_or_else(|| format!("Invalid JSON file name: {:?}", json_file_path_reference))?;
+        
+        let json_file_content: String = fs::read_to_string(json_file_path_reference)
+            .map_err(|error: std::io::Error| {
+                format!("Failed to read translation file {:?}: {}", json_file_path_reference, error)
+            })?;
+        
+        let parsed_json: Value = serde_json::from_str(&json_file_content)
+            .map_err(|error: serde_json::Error| {
+                format!("Failed to parse JSON in {:?}: {}", json_file_path_reference, error)
+            })?;
+        
+        let mut language_translation_map: HashMap<String, HashMap<String, String>> = HashMap::new();
+        
+        if let Value::Object(page_objects_map) = parsed_json {
+            for (page_name, page_content_value) in page_objects_map {
+                if let Value::Object(page_variables_map) = page_content_value {
+                    let page_variable_translations: HashMap<String, String> = page_variables_map
+                        .into_iter()
+                        .filter_map(|(variable_name, variable_value)| {
+                            variable_value.as_str().map(|translation_text: &str| {
+                                (variable_name, translation_text.to_string())
+                            })
+                        })
+                        .collect();
+                    
+                    language_translation_map.insert(page_name, page_variable_translations);
+                }
+            }
+        }
+        
+        translation_cache_map.insert(language_code.to_string(), language_translation_map);
+    }
+    
+    Ok(translation_cache_map)
+}
+
+/// Generate a language-specific HTML file by replacing translation placeholders
+fn generate_language_file<P1: AsRef<Path>, P2: AsRef<Path>>( html_file_path: P1, output_file_path: P2, parsed_json: &TranslationsFile, target_language_code: &str) -> Result<(), Box<dyn std::error::Error>> {
+    let original_html_content: String = fs::read_to_string(&html_file_path)
+        .map_err(|error: std::io::Error| {
+            format!("Failed to read HTML file {:?}: {}", html_file_path.as_ref(), error)
+        })?;
+    
+    // Create regex for finding translation placeholders with improved pattern
+    let translation_placeholder_regex: Regex = Regex::new(r"<div>TEXT=([a-zA-Z0-9_\.]+)</div>")
+        .expect("Failed to compile translation placeholder regex");
+    
+    let processed_html_content: String = translation_placeholder_regex.replace_all(&original_html_content, |regex_captures: &regex::Captures| {
+            let full_translation_key: &str = &regex_captures[1]; // e.g., "pages.index.title"
+            
+            if let Some((page_name, variable_name)) = full_translation_key.split_once('.') {
+                // Try to get translation for this language
+                if let Some(translated_text) = get_translation_for_language_page_variable( parsed_json, target_language_code, page_name, variable_name) {
+                    format!("<div>{}</div>", translated_text)
+                } else {
+                    // Fallback to original key if translation not found
+                    format!("<div>{}</div>", full_translation_key)
+                }
+            } else {
+                // Invalid key format, keep original placeholder
+                format!("<div>TEXT={}</div>", full_translation_key)
+            }
+        }).to_string();
+    
+    // Write the processed content to the output file
+    fs::write(&output_file_path, processed_html_content)
+        .map_err(|error: std::io::Error| {
+            format!("Failed to write output file {:?}: {}", output_file_path.as_ref(), error)
+        })?;
+    
+    println!("Generated language file: {:?}", output_file_path.as_ref());
+    Ok(())
+}
+
+
+/// Inline lookup function for maximum translation retrieval speed
+#[inline]
+fn get_translation_for_language_page_variable( translation_cache: &TranslationsFile, language_code: &str, page_name: &str, variable_name: &str) -> Option<&str> {
+    translation_cache.get(language_code)
+        .and_then(|language_map: &HashMap<String, HashMap<String, String>>| {
+            language_map.get(page_name)
+        })
+        .and_then(|page_variables_map: &HashMap<String, String>| {
+            page_variables_map.get(variable_name)
+        })
+        .map(|translation_string: &String| translation_string.as_str())
 }

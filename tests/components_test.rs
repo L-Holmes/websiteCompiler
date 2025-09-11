@@ -928,3 +928,92 @@ fn test_compile_typescript_command_fails() {
     assert!(!output_js_file.exists(), "Output JS file should not be created on failure");
     println!("--- Test Passed ---");
 }
+
+//
+
+
+
+// ============================================================
+// GENERATING TRANSLATION FILES
+// ============================================================
+
+// use super::*;
+// 
+// #[test]
+// fn test_translation_lookup_functionality() {
+    // let mut test_translation_cache: TranslationCacheMap = HashMap::new();
+    // let mut english_language_map: HashMap<String, HashMap<String, String>> = HashMap::new();
+    // let mut index_page_variables: HashMap<String, String> = HashMap::new();
+    // index_page_variables.insert("title".to_string(), "Home Page".to_string());
+    // english_language_map.insert("index".to_string(), index_page_variables);
+    // test_translation_cache.insert("en".to_string(), english_language_map);
+    // 
+    // assert_eq!(
+        // get_translation_for_language_page_variable(&test_translation_cache, "en", "index", "title"), 
+        // Some("Home Page")
+    // );
+    // assert_eq!(
+        // get_translation_for_language_page_variable(&test_translation_cache, "en", "index", "missing_variable"), 
+        // None
+    // );
+// }
+// 
+// #[test]
+// fn test_extract_translation_keys_from_html() {
+    // let test_html_content: &str = r#"
+        // <div>TEXT=pages.index.title</div>
+        // <p>Some other static content</p>
+        // <div>TEXT=pages.about.header</div>
+    // "#;
+    // 
+    // let extracted_keys: Vec<String> = extract_translation_keys_from_html_content(test_html_content);
+    // assert_eq!(extracted_keys, vec!["pages.index.title", "pages.about.header"]);
+// }
+// 
+// #[test]
+// fn test_html_content_processing_with_translations() {
+    // let original_html_content: &str = r#"
+        // <html>
+            // <body>
+                // <div>TEXT=pages.index.title</div>
+                // <div>TEXT=pages.index.subtitle</div>
+            // </body>
+        // </html>
+    // "#;
+    // 
+    // let mut test_translation_cache: TranslationCacheMap = HashMap::new();
+    // let mut english_language_map: HashMap<String, HashMap<String, String>> = HashMap::new();
+    // let mut index_page_variables: HashMap<String, String> = HashMap::new();
+    // index_page_variables.insert("title".to_string(), "Welcome Home".to_string());
+    // index_page_variables.insert("subtitle".to_string(), "Your Home Page".to_string());
+    // english_language_map.insert("index".to_string(), index_page_variables);
+    // test_translation_cache.insert("en".to_string(), english_language_map);
+    // 
+    // let translation_placeholder_regex: Regex = Regex::new(r"<div>TEXT=([a-zA-Z0-9_\.]+)</div>")
+        // .expect("Failed to compile regex");
+    // 
+    // let processed_html_content: String = translation_placeholder_regex.replace_all(
+        // original_html_content, 
+        // |regex_captures: &regex::Captures| {
+            // let full_translation_key: &str = &regex_captures[1];
+            // if let Some((page_name, variable_name)) = full_translation_key.split_once('.') {
+                // if let Some(translated_text) = get_translation_for_language_page_variable(
+                    // &test_translation_cache, 
+                    // "en", 
+                    // page_name, 
+                    // variable_name
+                // ) {
+                    // format!("<div>{}</div>", translated_text)
+                // } else {
+                    // format!("<div>{}</div>", full_translation_key)
+                // }
+            // } else {
+                // format!("<div>TEXT={}</div>", full_translation_key)
+            // }
+        // }
+    // ).to_string();
+    // 
+    // assert!(processed_html_content.contains("<div>Welcome Home</div>"));
+    // assert!(processed_html_content.contains("<div>Your Home Page</div>"));
+// }
+// 
