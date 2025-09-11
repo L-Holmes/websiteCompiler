@@ -1,0 +1,119 @@
+@use "../../../shared/global.scss"  as *;
+
+.top-bar-img{
+  width: 50px;
+  height: 50px;
+}
+
+.top-bar-contact-img{
+  @extend .top-bar-img;
+  height: 50px;
+  width: 47.5px;
+}
+
+// --- START OF GRID --- 
+
+.top-bar-row-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: auto; 
+    grid-template-rows: 0.2ft 0.3fr 0.5fr;
+    padding-top:20px;
+}
+
+
+.top-bar-row-1-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-2-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-3-grid{
+	@extend .ux-grid;	
+    @include two-thirds-centrerer;
+	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-rows: auto;
+}
+
+// --- END OF GRID --- 
+
+.top-bar-item-wrapper{
+	@extend .ux-grid;	
+	grid-template-columns: auto; 
+	grid-template-rows: 0.15fr 0.85fr;
+	height:auto;
+}
+
+// -------------------------
+// Self-contained search bar
+// -------------------------
+
+$search-height: 6vh;       // relative to screen height
+$search-radius: 12px;      // soft rounded corners
+$search-border: #d1d5db;
+$search-text: #111827;
+$search-placeholder: #6b7280;
+$search-focus: #7c5cff;
+$search-shadow: rgba(0, 0, 0, 0.06);
+
+.search-bar {
+  width: 80%;              // relative to parent grid cell
+  height: $search-height;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid $search-border;
+  border-radius: $search-radius;
+  box-shadow: 0 2px 8px $search-shadow;
+
+  // contain itself, no margin bleed
+  margin: 0 auto;          // centers it inside the grid cell
+  box-sizing: border-box;
+
+  &:focus-within {
+    border-color: $search-focus;
+    box-shadow: 0 0 0 2px rgba($search-focus, 0.25);
+  }
+}
+
+.search-input {
+  flex: 1 1 auto;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  background: transparent;
+  color:$text-colour-primary;
+
+  &::placeholder {
+    color: $search-placeholder;
+  }
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+    stroke: $search-placeholder;
+    fill: none;
+    stroke-width: 2;
+  }
+}

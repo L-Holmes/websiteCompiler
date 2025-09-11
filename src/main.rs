@@ -3,12 +3,15 @@ use clap::{Arg, Command as ClapCommand};
 use anyhow::{anyhow, Context, Result};
 use regex::Regex;
 use std::collections::HashSet;
+use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
 use std::time::SystemTime;
 use std::borrow::Cow;
 use std::ffi::OsString;
+use serde_json::Value;
+use std::io::{self, Write};
 
 use websiteCompiler::components::*;
 
@@ -123,10 +126,10 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
 
     // TRANSLATION HTML FILES: Load all translation files from the translations directory
     println!("Loading translation files...");
-    let translationsFiles: TranslationsFile = load_translation_files_from_directory(PAGE_TEXT_DIRECTORY)?;
+    let translations_files: TranslationsFile = load_translation_files_from_directory(PAGE_TEXT_DIRECTORY).map_err(|e| anyhow::anyhow!("{}", e))?;
     
-    println!("Successfully loaded {} language translation files", translationsFiles.len());
-    for available_language_code in translationsFiles.keys() {
+    println!("Successfully loaded {} language translation files", translations_files.len());
+    for available_language_code in translations_files.keys() {
         println!("  - Available language: {}", available_language_code);
     }
 
@@ -176,7 +179,7 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
 
             let mut single_file_set: HashSet<String> = HashSet::new();
             single_file_set.insert(component_path_str.clone());
-            let (ts_files, scss_files) = compile_all(&single_file_set)?;
+            let (ts_files, scss_files) = compile_all(&single_file_set, &translations_files)?;
 
             all_ts_files.extend(ts_files);
             all_scss_files.extend(scss_files);
@@ -191,7 +194,7 @@ fn run_build_process(fresh_run: bool, github_pages: bool) -> Result<()> {
     println!("\n<><><><><><><><><><><><> COMPILING THE REGULAR COMPONENTS IN ORDER <><><><><><><><><><><><>");
 
     // (4) run compile All on the newly_modified_pages
-    let (ts_files, scss_files) = compile_all(&new_everything_else_that_needs_compiling)?;
+    let (ts_files, scss_files) = compile_all(&new_everything_else_that_needs_compiling,&translations_files)?;
     all_ts_files.extend(ts_files);
     all_scss_files.extend(scss_files);
 
@@ -290,7 +293,7 @@ pub fn get_non_prioritised_files_list( all_modified_files: &HashSet<String>, com
 /// injects/replaces placeholders and components, and returns lists of files
 /// that require final compilation (TS and SCSS).
 /// This is the Rust version of the `compileAll` shell function.
-pub fn compile_all(source_files: &HashSet<String>) -> Result<(Vec<PathBuf>, Vec<PathBuf>)> {
+pub fn compile_all(source_files: &HashSet<String>, translations_files: &TranslationsFile) -> Result<(Vec<PathBuf>, Vec<PathBuf>)> {
     let mut modified_ts_files_list = Vec::new();
     let mut modified_scss_files_list = Vec::new();
     let pages_regex : Regex = Regex::new(r"pages/[^/]+/")?;
@@ -398,7 +401,7 @@ pub fn compile_all(source_files: &HashSet<String>) -> Result<(Vec<PathBuf>, Vec<
         // TRANSLATION HTML FILES: Process all HTML template files and generate language-specific versions
         println!("        -----------------------------");
 		println!("	6)");
-        process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translationsFiles)?;
+        process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translations_files);
         println!("        _____________________________");
 
     }
@@ -479,12 +482,6 @@ fn load_components_list() -> Result<Vec<String>> {
 // GENERATING TRANSLATION FILES
 // ============================================================
 
-use serde_json::Value;
-use std::collections::HashMap;
-use std::path::{Path, PathBuf};
-use std::fs;
-use std::io::{self, Write};
-use regex::Regex;
 
 // Object to represent the contents of the language files. e.g. en.json's contents
 type TranslationsFile = HashMap<String, HashMap<String, HashMap<String, String>>>;
@@ -518,12 +515,6 @@ fn process_html_template_file_for_all_languages<P1: AsRef<Path>, P2: AsRef<Path>
             format!( "Failed to generate language file for {} in {}: {}", target_language_code, html_base_filename, error)
         })?;
     }
-    
-    Ok(())
-}
-
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    
     
     Ok(())
 }
@@ -639,7 +630,7 @@ fn generate_language_file<P1: AsRef<Path>, P2: AsRef<Path>>( html_file_path: P1,
 
 /// Inline lookup function for maximum translation retrieval speed
 #[inline]
-fn get_translation_for_language_page_variable( translation_cache: &TranslationsFile, language_code: &str, page_name: &str, variable_name: &str) -> Option<&str> {
+fn get_translation_for_language_page_variable<'a>( translation_cache: &'a TranslationsFile, language_code: &str, page_name: &str, variable_name: &str) -> Option<&'a str> {
     translation_cache.get(language_code)
         .and_then(|language_map: &HashMap<String, HashMap<String, String>>| {
             language_map.get(page_name)
