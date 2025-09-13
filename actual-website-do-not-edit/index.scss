@@ -15,8 +15,12 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
   width:100vw;
 }
 
-.index-content-wrapper{
+.index-content-wrapper-DESKTOP{
   @include deskptop-centre-on-screen;
+
+  @media screen and (max-width: 441px){
+      display:none;
+	}
 }
 
 .intro-para-mobile{
@@ -24,43 +28,7 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
     margin-right: 40vw;
 }
 
-.index-intro-grid{
-	@extend .ux-grid;	
-	grid-template-columns: 0.5fr 0.5fr; 
-	grid-template-rows: auto;
-	height:auto;
-    margin: 0px 0px 20px 0px;
 
-	@media screen and (max-width: 720px){
-      grid-template-columns: 0.7fr 0.3fr; 
-	}
-
-	@media screen and (max-width: 441px){
-      display:none;
-	}
-}
-
-.index-intro-mobile{
-	@extend .ux-grid;	
-	grid-template-columns: 0.9fr 0.1fr; 
-	grid-template-rows: auto;
-	height:auto;
-    margin: 0px 0px 20px 0px;
-
-    display:none;
-
-	@media screen and (max-width: 440px){
-      display:block;
-	}
-}
-
-.index-page-intro{
-	@extend .page-intro;
-	width:100%;
-	@media screen and (max-width: 720px){
-		max-width:70%;
-	}
-}
 
 .last-item-takes-remaining-vert-space{
 	display: grid;
@@ -465,3 +433,54 @@ $search-shadow: rgba(0, 0, 0, 0.06);
   }
 }
 
+
+
+// MOBILE MOBILE MOBILE MOBILE MOBILE 
+
+
+.index-content-wrapper-MOBILE{
+  @include deskptop-centre-on-screen;
+}
+
+
+// --- START OF GRID --- 
+
+.top-bar-row-grid-MOBILE{
+	@extend .ux-grid;	
+	grid-template-columns: auto; 
+    grid-template-rows: 0.2ft 0.3fr 0.5fr;
+    padding-top:20px;
+
+    display:none;
+
+	@media screen and (max-width: 440px){
+      display:block;
+	}
+}
+
+
+.top-bar-row-1-grid-MOBILE{
+	@extend .ux-grid;	
+	grid-template-columns: 0.5fr 0.5fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-2-grid-MOBILE{
+	@extend .ux-grid;	
+    grid-template-columns: 0.5fr 0.5fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-3-grid-MOBILE{
+	@extend .ux-grid;	
+    grid-template-columns: 0.5fr 0.5fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-4-grid-MOBILE{
+	@extend .ux-grid;	
+    grid-template-columns: 1fr; 
+	grid-template-rows: auto;
+}
+
+// --- END OF GRID --- 
