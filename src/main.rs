@@ -276,15 +276,11 @@ pub fn get_non_prioritised_files_list( all_modified_files: &HashSet<String>, com
     let mut non_prioritised = HashSet::new();
     
     for source_path in all_modified_files {
-        println!("\t-> checking {}", source_path);
         if compiled_components.contains(source_path) {
-            println!("\t\t--> already prioritised, skipping");
         } else {
-            println!("\t\t--> adding to non-prioritised list");
             non_prioritised.insert(source_path.clone());
         }
     }
-    println!("///non-prioritised files: {:?}", non_prioritised);
     non_prioritised
 }
 
@@ -401,7 +397,9 @@ pub fn compile_all(source_files: &HashSet<String>, translations_files: &Translat
         // TRANSLATION HTML FILES: Process all HTML template files and generate language-specific versions
         println!("        -----------------------------");
 		println!("	6)");
-        process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translations_files);
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
+            process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translations_files);
+        }
         println!("        _____________________________");
 
     }
@@ -501,14 +499,18 @@ type TranslationsFile = HashMap<String, HashMap<String, HashMap<String, String>>
 /// process_html_template_file_for_all_languages(html_file, output_dir, &translations)?;
 /// ```
 fn process_html_template_file_for_all_languages<P1: AsRef<Path>, P2: AsRef<Path>>( html_template_file_path: P1, output_directory_path: P2, translation_cache: &TranslationsFile) -> Result<(), Box<dyn std::error::Error>> {
+    println!("\nPROCESSING HTML TEMPLATE FILE FOR ALL LANGUAGES");
     let html_file_path_reference: &Path = html_template_file_path.as_ref();
     let html_base_filename: &str = html_file_path_reference.file_stem().and_then(|os_string: &std::ffi::OsStr| os_string.to_str())
         .ok_or_else(|| format!("Invalid HTML filename: {:?}", html_file_path_reference))?;
+    println!("Html file basename: {}",html_base_filename);
     
     // Generate a translated file for each available language
     for target_language_code in translation_cache.keys() {
         let localized_output_filename: String = format!("{}-{}.html", target_language_code, html_base_filename);
         let localized_output_file_path: PathBuf = output_directory_path.as_ref().join(localized_output_filename);
+        println!("got the localised path...");
+        
         
         generate_language_file( html_file_path_reference, &localized_output_file_path, translation_cache, target_language_code)
         .map_err(|error| {

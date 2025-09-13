@@ -1,119 +1,101 @@
-@use "../../../shared/global.scss"  as *;
+<div class="centre-wrapper">
+	<div class="top-bar-row-grid">
+        <div class="top-bar-row-1-grid">
 
-.top-bar-img{
-  width: 50px;
-  height: 50px;
-}
+            <form class="search-bar" action="/search" method="get" role="search">
+                <input type="search" name="q" class="search-input" placeholder="Search..." aria-label="Search" />
+                <button class="search-button" type="submit" aria-label="Submit search">
+                    <!-- Simple magnifying glass -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                    </svg>
+                </button>
+            </form>
 
-.top-bar-contact-img{
-  @extend .top-bar-img;
-  height: 50px;
-  width: 47.5px;
-}
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-// --- START OF GRID --- 
+            <a href="#contact">
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-contact-questions"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-contact-img" src="../../../shared/images/page-images/startpage/questions.avif" alt="Contact Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="top-bar-row-2-grid">
 
-.top-bar-row-grid{
-	@extend .ux-grid;	
-    @include two-thirds-centrerer;
-	grid-template-columns: auto; 
-    grid-template-rows: 0.2ft 0.3fr 0.5fr;
-    padding-top:20px;
-}
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
 
 
-.top-bar-row-1-grid{
-	@extend .ux-grid;	
-    @include two-thirds-centrerer;
-	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
-	grid-template-rows: auto;
-}
+        <div class="top-bar-row-3-grid">
 
-.top-bar-row-2-grid{
-	@extend .ux-grid;	
-    @include two-thirds-centrerer;
-	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
-	grid-template-rows: auto;
-}
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-.top-bar-row-3-grid{
-	@extend .ux-grid;	
-    @include two-thirds-centrerer;
-	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
-	grid-template-rows: auto;
-}
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-// --- END OF GRID --- 
+            <a  href='../../../products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="../../../shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
 
-.top-bar-item-wrapper{
-	@extend .ux-grid;	
-	grid-template-columns: auto; 
-	grid-template-rows: 0.15fr 0.85fr;
-	height:auto;
-}
-
-// -------------------------
-// Self-contained search bar
-// -------------------------
-
-$search-height: 6vh;       // relative to screen height
-$search-radius: 12px;      // soft rounded corners
-$search-border: #d1d5db;
-$search-text: #111827;
-$search-placeholder: #6b7280;
-$search-focus: #7c5cff;
-$search-shadow: rgba(0, 0, 0, 0.06);
-
-.search-bar {
-  width: 80%;              // relative to parent grid cell
-  height: $search-height;
-
-  display: flex;
-  align-items: center;
-
-  border: 1px solid $search-border;
-  border-radius: $search-radius;
-  box-shadow: 0 2px 8px $search-shadow;
-
-  // contain itself, no margin bleed
-  margin: 0 auto;          // centers it inside the grid cell
-  box-sizing: border-box;
-
-  &:focus-within {
-    border-color: $search-focus;
-    box-shadow: 0 0 0 2px rgba($search-focus, 0.25);
-  }
-}
-
-.search-input {
-  flex: 1 1 auto;
-  border: none;
-  outline: none;
-  height: 100%;
-  padding: 0 0.75rem;
-  font-size: 1rem;
-  background: transparent;
-  color:$text-colour-primary;
-
-  &::placeholder {
-    color: $search-placeholder;
-  }
-}
-
-.search-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
-    stroke: $search-placeholder;
-    fill: none;
-    stroke-width: 2;
-  }
-}
+	</div>
+</div>

@@ -1,190 +1,139 @@
-document.addEventListener("DOMContentLoaded", setDynamicElementsContent);
+<!DOCTYPE html>
+<html lang="en">
+	<title> Awpen </title>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1"  content="A cool website"/>
+		<link rel=stylesheet href="product-finder.css">
+		<script defer src="product-finder.js"></script>
+	<link rel="stylesheet" href="shared/reusables/top-bar/top-bar.css">
+<script defer src="shared/reusables/top-bar/top-bar.js"></script>
+<link rel="stylesheet" href="shared/reusables/bottom-bar/bottom-bar.css">
+<script defer src="shared/reusables/bottom-bar/bottom-bar.js"></script>
+</head>
+	<body data-page="product-finder">
+		<div class="centre-wrapper">
+	<div class="top-bar-row-grid">
+        <div class="top-bar-row-1-grid">
 
-//--content getters--
+            <form class="search-bar" action="/search" method="get" role="search">
+                <input type="search" name="q" class="search-input" placeholder="Search..." aria-label="Search" />
+                <button class="search-button" type="submit" aria-label="Submit search">
+                    <!-- Simple magnifying glass -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" />
+                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                    </svg>
+                </button>
+            </form>
 
-async function contentGetter_text_lines() {
-	return "<h1> This surrrreeellllyyyy is the dynamic content </h1>"
-}
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
+            <a href="#contact">
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-contact-questions"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-contact-img" src="shared/images/page-images/startpage/questions.avif" alt="Contact Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="top-bar-row-2-grid">
 
-async function contentGetter_loaded_txt() {
-	return "loaded text yaaa"
-	/*j
-	try{
-		fileContents = loadFileContents()
-	} catch (error) {
-		throw error;
-	}
-	return `${fileContents}`
-	*/
-}
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-
-//////////////////////////
-//GROTE FUNCTIONS
-//////////////////////////
-
-//start of -----------------------------------------------------
-// Make sure you have Promise support in your tsconfig.json:
-// {
-//   "compilerOptions": {
-//     "target": "es2015",  // or higher
-//     "lib": ["dom", "es2015", "es2016", "es2017"] // ensure Promise is included
-//   }
-// }
-
-async function setDynamicElementsContent(): Promise<void> {
-  const prefix: string = "D-";
-  const corrContentFuncNameStart: string = "contentGetter_";
-  console.log("Loading the dynamic elements...");
-  
-  // Get all elements that have an id that starts with the prefix that identifies that element as dynamic
-  const dynamicElements: NodeListOf<Element> = document.querySelectorAll(`[id^="${prefix}"]`);
-  
-  // Define the extended Window interface to allow accessing dynamic functions
-  interface WindowWithDynamicFunctions extends Window {
-    [key: string]: any;
-  }
-  
-  const typedWindow: WindowWithDynamicFunctions = window as WindowWithDynamicFunctions;
-  
-  for (let i: number = 0; i < dynamicElements.length; i++) {
-    // Get the element
-    const element: HTMLElement = dynamicElements[i] as HTMLElement;
-    
-    // Get its ID
-    const id: string = element.id;
-    console.log("Setting the inner html to loading...");
-    
-    // Set that element as loading
-    element.innerHTML = "Loading...";
-    
-    // Load expected function name
-    // The end of the corresponding content function name 
-    const corrContentFuncNameEnd: string = id.replace(new RegExp('^' + prefix), '').replace(/-/g, '_'); // Remove the prefix from the start and replace dashes with underscores
-    
-    // Corresponding content function name
-    const corrContentFuncName: string = corrContentFuncNameStart + corrContentFuncNameEnd;
-    
-    // Ensure function exists
-    console.log("TESTING--------------------------------------------");
-    const myFunction: Function | undefined = typedWindow[corrContentFuncName]; // Access the function by name
-    
-    if (myFunction) {
-      console.log("THERE IS A MY FUNCTION");
-      try {
-        const elementContent: string = await typedWindow[corrContentFuncName]();
-        console.log(`Here is the result: ${elementContent}`);
-        element.innerHTML = elementContent;
-      } catch (error: unknown) {
-        const errorMessage: string = error instanceof Error ? error.message : String(error);
-        console.error(`Error calling ${corrContentFuncName}: ${errorMessage}`);
-        element.innerHTML = "No content available";
-      }
-    } else {
-      console.error(`(1) Function "${corrContentFuncName}" does not exist.`);
-      
-      if (typeof myFunction === 'function') {
-        // Call the function
-        console.log("THE FUNCTION EXISTS!!!");
-        try {
-          const elementContent: string = await typedWindow[corrContentFuncName]();
-          console.log(`Here is the proof: ${elementContent}`);
-          element.innerHTML = elementContent;
-        } catch (error: unknown) {
-          const errorMessage: string = error instanceof Error ? error.message : String(error);
-          console.error(`Error calling ${corrContentFuncName}: ${errorMessage}`);
-          element.innerHTML = "No content available";
-        }
-      } else {
-        console.error(`(2) Function "${corrContentFuncName}" does not exist.`);
-      }
-      
-      console.log("TESTING END --------------------------------------------");
-      
-      if (!typedWindow[corrContentFuncName] || typeof typedWindow[corrContentFuncName] !== 'function') {
-        // Get the list of functions 
-        const propNames: string[] = Object.getOwnPropertyNames(window);
-        const functionNames: string[] = propNames.filter((prop: string) => typeof typedWindow[prop] === 'function');
-        const functionList: string = functionNames.join(', ');
-        console.error(`There is no function with the name ${corrContentFuncName}. It was expected that this function exists, since you have an element with the id: ${id}, which is seen to be representing a dynamic element due to starting with the prefix ${prefix}. \n Available functions: ${functionList}`);
-        element.innerHTML = "No content available";
-        continue;
-      }
-      
-      // Get the new HTML content using that function
-      let elementContent: string = "No content available.";
-      
-      try {
-        elementContent = await typedWindow[corrContentFuncName]();
-      } catch (error: unknown) {
-        const errorMessage: string = error instanceof Error ? error.message : String(error);
-        console.error(`There was an error when attempting to fetch the content of element with the id: ${id}, using its corresponding function: ${corrContentFuncName}. The error is as follows: ${errorMessage}`);
-        element.innerHTML = "No content available";
-        continue;
-      }
-      
-      // Fix for the instanceof Promise issue
-      if (typeof elementContent === 'object' && elementContent !== null && 
-          typeof (elementContent as any).then === 'function' || 
-          String(elementContent) === '[object Promise]') {
-        console.error(`There was an error (received a Promise, not content) when attempting to fetch the content of element with the id: ${id}, using its corresponding function: ${corrContentFuncName}.`);
-        element.innerHTML = "No content available";
-        continue;
-      }
-      
-      console.log(`Got the new html content by calling the function name: ${corrContentFuncName}, before receiving the response: ${elementContent}`);
-      
-      // Set the element's new content
-      element.innerHTML = elementContent;
-    }
-  }
-}
-
-// Declare a more specific type for the dynamic content getter functions
-type ContentGetterFunction = () => Promise<string> | string;
-
-// Fix for the recursive interface definition
-interface WindowWithContentGetters {
-  [key: string]: any;
-  [key: `contentGetter_${string}`]: ContentGetterFunction;
-}
-
-// Extend the global Window interface
-interface Window extends WindowWithContentGetters {}
-
-//end of -----------------------------------------------------
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
 
 
-//////////////////////////
-//KLEINE FUNCTIONS
-//////////////////////////
+        <div class="top-bar-row-3-grid">
 
-/**
- * Load the contents of a text file asynchronously.
- * @param {string} filePath - The path to the text file.
- * @returns {Promise<string>} - A promise that resolves with the file contents.
- */
-async function loadFileContents(filePath) {
-	try {
-		const response = await fetch(filePath);
-		if (!response.ok) {
-			throw new Error(`Error fetching file: ${response.status} ${response.statusText}`);
-			return null
-		}
-		const fileContents = await response.text();
-		return fileContents;
-	} catch (error) {
-		console.error('Error loading file:', error);
-		throw error;
-	}
-}
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
 
-/**
- * Split the file contents into separate lines.
- * @param {string} fileContents - The contents of the text file.
- * @returns {string[]} - An array of individual lines.
- */
-function splitIntoLines(fileContents) {
-	return fileContents.split('\n');
-}
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a  href='products.html'>
+                <div class="centre-wrapper">
+                    <div class="top-bar-item-wrapper">
+                        <div add-text-section="top-bar-shop"></div>
+                        <div class="centre-wrapper">
+                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+	</div>
+</div>
+
+
+			<div class="page-contents-wrapper">
+				<h1 class="page-title"> See what we've been up to</h1>
+				<div  class="page-intro"> Here you'll find our weekly newsletter and our annual report</div>
+
+				<div class="vert-spacing-m"></div>
+				<div class="newsletter-wrapper">
+					<div class=""></div>
+					<img class="newsletter-img" src="shared/images/page-images/newsletter_cropped_1.avif" alt="newsletter art">
+				</div>
+				<div class="page-header"> Weekly newsletter </div>
+				<div class="section-intro"> Explore our weekly newsletter to stay informed about all things Euphoric Circus. Dive into the latest highlights, announcements, and upcoming events. Our newsletter keeps you connected to our vibrant community and engaged with our mission.</div> 
+				<button class="standard-button" onclick="window.location.href='pages/weekly-newsletter/weekly-newsletter.html'"> View report  </button>
+				<div class="vert-spacing-m"></div>
+				<div class="page-header"> Annual report </div>
+				<div class="section-intro"> View our annual report to see the impact of Euphoric Circus over the past year. Discover our achievements, challenges, and plans for the future as we continue to empower youth through circus arts. </div> 
+				<button class="standard-button" onclick="window.location.href='pages/annual-report/annual-report.html'"> View report  </button>
+				<div class="vert-spacing-m"></div>
+
+			</div>
+
+			
+	</body>
+</html>
