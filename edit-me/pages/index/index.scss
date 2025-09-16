@@ -495,16 +495,55 @@ $search-shadow: rgba(0, 0, 0, 0.06);
 
 // --- SHOWING THAT THE PAGE IS WORKING + ADDING SOME VISUAL INTEREST ---
 
- .pulse {
-      width: 8px;
-      height: 8px;
-      background: #f5f5f5;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+.pulse {
+    width: 8px;
+    height: 8px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.55; }
+
+}
+
+
+// -- BUTTON WITH BIG HIT BOX -- 
+
+.expandable-btn {
+  // Set your desired hit area
+  width: 200px;
+  height: 100px;
+  
+  // Reset button styles
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  
+  // Center the visual element
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .btn-visual {
+    // Your actual button styling
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    pointer-events: none; // Prevents click interference
   }
   
-  @keyframes pulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.55; }
-
+  &:hover .btn-visual {
+    background: #0056b3;
   }
+  
+  &:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+  }
+}

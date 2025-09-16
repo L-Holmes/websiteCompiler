@@ -804,8 +804,34 @@ button:hover {
     opacity: 0.3;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.55;
   }
+}
+.expandable-btn {
+  width: 200px;
+  height: 100px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.expandable-btn .btn-visual {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  pointer-events: none;
+}
+.expandable-btn:hover .btn-visual {
+  background: #0056b3;
+}
+.expandable-btn:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
 }
 
 /*# sourceMappingURL=index.css.map */
