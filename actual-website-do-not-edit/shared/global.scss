@@ -384,6 +384,15 @@ $spacing-xs: 5px;
     justify-content: center; /* horizontal center */
 }
 
+// -------------------------------------------
+
+/* Top left, anchored at the top of its container */
+.top-left-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align horizontally */
+  align-items: flex-start; /* align to the top (vertical) */
+  width: 100%;
+}
 
 /* Top center, anchored at the top of its container */
 .top-middle-wrapper {
@@ -392,6 +401,14 @@ $spacing-xs: 5px;
   align-items: flex-start; /* align to the top (vertical) */
   width: 100%;
 }
+
+/* Top right, anchored at the top of its container */
+.top-right-wrapper {
+  display: flex;
+  justify-content: flex-end; /* left align horizontally */
+  align-items: flex-start; /* align to the top (vertical) */
+  width: 100%;
+} 
 
 /* Middle-left: vertically centered, left-aligned horizontally */
 .middle-left-wrapper {
@@ -408,6 +425,34 @@ $spacing-xs: 5px;
   align-items: center;       /* vertical center */
   width: 100%;
 }
+
+
+/* bottom left, anchored at the bottom of its container */
+.bottom-left-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align horizontally */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+}
+
+/* bottom center, anchored at the bottom of its container */
+.bottom-middle-wrapper {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+}
+
+/* bottom right, anchored at the bottom of its container */
+.bottom-right-wrapper {
+  display: flex;
+  justify-content: flex-end; /* left align horizontally */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+} 
+
+
+// -------------------------------------------
 
 .centre-me-wrapper-no-overflow-block{
 	display: flex;
