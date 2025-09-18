@@ -638,3 +638,35 @@ $search-shadow: rgba(0, 0, 0, 0.06);
     outline-offset: 2px;
   }
 }
+
+
+// ====================
+
+
+
+.language-wrapper{
+  @extend .ux-grid;
+  grid-template-columns:auto; 
+  grid-template-rows: 0.6fr 0.4fr;
+}
+
+.language-upper-section{
+  @extend .ux-grid;
+  grid-template-columns:0.5fr 0.5fr; 
+  grid-template-rows: auto;
+}
+
+.language-lower-section{
+}
+
+.language-dropdown{
+  @extend .ux-grid;
+  grid-template-columns:0.4fr 0.4fr 0.2fr; 
+  grid-template-rows: auto; 
+}
+
+.text-bigger-upper-section{
+  @extend .ux-grid;
+  grid-template-columns:0.125fr 0.25fr 0.675fr; 
+  grid-template-rows: auto; 
+}

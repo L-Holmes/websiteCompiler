@@ -145,7 +145,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .ux-grid-specific {
+.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .text-bigger-upper-section, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -884,6 +884,26 @@ button:hover {
 .button-hitbox:focus, .open-page-top-left-box-DESKTOP:focus, .open-page-top-middle-box-DESKTOP:focus, .open-page-top-right-box-DESKTOP:focus, .open-page-middle-left-box-DESKTOP:focus, .open-page-middle-middle-box-DESKTOP:focus, .open-page-middle-right-box-DESKTOP:focus, .open-page-bottom-left-box-DESKTOP:focus, .open-page-bottom-middle-box-DESKTOP:focus, .open-page-bottom-right-box-DESKTOP:focus {
   outline: 2px solid #0056b3;
   outline-offset: 2px;
+}
+
+.language-wrapper {
+  grid-template-columns: auto;
+  grid-template-rows: 0.6fr 0.4fr;
+}
+
+.language-upper-section {
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-rows: auto;
+}
+
+.language-dropdown {
+  grid-template-columns: 0.4fr 0.4fr 0.2fr;
+  grid-template-rows: auto;
+}
+
+.text-bigger-upper-section {
+  grid-template-columns: 0.125fr 0.25fr 0.675fr;
+  grid-template-rows: auto;
 }
 
 /*# sourceMappingURL=index.css.map */
