@@ -145,7 +145,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .text-bigger-upper-section, .ux-grid-specific {
+.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -889,6 +889,10 @@ button:hover {
 .language-wrapper {
   grid-template-columns: auto;
   grid-template-rows: 0.6fr 0.4fr;
+  width: 100%;
+  border: solid white 1px;
+  border-radius: 12px;
+  height: 100px;
 }
 
 .language-upper-section {
@@ -896,14 +900,57 @@ button:hover {
   grid-template-rows: auto;
 }
 
+.language-lower-section {
+  height: 30px;
+}
+
 .language-dropdown {
   grid-template-columns: 0.4fr 0.4fr 0.2fr;
   grid-template-rows: auto;
+  border-top: solid white 1px;
+  height: 40px;
+  background-color: #3d3d3d;
+  margin: 10px;
+  border-radius: 16px;
+  width: 80%;
 }
 
 .text-bigger-upper-section {
-  grid-template-columns: 0.125fr 0.25fr 0.675fr;
-  grid-template-rows: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.planet-earth-img {
+  width: 55px;
+  height: 55px;
+}
+
+.change-lang-img {
+  width: 55px;
+  height: 55px;
+}
+
+.english-flag-img {
+  width: 40px;
+  height: 20px;
+}
+
+.increase-text-size-arrow-img {
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown-arrow-img {
+  width: 40px;
+  height: 40px;
+}
+
+.big-A {
+  font-size: 64px;
+}
+
+.little-A {
+  font-size: 22px;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -648,6 +648,11 @@ $search-shadow: rgba(0, 0, 0, 0.06);
   @extend .ux-grid;
   grid-template-columns:auto; 
   grid-template-rows: 0.6fr 0.4fr;
+  width:100%;
+  border: solid white 1px;
+  border-radius:12px;
+
+  height:100px;
 }
 
 .language-upper-section{
@@ -657,16 +662,65 @@ $search-shadow: rgba(0, 0, 0, 0.06);
 }
 
 .language-lower-section{
+  height:30px;
 }
 
 .language-dropdown{
   @extend .ux-grid;
   grid-template-columns:0.4fr 0.4fr 0.2fr; 
   grid-template-rows: auto; 
+
+  border-top: solid white 1px;
+  // border-radius:12px;
+
+  height: 40px;
+  background-color:#3d3d3d;
+  margin:10px;
+  border-radius:16px;
+  width:80%;
 }
 
 .text-bigger-upper-section{
-  @extend .ux-grid;
-  grid-template-columns:0.125fr 0.25fr 0.675fr; 
-  grid-template-rows: auto; 
+  // @extend .ux-grid;
+  // grid-template-columns:0.125fr 0.25fr 0.675fr; 
+  // grid-template-rows: auto; 
+
+  display:flex;
+  align-items:flex-end;
+}
+
+
+
+.planet-earth-img{
+  width:55px;
+  height:55px;
+
+}
+
+.change-lang-img{
+  width:55px;
+  height:55px;
+}
+
+.english-flag-img{
+  width:40px;
+  height:20px; 
+}
+
+.increase-text-size-arrow-img{
+  width:20px;
+  height:20px;  
+}
+
+.dropdown-arrow-img{
+  width:40px;
+  height:40px;  
+}
+
+.big-A{
+  font-size:64px;
+}
+
+.little-A{
+  font-size:22px;
 }
