@@ -496,4 +496,27 @@ function openLanguageBox() {
     if (mobileWrapper) mobileWrapper.style.display = "none";
     if (changeWrapper) changeWrapper.style.display = "flex";
 
+
+    // Push a new state to history
+  history.pushState({ languageBoxOpen: true }, "", "#change-language");
 }
+
+
+// Restore when back button is clicked
+window.addEventListener("popstate", (event) => {
+  const desktopWrapper = document.querySelector(".index-content-wrapper-DESKTOP") as HTMLElement | null;
+  const mobileWrapper = document.querySelector(".index-content-wrapper-MOBILE") as HTMLElement | null;
+  const changeWrapper = document.querySelector(".change-language-wrapper") as HTMLElement | null;
+
+  if (event.state?.languageBoxOpen) {
+    // If state indicates the language box, show it
+    if (desktopWrapper) desktopWrapper.style.display = "none";
+    if (mobileWrapper) mobileWrapper.style.display = "none";
+    if (changeWrapper) changeWrapper.style.display = "flex";
+  } else {
+    // Otherwise, revert to original content
+    if (desktopWrapper) desktopWrapper.style.display = "grid";
+    if (mobileWrapper) mobileWrapper.style.display = "none";
+    if (changeWrapper) changeWrapper.style.display = "none";
+  }
+});

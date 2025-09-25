@@ -109,7 +109,7 @@
   font-display: swap;
 }
 html {
-  font-size: 16px;
+  font-size: 24px;
 }
 
 body {
@@ -131,6 +131,10 @@ h2 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
+div {
+  font-size: 1rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -145,7 +149,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
+.ux-grid, .captivating-moments-img-grid, .empowering-wrapper, .empowering, .new-top-bar-grid, .table-entry, .item-further, .item-learn-or-buy, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -742,12 +746,12 @@ button:hover {
 .top-bar-row-grid {
   grid-template-columns: auto;
   grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
-  padding-top: 20px;
 }
 
 .top-bar-row-1-grid {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  margin-top: 20px;
 }
 
 .top-bar-row-2-grid {
@@ -763,6 +767,12 @@ button:hover {
 .top-bar-row-4-grid {
   grid-template-columns: 0.5fr 0.5fr;
   grid-template-rows: auto;
+}
+
+.top-bar-row-5-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin-bottom: 20px;
 }
 
 .top-bar-item-wrapper {
@@ -900,16 +910,24 @@ button:hover {
   width: 100%;
   border: solid white 1px;
   border-radius: 12px;
-  height: 100px;
+  max-width: 360px;
 }
 
 .language-upper-section {
   grid-template-columns: 0.5fr 0.5fr;
   grid-template-rows: auto;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .language-lower-section {
   height: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .language-dropdown {

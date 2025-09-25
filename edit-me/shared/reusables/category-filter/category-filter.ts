@@ -22,54 +22,6 @@ function handleSortClicked(){
 
 //----------------------------------
 
-/**
- * Rearranges elements visually using the CSS Flexbox 'order' property.
- * This is very fast as it only changes visual order, not the DOM structure.
- */
-// function reorderItemsWithFlexbox() {
-//     console.log("reordering items");
-// 
-//     // 1. Define your desired order using unique keywords from the image sources.
-//     const desiredOrder = ['table', 'boot', 'sapp-boot'];
-// 
-//     // 2. Grab all the elements you want to sort.
-//     const allItems = document.querySelectorAll('.table-entry');
-// 
-//     // If there's nothing to sort, we can stop.
-//     if (allItems.length === 0) {
-//         return;
-//     }
-// 
-//     // 3. Get the parent container and apply flexbox styles directly.
-//     // This turns on the flexbox layout, enabling the `order` property to work.
-//     const container = document.getElementById('products-wrapper'); // Using the wrapper ID
-//     container.style.display = 'flex';
-//     container.style.flexDirection = 'column';
-// 
-//     // 4. Loop through all the items found on the page.
-//     for (let i = 0; i < allItems.length; i++) {
-//         const entry = allItems[i];
-//         const image = entry.querySelector('.item-images');
-//         const imageSource = image.src;
-//         
-//         // Find the position of this item in our desiredOrder array.
-//         // The `findIndex` method returns the index (0, 1, 2, etc.) or -1 if not found.
-//         const order = desiredOrder.findIndex(function(keyword) {
-//             return imageSource.includes(keyword);
-//         });
-// 
-//         // 5. Apply the order directly to the element's style.
-//         // If an item isn't in our list, we can give it a high order number to send it to the end.
-//         if (order !== -1) {
-//             entry.style.order = order;
-//         } else {
-//             entry.style.order = 99; // Put unsorted items last
-//         }
-//     }
-//     console.log("reordered items");
-// }
-
-
 function reorderItemsWithFlexbox(): void {
     console.log("reordering items");
     
@@ -124,6 +76,7 @@ function reorderItemsWithFlexbox(): void {
 // ===============================================
 // ===============================================
 // ===============================================
+
 const ALL_CATEGORY_NAME = "all"
 const filters_being_shown = ALL_CATEGORY_NAME
 

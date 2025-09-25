@@ -202,12 +202,30 @@ $page-header-lateral-padding:20px;
 
 $section-intro-margin:20px 0px 0px 0px;
 
+
+$font-size-xl:3rem;
+$font-size-l:2.5rem;
+$font-size-m-l:2rem;
+$font-size-m:1.5rem;
+$font-size-s-m:1.25rem;
+$font-size-s:1rem;
+$font-size-xs:0.75rem;
+
+
+$spacing-xl: 50px;
+$spacing-l: 30px;
+$spacing-m-l: 25px;
+$spacing-m: 20px;
+$spacing-s-m: 15px;
+$spacing-s: 10px;
+$spacing-xs: 5px;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 html{
-	font-size:16px;
+	font-size:24px;
 }
 
 body {
@@ -229,6 +247,10 @@ h2{
 	font-family: $sylexiad-bold;
 }
 
+div{
+  font-size: $font-size-s;
+}
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -244,22 +266,6 @@ button:hover {
 }
 
 
-$font-size-xl:3rem;
-$font-size-l:2.5rem;
-$font-size-m-l:2rem;
-$font-size-m:1.5rem;
-$font-size-s-m:1.25rem;
-$font-size-s:1rem;
-$font-size-xs:0.75rem;
-
-
-$spacing-xl: 50px;
-$spacing-l: 30px;
-$spacing-m-l: 25px;
-$spacing-m: 20px;
-$spacing-s-m: 15px;
-$spacing-s: 10px;
-$spacing-xs: 5px;
 
 //primary = purple = (73, 61, 175) = #493DAF
 //secondary = pinkyRed = (255, 37, 80) = #FF2550
