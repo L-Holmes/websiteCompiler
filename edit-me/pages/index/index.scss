@@ -125,6 +125,28 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 }
 
 // -------------------------------------------
+.open-page-centred-box-DESKTOP{
+  @extend .button-hitbox;
+  justify-content: center; /* left align horizontally */
+  align-items: center; /* align to the top (vertical) */
+
+  padding-left:20%;
+  padding-right:20%;
+}
+
+.open-page-left-box-DESKTOP{
+  @extend .button-hitbox;
+  justify-content: center; /* left align horizontally */
+  align-items: center; /* align to the top (vertical) */
+  padding-left:40%; 
+}
+
+.open-page-right-box-DESKTOP{
+  @extend .button-hitbox;
+  justify-content: center; /* left align horizontally */
+  align-items: center; /* align to the top (vertical) */
+  padding-right:40%; 
+}
 
 .open-page-top-left-box-DESKTOP{
   @extend .button-hitbox;
@@ -213,7 +235,7 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 		height:1250px;
 		height:auto;
 		grid-template-columns: auto; 
-		grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
+		grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
 	}
 }
 
@@ -415,26 +437,31 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 .top-bar-row-grid{
 	@extend .ux-grid;	
 	grid-template-columns: auto; 
-    grid-template-rows: 0.2ft 0.3fr 0.5fr;
+    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
     padding-top:20px;
 }
 
-
 .top-bar-row-1-grid{
 	@extend .ux-grid;	
-	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+	grid-template-columns:1fr; 
 	grid-template-rows: auto;
 }
 
 .top-bar-row-2-grid{
 	@extend .ux-grid;	
-	grid-template-columns: 0.45fr 0.1fr 0.45fr; 
+    grid-template-columns: 0.5fr 0.5fr; 
 	grid-template-rows: auto;
 }
 
 .top-bar-row-3-grid{
 	@extend .ux-grid;	
-	grid-template-columns: 0.33fr 0.33fr 0.33fr; 
+    grid-template-columns: 0.5fr 0.5fr; 
+	grid-template-rows: auto;
+}
+
+.top-bar-row-4-grid{
+	@extend .ux-grid;	
+	grid-template-columns: 0.5fr 0.5fr; 
 	grid-template-rows: auto;
 }
 
@@ -573,22 +600,6 @@ $search-shadow: rgba(0, 0, 0, 0.06);
 }
 
 // --- END OF GRID --- 
-
-// --- SHOWING THAT THE PAGE IS WORKING + ADDING SOME VISUAL INTEREST ---
-
-.pulse {
-    width: 8px;
-    height: 8px;
-    background: #f5f5f5;
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.55; }
-
-}
 
 
 // -- BUTTON WITH BIG HIT BOX -- 
