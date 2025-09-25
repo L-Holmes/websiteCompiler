@@ -439,6 +439,7 @@ function _getAllChildren(parentFilterThatWasClicked) {
 function _getAllDescendants(parentFilterThatWasClicked) {
     // get all entries from filterTiers that have the parentFilterThatWasClicked as an ancestor
     // i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
+    // @return an array of the descendant's names
     // e.g. if 'tables.colours' was the parent, then it will return:  
     // const descendantTiers = ["tables.colours.red",
     // 						   "tables.colours.blue", 
@@ -447,7 +448,6 @@ function _getAllDescendants(parentFilterThatWasClicked) {
     // 						   "tables.colours.blue.lightblue",
     // 						   "tables.colours.orange.tangerine",
     // 						   "tables.colours.orange.tangerine.juicy"]
-    // @return an array of the descendant's names
     let descendantTiers;
     if (parentFilterThatWasClicked === "all") {
         // Show all filters except 'all' itself
@@ -673,7 +673,6 @@ function _getFilterCategoryFromUnderFilter(element) {
     // Use the existing function to get the category from the filter sticker
     return _getFilterCategory(filterSticker);
 }
-// function _get_fresh_filter_tiles(html_wrapper_class) {
 // 	/*
 //    - hides all of the filter tiles
 //    - @returns the filter tiles

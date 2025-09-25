@@ -514,3 +514,15 @@ if (currentTier > 1) {
 // 		????????????
 // 	Then perhaps, when showing tiers 2 and higher, you show the parent category, and then all of the subcategories under it? (to show that link?)
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// LANGUAGE STUFF
+function openLanguageBox() {
+    const desktopWrapper = document.querySelector(".index-content-wrapper-DESKTOP");
+    const mobileWrapper = document.querySelector(".index-content-wrapper-MOBILE");
+    const changeWrapper = document.querySelector(".change-language-wrapper");
+    if (desktopWrapper)
+        desktopWrapper.style.display = "none";
+    if (mobileWrapper)
+        mobileWrapper.style.display = "none";
+    if (changeWrapper)
+        changeWrapper.style.display = "flex";
+}
