@@ -1,14 +1,5 @@
 @use "<root>/shared/global.scss"  as *;
 
-.temp{
-  display:none;
-}
-
-$jumping-boy-width: 50vw;
-$jumping-boy-width-mobile: 55vw;
-$mobile-jumping-boy-vert-offset: 80px;
-$tiny-mobile-jumping-boy-vert-offset: 100px;
-
 .index-main-wrapper{
   @extend .horizontally-centre;	
   height:100vh;
@@ -23,116 +14,13 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 	}
 }
 
-.intro-para-mobile{
-    margin-top: 20px;
-    margin-right: 40vw;
-}
-
-.left-item-DESKTOP{
-  padding-left:0%;
-
-  @media screen and (min-width: 700px) {
-    padding-left:25%;
-  }
-}
-
-
-.right-item-DESKTOP{
-  padding-right:0%;
-
-  @media screen and (min-width: 700px) {
-    padding-right:25%;
-  }
-}
-
-
-.last-item-takes-remaining-vert-space{
-	display: grid;
-	grid-template-rows: auto auto 1fr; /* First two rows take content height, third row takes remaining space */
-	height: 100%;
-	overflow-y:hidden;
-}
-
-.jumping-boy-img{
-	position:absolute;
-	right:0px; 
-	top:$top-bar-height;
-	width:$jumping-boy-width;
-	height:auto;
-	z-index: -1; //put underneath the top bar
-
-	@media screen and (max-width: 720px){
-		display:none;
-	}
-}
-
-
-.jumping-boy-img-mobile{
-	display:none;
-
-	@media screen and (max-width: 720px){
-		display:block;
-
-		position:absolute;
-		right:0px; 
-		height:auto;
-		z-index: -1; //put underneath the top bar
-
-
-		top:calc(#{$top-bar-height} + #{$mobile-jumping-boy-vert-offset});
-		width:70vw;
-	}
-
-	@media screen and (max-width: 601px){
-      display: none;
-	}
-}
-
-.jumping-boy-img-mobile-small{
-    display:none;
-
-	@media screen and (max-width: 600px){
-		display:block;
-
-		position:absolute;
-		right:0px; 
-		height:auto;
-		z-index: -1; //put underneath the top bar
-
-
-		top:calc(#{$top-bar-height} + #{$mobile-jumping-boy-vert-offset} + #{$tiny-mobile-jumping-boy-vert-offset});
-		width:$jumping-boy-width-mobile;
-	}
-}
-
-.juggle-pins-decor-wrapper{
-
-	height:100%;
-	overflow-y:hidden;
-	overflow-x:hidden;
-
-	@media screen and (max-width: 480px){
-		display:none;
-	}
-}
-
-.juggle-pins-decor{
-	margin: 60px 0px 0px 20px; //top right bottom left
-	height: 86.5%;
-
-	overflow-y:hidden;
-	min-height:400px;
-}
-
 // -------------------------------------------
 .open-page-centred-box-DESKTOP{
   @extend .button-hitbox;
   justify-content: center; /* left align horizontally */
   align-items: center; /* align to the top (vertical) */
-
-  padding-left:20%;
-  padding-right:20%;
 }
+
 
 .open-page-left-box-DESKTOP{
   @extend .button-hitbox;
@@ -148,274 +36,97 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
   padding-right:40%; 
 }
 
-.open-page-top-left-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .left-item-DESKTOP;
-  justify-content: flex-start; /* left align horizontally */
-  align-items: flex-start; /* align to the top (vertical) */
-}
-
-.open-page-top-middle-box-DESKTOP{
-  @extend .button-hitbox;
-  justify-content: center; /* left align horizontally */
-  align-items: flex-start; /* align to the top (vertical) */
-}
-
-.open-page-top-right-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .right-item-DESKTOP;
-  justify-content: flex-end; /* left align horizontally */
-  align-items: flex-start; /* align to the top (vertical) */
-}
-
-.open-page-middle-left-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .left-item-DESKTOP;
-  justify-content: flex-start; /* left align horizontally */
-  align-items: center; /* align to the top (vertical) */
-}
-
-.open-page-middle-middle-box-DESKTOP{
-  @extend .button-hitbox;
-  justify-content: center; /* left align horizontally */
-  align-items: center; /* align to the top (vertical) */
-}
-
-.open-page-middle-right-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .right-item-DESKTOP;
-  justify-content: flex-end; /* left align horizontally */
-  align-items: center; /* align to the top (vertical) */
-}
-
-.open-page-bottom-left-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .left-item-DESKTOP;
-  justify-content: flex-start; /* left align horizontally */
-  align-items: flex-end; /* align to the top (vertical) */
-}
-
-.open-page-bottom-middle-box-DESKTOP{
-  @extend .button-hitbox;
-  justify-content: center; /* left align horizontally */
-  align-items: flex-end; /* align to the top (vertical) */
-}
-
-.open-page-bottom-right-box-DESKTOP{
-  @extend .button-hitbox;
-  @extend .right-item-DESKTOP;
-  justify-content: flex-end; /* left align horizontally */
-  align-items: flex-end; /* align to the top (vertical) */
-}
 
 // -------------------------------------------
 
-.captivating-moments-img-grid{
-	@extend .ux-grid;
-	grid-template-columns: 0.5fr 0.5fr; 
-	grid-template-rows: 0.5fr 0.5fr;
-	height:auto;
-
-	@media screen and (max-width: 1220px){
-		height:850px;
-		height:auto;
-	}
-
-	@media screen and (max-width: 1050px){
-		height:700px;
-		height:auto;
-	}
-
-	@media screen and (max-width: 825px){
-		height:550px;
-		height:auto;
-	}
-
-	@media screen and (max-width: 720px){
-		height:1250px;
-		height:auto;
-		grid-template-columns: auto; 
-		grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
-	}
-}
-
-.empowering-wrapper{
-	@extend .ux-grid;
-	grid-template-columns: auto; 
-	grid-template-rows: 0.5fr 0.5fr;
-
-	height:auto;
-}
-
-.empowering{
-	@extend .ux-grid;
-	grid-template-columns: 0.5fr 0.5fr; 
-	grid-template-rows: auto;
-
-	@media screen and (max-width: 720px){
-		grid-template-columns: auto; 
-		grid-template-rows: 0.5fr 0.5fr;
-	}
-}
-
-
 //================================================
 
-/* Background GIF styles */
-.background-container {
-    //position: fixed;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-}
+// /* Background GIF styles */
+// .background-container {
+    // //position: fixed;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100vh;
+    // z-index: -1;
+    // overflow: hidden;
+// }
+// 
+// .background-gif {
+    // width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+    // display: block;
+    // position: fixed;         
+// }
+// 
+// /* Hide mobile GIF by default */
+// .background-gif.mobile {
+    // display: none;
+// }
+// 
+// 
+// /* Center logo and title */
+// .opening-centre-logo-wrapper {
+    // height: 35vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
+    // padding: 1rem;
+// }
+// 
+// .opening-centre-logo {
+  // width: 200px;
+  // height: 200px;
+  // background-image: url('/shared/images/page-images/startpage/logo-alt.avif');
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // // margin-bottom: 2rem;
+// }
+// 
+// .opening-title {
+    // font-size: 4rem;
+    // color: white;
+    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    // font-family: $cormorant-light;
+// }
+// 
+// /* Content below the hero section */
+// .content {
+    // background-color: #121212;
+    // position: relative;
+    // z-index: 1;
+    // padding: 2rem;
+    // min-height: 100vh;
+// }
+// 
+// /* Mobile styles */
+// @media (max-width: 768px) {
+    // .background-gif.desktop {
+        // display: none;
+    // }
+// 
+    // .background-gif.mobile {
+        // display: block;
+    // }
+// 
+    // .navbar {
+        // padding: 0.5rem;
+    // }
+// 
+    // .nav-item span {
+        // font-size: 0.9rem;
+    // }
+// 
+    // .main-title {
+        // font-size: 2rem;
+    // }
+// }
 
-.background-gif {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    position: fixed;         
-}
-
-/* Hide mobile GIF by default */
-.background-gif.mobile {
-    display: none;
-}
-
-
-/* Center logo and title */
-.opening-centre-logo-wrapper {
-    height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-}
-
-.opening-centre-logo {
-  width: 200px;
-  height: 200px;
-  background-image: url('/shared/images/page-images/startpage/logo-alt.avif');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  // margin-bottom: 2rem;
-}
-
-.opening-title {
-    font-size: 4rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-family: $cormorant-light;
-}
-
-/* Content below the hero section */
-.content {
-    background-color: #121212;
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
-    min-height: 100vh;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-    .background-gif.desktop {
-        display: none;
-    }
-
-    .background-gif.mobile {
-        display: block;
-    }
-
-    .navbar {
-        padding: 0.5rem;
-    }
-
-    .nav-item span {
-        font-size: 0.9rem;
-    }
-
-    .main-title {
-        font-size: 2rem;
-    }
-}
-
-.top-bar-logo{
-  width: 50px;
-
-}
-
-.new-top-bar-grid{
-	@extend .ux-grid;	
-	grid-template-columns: 0.25fr 0.25fr 0.25fr 0.25fr; 
-	grid-template-rows: auto;
-	height:auto;
-}
-
-.opening-page-content-wrapper{
-  @extend .centre-wrapper;	
-  background-color:#121212;
-  margin-top: -10px; // fixes weird gap bug between this and transition divider
-}
-
-.wavy-divider{
-  width:100%;
-  height:300px;
-}
-
-// =================
-// TABLE STUFF
-// =================
-.table-entry{
-	@extend .ux-grid;	
-	grid-template-columns: auto; 
-	grid-template-rows: 0.1fr 0.1fr 0.8fr;
-	height:auto;
-    border-top: solid black 1px;
-    border-bottom: solid black 1px;
-}
-
-.item-title{
-
-}
-
-.item-stats{
-
-}
-
-.item-further{
-    @extend .ux-grid;	
-	grid-template-columns: 0.1fr 0.7fr 0.2fr; 
-	grid-template-rows: auto;
-	height:auto;
-}
-
-.item-images{
-  width: 80px;
-  height: 80px;
-}
-
-.item-description{
-
-}
-
-.item-learn-or-buy{
-	@extend .ux-grid;	
-	grid-template-columns: auto; 
-	grid-template-rows: 0.5fr 0.5fr;
-	height:auto;
-    padding: 5px 5px 5px 5px;
-}
-
-
-// =================================================
 
 // ==============================================
 // OLD TOP BAR STUFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -444,7 +155,6 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 	@extend .ux-grid;	
 	grid-template-columns:1fr; 
 	grid-template-rows: auto;
-    margin-top:20px;
 }
 
 .top-bar-row-2-grid{
@@ -485,67 +195,43 @@ $tiny-mobile-jumping-boy-vert-offset: 100px;
 // Self-contained search bar
 // -------------------------
 
-$search-height: 6vh;       // relative to screen height
-$search-radius: 12px;      // soft rounded corners
-$search-border: #d1d5db;
-$search-text: #111827;
-$search-placeholder: #6b7280;
-$search-focus: #7c5cff;
-$search-shadow: rgba(0, 0, 0, 0.06);
+.search-bar-wrapper{
+  width:55%;
+}
 
-.search-bar {
-  width: 80%;              // relative to parent grid cell
-  height: $search-height;
-
-  display: flex;
-  align-items: center;
-
-  border: 1px solid $search-border;
-  border-radius: $search-radius;
-  box-shadow: 0 2px 8px $search-shadow;
-
-  // contain itself, no margin bleed
-  margin: 0 auto;          // centers it inside the grid cell
-  box-sizing: border-box;
-
-  &:focus-within {
-    border-color: $search-focus;
-    box-shadow: 0 0 0 2px rgba($search-focus, 0.25);
-  }
+.search-container {
+  position: relative;
+  width: 100%;
+  height: 48px;
 }
 
 .search-input {
-  flex: 1 1 auto;
-  border: none;
-  outline: none;
+  width: 100%;
   height: 100%;
-  padding: 0 0.75rem;
-  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  outline: none;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 40px;
   background: transparent;
   color:$text-colour-primary;
-
-  &::placeholder {
-    color: $search-placeholder;
-  }
 }
 
-.search-button {
-  background: none;
-  border: none;
+.search-input:focus {
+  border-color: #666;
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  padding: 0 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
-    stroke: $search-placeholder;
-    fill: none;
-    stroke-width: 2;
-  }
 }
+
 
 
 

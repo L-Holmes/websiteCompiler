@@ -23,16 +23,17 @@
 
                     <div class="top-bar-row-1-grid">
                         <div class="open-page-centred-box-DESKTOP">
-                            <form class="search-bar open-page-top-left-box-DESKTOP" action="/search" method="get" role="search">
-                                <input type="search" name="q" class="search-input" placeholder="Search..." aria-label="Search" />
-                                <button class="search-button" type="submit" aria-label="Submit search">
-                                    <!-- Simple magnifying glass -->
-                                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <circle cx="11" cy="11" r="7" />
-                                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
-                                    </svg>
-                                </button>
-                            </form>
+
+                            <div class="search-bar-wrapper">
+                            <div class="search-container">
+                              <input type="text" class="search-input" placeholder="Search...">
+                              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" onclick="document.querySelector('.search-input').focus()">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                              </svg>
+                            </div>
+                            </div>
+
                         </div>
 
                     </div>
