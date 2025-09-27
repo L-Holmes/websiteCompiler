@@ -1,5 +1,12 @@
+
+- remove top bar from the products page
+- add the updated sorting etc. system for the products page
+    - (i.e. the 
+- make the on-click of the flags of the language selection redirect back to the main page, but at /en-index.html...
+- 
+- sort out the mobile version of opening page. 
+
 TODO;
-- sort out the search bar on deskptop
 - make language selection look nicer
 - Make language selection functional
 - Make increase text size functional
