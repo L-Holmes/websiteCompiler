@@ -196,7 +196,7 @@ fn report_missing_file_error(file_path: &std::path::Path, component_name: &str, 
 // === HTML COMPONENTS ===
 
 /// Recursively finds and replaces HTML component tags with their corresponding HTML, CSS, and JS.
-pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Path, re_start: &str, re_end: &str, root_placeholder: &str, template_prefix: &str, none_prefix: &str, re_param_s: &str, re_param_e: &str,) -> Result<()> {
+pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Path, re_start: &str, re_end: &str, root_placeholder: &str, template_prefix: &str, none_prefix: &str, re_param_s: &str, re_param_e: &str, display_name_placeholder_start: &str, display_name_placeholder_end: &str) -> Result<()> {
     if !html_file.is_file() { return Ok(()); }
 
     let mut content = fs::read_to_string(html_file)?;
@@ -204,8 +204,6 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
     
     let component_regex = Regex::new(&format!(r"{}([a-zA-Z0-9_-]+)([^>]*){}", regex::escape(re_start), regex::escape(re_end)))?; // Regex to find a component tag, its name, and the full parameters string.
     let param_regex = Regex::new(r#"(?P<key>[a-zA-Z0-9_-]+)=(?P<value>'[^']*'|"[^"]*"|[^\s'"]+)"#)?; // Regex to find individual key="value" or key='value' pairs within the parameters string.
-    let param_component_regex = Regex::new(&format!(r"{}(.*?){}", regex::escape(re_param_s), regex::escape(re_param_e)))?; // Regex to find a param component, wrapped by re_param_s and re_param_e.
-
 
     // It keeps processing the file until no more component tags can be found.
     loop {
@@ -305,6 +303,13 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
             // e.g. They may have added '{title}' to represent the location where they would like the value of 'title' to be inserted.
             let placeholder = format!("{}{}{}", re_param_s, key, re_param_e);
             processed_html = processed_html.replace(&placeholder, &value);
+
+            // Do the same as the above, but for string representations of params.
+            //  -> e.g. if the 'key' is 'animals.mammals.blue_whale.jpg'
+            //  -> Instead of subbing in 'animals.mammals.blue_whale.jpg', it will sub in: 'Blue whale'
+            let extracted_name: String = extract_display_name_from_filepath(&value);
+            let placeholder2 = format!("{}{}{}", display_name_placeholder_start, key, display_name_placeholder_end);
+            processed_html = processed_html.replace(&placeholder2, &extracted_name);
         }
         // --------------------------------------------------------------------------------------------------
 
@@ -341,6 +346,57 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
 
     fs::write(html_file, content)?;
     Ok(())
+}
+
+
+/// Extracts a human-readable display name from a dot-separated filepath.
+/// 
+/// This function takes a filepath like 'animals.mammals.blue_whale.jpg' and extracts
+/// the penultimate (second-to-last) segment, converts underscores to spaces, and 
+/// formats it in title case.
+/// 
+/// # Arguments
+/// * `filepath` - A string slice representing a dot-separated filepath
+/// 
+/// # Returns
+/// A `String` containing the formatted display name
+/// 
+/// # Examples
+/// ```
+/// let name = extract_display_name_from_filepath("animals.mammals.blue_whale.jpg");
+/// assert_eq!(name, "Blue Whale");
+/// 
+/// let name = extract_display_name_from_filepath("single_word");
+/// assert_eq!(name, "Single Word");
+/// ```
+fn extract_display_name_from_filepath(filepath: &str) -> String {
+    let parts: Vec<&str> = filepath.split('.').collect();
+    
+    let target_part: &str = if parts.len() >= 2 {
+        // Get the penultimate (second to last) part
+        parts[parts.len() - 2]
+    } else {
+        // If there's only one part or no parts, use the entire filepath
+        filepath
+    };
+    
+    // Replace underscores with spaces and convert to title case
+    target_part
+        .replace('_', " ")
+        .split_whitespace()
+        .map(|word: &str| -> String {
+            let mut chars = word.chars();
+            match chars.next() {
+                None => String::new(),
+                Some(first) => {
+                    let uppercase_first: String = first.to_uppercase().collect();
+                    let lowercase_rest: String = chars.as_str().to_lowercase();
+                    uppercase_first + &lowercase_rest
+                }
+            }
+        })
+        .collect::<Vec<String>>()
+        .join(" ")
 }
 
 

@@ -1,16 +1,12 @@
 
+<h2> Filter </h2>
+
 <div class="filter-parent-top-bar">
 	<r-filter-header-parent filterImage=all.avif>
 
 	<r-filter-header-parent filterImage=shoe.avif>
 	<r-filter-header-parent filterImage=boot.avif>
 	<r-filter-header-parent filterImage=table.avif>
-	<r-filter-header-parent filterImage=colours.avif>
-	<r-filter-header-parent filterImage=colours.black.avif>
-	<r-filter-header-parent filterImage=colours.brown.avif>
-	<r-filter-header-parent filterImage=colours.orange.avif>
-	<r-filter-header-parent filterImage=colours.purple.avif>
-	<r-filter-header-parent filterImage=colours.red.avif>
 </div>
 
 
@@ -24,6 +20,21 @@
 		<r-filter-sticker filterImage=shoe.avif>
 		<r-filter-sticker filterImage=boot.avif>
 		<r-filter-sticker filterImage=table.avif>
+	</div>
+
+</div>
+
+
+<div class="bar"></div>
+
+<div class="vert-spacing-s"></div>
+
+<h2> Global filters </h2>
+
+<div class="filter-outer-grid">
+
+	<div class="filter-squares-wrapper">
+
 		<r-filter-sticker-extra filterImage=colours.avif>
 		<r-filter-sticker filterImage=colours.black.avif>
 		<r-filter-sticker filterImage=colours.brown.avif>
@@ -33,16 +44,35 @@
 
 	</div>
 
-	<div class="vert-spacing-s"></div>
-
-	<button onclick="filterItems()" class="filter-search-button" add-text-section="filter-search"></button>
 </div>
 
+<div class="vert-spacing-s"></div>
 
+<button onclick="filterItems()" class="filter-search-button" add-text-section="filter-search"></button>
 
 <div class="vert-spacing-s"></div>
 
 <button onclick="handleSortClicked()" id="reorderButton">Reorder Items</button>
+
+<div class="vert-spacing-s"></div>
+
+<h2> Products </h2>
+
+<div class="sort-products">
+    <div> Price high to low </div>
+    <div> Price low to high </div>
+    <div> Date added</div>
+</div>
+
+<div class="vert-spacing-s"></div>
+
+<h2> Blogs </h2>
+
+<div class="sort-blogs">
+    <div> Price high to low </div>
+    <div> Price low to high </div>
+    <div> Date added</div>
+</div>
 
 <div class="vert-spacing-s"></div>
 

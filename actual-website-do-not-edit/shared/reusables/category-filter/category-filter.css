@@ -492,4 +492,10 @@ button:hover {
   height: auto;
 }
 
+.bar {
+  width: 100%; /* full width of container */
+  height: 10px; /* 10px tall */
+  background: #333; /* optional: give it a color so you can see it */
+}
+
 /*# sourceMappingURL=category-filter.css.map */

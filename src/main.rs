@@ -37,6 +37,8 @@ const RE_START: &str = "<r-"; // start of reusable html component placeholders
 const RE_END: &str = ">";
 const RE_PARAM_S: &str = "{"; // start of reusable html components parameter placeholders
 const RE_PARAM_E: &str = "}"; // end of reusable html components parameter placeholders
+const DISPL_NAME_PLACEHOLD_START: &str = "["; // start of reusable html components display name parameter placeholders
+const DISPL_NAME_PLACEHOLD_END: &str = "]";     // end of reusable html components display name parameter placeholders
 
 // --> Placeholders (restricted to be unique)
 const NEWLINE_PLACEHOLDER: char = '§';
@@ -383,7 +385,7 @@ pub fn compile_all(source_files: &HashSet<String>, translations_files: &Translat
 		// Step 4) Add reusable components to html files
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
 			// println!("4! Is a html file!");
-            replace_html_component_placeholders( &dest_uncompiled, Path::new(SOURCE_DIR), RE_START, RE_END, ROOT_PLACEHOLDER, HTML_COMPONENT_TEMPLATE_PREFIX, HTML_COMPONENT_NONE_PREFIX, RE_PARAM_S, RE_PARAM_E,)?;
+            replace_html_component_placeholders( &dest_uncompiled, Path::new(SOURCE_DIR), RE_START, RE_END, ROOT_PLACEHOLDER, HTML_COMPONENT_TEMPLATE_PREFIX, HTML_COMPONENT_NONE_PREFIX, RE_PARAM_S, RE_PARAM_E,DISPL_NAME_PLACEHOLD_START, DISPL_NAME_PLACEHOLD_END)?;
 		}
 
 		// println!("        -----------------------------");
