@@ -738,3 +738,56 @@ function filterItems() {
         }
     }
 }
+// ===================================================
+// SORTING 
+// ===================================================
+// Show the sort overlay
+function handleSortClickedNew() {
+    console.log("handle sort new clicked..");
+    const overlay = document.getElementById('sortOverlay');
+    if (overlay) {
+        overlay.style.display = 'block';
+    }
+}
+// Hide the sort overlay
+function closeSortOverlay() {
+    const overlay = document.getElementById('sortOverlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+}
+// Handle clicking on the overlay backdrop (close if clicked outside the box)
+function handleOverlayClick(event) {
+    const target = event.target;
+    if (target && target.classList.contains('sort-overlay')) {
+        closeSortOverlay();
+    }
+}
+// Sort option handlers
+function handleHighLowClicked() {
+    closeSortOverlay();
+    console.log('Price high to low selected');
+    // Add your sort logic here
+}
+function handleLowHighClicked() {
+    closeSortOverlay();
+    console.log('Price low to high selected');
+    // Add your sort logic here
+}
+function handleDateAddedClicked() {
+    closeSortOverlay();
+    console.log('Date added selected');
+    // Add your sort logic here
+}
+// Close overlay with Escape key
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        closeSortOverlay();
+    }
+});
+// Make functions available globally for onclick handlers
+window.handleSortClicked = handleSortClicked;
+window.handleOverlayClick = handleOverlayClick;
+window.handleHighLowClicked = handleHighLowClicked;
+window.handleLowHighClicked = handleLowHighClicked;
+window.handleDateAddedClicked = handleDateAddedClicked;

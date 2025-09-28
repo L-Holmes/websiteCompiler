@@ -13,9 +13,7 @@
 		<!-- Early loading critical things, end -->
 		<script defer src="shared/page_text/text-loader.js" defer></script>
 		<script defer src="products.js"></script>
-	<link rel="stylesheet" href="shared/reusables/top-bar/top-bar.css">
-<script defer src="shared/reusables/top-bar/top-bar.js"></script>
-<link rel="stylesheet" href="shared/reusables/category-filter/category-filter.css">
+	<link rel="stylesheet" href="shared/reusables/category-filter/category-filter.css">
 <script defer src="shared/reusables/category-filter/category-filter.js"></script>
 <link rel="stylesheet" href="shared/reusables/filter-header-parent/filter-header-parent.css">
 <script defer src="shared/reusables/filter-header-parent/filter-header-parent.js"></script>
@@ -27,109 +25,6 @@
 	<body>
 
         <!-- Navigation bar -->
-		<div class="centre-wrapper">
-	<div class="top-bar-row-grid">
-        <div class="top-bar-row-1-grid">
-
-            <form class="search-bar" action="/search" method="get" role="search">
-                <input type="search" name="q" class="search-input" placeholder="Search..." aria-label="Search" />
-                <button class="search-button" type="submit" aria-label="Submit search">
-                    <!-- Simple magnifying glass -->
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="11" cy="11" r="7" />
-                        <line x1="16.65" y1="16.65" x2="21" y2="21" />
-                    </svg>
-                </button>
-            </form>
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#contact">
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-contact-questions"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-contact-img" src="shared/images/page-images/startpage/questions.avif" alt="Contact Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="top-bar-row-2-grid">
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="top-bar-row-3-grid">
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a  href='products.html'>
-                <div class="centre-wrapper">
-                    <div class="top-bar-item-wrapper">
-                        <div add-text-section="top-bar-shop"></div>
-                        <div class="centre-wrapper">
-                            <img class="top-bar-img" src="shared/images/page-images/startpage/orders.avif" alt="Orders Logo" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-	</div>
-</div>
-
-
 		<div class="opening-page-content-wrapper">
 			<div class="index-main-wrapper">
 
@@ -440,17 +335,28 @@ Red
     <div> Date added</div>
 </div>
 
-<div class="vert-spacing-s"></div>
+<button class="sort-button" onclick="handleSortClickedNew()">
+    <div class="sort-img">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 6l5-4 5 4H3z" fill="white"/>
+            <path d="M3 10l5 4 5-4H3z" fill="white"/>
+        </svg>
+    </div>
+    <div class="sort-text">Sort</div>
+</button>
 
-<h2> Blogs </h2>
-
-<div class="sort-blogs">
-    <div> Price high to low </div>
-    <div> Price low to high </div>
-    <div> Date added</div>
+<!-- Sort Overlay -->
+<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
+    <div class="sort-box">
+        <div class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
+        <div class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
+        <div class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
+    </div>
 </div>
 
+
 <div class="vert-spacing-s"></div>
+
 
 <div id="products-wrapper">
     <div class="table-entry">
@@ -498,6 +404,17 @@ Red
         </div>
     </div>
 </div>
+
+<div class="vert-spacing-s"></div>
+
+<h2> Blogs </h2>
+
+<div class="sort-blogs">
+    <div> Price high to low </div>
+    <div> Price low to high </div>
+    <div> Date added</div>
+</div>
+
 
 
 

@@ -934,3 +934,68 @@ function filterItems():void{
     }
 }
 
+
+
+
+
+// ===================================================
+// SORTING 
+// ===================================================
+
+// Show the sort overlay
+function handleSortClickedNew(): void {
+    console.log("handle sort new clicked..")
+    const overlay: HTMLElement | null = document.getElementById('sortOverlay');
+    if (overlay) {
+        overlay.style.display = 'block';
+    }
+}
+
+// Hide the sort overlay
+function closeSortOverlay(): void {
+    const overlay: HTMLElement | null = document.getElementById('sortOverlay');
+    if (overlay) {
+        overlay.style.display = 'none';
+    }
+}
+
+// Handle clicking on the overlay backdrop (close if clicked outside the box)
+function handleOverlayClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target && target.classList.contains('sort-overlay')) {
+        closeSortOverlay();
+    }
+}
+
+// Sort option handlers
+function handleHighLowClicked(): void {
+    closeSortOverlay();
+    console.log('Price high to low selected');
+    // Add your sort logic here
+}
+
+function handleLowHighClicked(): void {
+    closeSortOverlay();
+    console.log('Price low to high selected');
+    // Add your sort logic here
+}
+
+function handleDateAddedClicked(): void {
+    closeSortOverlay();
+    console.log('Date added selected');
+    // Add your sort logic here
+}
+
+// Close overlay with Escape key
+document.addEventListener('keydown', function(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+        closeSortOverlay();
+    }
+});
+
+// Make functions available globally for onclick handlers
+(window as any).handleSortClicked = handleSortClicked;
+(window as any).handleOverlayClick = handleOverlayClick;
+(window as any).handleHighLowClicked = handleHighLowClicked;
+(window as any).handleLowHighClicked = handleLowHighClicked;
+(window as any).handleDateAddedClicked = handleDateAddedClicked;
