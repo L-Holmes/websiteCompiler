@@ -42,3 +42,16 @@ OLDER TODO:
     - Space accoring to vh and designs.
 - Sort out the issue with desktop now no longer centring the contents
 
+
+
+==========
+==========
+===========
+
+- make mobile landing page look like designs.
+- Implement the buttons clickable from multiple areas. + For search bar.
+- --> actually switch over to new translation system; update links, remove legacy js, etc.
+- implement filtering thing where turning off colour doesn't affect
+- implement filter saves to URL.
+- implement changing language changes the URL to en-...
+- Update the landing page on desktop- side buttons should take up the width of the entire page, but then the contents should be padded by loads so that it appears as if the buttons are in a nice legible position.
