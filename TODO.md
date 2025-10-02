@@ -23,6 +23,8 @@ TODO:
         - and vice versa for products...
 - update the compiler;
     - make it so the blogs get moved up a folder
+- make the new translation method actually carry through between pages!!!!!!!
+    - i.e. en-[page-name]
 - Review the below todo...
 
 

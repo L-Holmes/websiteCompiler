@@ -387,6 +387,19 @@ button:hover {
   padding: 0 20px;
 }
 
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+div {
+  margin-bottom: 0.5rem;
+}
+
 a {
   text-decoration: none;
 }

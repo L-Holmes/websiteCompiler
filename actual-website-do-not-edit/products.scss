@@ -117,7 +117,6 @@
 
 /* Content below the hero section */
 .content {
-    background-color: black;
     position: relative;
     z-index: 1;
     padding: 2rem;
@@ -161,7 +160,6 @@
 
 .opening-page-content-wrapper{
   @extend .centre-wrapper;	
-  background-color:black;
   margin-top: -10px; // fixes weird gap bug between this and transition divider
 }
 

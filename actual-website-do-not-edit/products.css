@@ -504,7 +504,6 @@ button:hover {
 
 /* Content below the hero section */
 .content {
-  background-color: black;
   position: relative;
   z-index: 1;
   padding: 2rem;
@@ -540,7 +539,6 @@ button:hover {
 }
 
 .opening-page-content-wrapper {
-  background-color: black;
   margin-top: -10px;
 }
 
