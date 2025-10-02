@@ -1,3 +1,32 @@
+
+TODO:
+- on the products page:
+    - Update the typescript code;
+        - Full = all three boxes light blue background
+        - Partial = bottom two boxes only light blue background
+        - None = all boxes see through
+    - Make the entire upper third section the button, which activates the 'on select' click...
+    - Add hover effect:
+        - Dark blue
+        - text turns dark yellow
+- work on the blogs
+    - get the blogs all importing the global blogs css 
+    - add css for basic text centre-ing etc.
+- back to filters:
+    - merge all filter stickers into a single file. Then use my new code to sub-in / out the things we do / don't want...
+        - could maybe even do that with the class of the top bar?!?!?!?!?!?!?!?
+    - sort out the text overflow graphical issues
+        - make the description text smaller...
+        - add bold etc. where necessary
+    - Add the seperation between the global filters and the regular filters...
+    - Add logic to hide blogs if there are no blogs to show
+        - and vice versa for products...
+- update the compiler;
+    - make it so the blogs get moved up a folder
+- Review the below todo...
+
+
+
 to summarise:
 
 # products <sort>
@@ -10,11 +39,8 @@ to summarise:
 
 ===================================================================
 
-- remove top bar from the products page
 - add the updated sorting etc. system for the products page
     - (i.e. the 
-- make the on-click of the flags of the language selection redirect back to the main page, but at /en-index.html...
-- 
 - sort out the mobile version of opening page. 
 
 TODO;
@@ -49,9 +75,10 @@ OLDER TODO:
 ===========
 
 - make mobile landing page look like designs.
-- Implement the buttons clickable from multiple areas. + For search bar.
+- make search bar clickable from anywhere
 - --> actually switch over to new translation system; update links, remove legacy js, etc.
 - implement filtering thing where turning off colour doesn't affect
 - implement filter saves to URL.
 - implement changing language changes the URL to en-...
 - Update the landing page on desktop- side buttons should take up the width of the entire page, but then the contents should be padded by loads so that it appears as if the buttons are in a nice legible position.
+

@@ -1,4 +1,4 @@
-<div class="filter-main-wrapper">
+<!-- <div class="filter-main-wrapper">
 	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
 		<div class="filter-tile-content">
 			<div class="filter-tile-sticker">
@@ -14,4 +14,41 @@
 		</div>
 	</div>
 </div>
-[filterImage]
+[filterImage] -->
+
+
+<div class="filter-main-wrapper">
+
+    <div class="centred-with-bottom-border"> 
+        <div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
+            <div class="centre-wrapper"> 
+                <div>[filterImage]</div>
+            </div>
+
+            <div class="centre-wrapper"> 
+                <img class="filter-icon" src="../../../shared/images/filtering/filters/{filterImage}" alt="filter-img" loading="lazy"> 
+            </div>
+        </div>
+    </div>
+    <div class="centred-with-bottom-border"> 
+        <div class="filter-further-wrapper" onclick="filterFurtherClicked(this)">
+            <div class="centre-wrapper">
+                <div> Filter </div>
+            </div>
+            <div class="filter-further-description-wrapper"> 
+                <div class="filter-further-description-content">e.g. Colours, features, etc. </div>
+            </div>
+            <div class="filter-under-filter-wrapper" onclick="filterIconClicked(this)" style="cursor: pointer;">
+                <img class="filter-under-filter" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy"> 
+            </div>
+        </div>
+    </div>
+    <div class="centred-with-bottom-border"> 
+        <div class="more-info-wrapper" onclick="filterFurtherClicked(this)">
+            <div class="centre-wrapper">
+                <a> More information </a>
+            </div>
+        </div>
+    </div>
+
+</div>

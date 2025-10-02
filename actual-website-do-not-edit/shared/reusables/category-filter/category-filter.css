@@ -149,7 +149,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .filter-main-wrapper, .filter-tile-img-wrapper, .ux-grid-specific {
+.ux-grid, .filter-tile-img-wrapper, .filter-main-wrapper, .filter-sticker, .filter-further-wrapper, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -159,12 +159,13 @@ button:hover {
   grid-template-rows: 0.25fr 0.5fr 0.25fr;
 }
 
-.centre-wrapper, .filter-under-filter-wrapper, .filter-parent-top-bar {
+.centre-wrapper, .filter-under-filter-wrapper, .filter-parent-top-bar, .centred-with-bottom-border {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  min-width: 0;
 }
 
 .centre-at-top-wrapper {
@@ -380,11 +381,6 @@ button:hover {
   overflow-y: hidden;
 }
 
-.filter-main-wrapper {
-  grid-template-columns: auto;
-  grid-template-rows: 0.8fr 0.2fr;
-}
-
 .filter-squares-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -399,12 +395,6 @@ button:hover {
 .info-img {
   max-width: 100%;
   max-height: 100%;
-}
-
-.filter-icon {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .filter-tile {
@@ -453,16 +443,6 @@ button:hover {
   height: 100%;
   width: 100%;
   overflow: hidden;
-}
-
-.filter-sticker {
-  background-image: url("../../../shared/images/filtering/test-tube-full.avif");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 70px;
-  height: 75px;
-  cursor: pointer; /* Makes it clear it's clickable */
 }
 
 .filter-search-button {
@@ -578,6 +558,53 @@ button:hover {
 
 .sort-option.active:hover {
   background-color: #0056b3;
+}
+
+.filter-main-wrapper {
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr 0.4fr 0.1fr;
+  border: solid white 1px;
+  border-radius: 12px;
+  width: 200px;
+}
+
+.filter-sticker {
+  grid-template-columns: auto;
+  grid-template-rows: 0.3fr 0.7fr;
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.filter-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.filter-further-wrapper {
+  grid-template-columns: auto;
+  grid-template-rows: 0.3fr 0.2fr 0.5fr;
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.more-info-wrapper {
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.centred-with-bottom-border {
+  border-bottom: solid white 1px;
+}
+
+.filter-further-description-content {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: scroll;
+  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=category-filter.css.map */

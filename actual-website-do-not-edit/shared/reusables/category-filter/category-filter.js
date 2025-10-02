@@ -2,6 +2,11 @@
 // RULES & CHECKS
 // - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
 // - The names of the images of all items must be contained as keys in the 'allItems' map here. 
+// '.filter-header-main-wrapper' 
+// '.filter-main-wrapper'       
+// ".table-entry"                                   
+// ".item-images"                                     
+// ".filter-sticker"
 // ===============================================
 // FILTERING 
 const filters = ["price_high_to_low", "price_low_to_high", "date_added"];
@@ -16,7 +21,7 @@ function reorderItemsWithFlexbox() {
     // 1. Define your desired order using unique keywords from the image sources.
     const desiredOrder = ['table', 'boot', 'sapp-boot'];
     // 2. Grab all the elements you want to sort.
-    const nodeList = document.querySelectorAll('.table-entry');
+    const nodeList = document.querySelectorAll(ITEM_WRAPPER_CLASS);
     const allItems = Array.from(nodeList).map(el => el);
     // If there's nothing to sort, we can stop.
     if (allItems.length === 0) {
@@ -59,6 +64,7 @@ const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-header-main-wrapper'; // 
 const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-main-wrapper'; // HTML 'class' of the div that wraps: A filter element
 const ITEM_WRAPPER_CLASS = ".table-entry"; // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS = ".item-images"; // HTML 'class' of the img that: contains the item's image
+const REGULAR_ITEM_SELECT_WRAPPER_CLASS = ".filter-sticker";
 // Array of images to cycle through
 // each image points to the image url of the next image to show
 const SELECTED_ALL_FILTER_IMG = "/shared/images/filtering/test-tube-full.avif";
@@ -423,7 +429,7 @@ function _getAllDescendants(parentFilterThatWasClicked) {
 function _getPairedTileOrNone(element) {
     const thingBeingFilteredFor = _getFilterCategory(element);
     // Get all filter sticker elements
-    const filterElements = document.querySelectorAll('.filter-sticker');
+    const filterElements = document.querySelectorAll(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
     // Track if we've seen the original element yet
     let seenOriginal = false;
     for (const el of filterElements) {
@@ -448,7 +454,7 @@ function _findFilterElementByName(filterName) {
     we're finding the element from the name
     */
     // Get all filter sticker elements
-    const filterElements = document.querySelectorAll('.filter-sticker');
+    const filterElements = document.querySelectorAll(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
     // Check each element to see if it matches our target filter name
     for (const element of filterElements) {
         const elementFilterName = _getFilterCategory(element);
@@ -546,7 +552,7 @@ function filterHeaderReturnToParentClicked(element) {
  */
 function _updateVisibleFilterTiles(childTiers) {
     // Get all filter tiles
-    const filterTiles = document.querySelectorAll('.filter-main-wrapper');
+    const filterTiles = document.querySelectorAll(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
     // First, hide all filter tiles
     filterTiles.forEach((tile) => {
         tile.style.display = 'none';
@@ -619,7 +625,7 @@ function _getFilterCategoryFromUnderFilter(element) {
         return null;
     }
     // Find the filter-sticker element (which contains the filter icon)
-    const filterSticker = mainWrapper.querySelector('.filter-sticker');
+    const filterSticker = mainWrapper.querySelector(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
     if (!filterSticker) {
         console.warn("Filter sticker not found within the main wrapper.");
         return null;

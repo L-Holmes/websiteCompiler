@@ -1,0 +1,28 @@
+@use "<root>/shared/global.scss"  as *;
+
+// Suckless blog styles
+.blog-contents-wrapper{
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  //margin-bottom: 1em;
+}
+
+h2 {
+  //margin-bottom: 1em;
+}
+
+div {
+  //margin-bottom: 1em;
+}
+
+a {
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
