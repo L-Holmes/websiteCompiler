@@ -1,3 +1,24 @@
+TODO:
+- update the filters;
+    - switch out the logic for the image icon ->
+        -> Insteaad use my compiler logic to pass in the html as the optional argument(!)
+    - Make it so the main filter is a button, so the cursor changes when you hover over it etc.
+    - Implement the version with a big image...
+    - Update the headers etc?
+        -> change the header to just be basic text etc.. like in designs...
+        -> and remove the big square bracket-- just make it a white bottom border...
+    - Make the filter further icon also seperately clickable...
+    - Update the ts code to work with the new system...
+        -> make the outline a lighter grey when its unselected
+        -> Make it a bold white when it is selected (and possibly bold the text?)
+
+    - change the 'info' icon image to an svg with transparent background and white 'i'
+    - continue with designs;
+        - Add the 'help' about the 'info' sign and 'filter' symbol, as seen in the designs...
+        - Add the 'global' params underneath as a seperate section.
+
+
+
 
 TODO:
 - on the products page:

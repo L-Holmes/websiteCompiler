@@ -149,7 +149,7 @@ button:hover {
   background-color: transparent;
 }
 
-.ux-grid, .filter-tile-img-wrapper, .filter-main-wrapper, .filter-sticker, .filter-further-wrapper, .ux-grid-specific {
+.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -218,7 +218,7 @@ button:hover {
   width: 100%;
 }
 
-.align-centre {
+.align-centre, .filter-icon-wrapper, .sub-filter-wrapper {
   display: flex;
   justify-content: center; /* horizontal center */
   align-items: center; /* vertical center */
@@ -392,11 +392,6 @@ button:hover {
   width: 50px;
 }
 
-.info-img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
 .filter-tile {
   width: 55px;
   height: 60px;
@@ -560,14 +555,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-.filter-main-wrapper {
-  grid-template-columns: auto;
-  grid-template-rows: 0.5fr 0.4fr 0.1fr;
-  border: solid white 1px;
-  border-radius: 12px;
-  width: 200px;
-}
-
 .filter-sticker {
   grid-template-columns: auto;
   grid-template-rows: 0.3fr 0.7fr;
@@ -605,6 +592,69 @@ button:hover {
   display: inline-block;
   overflow-x: scroll;
   font-size: 0.75rem;
+}
+
+.filter-main-wrapper {
+  display: inline-flex;
+  max-width: 40vw;
+  height: auto;
+  border: solid white 1px;
+  border-radius: 12px;
+}
+@media screen and (max-width: 441px) {
+  .filter-main-wrapper {
+    max-width: 90vw;
+  }
+}
+
+.filter-icon-wrapper {
+  padding: 10px;
+}
+
+.title-and-info-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Only this wraps */
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%; /* Respect parent's max-width */
+  padding: 10px;
+}
+
+.sub-filter-wrapper {
+  border-left: solid white 1px;
+  padding: 10px;
+}
+
+.filter-icon {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+}
+
+.sub-filter-icon {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+}
+
+.info-img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .info-img {
+    display: inline;
+  }
+}
+
+.big-image-wrapper {
+  display: none;
+}
+
+.item-title {
+  display: inline; /* Makes text + icon flow together */
 }
 
 /*# sourceMappingURL=category-filter.css.map */

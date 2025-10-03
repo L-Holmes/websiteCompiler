@@ -88,11 +88,17 @@ const filters_being_shown = ALL_CATEGORY_NAME
 
 const HEADER_FILTERS=[] //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
 
+// const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'class' of the div that wraps: a header filter
+// const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'class' of the div that wraps: A filter element
+// const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
+// const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
+// const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-sticker"
+
 const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'class' of the div that wraps: a header filter
 const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'class' of the div that wraps: A filter element
 const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
-const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-sticker"
+const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-main-wrapper"
 
 
 // Array of images to cycle through
@@ -140,6 +146,23 @@ const filterTiers: Record<string, string> = {
 
 /*
 Every item that the user may choose
+PRIMARY TYPES (DEFAULT) USE 'OR' LOGIC
+    -> e.g. shows all items that are 'shoes' or 'tables'.
+SUBTYPES USE 'AND' logic
+    -> 
+
+TODO: (I think this works, but just double check)
+- red and table, only shows tables that can be red.
+
+TODO: (I think this works, but just double check)
+- what if the user chooses 'red' and 'cotton'?
+    -> then we only want to show things that are both red AND cotton...
+
+If they choose cotton, it will filter out all things that aren't cotton...
+If they choose red, it will filter out all things that aren't red... (unless a different colour selected!)
+If they choose 'boot', it will filter out anything that isn't a boot... (unless a different item is chosen!)
+
+TODO rename this to 'items to tags?' 'all items and tags?'
 */
 const allItems: Record<string, string[]> = {
   "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
@@ -940,9 +963,6 @@ function filterItems():void{
         }
     }
 }
-
-
-
 
 
 // ===================================================

@@ -16,7 +16,9 @@
 </div>
 [filterImage] -->
 
+<!-- ========================================================================= -->
 
+<!-- 
 <div class="filter-main-wrapper">
 
     <div class="centred-with-bottom-border"> 
@@ -51,4 +53,24 @@
         </div>
     </div>
 
+</div>
+
+-->
+
+
+<div class="filter-main-wrapper" onclick="handleFilterTileClicked(this, 'nothing')">
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="filter-icon-wrapper">
+        <img class="filter-icon" src="<root>/shared/images/filtering/filters/{filterImage}" alt="filter-img" loading="lazy"> 
+    </div>
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="title-and-info-wrapper">
+        <div class="item-title"> 
+            [filterImage] 
+            <img class="info-img" src="<root>/shared/images/filtering/info-icon.avif" alt="info">   
+        </div>
+    </div>
+    <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
+        <img class="sub-filter-icon" src="<root>/shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+    </div>
 </div>

@@ -23,11 +23,11 @@
 .search-button{
   width:50px;
 }
-.info-img{
-  //width: 35%;
-  max-width: 100%;
-  max-height:100%;
-}
+// .info-img{
+  // //width: 35%;
+  // max-width: 100%;
+  // max-height:100%;
+// }
 
 // .filter-icon{
   // width: 100%;
@@ -240,16 +240,16 @@
 
 
 
-.filter-main-wrapper{
-  @extend .ux-grid;
-  grid-template-columns: auto; 
-  grid-template-rows: 0.5fr 0.4fr 0.1fr; //This is above-and-below by default 
-
-  border: solid white 1px;
-  border-radius:12px;
-
-  width:200px;
-}
+// .filter-main-wrapper{
+  // @extend .ux-grid;
+  // grid-template-columns: auto; 
+  // grid-template-rows: 0.5fr 0.4fr 0.1fr; //This is above-and-below by default 
+// 
+  // border: solid white 1px;
+  // border-radius:12px;
+// 
+  // width:200px;
+// }
 
 
 // todo: rename to 'filter title and image'
@@ -304,3 +304,92 @@
   overflow-x: scroll;
   font-size: $font-size-xs;
 }
+
+
+
+
+
+
+// ===================================
+// =================================
+// ==================================
+
+// FILTER STICKER
+
+.filter-main-wrapper{
+    // grows in accordance to its contents (i.e. the text length)
+    // when text gets too long, it flow onto the next line.
+    display:inline-flex;
+    max-width:40vw; //take up no more than half of the width of the page
+    height:auto; // height can grow if text gets too long.
+
+    border: solid white 1px;
+    border-radius:12px;
+
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      max-width:90vw;
+	}
+}
+
+
+.filter-icon-wrapper{
+  @extend .align-centre;
+  padding:10px;
+}
+
+.title-and-info-wrapper{
+    // we want only the text and the info icon to flow onto the next lines together, should they get too long.
+    display: flex;
+    flex-wrap: wrap;          /* Only this wraps */
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;          /* Respect parent's max-width */
+    padding:10px;
+}
+
+.sub-filter-wrapper{
+    @extend .align-centre;
+    border-left: solid white 1px;
+    padding:10px;
+}
+
+
+.filter-icon{
+    height:25px;
+    width:25px;
+    object-fit: contain;
+}
+
+.sub-filter-icon{
+    height:25px;
+    width:25px;
+    object-fit: contain;
+}
+
+
+.info-img{
+    height:20px;
+    width:20px;
+    object-fit: contain;
+
+    display:none;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      display:inline;
+	}
+}
+
+
+.big-image-wrapper{
+    // pass
+    display:none;
+}
+
+.item-title {
+    display: inline;        /* Makes text + icon flow together */
+}
+
+// =======================================
