@@ -124,6 +124,7 @@ function handleFilterTileClicked(element, isSelected) {
     */
     console.log("&&&&&&&&& Handle filter tile clicked");
     let tileStateNow = _updateTheFilterImage(element, isSelected);
+    console.log(`&&&&&&&&& tile state now: ${tileStateNow}`);
     _updateSelectedState(element, isSelected);
     if (isSelected === undefined) {
         _updateDescendentsAndAncestors(element, tileStateNow);
@@ -147,14 +148,18 @@ function _updateTheFilterImage(element, isSelectedState) {
         // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
         // if to match its parent / ancestor.
         // NEW NEW NEW
-        const isSelectedState = _isFilterTileSelected(element);
+        console.log(`>>> &&&&&&&&& selected state is udnefined... (as expected):`);
+        isSelectedState = _isFilterTileSelected(element);
+        console.log(`>>> &&&&&&&&& but we've updated selected state now... ${isSelectedState} `);
     }
+    console.log(`>>> &&&&&&&&& tile state here: ${isSelectedState}`);
     if (!isSelectedState) {
         _updateFilterTileToLookSelected(element);
     }
     else {
         _updateFilterTileToLookUnselected(element);
     }
+    console.log(`>>> &&&&&&&&& returning: ${isSelectedState}`);
     return isSelectedState;
 }
 /*
@@ -173,7 +178,9 @@ function _updateFilterTileToLookUnselected(element) {
 @return True if the filter is currently selected; False otherwise
 */
 function _isFilterTileSelected(element) {
-    return element.classList.contains('selected');
+    let containsSelected = element.classList.contains('selected');
+    console.log(`&&&&&&&&& does the class contain selected?: ${containsSelected}`);
+    return containsSelected;
 }
 /**
  * Updates the selection state (i.e. true for selected; false for not selected) of a filter

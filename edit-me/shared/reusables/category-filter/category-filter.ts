@@ -153,6 +153,8 @@ function handleFilterTileClicked(element, isSelected:boolean) {
 
 	let tileStateNow = _updateTheFilterImage(element, isSelected)
 
+    console.log(`&&&&&&&&& tile state now: ${tileStateNow}`);
+
 	_updateSelectedState(element, isSelected)
 
 	if(isSelected === undefined){
@@ -183,8 +185,11 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 	   // if to match its parent / ancestor.
 
 		// NEW NEW NEW
-		const isSelectedState=_isFilterTileSelected(element)
+		console.log(`>>> &&&&&&&&& selected state is udnefined... (as expected):`);
+		isSelectedState=_isFilterTileSelected(element)
+		console.log(`>>> &&&&&&&&& but we've updated selected state now... ${isSelectedState} `);
    }
+    console.log(`>>> &&&&&&&&& tile state here: ${isSelectedState}`);
 
 	if(!isSelectedState){
 		_updateFilterTileToLookSelected(element);
@@ -192,6 +197,7 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 		_updateFilterTileToLookUnselected(element);
 	}
 
+    console.log(`>>> &&&&&&&&& returning: ${isSelectedState}`);
 	return isSelectedState
 }
 
@@ -214,7 +220,10 @@ function _updateFilterTileToLookUnselected(element: Element): void {
 @return True if the filter is currently selected; False otherwise
 */
 function _isFilterTileSelected(element: Element): boolean {
-    return element.classList.contains('selected');
+	let containsSelected = element.classList.contains('selected')
+
+	console.log(`&&&&&&&&& does the class contain selected?: ${containsSelected}`);
+    return containsSelected;
 }
 
 

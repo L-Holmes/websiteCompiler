@@ -1,4 +1,6 @@
 TODO:
+- it seems that the filter tile isn't unselected when clicked again. work out why. 
+    -> also, if i have a map in memory (why do i have a map? should i not just check the html? or is this good for switching to server-first????)
 - test current code
 - Move onto sorting out the rest of the code in the typescript file (keeping in mind that we are simplifying the heading!)
 - Then update the html code for the heading
