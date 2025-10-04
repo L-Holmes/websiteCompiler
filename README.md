@@ -10,6 +10,8 @@ python3 -m http.server 8000
 sudo lsof -i :8000
 
 
+# images source
+https://icons8.com/icons/set/shoe
 
 
 Laws:

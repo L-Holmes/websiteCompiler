@@ -5,6 +5,8 @@
 //============================================================
 
 .filter-outer-grid{
+  padding-top:10px;
+  padding-bottom:10px;
 }
 
 // .filter-main-wrapper{
@@ -115,6 +117,14 @@
   color: black;
   border-radius: 5px;
   width:100%;
+
+  display:none;
+
+
+  // ON MOBILE
+  @media screen and (max-width: 441px){
+    display:inline-block;
+  }
 }
 
 .filter-central-divider{
@@ -153,7 +163,6 @@
 /* Sort button styling */
 .sort-button {
   display: flex;
-  align-items: center;
   gap: 8px;
   padding: 10px 15px;
   background-color: #333;
@@ -323,7 +332,7 @@
     max-width:40vw; //take up no more than half of the width of the page
     height:auto; // height can grow if text gets too long.
 
-    border: solid white 1px;
+    border: solid #404040 2px;
     border-radius:12px;
 
 
@@ -335,13 +344,27 @@
     // SELECTED STATE
     &.selected {
       border: 2px solid white;
+      &:hover {
+          border: 2px solid #48E0C8; 
+        }
     }
+
+}
+
+.filter-tile:hover {
+  border: 2px solid #D2FFF8;
+}
+
+/* But when hovering the sub-filter area, cancel that */
+.filter-tile:has(.sub-filter-wrapper:hover) {
+  border: 2px solid #404040; /* revert to normal */
 }
 
 
 .filter-icon-wrapper{
   @extend .align-centre;
   padding:10px;
+  pointer-events: none;  // prevent on-hover etc. of parent triggering
 }
 
 .title-and-info-wrapper{
@@ -357,7 +380,34 @@
 .sub-filter-wrapper{
     @extend .align-centre;
     border-left: solid white 1px;
-    padding:10px;
+    padding:5px;
+
+    .sub-filter-icon{
+      height: 25px;
+      width: 25px;
+      object-fit: contain;
+    }
+
+    .sub-filter-hover-icon{
+      height: 25px;
+      width: 25px;
+      object-fit: contain;
+      
+      display:none;
+    }
+
+    &:hover .sub-filter-icon{
+      display:none;
+    }
+    
+    &:hover .sub-filter-hover-icon{
+      // background-image: url("../../../shared/images/filtering/filter-hover-icon.png");
+      display:inline;
+    }
+
+    &:hover{
+      border-left: solid #D2FFF8 1px;
+    }
 }
 
 
@@ -365,26 +415,26 @@
     height:25px;
     width:25px;
     object-fit: contain;
+    pointer-events: none;  // prevent on-hover etc. of parent triggering
 }
 
-.sub-filter-icon{
-    height:25px;
-    width:25px;
-    object-fit: contain;
-}
+// .sub-filter-icon {
+  // height: 25px;
+  // width: 25px;
+  // object-fit: contain;
+  // background: url("../../../shared/images/filtering/filter-icon.png") no-repeat center / contain;
+// 
+  // &:hover {
+    // background-image: url("../../../shared/images/filtering/filter-hover-icon.png");
+  // }
+// }
 
 
-.info-img{
+
+.right-arrow{
     height:20px;
     width:20px;
     object-fit: contain;
-
-    display:none;
-
-    // ON MOBILE
-    @media screen and (max-width: 441px){
-      display:inline;
-	}
 }
 
 
@@ -394,7 +444,72 @@
 }
 
 .item-title {
-    display: inline;        /* Makes text + icon flow together */
+  display: inline;        /* Makes text + icon flow together */
+
+  .info-icon{
+    height:15px;
+    width:15px;
+    object-fit: contain;
+    padding-bottom:10px;
+
+    display:none;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      display:inline;
+    }
+  }
+
+  .info-hover-icon{
+    height:15px;
+    width:15px;
+    object-fit: contain;
+    padding-bottom:10px;
+
+    display:none;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      display:none;
+    }
+  }
+
+
+  &:hover .info-icon{
+    display:none;
+  }
+
+  &:hover .info-hover-icon{
+    display:none;
+
+    @media screen and (max-width: 441px){
+      display:inline;
+    }
+  }
 }
 
 // =======================================
+// FILTER TOP BAR
+
+
+.filter-top-bar{
+  display:flex;
+  align-items: center;      /* vertical centering */
+  gap: 20px;                /* spacing between items */
+  overflow-x: auto;         /* horizontal scroll if needed */
+  width: 100%;              /* full width */
+  white-space: nowrap;      /* optional, but ensures text doesn't wrap */
+
+  padding-top:30px;
+  padding-bottom:10px;
+}
+
+.filter-top-bar-option{
+  @extend .button-hitbox;
+  width:auto;
+  }
+
+  .filter-top-bar-text{
+  @extend .text-itself;
+  text-decoration:underline;
+  }

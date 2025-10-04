@@ -219,6 +219,7 @@ $spacing-m: 20px;
 $spacing-s-m: 15px;
 $spacing-s: 10px;
 $spacing-xs: 5px;
+$spacing-xxs: 3px;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -246,6 +247,19 @@ h2{
 	margin: 0px;
 	font-family: $sylexiad-bold;
 }
+
+h3{
+	color:$text-colour-primary;
+	margin: 0px;
+	font-family: $sylexiad-bold;
+  }
+
+h4{
+	color:$text-colour-primary;
+	margin: 0px;
+	font-family: $sylexiad-bold;
+  }
+
 
 div{
   font-size: $font-size-s;
@@ -528,6 +542,15 @@ $page-contents-margin-right:100px;
 .vert-spacing-s{
 	padding: $spacing-s 0px $spacing-s 0px;
 }
+jkp
+
+.vert-spacing-xs{
+	padding: $spacing-xs 0px $spacing-xs 0px;
+}
+
+.vert-spacing-xxs{
+	padding: $spacing-xxs 0px $spacing-xxs 0px;
+}
 
 // standard things
 
@@ -553,3 +576,55 @@ $page-contents-margin-right:100px;
 	overflow-x: hidden;
 	overflow-y: hidden;
 }
+
+
+
+// =============================================================
+// -- BUTTON WITH BIG HIT BOX -- 
+
+.button-hitbox {
+  // Set your desired hit area
+  width: 100%;
+  height: 100%;
+  
+  // Reset button styles
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  
+  // Center the visual element
+  display: flex;
+
+  // USER DEFINES THESSE
+  // align-items: center;
+  // justify-content: center;
+  
+  .button-itelf {
+    // Your actual button styling
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    pointer-events: none; // Prevents click interference
+  }
+
+  .text-itself{
+    color:$text-colour-primary;
+
+  }
+  
+  &:hover .button-itelf {
+    background: #0056b3;
+  }
+
+  &:hover .text-itself {
+    color:#F0B300;
+  }
+  
+  &:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+  }
+}
+// =============================================================

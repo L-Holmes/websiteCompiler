@@ -1,95 +1,17 @@
 
-<h2> Filter </h2>
-
-<div class="filter-parent-top-bar">
-	<div class="filter-header-main-wrapper">
-	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
-		<div class="filter-tile-content">
-			<div class="filter-tile-sticker">
-				<div class="filter-tile-img-wrapper">    
-					<div class="info-img-wrapper">        
-						<img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info" loading="lazy">    
-					</div>    
-					<div class="centre-at-top-wrapper"> 
-						<img class="filter-icon" src="../../../shared/images/filtering/filters/all.avif" alt="filter-img" loading="lazy"> 
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="filter-top-bar">
+	<div class="filter-top-bar-option"> 
+		<div class="filter-top-bar-text"> All </div>
 	</div>
-
-	<div class="filter-under-filter-wrapper" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;">
-		<img class="filter-under-filter" src="../../../shared/images/filtering/filters/up.avif" alt="return-to-parent-img" loading="lazy"> 
+	<img class="right-arrow" src="../../../shared/images/filtering/right-arrow.png" alt="info">   
+	<div class="filter-top-bar-option">   
+		<div class="filter-top-bar-text"> Colours </div>
+	</div>
+	<img class="right-arrow" src="../../../shared/images/filtering/right-arrow.png" alt="info">   
+	<div class="filter-top-bar-option">   
+		<div class="filter-top-bar-text"> Orange </div>
 	</div>
 </div>
-
-
-	<div class="filter-header-main-wrapper">
-	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
-		<div class="filter-tile-content">
-			<div class="filter-tile-sticker">
-				<div class="filter-tile-img-wrapper">    
-					<div class="info-img-wrapper">        
-						<img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info" loading="lazy">    
-					</div>    
-					<div class="centre-at-top-wrapper"> 
-						<img class="filter-icon" src="../../../shared/images/filtering/filters/shoe.avif" alt="filter-img" loading="lazy"> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="filter-under-filter-wrapper" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;">
-		<img class="filter-under-filter" src="../../../shared/images/filtering/filters/up.avif" alt="return-to-parent-img" loading="lazy"> 
-	</div>
-</div>
-
-	<div class="filter-header-main-wrapper">
-	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
-		<div class="filter-tile-content">
-			<div class="filter-tile-sticker">
-				<div class="filter-tile-img-wrapper">    
-					<div class="info-img-wrapper">        
-						<img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info" loading="lazy">    
-					</div>    
-					<div class="centre-at-top-wrapper"> 
-						<img class="filter-icon" src="../../../shared/images/filtering/filters/boot.avif" alt="filter-img" loading="lazy"> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="filter-under-filter-wrapper" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;">
-		<img class="filter-under-filter" src="../../../shared/images/filtering/filters/up.avif" alt="return-to-parent-img" loading="lazy"> 
-	</div>
-</div>
-
-	<div class="filter-header-main-wrapper">
-	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
-		<div class="filter-tile-content">
-			<div class="filter-tile-sticker">
-				<div class="filter-tile-img-wrapper">    
-					<div class="info-img-wrapper">        
-						<img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info" loading="lazy">    
-					</div>    
-					<div class="centre-at-top-wrapper"> 
-						<img class="filter-icon" src="../../../shared/images/filtering/filters/table.avif" alt="filter-img" loading="lazy"> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="filter-under-filter-wrapper" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;">
-		<img class="filter-under-filter" src="../../../shared/images/filtering/filters/up.avif" alt="return-to-parent-img" loading="lazy"> 
-	</div>
-</div>
-
-</div>
-
-<div class="bar"> </div>
 
 <div class="filter-outer-grid">
 
@@ -98,51 +20,57 @@
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/shoe.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Shoe 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/boot.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Boot 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/table.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Table 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
@@ -154,115 +82,125 @@
 
 <div class="vert-spacing-s"></div>
 
-<h2> Global filters </h2>
+<h4> Global filters </h4>
+<div class="vert-spacing-xs"></div>
+<div> Apply filters across all of your selected items above
 
 <div class="filter-outer-grid">
 
 	<div class="filter-squares-wrapper">
 
-		<div class="filter-main-wrapper">
-	<div class="filter-sticker" onclick="handleFilterTileClicked(this, 'nothing')">
-		<div class="filter-tile-content">
-			<div class="filter-tile-sticker">
-				<div class="filter-tile-img-wrapper">    
-					<div class="info-img-wrapper">        
-						<img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">    
-					</div>    
-					<div class="centre-at-top-wrapper"> 
-						<img class="filter-icon" src="../../../shared/images/filtering/filters/colours.avif" alt="filter-img" loading="lazy"> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="filter-under-filter-wrapper" onclick="filterIconClicked(this)" style="cursor: pointer;">
-		<img class="filter-under-filter" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy"> 
-	</div>
-</div>
+		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="filter-icon-wrapper">
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.png" alt="filter-img" loading="lazy"> 
+    </div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="title-and-info-wrapper">
+        <div class="item-title"> 
+            Colours 
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
+        </div>
+    </div>
+    <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
+    </div>
+</button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.black.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.black.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Black 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.brown.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.brown.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Brown 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.orange.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.orange.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Orange 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.purple.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.purple.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Purple 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
 		<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
-        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.red.avif" alt="filter-img" loading="lazy"> 
+        <img class="filter-icon" src="../../../shared/images/filtering/filters/colours.red.png" alt="filter-img" loading="lazy"> 
     </div>
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             Red 
-            <img class="info-img" src="../../../shared/images/filtering/info-icon.avif" alt="info">   
+            <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
-        <img class="sub-filter-icon" src="../../../shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
+        <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>
 </button>
 
@@ -282,12 +220,6 @@
 <div class="vert-spacing-s"></div>
 
 <h2> Products </h2>
-
-<div class="sort-products">
-    <div> Price high to low </div>
-    <div> Price low to high </div>
-    <div> Date added</div>
-</div>
 
 <button class="sort-button" onclick="handleSortClickedNew()">
     <div class="sort-img">
@@ -362,12 +294,6 @@
 <div class="vert-spacing-s"></div>
 
 <h2> Blogs </h2>
-
-<div class="sort-blogs">
-    <div> Price high to low </div>
-    <div> Price low to high </div>
-    <div> Date added</div>
-</div>
 
 <a href='../../../blog/about-us.html'> About us blog </a>
 

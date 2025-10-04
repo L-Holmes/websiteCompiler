@@ -8,7 +8,7 @@
 
 .index-content-wrapper-DESKTOP{
   width:100%;
-  height:100%;
+  height:97%;
   @media screen and (max-width: 441px){
       display:none;
 	}
@@ -206,56 +206,6 @@
 // --- END OF GRID --- 
 
 
-// -- BUTTON WITH BIG HIT BOX -- 
-
-.button-hitbox {
-  // Set your desired hit area
-  width: 100%;
-  height: 100%;
-  
-  // Reset button styles
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  
-  // Center the visual element
-  display: flex;
-
-  // USER DEFINES THESSE
-  // align-items: center;
-  // justify-content: center;
-  
-  .button-itelf {
-    // Your actual button styling
-    background: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    pointer-events: none; // Prevents click interference
-  }
-
-  .text-itself{
-    color:$text-colour-primary;
-
-  }
-  
-  &:hover .button-itelf {
-    background: #0056b3;
-  }
-
-  &:hover .text-itself {
-    color:#b29699;
-  }
-  
-  &:focus {
-    outline: 2px solid #0056b3;
-    outline-offset: 2px;
-  }
-}
-
-
-// ====================
 
 
 
@@ -303,15 +253,22 @@
   border-radius:16px;
   width:80%;
 
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .text-bigger-upper-section{
+
+}
+
+.text-bigger-lower-section{
   // @extend .ux-grid;
   // grid-template-columns:0.125fr 0.25fr 0.675fr; 
   // grid-template-rows: auto; 
 
   display:flex;
   align-items:flex-end;
+  justify-content:center; 
 }
 
 
@@ -335,6 +292,7 @@
 .increase-text-size-arrow-img{
   width:20px;
   height:20px;  
+  padding-bottom:5px;
 }
 
 .dropdown-arrow-img{
@@ -344,10 +302,12 @@
 
 .big-A{
   font-size:64px;
+  line-height:0.85; //seems to align with little 'A' like this...
 }
 
 .little-A{
   font-size:22px;
+  line-height:1; 
 }
 
 // ======================================

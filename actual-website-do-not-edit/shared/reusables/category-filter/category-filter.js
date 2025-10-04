@@ -18,9 +18,9 @@ const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-tile'; // HTML 'class' o
 const ITEM_WRAPPER_CLASS = ".table-entry"; // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS = ".item-images"; // HTML 'class' of the img that: contains the item's image
 const REGULAR_ITEM_SELECT_WRAPPER_CLASS = ".filter-tile";
+const FILTER_TILE_IMAGE_CLASS = ".filter-icon";
 const FILTER_BUTTON_CLASS = ".filter-search-button";
 const RESULT_ITEM_IMAGE_CLASS = ".item-images";
-const FILTER_TILE_IMAGE_CLASS = ".filter-icon";
 //----------------------------------------------------------------------------------
 /**
  * A record of available filter tiers and their selection state.

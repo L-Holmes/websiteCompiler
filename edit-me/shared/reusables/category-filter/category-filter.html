@@ -1,23 +1,25 @@
 
-<h2> Filter </h2>
-
-<div class="filter-parent-top-bar">
-	<r-filter-header-parent filterImage=all.avif>
-
-	<r-filter-header-parent filterImage=shoe.avif>
-	<r-filter-header-parent filterImage=boot.avif>
-	<r-filter-header-parent filterImage=table.avif>
+<div class="filter-top-bar">
+	<div class="filter-top-bar-option"> 
+		<div class="filter-top-bar-text"> All </div>
+	</div>
+	<img class="right-arrow" src="<root>/shared/images/filtering/right-arrow.png" alt="info">   
+	<div class="filter-top-bar-option">   
+		<div class="filter-top-bar-text"> Colours </div>
+	</div>
+	<img class="right-arrow" src="<root>/shared/images/filtering/right-arrow.png" alt="info">   
+	<div class="filter-top-bar-option">   
+		<div class="filter-top-bar-text"> Orange </div>
+	</div>
 </div>
-
-<div class="bar"> </div>
 
 <div class="filter-outer-grid">
 
 	<div class="filter-squares-wrapper">
 
-		<r-filter-sticker filterImage=shoe.avif>
-		<r-filter-sticker filterImage=boot.avif>
-		<r-filter-sticker filterImage=table.avif>
+		<r-filter-sticker filterImage=shoe.png>
+		<r-filter-sticker filterImage=boot.png>
+		<r-filter-sticker filterImage=table.png>
 	</div>
 
 </div>
@@ -26,18 +28,20 @@
 
 <div class="vert-spacing-s"></div>
 
-<h2> Global filters </h2>
+<h4> Global filters </h4>
+<div class="vert-spacing-xs"></div>
+<div> Apply filters across all of your selected items above
 
 <div class="filter-outer-grid">
 
 	<div class="filter-squares-wrapper">
 
-		<r-filter-sticker-extra filterImage=colours.avif>
-		<r-filter-sticker filterImage=colours.black.avif>
-		<r-filter-sticker filterImage=colours.brown.avif>
-		<r-filter-sticker filterImage=colours.orange.avif>
-		<r-filter-sticker filterImage=colours.purple.avif>
-		<r-filter-sticker filterImage=colours.red.avif>
+		<r-filter-sticker filterImage=colours.png>
+		<r-filter-sticker filterImage=colours.black.png>
+		<r-filter-sticker filterImage=colours.brown.png>
+		<r-filter-sticker filterImage=colours.orange.png>
+		<r-filter-sticker filterImage=colours.purple.png>
+		<r-filter-sticker filterImage=colours.red.png>
 
 	</div>
 
@@ -54,12 +58,6 @@
 <div class="vert-spacing-s"></div>
 
 <h2> Products </h2>
-
-<div class="sort-products">
-    <div> Price high to low </div>
-    <div> Price low to high </div>
-    <div> Date added</div>
-</div>
 
 <button class="sort-button" onclick="handleSortClickedNew()">
     <div class="sort-img">
@@ -134,12 +132,6 @@
 <div class="vert-spacing-s"></div>
 
 <h2> Blogs </h2>
-
-<div class="sort-blogs">
-    <div> Price high to low </div>
-    <div> Price low to high </div>
-    <div> Date added</div>
-</div>
 
 <a href='<root>/blog/about-us.html'> About us blog </a>
 
