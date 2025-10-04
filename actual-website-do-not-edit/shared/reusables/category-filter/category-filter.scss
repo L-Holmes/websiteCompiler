@@ -35,11 +35,11 @@
   // object-fit: contain;
 // }
 
-.filter-tile {
-  //position: relative;
-  width: 55px;
-  height:60px;
-}
+// .filter-tile {
+  // //position: relative;
+  // width: 55px;
+  // height:60px;
+// }
 
 .filter-tile-bg-test-tube {
   //position: absolute;
@@ -265,11 +265,11 @@
   overflow-y:hidden;
 }
 
-.filter-icon{
-  width: 75px;
-  height: 75px;
-  object-fit: contain;
-}
+// .filter-icon{
+  // width: 75px;
+  // height: 75px;
+  // object-fit: contain;
+// }
 
 .filter-further-wrapper{
   @extend .ux-grid;
@@ -316,7 +316,7 @@
 
 // FILTER STICKER
 
-.filter-main-wrapper{
+.filter-tile{
     // grows in accordance to its contents (i.e. the text length)
     // when text gets too long, it flow onto the next line.
     display:inline-flex;
@@ -331,6 +331,11 @@
     @media screen and (max-width: 441px){
       max-width:90vw;
 	}
+
+    // SELECTED STATE
+    &.selected {
+      border: 2px solid white;
+    }
 }
 
 

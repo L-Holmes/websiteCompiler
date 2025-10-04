@@ -23,12 +23,15 @@ const filters_being_shown = ALL_CATEGORY_NAME
 
 const HEADER_FILTERS=[] //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
 
-const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-tile' // HTML 'class' of the div that wraps: a header filter
-const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'class' of the div that wraps: A filter element
+const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'class' of the div that wraps: a header filter
+const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-tile'       // HTML 'class' of the div that wraps: A filter element
 const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
 const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-tile"
+
 const FILTER_BUTTON_CLASS=".filter-search-button"
+const RESULT_ITEM_IMAGE_CLASS=".item-images"
+const FILTER_TILE_IMAGE_CLASS=".filter-icon"
 
 
 //----------------------------------------------------------------------------------
@@ -115,18 +118,18 @@ function _showOnlyTopTierFilters(): void {
 // HANDLE THE FILTER TEST TUBE BEING CLICKED
 //========================================================
 
-function handleFilterTileClicked(element, isRelativeOfClickedTile:boolean) {
+function handleFilterTileClicked(element, isSelected:boolean) {
 	/*
 	   @param element = the html element of the tile that was clicked
-	   @param isRelativeOfClickedTile = True if we are updating this tile to become 'selected'; False if this tile is to become 'unselected'; undefined if we don't know the next state (i.e. this is NOT a parent being updated)
+	   @param isSelected = True if we are updating this tile to become 'selected'; False if this tile is to become 'unselected'; undefined if we don't know the next state (i.e. this is NOT a parent being updated)
 
 
 	   TO NOTE:
 	   Q) Why would 'nextImg' be none?
-		   If isRelativeOfClickedTile is undefined, that means that this is just a regular tile click
+		   If isSelected is undefined, that means that this is just a regular tile click
 		   Therefore, we need to manually determine what the next state is, and set the image accordingly.
 
-		   Conversly, if the isRelativeOfClickedTile is true/false, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
+		   Conversly, if the isSelected is true/false, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
 		   it to match its parent / ancestor.
 		   Basically, if you have just selected 'none' on the parent filter, all of its children and their children etc. will have a nextImg of the Empty test tube, since they are all now 'none'/empty!
 		   Essentially, this function is reused for the recursive calls of updating parents.. just because the logic is the same...
@@ -148,11 +151,11 @@ function handleFilterTileClicked(element, isRelativeOfClickedTile:boolean) {
 	*/
     console.log("&&&&&&&&& Handle filter tile clicked");
 
-	tileStateNow = _updateTheFilterImage(element, isRelativeOfClickedTile)
+	let tileStateNow = _updateTheFilterImage(element, isSelected)
 
-	_updateSelectedState(element)
+	_updateSelectedState(element, isSelected)
 
-	if(isRelativeOfClickedTile === undefined){
+	if(isSelected === undefined){
 		_updateDescendentsAndAncestors(element, tileStateNow)
 	}
 
@@ -173,7 +176,7 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 	update the image 
 	-----------------
 	*/
-   if(nextImg === undefined){
+   if(isSelectedState === undefined){
 	   // if next img is none, that means that this is just a regular tile click
 	   // Therefore, we need to determine what the next state is and set the image accordingly.
 	   // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
@@ -183,10 +186,10 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 		const isSelectedState=_isFilterTileSelected(element)
    }
 
-	if(!isSelected){
-		_updateFilterTileToLookSelected();
+	if(!isSelectedState){
+		_updateFilterTileToLookSelected(element);
 	} else{
-		_updateFilterTileToLookUnselected();
+		_updateFilterTileToLookUnselected(element);
 	}
 
 	return isSelectedState
@@ -250,7 +253,7 @@ function _updateDescendentsAndAncestors(element,isSelected:boolean): void {
 	// -> To note, for each of those, will need to update the 'background image' in the html, and the map itself
 
 	// get the parent filter that was clicked (e.g. 'colours.orange')
-	const whatThatTileFiltersFor = _getFilterCategoryFromUnderFilter(element);
+	const whatThatTileFiltersFor = _getFilterCategory(element);
 
 	// get a list of every item in the 'filterTiers' map that is a descendent
 	let descendents: string[] = _getAllDescendants(whatThatTileFiltersFor)
@@ -398,38 +401,6 @@ function filterIconClicked(element: HTMLElement): void {
 	  console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
 	  return null;
 	}
-
-	// UPDATE THE IMAGES OF THE CHILDREN THAT WE ARE NOW SHOWING! 
-	// CHECK FOR 'PARTIAL' ON EACH!
-	// ====================
-	// -> We need to get the state of all of its ancestors. e.g. ['all', 'all.colours','all.colours.orange']
-	//    Why? Because the user may have just clicked:
-	//		1) 
-	//			- all.colours.orange was clicked, setting it to 'none' and all of its children to 'none'
-	//			- the user clicked the filter (i.e. handled by this function), to then filter the children
-	//			- the user then selected 'all.colours.orange.tangerine', meaning that now, * all.colours.orange's state is no longer none! It is 'partial' because more than zero of its descendents are selected!
-	//			- The user then selected the 'return back to... [all.colours]'. They _should_ see that 'all.colours.orange' now has the state 'partial'!
-	// so:
-	// need to check all of the descdents for whether they are 'all', 'partial' or 'none'.
-	//		start at the highest tier, and if they are not all the same, break and set the image to 'partial'
-	//		otherwise, keep searching the descdents of each of those, again checking at each level whether they all have the matching state. (again, all descendents must be 'all' or 'none'. Otherwise, we set the image of this filter to partial!
-	// ====================
-
-	for (const tileNowBeingShown of childTiers) {
-		//e.g. tileNowBeingShown = "all.colours.orange.tangerine"
-
-		// determine what the image of that tile should be, based off its descendents
-		let newStateImg :string = _whatShouldStateImgBeBasedOffDescendents(tileNowBeingShown)
-
-		if(newStateImg != "same"){
-			// get the 'html element' of the tile associated with that filter name
-			let filterElement = _findFilterElementByName(tileNowBeingShown)
-
-			// update the image of this tile. 
-			handleFilterTileClicked(filterElement, newStateImg)
-		}
-	}
-
 
 	// HIDE CURRENT TILES, AND THEN UNHIDE EACH OF THE CHILDREN
 	//=========================================================
@@ -655,6 +626,8 @@ function _getFilterState(element){
 
 	   e.g. May return: /shared/images/filtering/test-tube-half.avif
 	   */
+
+	console.log("getting filter state");
 	const style = window.getComputedStyle(element);
 	const backgroundImage = style.backgroundImage; //e.g. https://localhost:8000/static/img/shared/images/filtering/test-tube-half.avif
 
@@ -686,7 +659,7 @@ function _getFilterCategory(element){
 	e.g.2. may return "tables.colours.orange"
 	*/
 
-    const imageName = _getElementsImageName(element, ".filter-icon", "Filter icon");
+    const imageName = _getElementsImageName(element, FILTER_TILE_IMAGE_CLASS, "Filter icon");
 
 
     if (!(imageName in filterTiers)) {
@@ -820,6 +793,7 @@ function isValidImagePath(path) {
 // ============================================================================
 // ITEMS STUFF
 
+
 function filterItems():void{
     /*
    Changes which items are shown on screen, based on the filters that the user has selected.
@@ -833,7 +807,7 @@ function filterItems():void{
 
 
     for (const item of allHtmlItemElements) {
-        const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'SappBoot'
+        const itemName:string = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image");  // e.g. 'SappBoot'
         const allTagsForItem:string[] | undefined = itemsToTags[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
 
         if (!allTagsForItem) {
@@ -856,7 +830,7 @@ function filterItems():void{
             let shouldHide:boolean = true;
             for (const itemTag of itemTags) {
                 // E.g. a tag may be 'furniture' or 'made of wood' etc.
-                if (filterTiers[itemTag] !== "SELECTING_NONE") {
+                if (filterTiers[itemTag] !== false) {
                     // If any of these are true, we want to show.
                     shouldHide = false;
                     break;
@@ -888,7 +862,7 @@ function filterItems():void{
 // ===============================================
 // Sorting  
 
-const filters= [ "price_high_to_low", "price_low_to_high", "date_added" ];
+// const filterOptions= [ "price_high_to_low", "price_low_to_high", "date_added" ];
 
 function handleSortClicked(){
     reorderItemsWithFlexbox();

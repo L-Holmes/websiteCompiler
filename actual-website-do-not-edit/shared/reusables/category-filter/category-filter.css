@@ -392,11 +392,6 @@ button:hover {
   width: 50px;
 }
 
-.filter-tile {
-  width: 55px;
-  height: 60px;
-}
-
 .filter-tile-bg-test-tube {
   top: 0;
   left: 0;
@@ -563,12 +558,6 @@ button:hover {
   overflow-y: hidden;
 }
 
-.filter-icon {
-  width: 75px;
-  height: 75px;
-  object-fit: contain;
-}
-
 .filter-further-wrapper {
   grid-template-columns: auto;
   grid-template-rows: 0.3fr 0.2fr 0.5fr;
@@ -594,7 +583,7 @@ button:hover {
   font-size: 0.75rem;
 }
 
-.filter-main-wrapper {
+.filter-tile {
   display: inline-flex;
   max-width: 40vw;
   height: auto;
@@ -602,9 +591,12 @@ button:hover {
   border-radius: 12px;
 }
 @media screen and (max-width: 441px) {
-  .filter-main-wrapper {
+  .filter-tile {
     max-width: 90vw;
   }
+}
+.filter-tile.selected {
+  border: 2px solid white;
 }
 
 .filter-icon-wrapper {
