@@ -1,4 +1,10 @@
 TODO:
+- test current code
+- Move onto sorting out the rest of the code in the typescript file (keeping in mind that we are simplifying the heading!)
+- Then update the html code for the heading
+
+
+TODO:
 - update the filters;
    - switch out the logic for the image icon ->
         -> Insteaad use my compiler logic to pass in the html as the optional argument(!)

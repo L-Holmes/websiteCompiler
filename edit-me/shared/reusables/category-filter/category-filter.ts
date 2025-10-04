@@ -28,6 +28,7 @@ const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTM
 const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
 const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-tile"
+const FILTER_BUTTON_CLASS=".filter-search-button"
 
 
 //----------------------------------------------------------------------------------
@@ -151,9 +152,8 @@ function handleFilterTileClicked(element, isRelativeOfClickedTile:boolean) {
 
 	_updateSelectedState(element)
 
-	//NEW TODO => 
 	if(isRelativeOfClickedTile === undefined){
-		_updateDescendents(element, tileStateNow)
+		_updateDescendentsAndAncestors(element, tileStateNow)
 	}
 
 
@@ -215,10 +215,6 @@ function _isFilterTileSelected(element: Element): boolean {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-
-
 /**
  * Updates the selection state (i.e. true for selected; false for not selected) of a filter 
  * i.e. Updates the 'filterTiers' map. 
@@ -236,7 +232,7 @@ function _updateSelectedState(element: Element, isSelected:boolean): void {
 }
 
 
-function _updateDescendents(element,isSelected:boolean): void {
+function _updateDescendentsAndAncestors(element,isSelected:boolean): void {
 	/*
 	Updates the children / grandchildren etc. of the thing clicked.
 
@@ -283,12 +279,91 @@ function _updateDescendents(element,isSelected:boolean): void {
 
 	}
 
-	// TODO NEW automatic filtering for desktop? (but only when all descendents have been filtered?
-	// Updates / Filters the actual results list that the user sees
+	// Updates / Filters the actual results list that the user sees (only on desktop)
+	_applyAutomaticFilterIfNeeded();
+
+
+	function _getAllDescendants(parentFilterThatWasClicked: string) {
+		// get all entries from filterTiers that have the parentFilterThatWasClicked as an ancestor
+		// i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
+		// @return an array of the descendant's names
+		// e.g. if 'tables.colours' was the parent, then it will return:  
+		// const descendantTiers = ["tables.colours.red",
+		// 						   "tables.colours.blue", 
+		// 						   "tables.colours.yellow",
+		// 						   "tables.colours.orange",
+		// 						   "tables.colours.blue.lightblue",
+		// 						   "tables.colours.orange.tangerine",
+		// 						   "tables.colours.orange.tangerine.juicy"]
+		let descendantTiers: string[];
+		if (parentFilterThatWasClicked === "all") {
+			// Show all filters except 'all' itself
+			descendantTiers = Object.keys(filterTiers).filter(key => {
+				return key !== 'all';
+			});
+		} else {
+			// Show all descendants (any level deeper)
+			descendantTiers = Object.keys(filterTiers).filter(key => {
+				return key.startsWith(parentFilterThatWasClicked + '.');
+			});
+		}
+		return descendantTiers;
+	}
+
+
+	function _getAllAncestors(parentFilterThatWasClicked: string) {
+		// get all entries from filterTiers that have the parentFilterThatWasClicked as a descendant
+		// @return an array of the ancestor's names
+		// e.g. if 'tables.colours.orange.tangerine.juicy' was the parent, then it will return:  
+		// const descendantTiers = [
+		//						   "tables",
+		//						   "tables.colours",
+		// 						   "tables.colours.orange",
+		// 						   "tables.colours.orange.tangerine",
+		// @ return empty is if there is none (e.g. 'tables' has no dots in the same, thus it has no ancestors
+
+		// If there are no dots, there are no ancestors
+		if (parentFilterThatWasClicked.indexOf('.') === -1) return [];
+
+		const parts = parentFilterThatWasClicked.split('.');
+		const ancestors: string[] = [];
+
+		// Build prefixes: "a", "a.b", "a.b.c", ... up to second-last segment
+		for (let i = 1; i < parts.length; i++) {
+			const prefix = parts.slice(0, i).join('.');
+			// Only include if present in global filterTiers
+			ancestors.push(prefix);
+		}
+
+		return ancestors;
+	}
+
+
+	/*
+	- Finds the element in the html with the class FILTER_BUTTON_CLASS
+	- Determines whether display:none is set on it.
+	---> If display:none; call the function filterItems()
+	*/
+	function _applyAutomaticFilterIfNeeded(){
+		// determine whether display:none; is set on the filter button 
+		const el = document.querySelector(FILTER_BUTTON_CLASS);
+		if (!el) return false;
+
+		const computed = window.getComputedStyle(el);
+		const display = computed?.display?.trim().toLowerCase() ?? '';
+
+		if (display === 'none') {
+			filterItems();
+		}
+
+		return false;
+	}
 }
 
-
-// jump
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+// jump! (up to here)
 
 
 // =====================================
@@ -395,32 +470,8 @@ function _getAllChildren(parentFilterThatWasClicked:string){
 	return childTiers
 }
 
-function _getAllDescendants(parentFilterThatWasClicked: string) {
-	// get all entries from filterTiers that have the parentFilterThatWasClicked as an ancestor
-	// i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
-    // @return an array of the descendant's names
-	// e.g. if 'tables.colours' was the parent, then it will return:  
-	// const descendantTiers = ["tables.colours.red",
-	// 						   "tables.colours.blue", 
-	// 						   "tables.colours.yellow",
-	// 						   "tables.colours.orange",
-	// 						   "tables.colours.blue.lightblue",
-	// 						   "tables.colours.orange.tangerine",
-	// 						   "tables.colours.orange.tangerine.juicy"]
-	let descendantTiers: string[];
-	if (parentFilterThatWasClicked === "all") {
-		// Show all filters except 'all' itself
-		descendantTiers = Object.keys(filterTiers).filter(key => {
-			return key !== 'all';
-		});
-	} else {
-		// Show all descendants (any level deeper)
-		descendantTiers = Object.keys(filterTiers).filter(key => {
-			return key.startsWith(parentFilterThatWasClicked + '.');
-		});
-	}
-	return descendantTiers;
-}
+
+
 
 // ===========================================
 // REVERSE REVERSE 
