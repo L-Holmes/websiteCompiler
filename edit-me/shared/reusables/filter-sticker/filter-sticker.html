@@ -58,12 +58,12 @@
 -->
 
 
-<div class="filter-main-wrapper" onclick="handleFilterTileClicked(this, 'nothing')">
+<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
         <img class="filter-icon" src="<root>/shared/images/filtering/filters/{filterImage}" alt="filter-img" loading="lazy"> 
     </div>
-    <!-- {image-icon} --> <!-- Optional image icon -->
+	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="title-and-info-wrapper">
         <div class="item-title"> 
             [filterImage] 
@@ -73,4 +73,4 @@
     <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
         <img class="sub-filter-icon" src="<root>/shared/images/filtering/filters/filter.avif" alt="filter-img" loading="lazy">
     </div>
-</div>
+</button>

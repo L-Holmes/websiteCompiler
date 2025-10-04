@@ -1,7 +1,7 @@
 // ===============================================
 // RULES & CHECKS
 // - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
-// - The names of the images of all items must be contained as keys in the 'allItems' map here. 
+// - The names of the images of all items must be contained as keys in the 'itemsToTags' map here. 
 
 
 
@@ -12,71 +12,6 @@
 // ".filter-sticker"
 
 
-// ===============================================
-// FILTERING 
-
-const filters= [ "price_high_to_low", "price_low_to_high", "date_added" ];
-
-function handleSortClicked(){
-    reorderItemsWithFlexbox();
-
-    // Get all of the items on screen (by getting blocks wrapped by 'table-entry')
-    
-    // through some abosolute magic, rearrange those blocks.
-}
-
-
-//----------------------------------
-
-function reorderItemsWithFlexbox(): void {
-    console.log("reordering items");
-    
-    // 1. Define your desired order using unique keywords from the image sources.
-    const desiredOrder: string[] = ['table', 'boot', 'sapp-boot'];
-    
-    // 2. Grab all the elements you want to sort.
-    const nodeList = document.querySelectorAll(ITEM_WRAPPER_CLASS);
-    const allItems: HTMLElement[] = Array.from(nodeList).map(el => el as HTMLElement);
-    
-    // If there's nothing to sort, we can stop.
-    if (allItems.length === 0) {
-        return;
-    }
-    
-    // 3. Get the parent container and apply flexbox styles directly.
-    // This turns on the flexbox layout, enabling the `order` property to work.
-    const container: HTMLElement | null = document.getElementById('products-wrapper');
-    if (!container) {
-        console.error('Container not found');
-        return;
-    }
-    
-    container.style.display = 'flex';
-    container.style.flexDirection = 'column';
-    
-    // 4. Loop through all the items found on the page.
-    for (let i = 0; i < allItems.length; i++) {
-        const item: HTMLElement = allItems[i];
-
-        const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'sapp-boot'
-        
-        // Find the position of this item in our desiredOrder array.
-        const order: number = desiredOrder.indexOf(itemName);
-        
-        // 5. Apply the order directly to the element's style.
-        // If an item isn't in our list, we can give it a high order number to send it to the end.
-        if (order === -1) {
-            item.style.order = '99'; // Put unsorted items last
-            console.error(`OOh dear! no order found for: ${itemName} to ${order}`);
-            continue
-        }
-
-        item.style.order = order.toString();
-        console.log(`Just set the order of ${itemName} to ${order}`);
-    }
-    
-    console.log("reordered items");
-}
 
 
 // ===============================================
@@ -88,42 +23,11 @@ const filters_being_shown = ALL_CATEGORY_NAME
 
 const HEADER_FILTERS=[] //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
 
-// const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'class' of the div that wraps: a header filter
-// const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'class' of the div that wraps: A filter element
-// const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
-// const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
-// const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-sticker"
-
-const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-header-main-wrapper' // HTML 'class' of the div that wraps: a header filter
+const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-tile' // HTML 'class' of the div that wraps: a header filter
 const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS='.filter-main-wrapper'       // HTML 'class' of the div that wraps: A filter element
 const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS=".item-images"                                     // HTML 'class' of the img that: contains the item's image
-const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-main-wrapper"
-
-
-// Array of images to cycle through
-// each image points to the image url of the next image to show
-const SELECTED_ALL_FILTER_IMG = "/shared/images/filtering/test-tube-full.avif"
-const SELECTED_SOME_FILTER_IMG = "/shared/images/filtering/test-tube-half.avif"
-const SELECTED_NONE_FILTER_IMG = "/shared/images/filtering/test-tube.avif"
-
-const filterStateImages = {
-  "/shared/images/filtering/test-tube-full.avif":"<root>/shared/images/filtering/test-tube.avif",
-  "/shared/images/filtering/test-tube-half.avif":"<root>/shared/images/filtering/test-tube.avif",
-  "/shared/images/filtering/test-tube.avif":"<root>/shared/images/filtering/test-tube-full.avif"
-};
-
-const imagesToState = {
-	"/shared/images/filtering/test-tube-full.avif": "SELECTING_ALL",
-	"/shared/images/filtering/test-tube-half.avif": "SELECTING_PARTIAL",
-	"/shared/images/filtering/test-tube.avif": "SELECTING_NONE",
-}
-
-const stateToImages = {
-	"SELECTING_ALL":"/shared/images/filtering/test-tube-full.avif",
-	"SELECTING_PARTIAL":"/shared/images/filtering/test-tube-half.avif",
-	"SELECTING_NONE":"/shared/images/filtering/test-tube.avif"
-}
+const REGULAR_ITEM_SELECT_WRAPPER_CLASS=".filter-tile"
 
 
 //----------------------------------------------------------------------------------
@@ -131,40 +35,23 @@ const stateToImages = {
  * A record of available filter tiers and their selection state.
  * Each key represents a filter name in dot notation.
  */
-const filterTiers: Record<string, string> = {
-  "all": "SELECTING_ALL",
-  "shoe": "SELECTING_ALL",
-  "boot": "SELECTING_ALL",
-  "table": "SELECTING_ALL",
-  "colours": "SELECTING_ALL",
-  "colours.red": "SELECTING_ALL",
-  "colours.orange": "SELECTING_ALL",
-  "colours.black": "SELECTING_ALL",
-  "colours.brown": "SELECTING_ALL",
-  "colours.purple": "SELECTING_ALL",
+const filterTiers: Record<string, boolean> = {
+  "all": false,
+  "shoe": false,
+  "boot": false,
+  "table": false,
+  "colours": false,
+  "colours.red": false,
+  "colours.orange": false,
+  "colours.black": false,
+  "colours.brown": false,
+  "colours.purple": false,
 };
 
 /*
 Every item that the user may choose
-PRIMARY TYPES (DEFAULT) USE 'OR' LOGIC
-    -> e.g. shows all items that are 'shoes' or 'tables'.
-SUBTYPES USE 'AND' logic
-    -> 
-
-TODO: (I think this works, but just double check)
-- red and table, only shows tables that can be red.
-
-TODO: (I think this works, but just double check)
-- what if the user chooses 'red' and 'cotton'?
-    -> then we only want to show things that are both red AND cotton...
-
-If they choose cotton, it will filter out all things that aren't cotton...
-If they choose red, it will filter out all things that aren't red... (unless a different colour selected!)
-If they choose 'boot', it will filter out anything that isn't a boot... (unless a different item is chosen!)
-
-TODO rename this to 'items to tags?' 'all items and tags?'
 */
-const allItems: Record<string, string[]> = {
+const itemsToTags: Record<string, string[]> = {
   "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
   "boot": ["shoe", "boot", "colours.brown::colours.black"],
   "table": ["table", "colours.brown"],
@@ -227,46 +114,58 @@ function _showOnlyTopTierFilters(): void {
 // HANDLE THE FILTER TEST TUBE BEING CLICKED
 //========================================================
 
-function handleFilterTileClicked(element, nextImg:string) {
+function handleFilterTileClicked(element, isRelativeOfClickedTile:boolean) {
 	/*
 	   @param element = the html element of the tile that was clicked
-	   @param nextImg = the path to the image that we are setting as the background of the tile. e.g. "/shared/images/filtering/test-tube.avif"
+	   @param isRelativeOfClickedTile = True if we are updating this tile to become 'selected'; False if this tile is to become 'unselected'; undefined if we don't know the next state (i.e. this is NOT a parent being updated)
 
 
 	   TO NOTE:
 	   Q) Why would 'nextImg' be none?
-		   If next img is none, that means that this is just a regular tile click
-		   Therefore, we need to determine what the next state is, and set the image accordingly.
+		   If isRelativeOfClickedTile is undefined, that means that this is just a regular tile click
+		   Therefore, we need to manually determine what the next state is, and set the image accordingly.
 
-		   Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
+		   Conversly, if the isRelativeOfClickedTile is true/false, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
 		   it to match its parent / ancestor.
 		   Basically, if you have just selected 'none' on the parent filter, all of its children and their children etc. will have a nextImg of the Empty test tube, since they are all now 'none'/empty!
+		   Essentially, this function is reused for the recursive calls of updating parents.. just because the logic is the same...
 		   ... Yes, we know, that means that the function name 'handleFilterTileClicked' doesn't make sense when cascading down the descdents.. We apologise!
+
+	@What it does:
+	- If the filter tile is 'unselected':
+		- Make that item 'selected' (applies that filter)
+			- The outline becomes bold, and white
+			- The items list is updated; it's filtered by that filter selection
+		- Update all of its parents to be 'selected'*
+
+	*If a filter tile is selected;
+	- All of their ancestral parents become selected.
+	- That is because, you wouldn't filter shoes.colours.brown if you didn't want shoes to show.
+		-> If a user suddenly has that thought 'i want brown shoes', they don't have to add shoes, then filter to colours, then brown.
+		-> They cut out the click of adding shoes, and go straight to the sub-filters.
+		
 	*/
+    console.log("&&&&&&&&& Handle filter tile clicked");
 
-    const originalNextImg = nextImg; // Store original value
-
-
-	nextImg = _updateTheFilterImage(element, nextImg)
-
-	//update the paired tile as well (e.g. If the user clicked the regular tile filtering 'all.colours.orange', we would also update the image of the header tile. And vice versa if a header tile was clicked)
-	let otherElementOrNone = _getPairedTileOrNone(element)
-	if(otherElementOrNone){
-		_updateTheFilterImage(otherElementOrNone, nextImg)
-	}
+	tileStateNow = _updateTheFilterImage(element, isRelativeOfClickedTile)
 
 	_updateSelectedState(element)
 
-	if(String(originalNextImg) === "nothing"){
-		_updateDescendents(element, nextImg)
+	//NEW TODO => 
+	if(isRelativeOfClickedTile === undefined){
+		_updateDescendents(element, tileStateNow)
 	}
+
+
 }
 
 
-function _updateTheFilterImage(element, nextImg:string){
+function _updateTheFilterImage(element, isSelectedState:boolean){
 	/*
-	Update the image of this element to the corresponding next image
+	Update background of the filter tile to represent it being selected/unselected
 	i.e. Changes the background image 
+	@param isSelectedState = undefined if we don't know; True if we are setting the tile to be 'selected'; False if we are setting the tile to be 'unselected'
+	@return True if we have just set this tile to be 'selected'; False otherwise
    */
 
 	/*
@@ -274,101 +173,122 @@ function _updateTheFilterImage(element, nextImg:string){
 	update the image 
 	-----------------
 	*/
-   if(nextImg === "nothing"){
+   if(nextImg === undefined){
 	   // if next img is none, that means that this is just a regular tile click
 	   // Therefore, we need to determine what the next state is and set the image accordingly.
 	   // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
 	   // if to match its parent / ancestor.
 
-
-	   const currentFilterStateImage=_getFilterState(element)
-
-	   if(!currentFilterStateImage){
-			console.warn("The filter state could not be determined!");
-			return null; 
-	   }
-
-		// get the next img
-		nextImg = filterStateImages[currentFilterStateImage]
+		// NEW NEW NEW
+		const isSelectedState=_isFilterTileSelected(element)
    }
 
-	if (!isValidImagePath(nextImg)) {
-	  console.error(`[ERROR] Invalid image path passed to style.backgroundImage:`, nextImg);
-    };
+	if(!isSelected){
+		_updateFilterTileToLookSelected();
+	} else{
+		_updateFilterTileToLookUnselected();
+	}
 
-
-	// Set the new background image
-	element.style.backgroundImage = `url('${nextImg}')`;
-
-
-
-	return nextImg
+	return isSelectedState
 }
 
+
+/*
+Updates the appearance of the given tile to show that it is now selected
+*/
+function _updateFilterTileToLookSelected(element: Element): void {
+    element.classList.add('selected');
+}
+
+/*
+Updates the appearance of the given tile to show that it is now unselected
+*/
+function _updateFilterTileToLookUnselected(element: Element): void {
+    element.classList.remove('selected');
+}
+
+/*
+@return True if the filter is currently selected; False otherwise
+*/
+function _isFilterTileSelected(element: Element): boolean {
+    return element.classList.contains('selected');
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 
 
 /**
  * Updates the selection state (i.e. true for selected; false for not selected) of a filter 
  * i.e. Updates the 'filterTiers' map. 
  * @param element - The HTML element representing a filter tile.
+
+
+ Updates the local lists in this javascript which store the states of everything
  */
-function _updateSelectedState(element: Element): void {
+function _updateSelectedState(element: Element, isSelected:boolean): void {
 	// getting the name of the thing being filtered for
-	// ------------------------------------------------
 	const thingBeingFilteredFor = _getFilterCategory(element)
 
-	// updating the filter tiers
-	// ------------------------------------------------
-
-	// Get current filter state image
-	const currentFilterStateImage = _getFilterState(element);
-
-	if (!currentFilterStateImage) {
-		console.warn("The filter state could not be determined!");
-		return null;
-	}
-
-	// Determine whether the tile is selected based on the image source
-	const tileSelectionStatus: string = imagesToState[currentFilterStateImage]
-
-	// update the map
-	// -----------------------
-
-	// Update the filter tier
-	filterTiers[thingBeingFilteredFor] = tileSelectionStatus;
+	// Update the filter tiers map
+	filterTiers[thingBeingFilteredFor] = isSelected;
 }
 
 
-function _updateDescendents(element, nextImg:string): void {
+function _updateDescendents(element,isSelected:boolean): void {
 	/*
 	Updates the children / grandchildren etc. of the thing clicked.
 
 	E.g. If 'colours' was clicked, and set to state: 'show all',
 	Then this function would go through all descendents (e.g. colours.orange, colours.red, colours.orange.tangerine, etc), 
 	and set each of them to the 'show all' state.
+
+
+	NEW:
+	only update the parent if the filter's state was set to 'True'!!!!
+	always update all children's state
    */
 
 	// Then, parse the map to get all of the children and children's children etc. and set all of their values to be equal to that of the common parent.
 	// -> To note, for each of those, will need to update the 'background image' in the html, and the map itself
 
-	// get the parent filter that was clicked
-	const parentFilterThatWasClicked = _getFilterCategoryFromUnderFilter(element);
+	// get the parent filter that was clicked (e.g. 'colours.orange')
+	const whatThatTileFiltersFor = _getFilterCategoryFromUnderFilter(element);
 
 	// get a list of every item in the 'filterTiers' map that is a descendent
-	let descendents: string[] = _getAllDescendants(parentFilterThatWasClicked)
+	let descendents: string[] = _getAllDescendants(whatThatTileFiltersFor)
 
 	// For each descendant, find its corresponding HTML element and call the handler
 	for (const filterName of descendents) {
 		const element = _findFilterElementByName(filterName);
 		if (element) {
-			handleFilterTileClicked(element, nextImg);
+			handleFilterTileClicked(element, isSelected);
 		} else {
 			console.warn(`Could not find HTML element for filter: ${filterName}`);
+		}
+	}
+
+	if(isSelected){
+		let ancestors: string[] = _getAllAncestors(whatThatTileFiltersFor)
+
+		for (const filterName of ancestors) {
+			const element = _findFilterElementByName(filterName);
+			if (element) {
+				handleFilterTileClicked(element, isSelected);
+			} else {
+				console.warn(`Could not find HTML element for filter: ${filterName}`);
+			}
 		}
 
 	}
 
+	// TODO NEW automatic filtering for desktop? (but only when all descendents have been filtered?
+	// Updates / Filters the actual results list that the user sees
 }
+
+
+// jump
 
 
 // =====================================
@@ -443,65 +363,6 @@ function filterIconClicked(element: HTMLElement): void {
 	// UPDATE THE HEADER
 	//=========================================================
 	_updateFilterHeader()
-}
-
-
-function _whatShouldStateImgBeBasedOffDescendents(tileNowBeingShown: string): string{
-	/*
-	@param tileNowBeingShown = path to the tile being shown. e.g. "all.colours.orange.tangerine" 
-	@return The image file that the tile should now have (relating to all / partial / none)
-			Returns 'same' if the filter image does not need changing! (it should stay as it is)
-
-	e.g. 
-	If all descendets have the state 'all', we need to set the state of this image to 'all', in order to reflect that all of its children are 'all'
-	If all descendets have the state 'none', we need to set the state of this image to 'none', in order to reflect that all of its children are 'none'
-	Otherwise, set this image to 'partial'
-
-	*/
-
-	let allChildrenCount = 0
-	let noneChildrenCount = 0
-	let partialChildrenCount = 0
-
-	// get descendents
-	let descendents: string[]=_getAllDescendants(tileNowBeingShown)
-
-	if (descendents.length === 0) {
-		return "same"
-	}
-
-	for (const filterName of descendents) {
-		// Determine its state. i.e. 'All', 'partial' or 'none'
-		let state = filterTiers[filterName]
-
-		// Update our counts. i.e. perform the checking logic, update the count variables defined at the top of this function 
-		if(state === "SELECTING_ALL"){
-			allChildrenCount = allChildrenCount + 1;
-		}
-		else if(state === "SELECTING_PARTIAL"){
-			partialChildrenCount = partialChildrenCount + 1;
-		}
-		else{
-			noneChildrenCount = noneChildrenCount + 1;
-		}
-
-		// Process the results. Decide if we know whether the ancestral tile should indeed be partial 
-		if(partialChildrenCount > 0){
-				return stateToImages["SELECTING_PARTIAL"]
-		}
-		if(allChildrenCount > 0 && noneChildrenCount > 0){
-				return stateToImages["SELECTING_PARTIAL"]
-		}
-	}
-
-	
-	// If we have got to this point, we can only assume that all children are either 'all' OR all of them are 'none'. So return whichever
-	if(allChildrenCount > 0){
-		return stateToImages["SELECTING_ALL"]
-	}
-	else{
-		return stateToImages["SELECTING_NONE"]
-	}
 }
 
 
@@ -922,12 +783,12 @@ function filterItems():void{
 
     for (const item of allHtmlItemElements) {
         const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'SappBoot'
-        const allTagsForItem:string[] | undefined = allItems[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
+        const allTagsForItem:string[] | undefined = itemsToTags[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
 
         if (!allTagsForItem) {
             console.error(`[ERROR] No Item tag found for '${itemName}'`);
             console.error('Available item keys:');
-            console.error(`${JSON.stringify(allItems)}`);
+            console.error(`${JSON.stringify(itemsToTags)}`);
             continue; // No tags found for this item
         }
 
@@ -968,6 +829,78 @@ function filterItems():void{
 // ===================================================
 // SORTING 
 // ===================================================
+
+
+
+// ===============================================
+// ===============================================
+// ===============================================
+// Sorting  
+
+const filters= [ "price_high_to_low", "price_low_to_high", "date_added" ];
+
+function handleSortClicked(){
+    reorderItemsWithFlexbox();
+
+    // Get all of the items on screen (by getting blocks wrapped by 'table-entry')
+    
+    // through some abosolute magic, rearrange those blocks.
+}
+
+
+//----------------------------------
+
+function reorderItemsWithFlexbox(): void {
+    console.log("reordering items");
+    
+    // 1. Define your desired order using unique keywords from the image sources.
+    const desiredOrder: string[] = ['table', 'boot', 'sapp-boot'];
+    
+    // 2. Grab all the elements you want to sort.
+    const nodeList = document.querySelectorAll(ITEM_WRAPPER_CLASS);
+    const itemsToTags: HTMLElement[] = Array.from(nodeList).map(el => el as HTMLElement);
+    
+    // If there's nothing to sort, we can stop.
+    if (itemsToTags.length === 0) {
+        return;
+    }
+    
+    // 3. Get the parent container and apply flexbox styles directly.
+    // This turns on the flexbox layout, enabling the `order` property to work.
+    const container: HTMLElement | null = document.getElementById('products-wrapper');
+    if (!container) {
+        console.error('Container not found');
+        return;
+    }
+    
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    
+    // 4. Loop through all the items found on the page.
+    for (let i = 0; i < itemsToTags.length; i++) {
+        const item: HTMLElement = itemsToTags[i];
+
+        const itemName:string = _getElementsImageName(item, ".item-images", "Item image");  // e.g. 'sapp-boot'
+        
+        // Find the position of this item in our desiredOrder array.
+        const order: number = desiredOrder.indexOf(itemName);
+        
+        // 5. Apply the order directly to the element's style.
+        // If an item isn't in our list, we can give it a high order number to send it to the end.
+        if (order === -1) {
+            item.style.order = '99'; // Put unsorted items last
+            console.error(`OOh dear! no order found for: ${itemName} to ${order}`);
+            continue
+        }
+
+        item.style.order = order.toString();
+        console.log(`Just set the order of ${itemName} to ${order}`);
+    }
+    
+    console.log("reordered items");
+}
+
+
 
 // Show the sort overlay
 function handleSortClickedNew(): void {
@@ -1026,3 +959,4 @@ document.addEventListener('keydown', function(event: KeyboardEvent): void {
 (window as any).handleHighLowClicked = handleHighLowClicked;
 (window as any).handleLowHighClicked = handleLowHighClicked;
 (window as any).handleDateAddedClicked = handleDateAddedClicked;
+

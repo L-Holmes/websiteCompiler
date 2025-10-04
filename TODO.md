@@ -1,6 +1,6 @@
 TODO:
 - update the filters;
-    - switch out the logic for the image icon ->
+   - switch out the logic for the image icon ->
         -> Insteaad use my compiler logic to pass in the html as the optional argument(!)
     - Make it so the main filter is a button, so the cursor changes when you hover over it etc.
     - Implement the version with a big image...
@@ -16,9 +16,6 @@ TODO:
     - continue with designs;
         - Add the 'help' about the 'info' sign and 'filter' symbol, as seen in the designs...
         - Add the 'global' params underneath as a seperate section.
-
-
-
 
 TODO:
 - on the products page:
