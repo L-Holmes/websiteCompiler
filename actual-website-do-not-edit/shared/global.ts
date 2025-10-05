@@ -1,8 +1,9 @@
 // Minimal approach: no `declare global` to avoid augmentation restrictions.
 // We cast to `any` when assigning to window so inline onclick can call the functions.
 
-const PARAM_BIG = 'EnableBigFont';
-const PARAM_DYS = 'EnableDyslexia';
+const PARAM_BIG = 'big_text';
+const PARAM_DYS = 'dyslexia_font';
+const PARAM_LANG = 'lang';
 
 function getParams(): URLSearchParams {
   return new URLSearchParams(window.location.search);
@@ -64,11 +65,46 @@ function appendParamsToInternalLinks() {
   });
 }
 
+function applyLanguagePrefixToLinks() {
+  const currentLang = getCurrentLanguage();
+  if (!currentLang) return;
+  
+  console.log(`--> Applying language prefix: ${currentLang}`);
+  
+  const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href]');
+  anchors.forEach(a => {
+    try {
+      const href = a.getAttribute('href') ?? '';
+      if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+      
+      // Check if it's a relative link to an HTML file
+      if (!/^(https?:)?\/\//i.test(href) && href.match(/\.html?$/i)) {
+        const filename = href.substring(href.lastIndexOf('/') + 1);
+        // If it doesn't already have a language prefix, add it
+        if (!filename.match(/^[a-z]{2}-/)) {
+          const newHref = href.replace(filename, `${currentLang}-${filename}`);
+          a.href = newHref;
+        }
+      }
+    } catch (_) { /* ignore malformed */ }
+  });
+}
+
+
+function getCurrentLanguage(): string | null {
+  // Extract language from filename (e.g., 'en-index.html' -> 'en')
+  const path = window.location.pathname;
+  const filename = path.substring(path.lastIndexOf('/') + 1);
+  const match = filename.match(/^([a-z]{2})-/);
+  return match ? match[1] : null;
+}
+
 function toggleBigFont() {
   console.log("==> Called toggle big font");
   const isBig = document.documentElement.classList.toggle('big-font');
   setParam(PARAM_BIG, isBig);
   appendParamsToInternalLinks();
+	applyLanguagePrefixToLinks();
 }
 
 function toggleDyslexiaFont() {
@@ -76,7 +112,9 @@ function toggleDyslexiaFont() {
   const isOn = document.body.classList.toggle('font-dyslexia');
   setParam(PARAM_DYS, isOn);
   appendParamsToInternalLinks();
+	applyLanguagePrefixToLinks();
 }
+
 
 // Make functions available for inline onclick handlers
 ;(window as any).toggleBigFont = toggleBigFont;
@@ -85,4 +123,7 @@ function toggleDyslexiaFont() {
 document.addEventListener('DOMContentLoaded', () => {
   applySettingsFromParams();
   appendParamsToInternalLinks();
+
+  // this must be last
+  applyLanguagePrefixToLinks();  
 });
