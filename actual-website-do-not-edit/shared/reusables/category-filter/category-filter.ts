@@ -149,11 +149,9 @@ function handleFilterTileClicked(element, isSelected:boolean) {
 		-> They cut out the click of adding shoes, and go straight to the sub-filters.
 		
 	*/
-    console.log("&&&&&&&&& Handle filter tile clicked");
 
 	let tileStateNow = _updateTheFilterImage(element, isSelected)
 
-    console.log(`&&&&&&&&& tile state now: ${tileStateNow}`);
 
 	_updateSelectedState(element, isSelected)
 
@@ -185,11 +183,8 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 	   // if to match its parent / ancestor.
 
 		// NEW NEW NEW
-		console.log(`>>> &&&&&&&&& selected state is udnefined... (as expected):`);
 		isSelectedState=_isFilterTileSelected(element)
-		console.log(`>>> &&&&&&&&& but we've updated selected state now... ${isSelectedState} `);
    }
-    console.log(`>>> &&&&&&&&& tile state here: ${isSelectedState}`);
 
 	if(!isSelectedState){
 		_updateFilterTileToLookSelected(element);
@@ -197,7 +192,6 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 		_updateFilterTileToLookUnselected(element);
 	}
 
-    console.log(`>>> &&&&&&&&& returning: ${isSelectedState}`);
 	return isSelectedState
 }
 
@@ -222,7 +216,6 @@ function _updateFilterTileToLookUnselected(element: Element): void {
 function _isFilterTileSelected(element: Element): boolean {
 	let containsSelected = element.classList.contains('selected')
 
-	console.log(`&&&&&&&&& does the class contain selected?: ${containsSelected}`);
     return containsSelected;
 }
 
@@ -481,7 +474,6 @@ function _getPairedTileOrNone(element) {
 		}
 	}
 
-	console.log(`Could not find a paired tile for: ${thingBeingFilteredFor}`);
 	return null;
 }
 
@@ -504,7 +496,6 @@ function _findFilterElementByName(filterName) {
 		}
 	}
 
-	console.log(`ahhhhh! ${filterName} could not be found!`)
 	
 	// If we get here, no matching element was found
 	return null;
@@ -636,7 +627,6 @@ function _getFilterState(element){
 	   e.g. May return: /shared/images/filtering/test-tube-half.avif
 	   */
 
-	console.log("getting filter state");
 	const style = window.getComputedStyle(element);
 	const backgroundImage = style.backgroundImage; //e.g. https://localhost:8000/static/img/shared/images/filtering/test-tube-half.avif
 
@@ -760,7 +750,6 @@ function _getElementsImageName(element, imgsHtmlClass, textNameOfElement) {
     @return the image path of the image element within that html block.
     */
     
-    console.log(`${textNameOfElement} being searched for. Looking for ${imgsHtmlClass}`)
 
 
     // Get the icon representing what is being filtered
@@ -811,9 +800,12 @@ function filterItems():void{
    - Simply hides items which aren't meant to be seen, by setting display:none;
    */
 
+  console.log(`1`);
+
     // 1) filterTiers
     const allHtmlItemElements: HTMLElement[] = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS)
 
+  console.log(`2 `);
 
     for (const item of allHtmlItemElements) {
         const itemName:string = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image");  // e.g. 'SappBoot'
@@ -829,9 +821,12 @@ function filterItems():void{
 
         let hidden = false;
         for (const itemTagsGroup of allTagsForItem) {
-            // e.g. itemTagsGroup = 'shoes' // 'colours.brown::colours.black' // etc.
+            // e.g. itemTagsGroup = 'shoes' // itemTagsGroup = 'colours.brown::colours.black' // etc.
+
 
             const itemTags:string[] = itemTagsGroup.split("::"); // e.g. If we want to apply 'OR' for a group of tags, we join with '::'
+
+			console.log(`--> checking the item: ${itemName} against: ${itemTags}`);
         
             // -- if any in the group are selected, don't hide! --
             // -- if none in the group are selected, hide! --
@@ -842,18 +837,24 @@ function filterItems():void{
                 if (filterTiers[itemTag] !== false) {
                     // If any of these are true, we want to show.
                     shouldHide = false;
+					console.log(`--> Showing the item: ${itemName} because one of its tags: ${itemTag} is true!?!? `);
                     break;
                 }
             }
 
+
             if(shouldHide){
+				// e.g. for this iteration, the user may have added the 'colours.brown' and 'colours.black' filters, and we see that this item has neither of those
+				// So we definitely want to hide it.
                 hidden = true;
+				console.log(`==> HIDING the item: ${itemName} because it has no tags that match the item tags; ${itemTags}`);
             }
 
         }
 
         // If none of the tags are filtered out, reset visibility
         if (!hidden) {
+			console.log(`... Truly HIDING the item: ${itemName}`);
             item.style.display = ""; // Reset to default display
         }
     }
@@ -885,7 +886,6 @@ function handleSortClicked(){
 //----------------------------------
 
 function reorderItemsWithFlexbox(): void {
-    console.log("reordering items");
     
     // 1. Define your desired order using unique keywords from the image sources.
     const desiredOrder: string[] = ['table', 'boot', 'sapp-boot'];
@@ -928,17 +928,14 @@ function reorderItemsWithFlexbox(): void {
         }
 
         item.style.order = order.toString();
-        console.log(`Just set the order of ${itemName} to ${order}`);
     }
     
-    console.log("reordered items");
 }
 
 
 
 // Show the sort overlay
 function handleSortClickedNew(): void {
-    console.log("handle sort new clicked..")
     const overlay: HTMLElement | null = document.getElementById('sortOverlay');
     if (overlay) {
         overlay.style.display = 'block';
@@ -964,19 +961,16 @@ function handleOverlayClick(event: MouseEvent): void {
 // Sort option handlers
 function handleHighLowClicked(): void {
     closeSortOverlay();
-    console.log('Price high to low selected');
     // Add your sort logic here
 }
 
 function handleLowHighClicked(): void {
     closeSortOverlay();
-    console.log('Price low to high selected');
     // Add your sort logic here
 }
 
 function handleDateAddedClicked(): void {
     closeSortOverlay();
-    console.log('Date added selected');
     // Add your sort logic here
 }
 

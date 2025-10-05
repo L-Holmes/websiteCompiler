@@ -122,9 +122,7 @@ function handleFilterTileClicked(element, isSelected) {
         -> They cut out the click of adding shoes, and go straight to the sub-filters.
         
     */
-    console.log("&&&&&&&&& Handle filter tile clicked");
     let tileStateNow = _updateTheFilterImage(element, isSelected);
-    console.log(`&&&&&&&&& tile state now: ${tileStateNow}`);
     _updateSelectedState(element, isSelected);
     if (isSelected === undefined) {
         _updateDescendentsAndAncestors(element, tileStateNow);
@@ -148,18 +146,14 @@ function _updateTheFilterImage(element, isSelectedState) {
         // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
         // if to match its parent / ancestor.
         // NEW NEW NEW
-        console.log(`>>> &&&&&&&&& selected state is udnefined... (as expected):`);
         isSelectedState = _isFilterTileSelected(element);
-        console.log(`>>> &&&&&&&&& but we've updated selected state now... ${isSelectedState} `);
     }
-    console.log(`>>> &&&&&&&&& tile state here: ${isSelectedState}`);
     if (!isSelectedState) {
         _updateFilterTileToLookSelected(element);
     }
     else {
         _updateFilterTileToLookUnselected(element);
     }
-    console.log(`>>> &&&&&&&&& returning: ${isSelectedState}`);
     return isSelectedState;
 }
 /*
@@ -179,7 +173,6 @@ function _updateFilterTileToLookUnselected(element) {
 */
 function _isFilterTileSelected(element) {
     let containsSelected = element.classList.contains('selected');
-    console.log(`&&&&&&&&& does the class contain selected?: ${containsSelected}`);
     return containsSelected;
 }
 /**
@@ -391,7 +384,6 @@ function _getPairedTileOrNone(element) {
             return el;
         }
     }
-    console.log(`Could not find a paired tile for: ${thingBeingFilteredFor}`);
     return null;
 }
 function _findFilterElementByName(filterName) {
@@ -409,7 +401,6 @@ function _findFilterElementByName(filterName) {
             return element;
         }
     }
-    console.log(`ahhhhh! ${filterName} could not be found!`);
     // If we get here, no matching element was found
     return null;
 }
@@ -520,7 +511,6 @@ function _getFilterState(element) {
 
        e.g. May return: /shared/images/filtering/test-tube-half.avif
        */
-    console.log("getting filter state");
     const style = window.getComputedStyle(element);
     const backgroundImage = style.backgroundImage; //e.g. https://localhost:8000/static/img/shared/images/filtering/test-tube-half.avif
     // strip the https://localhost:8000/ from the start
@@ -619,7 +609,6 @@ function _getElementsImageName(element, imgsHtmlClass, textNameOfElement) {
         e.g. "Filter icon" // "item"
     @return the image path of the image element within that html block.
     */
-    console.log(`${textNameOfElement} being searched for. Looking for ${imgsHtmlClass}`);
     // Get the icon representing what is being filtered
     const itemsHtmlImgElement = element.querySelector(imgsHtmlClass);
     if (!itemsHtmlImgElement) {
@@ -656,8 +645,10 @@ function filterItems() {
    Technical info:
    - Simply hides items which aren't meant to be seen, by setting display:none;
    */
+    console.log(`1`);
     // 1) filterTiers
     const allHtmlItemElements = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS);
+    console.log(`2 `);
     for (const item of allHtmlItemElements) {
         const itemName = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image"); // e.g. 'SappBoot'
         const allTagsForItem = itemsToTags[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
@@ -669,8 +660,9 @@ function filterItems() {
         }
         let hidden = false;
         for (const itemTagsGroup of allTagsForItem) {
-            // e.g. itemTagsGroup = 'shoes' // 'colours.brown::colours.black' // etc.
+            // e.g. itemTagsGroup = 'shoes' // itemTagsGroup = 'colours.brown::colours.black' // etc.
             const itemTags = itemTagsGroup.split("::"); // e.g. If we want to apply 'OR' for a group of tags, we join with '::'
+            console.log(`--> checking the item: ${itemName} against: ${itemTags}`);
             // -- if any in the group are selected, don't hide! --
             // -- if none in the group are selected, hide! --
             let shouldHide = true;
@@ -679,15 +671,20 @@ function filterItems() {
                 if (filterTiers[itemTag] !== false) {
                     // If any of these are true, we want to show.
                     shouldHide = false;
+                    console.log(`--> Showing the item: ${itemName} because one of its tags: ${itemTag} is true!?!? `);
                     break;
                 }
             }
             if (shouldHide) {
+                // e.g. for this iteration, the user may have added the 'colours.brown' and 'colours.black' filters, and we see that this item has neither of those
+                // So we definitely want to hide it.
                 hidden = true;
+                console.log(`==> HIDING the item: ${itemName} because it has no tags that match the item tags; ${itemTags}`);
             }
         }
         // If none of the tags are filtered out, reset visibility
         if (!hidden) {
+            console.log(`... Truly HIDING the item: ${itemName}`);
             item.style.display = ""; // Reset to default display
         }
     }
@@ -707,7 +704,6 @@ function handleSortClicked() {
 }
 //----------------------------------
 function reorderItemsWithFlexbox() {
-    console.log("reordering items");
     // 1. Define your desired order using unique keywords from the image sources.
     const desiredOrder = ['table', 'boot', 'sapp-boot'];
     // 2. Grab all the elements you want to sort.
@@ -740,13 +736,10 @@ function reorderItemsWithFlexbox() {
             continue;
         }
         item.style.order = order.toString();
-        console.log(`Just set the order of ${itemName} to ${order}`);
     }
-    console.log("reordered items");
 }
 // Show the sort overlay
 function handleSortClickedNew() {
-    console.log("handle sort new clicked..");
     const overlay = document.getElementById('sortOverlay');
     if (overlay) {
         overlay.style.display = 'block';
@@ -769,17 +762,14 @@ function handleOverlayClick(event) {
 // Sort option handlers
 function handleHighLowClicked() {
     closeSortOverlay();
-    console.log('Price high to low selected');
     // Add your sort logic here
 }
 function handleLowHighClicked() {
     closeSortOverlay();
-    console.log('Price low to high selected');
     // Add your sort logic here
 }
 function handleDateAddedClicked() {
     closeSortOverlay();
-    console.log('Date added selected');
     // Add your sort logic here
 }
 // Close overlay with Escape key
