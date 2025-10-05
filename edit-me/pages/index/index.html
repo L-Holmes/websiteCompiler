@@ -12,6 +12,7 @@
 
         <!-- Early loading critical things, end -->
         <script defer src="index.js"></script>
+        <script defer src="shared/global.js"></script>
     </head>
     <body data-page="index">
 
@@ -101,7 +102,7 @@
 
                     <div class="top-bar-row-4-grid">
 
-                        <button class="open-page-left-box-DESKTOP">
+                        <button class="open-page-left-box-DESKTOP" onclick="toggleDyslexiaFont()">
                             <a href='<root>/products.html'>
                                 <div class="centre-wrapper">
                                     <div class="top-bar-item-wrapper">
@@ -114,7 +115,7 @@
                             </a>
                         </button>
 
-                        <button class="open-page-right-box-DESKTOP">
+                        <button class="open-page-right-box-DESKTOP" onclick="toggleBigFont()">
                             <div>
                                 <div class="text-bigger-upper-section">
 									<div class="text-itself" add-text-section="top-bar-increase-text-size">Increase text size</div>
@@ -171,7 +172,7 @@
                 <div class="top-bar-row-grid-MOBILE">
                     <div class="top-bar-row-1-grid-MOBILE">
 
-                        <div class="centre-wrapper">
+                        <div class="centre-wrapper" >
                             <a  href='<root>/products.html'>
                                 <div class="centre-wrapper">
                                     <div class="top-bar-item-wrapper">

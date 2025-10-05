@@ -226,12 +226,12 @@ $spacing-xxs: 3px;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 html{
-	font-size:24px;
+	font-size:18px;
 }
 
 body {
 	margin: 0px;
-	font-family: $sylexiad-regular;
+    font-family: $cormorant-regular;
     background-color: #121212;
     color: $text-colour-primary;
 }
@@ -239,25 +239,24 @@ body {
 h1{
 	color:$text-colour-primary;
 	margin: 0px;
-	font-family: $sylexiad-bold;
 }
 
 h2{
 	color:$text-colour-primary;
 	margin: 0px;
-	font-family: $sylexiad-bold;
+  font-family: $cormorant-bold; 
 }
 
 h3{
 	color:$text-colour-primary;
 	margin: 0px;
-	font-family: $sylexiad-bold;
+  font-family: $cormorant-bold; 
   }
 
 h4{
 	color:$text-colour-primary;
 	margin: 0px;
-	font-family: $sylexiad-bold;
+  font-family: $cormorant-bold;
   }
 
 
@@ -279,6 +278,38 @@ button:hover {
 	background-color:transparent;
 }
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ==> ACCESSIBILITY
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* BIG FONT toggle  */
+html.big-font {
+  font-size: 24px;
+}
+
+/* Dyslexia-friendly font toggle */
+body.font-dyslexia {
+   // or your dyslexia-friendly regular
+  font-family: $sylexiad-regular;
+}
+
+body.font-dyslexia h1 {
+	font-family: $sylexiad-bold;
+}
+
+body.font-dyslexia h2 {
+	font-family: $sylexiad-bold;
+}
+
+body.font-dyslexia h3 {
+	font-family: $sylexiad-bold;
+}
+
+body.font-dyslexia h4 {
+	font-family: $sylexiad-bold;
+}
 
 
 //primary = purple = (73, 61, 175) = #493DAF
