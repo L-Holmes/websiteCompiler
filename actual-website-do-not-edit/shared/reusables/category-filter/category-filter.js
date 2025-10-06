@@ -2,7 +2,6 @@
 // - continue with filterItems. Convert pseudocode into typescript.
 // - update the allTagsForItem group to use the new map instead...
 // -~~ yeah for the new item name thing, just split on the last dot...
-// - Update all of code to use the new system of filterTiers and globalFilterTiers
 // ===============================================
 // RULES & CHECKS
 // - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
@@ -31,44 +30,28 @@ const RESULT_ITEM_IMAGE_CLASS = ".item-images";
  * A record of available filter tiers and their selection state.
  * Each key represents a filter name in dot notation.
  */
-const filterTiers = {
-    "all": false,
-    "shoe": false,
-    "boot": false,
-    "table": false,
-    "boot.ski_boot": false,
-};
-const globalFilterTiers = {
-    "colours": false,
-    "colours.red": false,
-    "colours.orange": false,
-    "colours.black": false,
-    "colours.brown": false,
-    "colours.purple": false,
-};
-const filterTiersHeaders = {
+// const filterTiers: Record<string, boolean> = {
+// "all": false,
+// "shoe": false,
+// "boot": false,
+// "table": false,
+// "boot.ski_boot":false,
+// };
+const filterTiersNew = {
     "": {
         "all": false,
         "shoe": false,
         "boot": false,
-        "table": true,
+        "table": false,
         "colours": false,
     },
     "colours": {
-        "colours.red": false,
-        "colours.orange": false,
-        "colours.black": false,
-        "colours.brown": false,
-        "colours.purple": false,
+        "red": false,
+        "orange": false,
+        "black": false,
+        "brown": false,
+        "purple": false,
     }
-};
-/*
-Every item that the user may choose
-*/
-const itemsToTags = {
-    "sapp-boot": ["shoe", "boot", "colours.brown", "colours.black"],
-    "boot": ["shoe", "boot", "colours.brown", "colours.black"],
-    "table": ["table", "colours.brown"],
 };
 const itemsToTagsNew = {
     'sapp-boot': {
@@ -116,7 +99,7 @@ function _showOnlyTopTierFilters() {
     then only 'shoes', 'boots', 'tables' will be shown. The rest will be hidden
    */
     // Get all top-level filter categories (no dots in name)
-    const topLevelTiers = Object.keys(filterTiers).filter(key => !key.includes('.'));
+    const topLevelTiers = Object.keys(filterTiersNew['']); // e.g. [shoes,boots,tables]
     const filterTiles = _get_fresh_filter_tiles(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
     // Show only the tiles that match the top-level tiers
     filterTiles.forEach((tile) => {
@@ -161,7 +144,8 @@ function handleFilterTileClicked(element, isSelected) {
         
     */
     let tileStateNow = _updateTheFilterImage(element, isSelected);
-    _updateSelectedState(element, isSelected);
+    _updateSelectedState(element, tileStateNow);
+    // i.e. If this is the first click; NOT part of a cascading update... perform the cascading update...
     if (isSelected === undefined) {
         _updateDescendentsAndAncestors(element, tileStateNow);
     }
@@ -184,6 +168,7 @@ function _updateTheFilterImage(element, isSelectedState) {
         // Conversly, if the next image is an actual image page, that means that this filter tile hasn't been directly clicked, but rather, one of its parents / ancestors has, and so we are updating
         // if to match its parent / ancestor.
         // NEW NEW NEW
+        console.log(`bbbbbbbbbbbbbbbb) filter state is undefinined...`);
         isSelectedState = _isFilterTileSelected(element);
     }
     if (!isSelectedState) {
@@ -192,7 +177,7 @@ function _updateTheFilterImage(element, isSelectedState) {
     else {
         _updateFilterTileToLookUnselected(element);
     }
-    return isSelectedState;
+    return !isSelectedState;
 }
 /*
 Updates the appearance of the given tile to show that it is now selected
@@ -224,8 +209,16 @@ function _isFilterTileSelected(element) {
 function _updateSelectedState(element, isSelected) {
     // getting the name of the thing being filtered for
     const thingBeingFilteredFor = _getFilterCategory(element);
-    // Update the filter tiers map
-    filterTiers[thingBeingFilteredFor] = isSelected;
+    // -- seperate into before and after the last dot --
+    const lastDotIndex = thingBeingFilteredFor.lastIndexOf('.');
+    const parentGroupKey = lastDotIndex === -1 ? '' : thingBeingFilteredFor.substring(0, lastDotIndex); // If no dot is found (returns -1), the parent group is '', otherwise it's the part before the dot
+    if (!filterTiersNew[parentGroupKey]) {
+        filterTiersNew[parentGroupKey] = {};
+    }
+    // -- update the map --
+    console.log(`(a)(aaaaaaaaa) Updating the value of ${parentGroupKey} -> ${thingBeingFilteredFor} to ${isSelected}.. `);
+    filterTiersNew[parentGroupKey][thingBeingFilteredFor] = isSelected;
+    console.log(`Here is the udpated map: ${JSON.stringify(filterTiersNew)}`);
 }
 function _updateDescendentsAndAncestors(element, isSelected) {
     /*
@@ -271,7 +264,7 @@ function _updateDescendentsAndAncestors(element, isSelected) {
     // Updates / Filters the actual results list that the user sees (only on desktop)
     _applyAutomaticFilterIfNeeded();
     function _getAllDescendants(parentFilterThatWasClicked) {
-        // get all entries from filterTiers that have the parentFilterThatWasClicked as an ancestor
+        // get all entries from filterTiersNew that have the parentFilterThatWasClicked as an ancestor
         // i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
         // @return an array of the descendant's names
         // e.g. if 'tables.colours' was the parent, then it will return:  
@@ -282,41 +275,53 @@ function _updateDescendentsAndAncestors(element, isSelected) {
         // 						   "tables.colours.blue.lightblue",
         // 						   "tables.colours.orange.tangerine",
         // 						   "tables.colours.orange.tangerine.juicy"]
-        let descendantTiers;
         if (parentFilterThatWasClicked === "all") {
-            // Show all filters except 'all' itself
-            descendantTiers = Object.keys(filterTiers).filter(key => {
-                return key !== 'all';
-            });
+            // --- Start of Updated Code ---
+            // Replaced Object.values().flatMap() with a compatible Object.keys().reduce()
+            // to flatten all keys from the inner objects into a single array.
+            const allTiers = Object.keys(filterTiersNew).reduce((accumulator, key) => {
+                return accumulator.concat(Object.keys(filterTiersNew[key]));
+            }, []);
+            // --- End of Updated Code ---
+            return allTiers.filter(key => key !== 'all');
         }
-        else {
-            // Show all descendants (any level deeper)
-            descendantTiers = Object.keys(filterTiers).filter(key => {
-                return key.startsWith(parentFilterThatWasClicked + '.');
-            });
+        const descendantTiers = [];
+        const prefix = parentFilterThatWasClicked + '.';
+        // Iterate over the parent groups in the new structure
+        for (const groupKey in filterTiersNew) {
+            // A group contains descendants if its own key IS the parent we're looking for,
+            // OR if its key STARTS WITH the parent's prefix (for deeper nesting).
+            if (groupKey === parentFilterThatWasClicked || groupKey.startsWith(prefix)) {
+                // Add all the full-path keys from this matching descendant group
+                descendantTiers.push(...Object.keys(filterTiersNew[groupKey]));
+            }
         }
         return descendantTiers;
     }
-    function _getAllAncestors(parentFilterThatWasClicked) {
-        // get all entries from filterTiers that have the parentFilterThatWasClicked as a descendant
+    function _getAllAncestors(childFilterThatWasClicked) {
+        // get all entries from filterTiersNew that have the childFilterThatWasClicked as a descendant
         // @return an array of the ancestor's names
-        // e.g. if 'tables.colours.orange.tangerine.juicy' was the parent, then it will return:  
-        // const descendantTiers = [
-        //						   "tables",
-        //						   "tables.colours",
-        // 						   "tables.colours.orange",
-        // 						   "tables.colours.orange.tangerine",
-        // @ return empty is if there is none (e.g. 'tables' has no dots in the same, thus it has no ancestors
         // If there are no dots, there are no ancestors
-        if (parentFilterThatWasClicked.indexOf('.') === -1)
+        if (childFilterThatWasClicked.indexOf('.') === -1) {
             return [];
-        const parts = parentFilterThatWasClicked.split('.');
+        }
+        const parts = childFilterThatWasClicked.split('.');
         const ancestors = [];
-        // Build prefixes: "a", "a.b", "a.b.c", ... up to second-last segment
+        // Build potential ancestor prefixes: "a", "a.b", "a.b.c", ...
+        // We loop up to length - 1 because the full string itself is not an ancestor.
         for (let i = 1; i < parts.length; i++) {
-            const prefix = parts.slice(0, i).join('.');
-            // Only include if present in global filterTiers
-            ancestors.push(prefix);
+            const potentialAncestor = parts.slice(0, i).join('.');
+            // --- Start of updated logic ---
+            // Now, we check if this potential ancestor actually exists in our new map.
+            const lastDotIndex = potentialAncestor.lastIndexOf('.');
+            const parentGroupKey = lastDotIndex === -1
+                ? ''
+                : potentialAncestor.substring(0, lastDotIndex);
+            // Check if the parent group exists and if the key is defined within that group.
+            if (filterTiersNew[parentGroupKey] && filterTiersNew[parentGroupKey][potentialAncestor] !== undefined) {
+                ancestors.push(potentialAncestor);
+            }
+            // --- End of updated logic ---
         }
         return ancestors;
     }
@@ -374,31 +379,29 @@ function filterIconClicked(element) {
     _updateFilterHeader();
 }
 function _getAllChildren(parentFilterThatWasClicked) {
-    // get all entries from filterTiers that have the parentFilterThatWasClicked as a parent
-    // i.e. the entries which have a key, which is equal to parentFilterThatWasClicked, but with one extra dot and word at the end (and not more than one extra dot; no grandchildren!)
+    // get all entries from filterTiersNew that have the parentFilterThatWasClicked as a parent
+    // (i.e., direct children, not grandchildren)
     // e.g. if 'tables.colours' was the parent, then the tier may be:  
     // const childTiers = ["tables.colours.red",
     // 						"tables.colours.blue",
     // 						"tables.colours.yellow",
     // 						"tables.colours.orange]
     // but 'tables.colours.blue.lightblue' or 'tables.colours.orange.tangerine.juicy' wouldn't.
-    let childTiers;
     if (parentFilterThatWasClicked === "all") {
-        // Show only top-level filters (no dots), excluding 'all' itself
-        childTiers = Object.keys(filterTiers).filter(key => {
-            return !key.includes('.') && key !== 'all';
-        });
+        // The "children" of "all" are the top-level filters.
+        // In the new structure, these are the keys of the object at the '' key.
+        // We also need to exclude 'all' itself from the list.
+        const topLevelGroup = filterTiersNew[''];
+        // Return the keys, filtered, or an empty array if the group doesn't exist.
+        return topLevelGroup ? Object.keys(topLevelGroup).filter(key => key !== 'all') : [];
     }
     else {
-        // Show direct children (one level deeper)
-        const parentParts = parentFilterThatWasClicked.split('.');
-        childTiers = Object.keys(filterTiers).filter(key => {
-            const keyParts = key.split('.');
-            return key.startsWith(parentFilterThatWasClicked + '.') &&
-                keyParts.length === parentParts.length + 1;
-        });
+        // For any other parent, its direct children are the keys of the object
+        // stored at the parent's own key.
+        const childGroup = filterTiersNew[parentFilterThatWasClicked];
+        // If the parent exists in the map, return its keys. Otherwise, return an empty array.
+        return childGroup ? Object.keys(childGroup) : [];
     }
-    return childTiers;
 }
 // ===========================================
 // REVERSE REVERSE 
@@ -573,10 +576,17 @@ function _getFilterCategory(element) {
     e.g.2. may return "tables.colours.orange"
     */
     const imageName = _getElementsImageName(element, FILTER_TILE_IMAGE_CLASS, "Filter icon");
-    if (!(imageName in filterTiers)) {
-        console.warn(`Filter ${imageName} is not present within the filter tiers: ${JSON.stringify(filterTiers)}!`);
+    // -- check the key exists --
+    // 1. Determine the parent group key from the filter's name.
+    const lastDotIndex = imageName.lastIndexOf('.');
+    const parentGroupKey = lastDotIndex === -1 ? '' : imageName.substring(0, lastDotIndex);
+    // 2. Check if the parent group exists AND if the key exists within that group.
+    if (!(filterTiersNew[parentGroupKey] && filterTiersNew[parentGroupKey].hasOwnProperty(imageName))) {
+        // Make sure to log the new data structure in the warning message.
+        console.warn(`Filter ${imageName} is not present within the filter tiers: ${JSON.stringify(filterTiersNew)}!`);
         return null;
     }
+    //-----------------------------
     return imageName;
 }
 /**
@@ -707,22 +717,17 @@ function filterItems() {
             // so we need to hide this item
             HIDE
 
-    itemsToTags=
-        sappboot:{
-            '':['shoe', 'boot'],         //represents 'shoe', 'boot'
-            'colours':['red', 'orange'], //represents 'colours.red', 'colours.orange'
-        },
 
    */
-    console.log("====================================");
-    console.log(`filter tiers: ${filterTiersHeaders}`);
+    console.log("-------------------");
+    console.log(`Filter tiers new: ${JSON.stringify(filterTiersNew)}!`);
     console.log(`1`);
-    // 1) filterTiers
+    // 1) 
     const allHtmlItemElements = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS);
     console.log(`2 `);
     for (const item of allHtmlItemElements) {
         //e.g. item = the sapp boot html element
-        console.log(`=====================================================================`);
+        console.log(`=============================`);
         // == get params ===
         const itemName = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image"); // e.g. 'SappBoot'
         const allTagsForItem = itemsToTagsNew[itemName]; //e.g. { '':['shoe', 'boot'],'colours':['red', 'orange'], },
@@ -784,7 +789,7 @@ function filterItems() {
                 const shouldShow = itemPassedFilterGroup();
                 function itemPassedFilterGroup() {
                     // get the group:
-                    const selectedSubFiltersListForGivenGroup = filterTiersHeaders[filterGroup];
+                    const selectedSubFiltersListForGivenGroup = filterTiersNew[filterGroup];
                     // e.g. selectedSubFiltersListForGivenGroup = {red:false, orange:true, black:true,...}
                     if (!selectedSubFiltersListForGivenGroup) {
                         console.error(`[ERROR] no sub filters found for: ${filterGroup}`);
@@ -798,11 +803,13 @@ function filterItems() {
                             return true;
                         }
                     }
+                    console.log(`.... It seems that, none of the sub keys in the group: '${JSON.stringify(filterSubGroups)}' are true... here's the proof: '${JSON.stringify(selectedSubFiltersListForGivenGroup)}'`);
                     // 2) Check if all filters are false (which means NO filters are being applied for that group)
                     let allFalse = true;
                     for (const key in selectedSubFiltersListForGivenGroup) {
                         if (selectedSubFiltersListForGivenGroup.hasOwnProperty(key)) {
                             if (selectedSubFiltersListForGivenGroup[key] !== false) {
+                                console.log(`		--> The entries in the subgroup are not all false... item: ${key} is not false: ${selectedSubFiltersListForGivenGroup[key]}: ${JSON.stringify(selectedSubFiltersListForGivenGroup)}`);
                                 allFalse = false;
                                 break;
                             }
@@ -850,9 +857,9 @@ function reorderItemsWithFlexbox() {
     const desiredOrder = ['table', 'boot', 'sapp-boot'];
     // 2. Grab all the elements you want to sort.
     const nodeList = document.querySelectorAll(ITEM_WRAPPER_CLASS);
-    const itemsToTags = Array.from(nodeList).map(el => el);
+    const items = Array.from(nodeList).map(el => el);
     // If there's nothing to sort, we can stop.
-    if (itemsToTags.length === 0) {
+    if (items.length === 0) {
         return;
     }
     // 3. Get the parent container and apply flexbox styles directly.
@@ -865,8 +872,8 @@ function reorderItemsWithFlexbox() {
     container.style.display = 'flex';
     container.style.flexDirection = 'column';
     // 4. Loop through all the items found on the page.
-    for (let i = 0; i < itemsToTags.length; i++) {
-        const item = itemsToTags[i];
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
         const itemName = _getElementsImageName(item, ".item-images", "Item image"); // e.g. 'sapp-boot'
         // Find the position of this item in our desiredOrder array.
         const order = desiredOrder.indexOf(itemName);

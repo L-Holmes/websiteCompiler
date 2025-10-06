@@ -1,3 +1,11 @@
+
+TODO:
+- currently we have an issue where:
+    - because 'colours' is top level...
+    - if it isn't selected, 
+
+
+
 TODO:
 - need to sort out the issue with having multiple maps in the filter js code.
     -> update the code to use the new maps... 
