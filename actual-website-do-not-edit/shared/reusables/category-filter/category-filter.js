@@ -1,3 +1,8 @@
+// TODO:
+// - continue with filterItems. Convert pseudocode into typescript.
+// - update the allTagsForItem group to use the new map instead...
+// -~~ yeah for the new item name thing, just split on the last dot...
+// - Update all of code to use the new system of filterTiers and globalFilterTiers
 // ===============================================
 // RULES & CHECKS
 // - The names of the images of all filters must be contained as keys in the 'filterTiers' map here. 
@@ -31,6 +36,9 @@ const filterTiers = {
     "shoe": false,
     "boot": false,
     "table": false,
+    "boot.ski_boot": false,
+};
+const globalFilterTiers = {
     "colours": false,
     "colours.red": false,
     "colours.orange": false,
@@ -38,13 +46,43 @@ const filterTiers = {
     "colours.brown": false,
     "colours.purple": false,
 };
+const filterTiersHeaders = {
+    "": {
+        "all": false,
+        "shoe": false,
+        "boot": false,
+        "table": true,
+        "colours": false,
+    },
+    "colours": {
+        "colours.red": false,
+        "colours.orange": false,
+        "colours.black": false,
+        "colours.brown": false,
+        "colours.purple": false,
+    }
+};
 /*
 Every item that the user may choose
 */
 const itemsToTags = {
-    "sapp-boot": ["shoe", "boot", "colours.brown::colours.black"],
-    "boot": ["shoe", "boot", "colours.brown::colours.black"],
+    "sapp-boot": ["shoe", "boot", "colours.brown", "colours.black"],
+    "boot": ["shoe", "boot", "colours.brown", "colours.black"],
     "table": ["table", "colours.brown"],
+};
+const itemsToTagsNew = {
+    'sapp-boot': {
+        '': ['shoe', 'boot'], //represents 'shoe', 'boot'
+        'colours': ['red', 'orange'], //represents 'colours.red', 'colours.orange'
+    },
+    'boot': {
+        '': ["shoe", "boot"],
+        'colours': ["brown", "black"],
+    },
+    'table': {
+        '': ['table'],
+        'colours': ['brown']
+    }
 };
 //----------------------------------------------------------------------------------
 // ======================
@@ -304,7 +342,6 @@ function _updateDescendentsAndAncestors(element, isSelected) {
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
-// jump! (up to here)
 // =====================================
 // HANDLE THE FILTER ICON BEING CLICKED
 // ====================================
@@ -644,48 +681,153 @@ function filterItems() {
 
    Technical info:
    - Simply hides items which aren't meant to be seen, by setting display:none;
+
+
+
+    LAWS:
+    - A group = filters that all have a shared parent.
+        e.g. 'colours.red', 'colours.blue' are in a group as they have the same parent 'colours'
+    - If all filters in a group are false, treat that as the entire group being true. (if not filtering for something specific, show everything)
+    - For each tag that an item has:
+        - for the item to show: The tag has to be true OR one of the other tags in the group needs to be true
+
+
+--------------------------------------------------
+
+                
+    For each item:
+        shouldShow=True
+        For each tag group it has (e.g. [colours.red//colours.blue], [shoe/boot])
+            If all of the filters for that group are False or they are all True:
+                Skip           //no filters applied for this particular category, so don't worry
+            If any of those value are true:
+                Skip           //user has filtered for that thing, so we are alright
+
+            // if we get to this point, it means that none of the filters we have tagged for this item have been selected by the user
+            // so we need to hide this item
+            HIDE
+
+    itemsToTags=
+        sappboot:{
+            '':['shoe', 'boot'],         //represents 'shoe', 'boot'
+            'colours':['red', 'orange'], //represents 'colours.red', 'colours.orange'
+        },
+
    */
+    console.log("====================================");
+    console.log(`filter tiers: ${filterTiersHeaders}`);
     console.log(`1`);
     // 1) filterTiers
     const allHtmlItemElements = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS);
     console.log(`2 `);
     for (const item of allHtmlItemElements) {
+        //e.g. item = the sapp boot html element
+        console.log(`=====================================================================`);
+        // == get params ===
         const itemName = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image"); // e.g. 'SappBoot'
-        const allTagsForItem = itemsToTags[itemName]; //e.g. ['shoes', 'materials.leather', 'colours.brown::colours.black']
+        const allTagsForItem = itemsToTagsNew[itemName]; //e.g. { '':['shoe', 'boot'],'colours':['red', 'orange'], },
         if (!allTagsForItem) {
             console.error(`[ERROR] No Item tag found for '${itemName}'`);
             console.error('Available item keys:');
-            console.error(`${JSON.stringify(itemsToTags)}`);
+            console.error(`${JSON.stringify(itemsToTagsNew)}`);
             continue; // No tags found for this item
         }
-        let hidden = false;
-        for (const itemTagsGroup of allTagsForItem) {
-            // e.g. itemTagsGroup = 'shoes' // itemTagsGroup = 'colours.brown::colours.black' // etc.
-            const itemTags = itemTagsGroup.split("::"); // e.g. If we want to apply 'OR' for a group of tags, we join with '::'
-            console.log(`--> checking the item: ${itemName} against: ${itemTags}`);
-            // -- if any in the group are selected, don't hide! --
-            // -- if none in the group are selected, hide! --
-            let shouldHide = true;
-            for (const itemTag of itemTags) {
-                // E.g. a tag may be 'furniture' or 'made of wood' etc.
-                if (filterTiers[itemTag] !== false) {
-                    // If any of these are true, we want to show.
-                    shouldHide = false;
-                    console.log(`--> Showing the item: ${itemName} because one of its tags: ${itemTag} is true!?!? `);
-                    break;
+        console.log(`Checking whether item: ${itemName} should be shown............`);
+        // == determine whether to show ===
+        // shouldSee = shouldWeShowItem()
+        // 
+        // def shouldWeShowItem():
+        // for filterGroup, filterSubGroups in allTagsForItem:
+        // # e.g. filterGroup = 'colours'
+        // # e.g. filterSubGroup = 'red', 'orange'
+        // shouldShow=itemPassedFilterGroup()
+        // 
+        // 
+        // def itemPassedFilterGroup():
+        // //get the group:
+        // selectedSubFiltersListForGivenGroup=filterTiers[filterGroup]
+        // // e.g. selectedSubFiltersListForGivenGroup = {red:false, orange:true,black:true,...}
+        // if not selectedSubFiltersListForGivenGroup:
+        // console.error(`[ERROR] no sub filters found for: `)
+        // 
+        // # 1) For each value, check if that particular value is true. Skip on if any are true (that means user is filtering for them, so we are good)
+        // 
+        // for subGroupTag in filterSubGroup:
+        // if selectedSubFiltersListForGivenGroup[subGroupTag] == true:
+        // return True
+        // 
+        // # 2) Check if all filters are false (which means NO filters are being applied for that group)
+        // if all(value=False for value in selectedSubFiltersListForGivenGroup.values()):
+        // return True
+        // 
+        // # 3) User has chosen to filter out this item. Hide it. (i.e. don't unhide it!)
+        // return False
+        // 
+        // 
+        // 
+        // if not shouldShow:
+        // return False
+        // 
+        // // only show if all of its tags are being filtered for 
+        // return True
+        const shouldSee = shouldWeShowItem();
+        console.log(`Are we showing the item?   ${shouldSee}`);
+        console.log(`All tags for item: ${allTagsForItem}`);
+        function shouldWeShowItem() {
+            const filterGroups = Object.keys(allTagsForItem);
+            for (let i = 0; i < filterGroups.length; i++) {
+                const filterGroup = filterGroups[i];
+                const filterSubGroups = allTagsForItem[filterGroup];
+                // e.g. filterGroup = 'colours'
+                // e.g. filterSubGroups = ['red', 'orange']
+                console.log(`==> working with (new): ${filterGroup} and sub: ${filterSubGroups}`);
+                const shouldShow = itemPassedFilterGroup();
+                function itemPassedFilterGroup() {
+                    // get the group:
+                    const selectedSubFiltersListForGivenGroup = filterTiersHeaders[filterGroup];
+                    // e.g. selectedSubFiltersListForGivenGroup = {red:false, orange:true, black:true,...}
+                    if (!selectedSubFiltersListForGivenGroup) {
+                        console.error(`[ERROR] no sub filters found for: ${filterGroup}`);
+                        return false;
+                    }
+                    // 1) For each value, check if that particular value is true. Skip on if any are true (that means user is filtering for them, so we are good)
+                    for (let i = 0; i < filterSubGroups.length; i++) {
+                        const subGroupTag = filterSubGroups[i];
+                        if (selectedSubFiltersListForGivenGroup[subGroupTag] === true) {
+                            console.log(`		--> item has a tag: ${subGroupTag} that matches one of the selected filter entries; returning True`);
+                            return true;
+                        }
+                    }
+                    // 2) Check if all filters are false (which means NO filters are being applied for that group)
+                    let allFalse = true;
+                    for (const key in selectedSubFiltersListForGivenGroup) {
+                        if (selectedSubFiltersListForGivenGroup.hasOwnProperty(key)) {
+                            if (selectedSubFiltersListForGivenGroup[key] !== false) {
+                                allFalse = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (allFalse) {
+                        console.log(`		--> All filter entries for the group are false; so this item's tag passes; returning true`);
+                        return true;
+                    }
+                    // 3) User has chosen to filter out this item. Hide it. (i.e. don't unhide it!)
+                    console.log(`		--> !!! Item has a tag not being filtered for: ; returning False!`);
+                    return false;
+                }
+                if (!shouldShow) {
+                    console.log(`		~~> !!! At least one of the tags of the item has not been filtered for by the user... hiding this item.`);
+                    return false;
                 }
             }
-            if (shouldHide) {
-                // e.g. for this iteration, the user may have added the 'colours.brown' and 'colours.black' filters, and we see that this item has neither of those
-                // So we definitely want to hide it.
-                hidden = true;
-                console.log(`==> HIDING the item: ${itemName} because it has no tags that match the item tags; ${itemTags}`);
-            }
+            // only show if all of its tags are being filtered for
+            console.log(`		~~> :):):) All tags are being filtered by user. Showing this item.`);
+            return true;
         }
-        // If none of the tags are filtered out, reset visibility
-        if (!hidden) {
-            console.log(`... Truly HIDING the item: ${itemName}`);
-            item.style.display = ""; // Reset to default display
+        // TODO if not should see... (unhide)
+        if (shouldSee == true) {
+            item.style.display = ''; // Change it from displaying 'none' to displaying
         }
     }
 }

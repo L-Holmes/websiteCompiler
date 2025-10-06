@@ -1,4 +1,11 @@
 TODO:
+- need to sort out the issue with having multiple maps in the filter js code.
+    -> update the code to use the new maps... 
+- sort out the code for the headers...
+
+
+
+TODO:
     -> also, if i have a map in memory (why do i have a map? should i not just check the html? or is this good for switching to server-first????)
 - Move onto sorting out the rest of the code in the typescript file (keeping in mind that we are simplifying the heading!)
 - Then update the html code for the heading
