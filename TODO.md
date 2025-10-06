@@ -1,42 +1,25 @@
 
 TODO:
-- currently we have an issue where:
-    - because 'colours' is top level...
-    - if it isn't selected, 
 
+- Update the headers etc?
+    -> change the header to just be basic text etc.. like in designs...
+    -> and remove the big square bracket-- just make it a white bottom border...
+    - (I think have all permutations of all of the pages available and seperate. then just hide them by default and unhide as necessary?)
+- Make the filter further icon also seperately clickable...
 
-
-TODO:
-- need to sort out the issue with having multiple maps in the filter js code.
-    -> update the code to use the new maps... 
-- sort out the code for the headers...
-
-
-
-TODO:
-    -> also, if i have a map in memory (why do i have a map? should i not just check the html? or is this good for switching to server-first????)
-- Move onto sorting out the rest of the code in the typescript file (keeping in mind that we are simplifying the heading!)
-- Then update the html code for the heading
-
-
-TODO:
 - update the filters;
    - switch out the logic for the image icon ->
         -> Insteaad use my compiler logic to pass in the html as the optional argument(!)
-    - Make it so the main filter is a button, so the cursor changes when you hover over it etc.
     - Implement the version with a big image...
-    - Update the headers etc?
-        -> change the header to just be basic text etc.. like in designs...
-        -> and remove the big square bracket-- just make it a white bottom border...
-    - Make the filter further icon also seperately clickable...
     - Update the ts code to work with the new system...
         -> make the outline a lighter grey when its unselected
         -> Make it a bold white when it is selected (and possibly bold the text?)
 
-    - change the 'info' icon image to an svg with transparent background and white 'i'
     - continue with designs;
-        - Add the 'help' about the 'info' sign and 'filter' symbol, as seen in the designs...
-        - Add the 'global' params underneath as a seperate section.
+        - Add the help text regarding the 'info' sign and 'filter' symbol, as seen in the designs...
+
+
+
 
 TODO:
 - on the products page:
