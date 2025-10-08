@@ -471,33 +471,33 @@ function filterIconClicked(element: HTMLElement): void {
 }
 
 
-	function _getAllChildren(parentFilterThatWasClicked: string): string[] {
-	  // get all entries from filterTiersNew that have the parentFilterThatWasClicked as a parent
-	  // (i.e., direct children, not grandchildren)
-		// e.g. if 'tables.colours' was the parent, then the tier may be:  
-		// const childTiers = ["tables.colours.red",
-		// 						"tables.colours.blue",
-		// 						"tables.colours.yellow",
-		// 						"tables.colours.orange]
-		// but 'tables.colours.blue.lightblue' or 'tables.colours.orange.tangerine.juicy' wouldn't.
+function _getAllChildren(parentFilterThatWasClicked: string): string[] {
+  // get all entries from filterTiersNew that have the parentFilterThatWasClicked as a parent
+  // (i.e., direct children, not grandchildren)
+	// e.g. if 'tables.colours' was the parent, then the tier may be:  
+	// const childTiers = ["tables.colours.red",
+	// 						"tables.colours.blue",
+	// 						"tables.colours.yellow",
+	// 						"tables.colours.orange]
+	// but 'tables.colours.blue.lightblue' or 'tables.colours.orange.tangerine.juicy' wouldn't.
 
-	  if (parentFilterThatWasClicked === "all") {
-		// The "children" of "all" are the top-level filters.
-		// In the new structure, these are the keys of the object at the '' key.
-		// We also need to exclude 'all' itself from the list.
-		const topLevelGroup = filterTiersNew[''];
-		
-		// Return the keys, filtered, or an empty array if the group doesn't exist.
-		return topLevelGroup ? Object.keys(topLevelGroup).filter(key => key !== 'all') : [];
-	  } else {
-		// For any other parent, its direct children are the keys of the object
-		// stored at the parent's own key.
-		const childGroup = filterTiersNew[parentFilterThatWasClicked];
+  if (parentFilterThatWasClicked === "all") {
+	// The "children" of "all" are the top-level filters.
+	// In the new structure, these are the keys of the object at the '' key.
+	// We also need to exclude 'all' itself from the list.
+	const topLevelGroup = filterTiersNew[''];
+	
+	// Return the keys, filtered, or an empty array if the group doesn't exist.
+	return topLevelGroup ? Object.keys(topLevelGroup).filter(key => key !== 'all') : [];
+  } else {
+	// For any other parent, its direct children are the keys of the object
+	// stored at the parent's own key.
+	const childGroup = filterTiersNew[parentFilterThatWasClicked];
 
-		// If the parent exists in the map, return its keys. Otherwise, return an empty array.
-		return childGroup ? Object.keys(childGroup) : [];
-	  }
-	}
+	// If the parent exists in the map, return its keys. Otherwise, return an empty array.
+	return childGroup ? Object.keys(childGroup) : [];
+  }
+}
 
 
 
@@ -618,12 +618,24 @@ function filterHeaderReturnToParentClicked(element){
 	   */
 
 	// e.g. the 'return back to "all_colours" was clicked" => headerClicked="all_colours"
-	const headerClicked = _getFilterCategoryFromUnderFilter(element);
+
+	// == GET THE TEXT IN THE DIV ==
+	  const filename = element.dataset.text;      
+	  console.log('>>>> Clicked filename:', filename);
+
+	// == GET THE TEXT IN THE DIV ==
+    const headerClicked = filename.replace(/\.[^/.]+$/, '');
+
+	console.log(`>>>> parent filter that was clicked: ${headerClicked}`);
+
+	// ======================================================================
 
 	if (HEADER_FILTERS.indexOf(headerClicked) === -1){ // header not found
 		console.warn("CLICKED HEADER FILTER 'return/move up to this tier' NOT FOUND IN THE HEADERS LIST!", HEADER_FILTERS)
 		return; // or handle accordingly
 	}
+
+	// ======================================================================
 
 	// (1) Update the queue that represents what is being shown in the header
 	// e.g. Lets say we were showing everything under 'all_colours.orange.tangerine' when the 'return to parent: all_colours', was clicked
@@ -637,9 +649,32 @@ function filterHeaderReturnToParentClicked(element){
 		if (HEADER_FILTERS.length === 0) break; //prevent infinite loop
 	}
 
-	// (2) Act as if we just clicked that header. E.g. act as if we were looking at 'all' filters, and the user just clicked the 'all_colours' filter.
-	//     This will essentially achieve our same goal of showing the children of the 'all_colours' filter.
-	filterIconClicked(element)
+	// ======================================================================
+
+
+	// UPDATE THE HEADERS TO SHOW THE THING THAT WAS CLICKED
+	// ====================
+	HEADER_FILTERS.push(headerClicked); //e.g. after running, HEADER_FILTERS=["all.colours"]
+
+	// GET THE CHILDREN TIERS
+	// ====================
+	let childTiers: string[] = _getAllChildren(headerClicked) //e.g. ["all.colours.orange", "all.colours.blue"]
+	console.log(`>>>> child tiers: ${childTiers}`);
+
+
+	// if there are no child tiers, we should throw an error, as the filter icon should only be visible when child tiers are available!
+	if(childTiers.length === 0){
+	  console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
+	  return null;
+	}
+
+	// HIDE CURRENT TILES, AND THEN UNHIDE EACH OF THE CHILDREN
+	//=========================================================
+	_updateVisibleFilterTiles(childTiers)
+
+	// UPDATE THE HEADER
+	//=========================================================
+	_updateFilterHeader()
 }
 
 // ============================
@@ -734,7 +769,6 @@ function _getFilterCategory(element){
 }
 
 
-
 /**
  * Gets the filter category when clicked from a filter-under-filter element
  * This function navigates up to the parent filter-main-wrapper and then uses
@@ -743,7 +777,7 @@ function _getFilterCategory(element){
  * @returns The filter category name or null if not found. e.g. "tables.colours.orange"
  */
 function _getFilterCategoryFromUnderFilter(element) {
-  // Navigate up to the parent filter-main-wrapper
+	// Navigate up to the parent filter-main-wrapper
   // Assume it is a regular tile first, search html above to check if it is a regular tile
   let mainWrapper = element.closest(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
 

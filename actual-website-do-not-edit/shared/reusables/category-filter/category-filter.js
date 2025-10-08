@@ -495,11 +495,18 @@ function filterHeaderReturnToParentClicked(element) {
        3) Call the category_filter's filterIconClicked() method, passing the header that was clicked as the element (e.g. pass 'all_colours')
        */
     // e.g. the 'return back to "all_colours" was clicked" => headerClicked="all_colours"
-    const headerClicked = _getFilterCategoryFromUnderFilter(element);
+    // == GET THE TEXT IN THE DIV ==
+    const filename = element.dataset.text;
+    console.log('>>>> Clicked filename:', filename);
+    // == GET THE TEXT IN THE DIV ==
+    const headerClicked = filename.replace(/\.[^/.]+$/, '');
+    console.log(`>>>> parent filter that was clicked: ${headerClicked}`);
+    // ======================================================================
     if (HEADER_FILTERS.indexOf(headerClicked) === -1) { // header not found
         console.warn("CLICKED HEADER FILTER 'return/move up to this tier' NOT FOUND IN THE HEADERS LIST!", HEADER_FILTERS);
         return; // or handle accordingly
     }
+    // ======================================================================
     // (1) Update the queue that represents what is being shown in the header
     // e.g. Lets say we were showing everything under 'all_colours.orange.tangerine' when the 'return to parent: all_colours', was clicked
     while (true) {
@@ -511,9 +518,25 @@ function filterHeaderReturnToParentClicked(element) {
         if (HEADER_FILTERS.length === 0)
             break; //prevent infinite loop
     }
-    // (2) Act as if we just clicked that header. E.g. act as if we were looking at 'all' filters, and the user just clicked the 'all_colours' filter.
-    //     This will essentially achieve our same goal of showing the children of the 'all_colours' filter.
-    filterIconClicked(element);
+    // ======================================================================
+    // UPDATE THE HEADERS TO SHOW THE THING THAT WAS CLICKED
+    // ====================
+    HEADER_FILTERS.push(headerClicked); //e.g. after running, HEADER_FILTERS=["all.colours"]
+    // GET THE CHILDREN TIERS
+    // ====================
+    let childTiers = _getAllChildren(headerClicked); //e.g. ["all.colours.orange", "all.colours.blue"]
+    console.log(`>>>> child tiers: ${childTiers}`);
+    // if there are no child tiers, we should throw an error, as the filter icon should only be visible when child tiers are available!
+    if (childTiers.length === 0) {
+        console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
+        return null;
+    }
+    // HIDE CURRENT TILES, AND THEN UNHIDE EACH OF THE CHILDREN
+    //=========================================================
+    _updateVisibleFilterTiles(childTiers);
+    // UPDATE THE HEADER
+    //=========================================================
+    _updateFilterHeader();
 }
 // ============================
 // OTHER FILTER-RELATED THINGS

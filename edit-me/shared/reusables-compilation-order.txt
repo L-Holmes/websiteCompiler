@@ -1,8 +1,6 @@
 code
-reusables/filter-sticker-extra
 reusables/filter-sticker
 
-reusables/filter-header
 reusables/filter-header-parent
 
 reusables/category-filter
