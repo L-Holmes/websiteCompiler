@@ -276,12 +276,13 @@ function _updateSelectedState(element: Element, isSelected:boolean): void {
 	// -- seperate into before and after the last dot --
 	const lastDotIndex = thingBeingFilteredFor.lastIndexOf('.');
 	const parentGroupKey = lastDotIndex === -1 ? '' : thingBeingFilteredFor.substring(0, lastDotIndex);  // If no dot is found (returns -1), the parent group is '', otherwise it's the part before the dot
+	const childKey = lastDotIndex === -1 ? thingBeingFilteredFor : thingBeingFilteredFor.substring(lastDotIndex + 1);
 	if (!filterTiersNew[parentGroupKey]) { filterTiersNew[parentGroupKey] = {}; }
 
 	// -- update the map --
 
 	console.log(`(bbbbbbbbb) Updating the value of ${parentGroupKey} -> ${thingBeingFilteredFor} to ${isSelected}.. `);
-	filterTiersNew[parentGroupKey][thingBeingFilteredFor] = isSelected;
+	filterTiersNew[parentGroupKey][childKey] = isSelected;
 	console.log(`Here is the udpated map: ${JSON.stringify(filterTiersNew)}`);
 }
 

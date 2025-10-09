@@ -276,12 +276,13 @@ function _updateSelectedState(element: Element, isSelected:boolean): void {
 	// -- seperate into before and after the last dot --
 	const lastDotIndex = thingBeingFilteredFor.lastIndexOf('.');
 	const parentGroupKey = lastDotIndex === -1 ? '' : thingBeingFilteredFor.substring(0, lastDotIndex);  // If no dot is found (returns -1), the parent group is '', otherwise it's the part before the dot
+	const childKey = lastDotIndex === -1 ? thingBeingFilteredFor : thingBeingFilteredFor.substring(lastDotIndex + 1);
 	if (!filterTiersNew[parentGroupKey]) { filterTiersNew[parentGroupKey] = {}; }
 
 	// -- update the map --
 
 	console.log(`(bbbbbbbbb) Updating the value of ${parentGroupKey} -> ${thingBeingFilteredFor} to ${isSelected}.. `);
-	filterTiersNew[parentGroupKey][thingBeingFilteredFor] = isSelected;
+	filterTiersNew[parentGroupKey][childKey] = isSelected;
 	console.log(`Here is the udpated map: ${JSON.stringify(filterTiersNew)}`);
 }
 
@@ -826,6 +827,28 @@ function filterItems():void{
 			HIDE
 
 
+--------------------------------------
+
+	what if one user wants to see things that are 'cool' AND 'boots'... (cool boots) but a different user wants to see things that are either 'cool' or are 'boots' or are both????
+
+
+	...
+	well surely and is a sub-filter???
+	boots -> cool?
+
+	Thus;
+	Same level = OR logic
+	sub level = AND logic. 
+
+	boots -> cool -> ice cold
+	+ 
+	cool 
+	....
+
+	What does that mean for me? 
+	it means it should be:  boots OR shoes OR colours.
+
+
    */
 
   console.log("SSSSSSSSSSSSSSSSSSS");
@@ -913,7 +936,7 @@ function filterItems():void{
 					}
 					
 					// 3) User has chosen to filter out this item. Hide it. (i.e. don't unhide it!)
-					console.log(`		--> !!! Item has a tag not being filtered for: ; returning False!`);
+					console.log(`		--> !!! item's tags for the above mentioned group are all false.... returning False!`);
 					return false;
 				}
 				
