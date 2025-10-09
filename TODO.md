@@ -1,3 +1,129 @@
+- Main:
+    - Each section will be, by default grouped by tier 0 (products / blogs), tier 1 (shoes), and tier 3 (boots)
+    - Each section will have its own filter and its own sort.
+- Main filter:
+    - There shall be a top bar, showing where you are, so you can easily navigate back and forth
+        -> (e.g. All -> products)
+    - Under 'All -> products' will be *all* filter items; including both generically known 'variants'
+        (shoes // tops // jackets // tables)
+        AND
+        modifiers: (colours etc)
+    --> Anything that cannot be directly selected (e.g. 
+        -> when you select an item, there will be a quick access tool tip? (select all in this group?????)
+            -> (or do i just have a 'select all' button?)
+    - There shall be 2 main types of filters:
+        - Ones that apply a filter (e.g. 'coats', e.g. 'red')
+        - Ones that are just a group header (e.g. 'colours', 'categories')
+        --> We will attempt to show all 'clickable' filters first, and all 'group headers' second.
+
+
+- When you select a filter, it adds it to a list.
+    -> 'blogs' OR 'products' OR 'products -> shoes' OR 'colours -> red' 
+    - you can select multiple of these, and click 'make these AND' or 'make these OR' 
+    -> this will be an 'advanced' feature, so not easy to get to 
+- When you add a filter for a specific colour, a pop-up will appear in the corner:
+    - "Quick Access: Click here to *Add this filter for all selected items*"
+- When you sort a section, there will be a pop-up:
+    - "Quick Access: Apply sort [high to low] across all sections"
+    --> in fact, have this quick access / mass update always visible???
+
+- Other:
+    - there shall be keys assigned; (assume querty)
+        - Key hints are toggleable(?) are they???
+        --> In order of most to least:  
+            - Adding tier 1 filters (90%)
+            - Adding tier 2 filters (60%)
+            - Returning back to tier 1 (58%)
+            - everything else: 20%....
+        - so;
+            - 'e' is always 'up one level'
+                -> ah, but what if you just pressed 'd'? 
+            - [?] is always 
+            - first to last item select:
+                - 'a','s','d','f','j','k','l',';'
+                
+
+
+questions:
+-> do i give peaks of level 3?
+    -> e.g. colors.red, colours.blue etc. (I feel i thought about this already...)
+    -> I think not. I decided that it would take up too much space... Not worth it when we want big obviousness.
+
+
+--------------------
+review:
+- need a way to allow 'or' vs. 'and' customisation from the user (with sensible default)
+- for selecting say styles -> cowboy, it makes sense that the user finds that on a specific item, and then once they've found it, they have the ability to perform that update for 'all'/'all selected/'just this'/'specific' (again, with sensible default)
+    - perhaps in a pop up box.   --> how for only certain selected?
+    - e.g. colour.blue with any parent...
+- things like ands and specific filtering, done by one 10% of users should be:
+    - relitively hidden, since most people won't use them and will get confused... 
+- defaults:
+    - sort applies to the group
+
+
+... 
+
+They would:
+- do the obvious and have 3 main levels of grouping (this covers 90%):
+- blogs -> lifestyle -> 'in the home'
+- products -> shoes -> boots
+...
+filters always apply to single by default with options to toggle to 'all' and then 'specific subsection of selected'?
+....
+should be easy:
+(a)
+- Select just boots
+- filter for just boots
+(b)
+- select just blogs
+- filter just blogs
+(c)
+- see all shoe variants (boots etc.)
+- filter for that.
+(d)
+- See all items that have a price less than £50. 
+
+
+# SO
+- just get rid of the colours filter.
+    - sure it may be confusing to new users.. could maybe add some sort of hint to how they can find it???
+... but then... still back at square 1:
+where on earth do you put 'colours'? Just at the top level?
+colours is top level! like 'shoe variants' (boots etc)
+--> but since colours also shows up as a sub option for multiple other things... Its also a global filter!
+
+
+?? 
+everything that more than one thing have in common show in the global filters????
+
+yeah probs have global and in-depth and show the pop up for both.
+
+hold up... would all this not be solved by having colours as 'filter only'?
+!!!!!!!! I think that the above is key !!!!!!!!!!!!!!
+    -> sure, selecting all but one of the colours would be a bit annoying but that's such a rare use case...
+
+--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 TODO:
 clicking just 'colours' in general hides everything when it shouldn't... what has changed@?!??!??!
