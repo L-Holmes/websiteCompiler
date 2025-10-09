@@ -239,18 +239,22 @@ body {
 h1{
 	color:$text-colour-primary;
 	margin: 0px;
+
+    font-size: $font-size-l;
 }
 
 h2{
 	color:$text-colour-primary;
 	margin: 0px;
   font-family: $cormorant-bold; 
+    font-size: $font-size-m-l;
 }
 
 h3{
 	color:$text-colour-primary;
 	margin: 0px;
   font-family: $cormorant-bold; 
+    font-size: $font-size-m;
   }
 
 h4{

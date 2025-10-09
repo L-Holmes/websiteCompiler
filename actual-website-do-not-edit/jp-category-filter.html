@@ -13,6 +13,8 @@
 
 <div class="filter-outer-grid">
 
+	<h2> Select the things you want to see</h2>
+	<div> and optionally apply specific filters for each </div>
 	<div class="filter-squares-wrapper">
 		<button class="filter-tile" data-text="shoe.png" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
@@ -71,6 +73,29 @@
     </div>
 </button>
 
+	</div>
+
+</div>
+
+<div class="bar"> </div>
+
+<div class="filter-top-bar">
+	<div class="filter-top-bar-option" data-text="all.png" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;"> 
+	<div class="filter-top-bar-text"> All </div>
+</div>
+
+	<img class="right-arrow" src="../../../shared/images/filtering/right-arrow.png" alt="info">   
+	<div class="filter-top-bar-option" data-text="colours.png" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;"> 
+	<div class="filter-top-bar-text"> Colours </div>
+</div>
+
+</div>
+
+<div class="filter-outer-grid">
+	<h3> General Filters </h3>
+	<div> A quick way apply filters for all of the things you have selected </div>
+
+	<div class="filter-squares-wrapper">
 		<button class="filter-tile" data-text="colours.png" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">

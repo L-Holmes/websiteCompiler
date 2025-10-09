@@ -675,6 +675,31 @@ function filterItems() {
             HIDE
 
 
+--------------------------------------
+
+    what if one user wants to see things that are 'cool' AND 'boots'... (cool boots)
+but a different user wants to see things that are either 'cool' or are 'boots' or are both????
+
+
+    ...
+    well surely and is a sub-filter???
+    boots -> cool?
+
+    Thus;
+    Same level = OR logic
+    sub level = AND logic.
+
+    boots -> cool -> ice cold
+    +
+    cool
+    ....
+
+    What does that mean for me?
+
+    it means it should be:
+ boots OR shoes OR colours.
+
+
    */
     console.log("SSSSSSSSSSSSSSSSSSS");
     console.log(`Filter tiers new: ${JSON.stringify(filterTiersNew)}!`);
@@ -739,7 +764,7 @@ function filterItems() {
                         return true;
                     }
                     // 3) User has chosen to filter out this item. Hide it. (i.e. don't unhide it!)
-                    console.log(`		--> !!! Item has a tag not being filtered for: ; returning False!`);
+                    console.log(`		--> !!! item's tags for the above mentioned group are all false.... returning False!`);
                     return false;
                 }
                 if (!shouldShow) {
