@@ -755,17 +755,23 @@ function _getFilterCategory(element){
 	// -- check the key exists --
 	// 1. Determine the parent group key from the filter's name.
 	const lastDotIndex = imageName.lastIndexOf('.');
-	const parentGroupKey = lastDotIndex === -1 ? '' : imageName.substring(0, lastDotIndex);
+	const parentGroupKey = _getParentName(imageName); // e.g. for 'colours.orange' -> parent group = 'colours'
 
 	// 2. Check if the parent group exists AND if the key exists within that group.
-	if (!(filterTiersNew[parentGroupKey] && filterTiersNew[parentGroupKey].hasOwnProperty(imageName))) {
+	if (!(filterTiersNew[parentGroupKey])) {
 	  // Make sure to log the new data structure in the warning message.
-	  console.warn(`Filter ${imageName} is not present within the filter tiers: ${JSON.stringify(filterTiersNew)}!`);
+	  console.warn(`Filter ${imageName}'s parent: ${parentGroupKey} is not present within the filter tiers: ${JSON.stringify(filterTiersNew)}!`);
 	  return null;
 	}
 	//-----------------------------
 
     return imageName
+}
+
+function _getParentName(name) {
+	// e.g. for 'colours.orange' -> parent group = 'colours'
+  const lastDotIndex = name.lastIndexOf('.');
+  return lastDotIndex === -1 ? '' : name.substring(0, lastDotIndex);
 }
 
 
