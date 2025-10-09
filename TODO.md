@@ -1,3 +1,61 @@
+thoughts:
+- all competitors tend to have tier 1 (shoes) and tier 2 (boots / formal) etc. visible via a hover-over on dropdown...
+--+ the main category (boots / formal) etc. is almots always seperate from colours / activity etc.
+    - sometimes its also in a dropdown as well, but there are usually bigger, easier to read buttons with that info)
+- perhaps take inspo from north face...
+- and moncler??
+
+questions from thoughts
+-> Do i show all 3 tiers initially?
+
+
+
+# Primary TODO;
+- Decide on whether to show all categories by default...
+    Option 1)
+    -> Have all categories hidden behind the 'categories' filter
+        e.g. 'categories |v|' 
+        -ve.. slows down large proportion of people just looking to add top-level filters...
+        -ve.. may confuse people 
+        -ve.. increased cognitive load, trying to workout where the 'typical' things are...
+    Option 2)
+        -> Show _some_ of the categories, and have a 'see more' button at the end.
+        -> e.g. enough to fill 30% of the screen height...
+        e.g. 'categories |v|'  '-> shoes' .. '-> tables' .. '-> ghandis'
+        -ve... will this work for big text people on mobile???
+        -ve... too much text on screen? You'll rarely, on mobile, be able to show all categories... so 
+            why even bother with any as they'll always expand... so at that point its just for info...
+    Option 3)
+        -> Have a quick access menu, which is *scrollable*
+        -> So it takes up only a small amount of the screen, and has all categories you can scroll through??
+            -> Not ideal for keyboard users.. but ultimately that is a very small percentage of people.......
+
+- Decide on how to distinguish the 'clickable' filters from the 'dropdown' filters
+    - + make it more obvious what is the filter and what is the dropdown????
+    - ?? do i have a tickbox for select and filter for filter ??
+    --> when i've done that, work out a way for 'colours' to not unselect everthing
+- Work out the default 'and' / 'or'...
+    -> I almost feel that: 
+        -> Tier 2 categories (shoes, coats, tables) should be 'OR'
+        -> Tier 3 and onwards should be 'and'???
+        --> possibly have another 'quick access' section to switch between 'and' and 'or' for all selected categories in the current section (e.g. all -> products -> colours, switch all to 'AND')
+
+- Bit later:
+    - Work out how to 'select all'??!!??! 
+        - Again, do i have the 'quick access' popup, or do i just add 'select all' button?
+        -> It would make more sense to 'select all' since its 1 less click... (although that never
+            stopped me from not having categories on main page!)
+    - Work out how to integrate the 'quick access feature'
+        -> do i have something fixed or does it hover over the content???
+
+- Down the line;
+    - Seperate sort and filter for each section
+    - When user is lucking at a product, they can see its other tags, and click to add them to the list???? (scrollable?????)
+    - Have the seperate list of applied filters, which can be 'AND' -> 'OR' switched???
+----------
+
+
+
 - Main:
     - Each section will be, by default grouped by tier 0 (products / blogs), tier 1 (shoes), and tier 3 (boots)
     - Each section will have its own filter and its own sort.
@@ -49,6 +107,14 @@ questions:
     -> e.g. colors.red, colours.blue etc. (I feel i thought about this already...)
     -> I think not. I decided that it would take up too much space... Not worth it when we want big obviousness.
 
+-> do I seperate out *just* categories?!???
+    -> I feel that 90% of main searches can be done just via these.
+    -> they are extremely key.
+    -> and we are hiding them behind an extra click...
+    -> and there isn't really a term that encapsulates them...
+    --> I feel the absolute minimum number of clicks (i.e. things available in the all -> products) should be 
+     allocated for the 90th percentile + scenario. 
+     Now, trying to do this is difficult. Because it breaks consistency, simplicity, !overwheliming, etc....
 
 --------------------
 review:

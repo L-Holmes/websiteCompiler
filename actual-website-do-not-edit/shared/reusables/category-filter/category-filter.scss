@@ -363,7 +363,7 @@
 
 .filter-icon-wrapper{
   @extend .align-centre;
-  padding:10px;
+  padding:5px;
   pointer-events: none;  // prevent on-hover etc. of parent triggering
 }
 
@@ -374,7 +374,8 @@
     align-items: center;
     gap: 0.5rem;
     max-width: 100%;          /* Respect parent's max-width */
-    padding:10px;
+    padding:5px;
+    padding-right:15px;
 }
 
 .sub-filter-wrapper{
