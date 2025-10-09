@@ -1,12 +1,32 @@
+distinguish:
+-> possibly have an underline for clickable ones like 'shoes'.. 
+    and remove vertical bar seperator and have like an arrow for the non-clickable???
+    and possibly have the outline not light up for only filterable?? 
+    or even say... have less rounded edges for things that aren't filterable???
+
+
 thoughts:
 - all competitors tend to have tier 1 (shoes) and tier 2 (boots / formal) etc. visible via a hover-over on dropdown...
 --+ the main category (boots / formal) etc. is almots always seperate from colours / activity etc.
     - sometimes its also in a dropdown as well, but there are usually bigger, easier to read buttons with that info)
 - perhaps take inspo from north face...
 - and moncler??
+- omega pretty good as well...
 
 questions from thoughts
 -> Do i show all 3 tiers initially?
+-> perhaps I just say... I want the filters to take up 'x' amount of space...
+    -> Here are the filters, in order of how much people will click them...
+    -> Try and: 
+        - Get all main categories on first
+        -> then if extra space, insert most popular ones, if they are over 90% (use some algorithm / common sence to determine how much to show)
+        -> If there isn't space, and the bottom ones are rarely used, possibly even hide them behind a 'more filters' button! So we can fit the higher priority things on!
+
+
+Thouhgts frmo above reasearch:
+- I like what north face does with the easily de-selectable things, prioritising key things, etc...
+    -> showing what filters are selected, with 'x' next to them...
+- I'd like to have a 'clear filters' option, but just for tier 2 (products contents) and beyond...
 
 
 

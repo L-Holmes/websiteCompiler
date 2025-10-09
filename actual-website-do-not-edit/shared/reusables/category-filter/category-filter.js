@@ -47,8 +47,8 @@ const filterTiersNew = {
     "colours": {
         "red": false,
         "orange": false,
-        "black": false,
-        "brown": false,
+        "gold": false,
+        "pink": false,
         "purple": false,
     }
 };
@@ -59,11 +59,11 @@ const itemsToTagsNew = {
     },
     'boot': {
         '': ["shoe", "boot"],
-        'colours': ["brown", "black"],
+        'colours': ["pink", "gold"],
     },
     'table': {
         '': ['table'],
-        'colours': ['brown']
+        'colours': ['gold']
     }
 };
 //----------------------------------------------------------------------------------
