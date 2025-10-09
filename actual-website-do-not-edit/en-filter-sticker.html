@@ -1,4 +1,4 @@
-<button class="filter-tile" onclick="handleFilterTileClicked(this, undefined)">
+<button class="filter-tile" data-text="{filterImage}" onclick="handleFilterTileClicked(this, undefined)">
     <!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
         <img class="filter-icon" src="../../../shared/images/filtering/filters/{filterImage}" alt="filter-img" loading="lazy"> 
@@ -11,7 +11,7 @@
             <img class="info-hover-icon" src="../../../shared/images/filtering/info-icon-hover.png" alt="info">   
         </div>
     </div>
-    <div class="sub-filter-wrapper" onclick="filterFurtherClicked(this)">
+    <div class="sub-filter-wrapper" data-text="{filterImage}" onclick="filterFurtherClicked(this)">
         <img class="sub-filter-icon" src="../../../shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
         <img class="sub-filter-hover-icon" src="../../../shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
     </div>

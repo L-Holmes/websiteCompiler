@@ -309,7 +309,71 @@ pub fn replace_html_component_placeholders( html_file: &Path, src_directory: &Pa
             //  -> Instead of subbing in 'animals.mammals.blue_whale.jpg', it will sub in: 'Blue whale'
             let extracted_name: String = extract_display_name_from_filepath(&value);
             let placeholder2 = format!("{}{}{}", display_name_placeholder_start, key, display_name_placeholder_end);
+
+            // =============== DEBUGGING =========================
+
+            // // Count matches
+            // let match_count = processed_html.matches(&placeholder2).count();
+// 
+            // println!("=== Placeholder Replacement Debug ===");
+            // println!("Placeholder: '{}'", placeholder2);
+            // println!("Replacement: '{}'", extracted_name);
+            // println!("Match count: {}", match_count);
+// 
+            // if match_count == 0 {
+                // println!("⚠️  No matches found for placeholder: '{}'", placeholder2);
+                // println!("Text content (first 500 chars):\n{}", 
+                    // &processed_html.chars().take(500).collect::<String>());
+// 
+                // // Show all unique substrings that might be similar
+                // println!("\nSearching for similar patterns containing '{}':", key);
+                // for line in processed_html.lines() {
+                    // if line.contains(key) {
+                        // println!("  Found in line: {}", line.trim());
+                    // }
+                // }
+            // } else {
+                // println!("✓ Found {} occurrence(s)", match_count);
+// 
+                // // Show context around each match (before replacement)
+                // println!("\nContext before replacement:");
+                // let mut start = 0;
+                // while let Some(pos) = processed_html[start..].find(&placeholder2) {
+                    // let abs_pos = start + pos;
+                    // let context_start = abs_pos.saturating_sub(50);
+                    // let context_end = (abs_pos + placeholder2.len() + 50).min(processed_html.len());
+// 
+                    // println!("  ...{}...", &processed_html[context_start..context_end]);
+                    // start = abs_pos + placeholder2.len();
+                // }
+            // }
+            // =============== DEBUGGING END =========================
+
+            // Perform the replacement
             processed_html = processed_html.replace(&placeholder2, &extracted_name);
+
+            // =============== DEBUGGING =========================
+
+            // // Show context after replacement (if there were matches)
+            // if match_count > 0 {
+                // println!("\nContext after replacement:");
+                // let mut start = 0;
+                // while let Some(pos) = processed_html[start..].find(&extracted_name) {
+                    // let abs_pos = start + pos;
+                    // let context_start = abs_pos.saturating_sub(50);
+                    // let context_end = (abs_pos + extracted_name.len() + 50).min(processed_html.len());
+                    // 
+                    // println!("  ...{}...", &processed_html[context_start..context_end]);
+                    // start = abs_pos + extracted_name.len();
+                // }
+            // }
+// 
+            // println!("=====================================\n");
+            // =============== DEBUGGING END =========================
+
+
+
+
         }
         // --------------------------------------------------------------------------------------------------
 

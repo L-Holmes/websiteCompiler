@@ -1,4 +1,16 @@
 
+TODO:
+clicking just 'colours' in general hides everything when it shouldn't... what has changed@?!??!??!
+(is the state changing when one of the sub colours is clicked???)
+
+clicking the colours seems to hide all items when they shouldn't. 
+
+--> need to make the arrow in the filter-header not visibile when there isn't a 'next category'
+-----> perhaps everything after all has arrow as part of the html design????
+
+find the black and brown images???
+
+
 
 
 

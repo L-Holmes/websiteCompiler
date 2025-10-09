@@ -17,14 +17,13 @@
 const ALL_CATEGORY_NAME = "all";
 const filters_being_shown = ALL_CATEGORY_NAME;
 const HEADER_FILTERS = []; //holds the parent filters for whatever tier of filter is currently being shown the user. E.g. if the user is choosing which colours to filter, after sub-filtering: vehicles -> cars -> colours, this queue would hold: [vehicles,cars]
-const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-header-main-wrapper'; // HTML 'class' of the div that wraps: a header filter
+const HEADER_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-top-bar-option'; // HTML 'class' of the div that wraps: a header filter
 const REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS = '.filter-tile'; // HTML 'class' of the div that wraps: A filter element
 const ITEM_WRAPPER_CLASS = ".table-entry"; // HTML 'class' of the div that wraps: An item that the user may buy.
 const ITEM_IMAGE_CLASS = ".item-images"; // HTML 'class' of the img that: contains the item's image
 const REGULAR_ITEM_SELECT_WRAPPER_CLASS = ".filter-tile";
 const FILTER_TILE_IMAGE_CLASS = ".filter-icon";
 const FILTER_BUTTON_CLASS = ".filter-search-button";
-const RESULT_ITEM_IMAGE_CLASS = ".item-images";
 //----------------------------------------------------------------------------------
 /**
  * A record of available filter tiers and their selection state.
@@ -103,8 +102,10 @@ function _showOnlyTopTierFilters() {
     const filterTiles = _get_fresh_filter_tiles(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
     // Show only the tiles that match the top-level tiers
     filterTiles.forEach((tile) => {
-        const category = _getFilterCategory(tile);
+        const category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
         if (category && topLevelTiers.indexOf(category) !== -1) {
+            const deleteme_category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+            console.log(`....showing(2) : ${deleteme_category}`);
             tile.style.display = ''; // Reset to default display value
         }
     });
@@ -208,7 +209,7 @@ function _isFilterTileSelected(element) {
  */
 function _updateSelectedState(element, isSelected) {
     // getting the name of the thing being filtered for
-    const thingBeingFilteredFor = _getFilterCategory(element);
+    const thingBeingFilteredFor = _getCategoryOfClickedItem(element); //e.g. colours.orange
     // -- seperate into before and after the last dot --
     const lastDotIndex = thingBeingFilteredFor.lastIndexOf('.');
     const parentGroupKey = lastDotIndex === -1 ? '' : thingBeingFilteredFor.substring(0, lastDotIndex); // If no dot is found (returns -1), the parent group is '', otherwise it's the part before the dot
@@ -236,7 +237,7 @@ function _updateDescendentsAndAncestors(element, isSelected) {
     // Then, parse the map to get all of the children and children's children etc. and set all of their values to be equal to that of the common parent.
     // -> To note, for each of those, will need to update the 'background image' in the html, and the map itself
     // get the parent filter that was clicked (e.g. 'colours.orange')
-    const whatThatTileFiltersFor = _getFilterCategory(element);
+    const whatThatTileFiltersFor = _getCategoryOfClickedItem(element); //e.g. colours.orange
     // get a list of every item in the 'filterTiers' map that is a descendent
     let descendents = _getAllDescendants(whatThatTileFiltersFor);
     // For each descendant, find its corresponding HTML element and call the handler
@@ -350,22 +351,23 @@ function _updateDescendentsAndAncestors(element, isSelected) {
 // =====================================
 // HANDLE THE FILTER ICON BEING CLICKED
 // ====================================
-function filterIconClicked(element) {
+function filterFurtherClicked(element) {
     /*
        Activated when the user clicks the small filter icon, which is present underneath one of the filter tiles.
        This icon is used to filter down the sub categories of a filter (e.g. if the filter icon is underneath the 'all colours' option, then after clicking,
        It will show the seperate colours (red; blue; green; etc), for you to filter.
        */
+    event.stopPropagation(); // Prevent the click from bubbling to parent
     // e.g. lets assume that the filter of the tile with name "all.colours.orange" was clicked
     // GET THE FILTER THAT WAS CLICKED
     // ====================
-    const parentFilterThatWasClicked = _getFilterCategoryFromUnderFilter(element); //e.g. "all.colours.orange"
+    const categoryBeingFilteredFurther = _getCategoryOfClickedItem(element); //e.g. colours.orange
     // UPDATE THE HEADERS TO SHOW THE THING THAT WAS CLICKED
     // ====================
-    HEADER_FILTERS.push(parentFilterThatWasClicked); //e.g. after running, HEADER_FILTERS=["all.colours", "all.colours.orange"]
+    HEADER_FILTERS.push(categoryBeingFilteredFurther); //e.g. after running, HEADER_FILTERS=["all.colours", "all.colours.orange"]
     // GET THE CHILDREN TIERS
     // ====================
-    let childTiers = _getAllChildren(parentFilterThatWasClicked); //e.g. ["all.colours.orange.tangerine", "all.colours.orange.tangerine"]
+    let childTiers = _getAllChildren(categoryBeingFilteredFurther); //e.g. ["all.colours.orange.tangerine", "all.colours.orange.tangerine"]
     // if there are no child tiers, we should throw an error, as the filter icon should only be visible when child tiers are available!
     if (childTiers.length === 0) {
         console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
@@ -399,44 +401,27 @@ function _getAllChildren(parentFilterThatWasClicked) {
         // For any other parent, its direct children are the keys of the object
         // stored at the parent's own key.
         const childGroup = filterTiersNew[parentFilterThatWasClicked];
-        // If the parent exists in the map, return its keys. Otherwise, return an empty array.
-        return childGroup ? Object.keys(childGroup) : [];
+        if (!childGroup) {
+            return [];
+        }
+        // Reconstruct full keys by prepending the parent with a dot
+        return Object.keys(childGroup).map(childKey => `${parentFilterThatWasClicked}.${childKey}`);
     }
 }
 // ===========================================
 // REVERSE REVERSE 
 // ===========================================
-function _getPairedTileOrNone(element) {
-    const thingBeingFilteredFor = _getFilterCategory(element);
-    // Get all filter sticker elements
-    const filterElements = document.querySelectorAll(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
-    // Track if we've seen the original element yet
-    let seenOriginal = false;
-    for (const el of filterElements) {
-        const elFilterName = _getFilterCategory(el);
-        if (el === element) {
-            // We've found the original element, skip it and continue
-            seenOriginal = true;
-            continue;
-        }
-        if (elFilterName === thingBeingFilteredFor) {
-            // If the filter name matches and it's not the original element
-            return el;
-        }
-    }
-    return null;
-}
 function _findFilterElementByName(filterName) {
     /*
     Find the HTML element that corresponds to a given filter name
-    This is the reverse of _getFilterCategory - instead of getting the name from the element,
+    This is the reverse of _findFilterElementByName - instead of getting the name from the element,
     we're finding the element from the name
     */
     // Get all filter sticker elements
     const filterElements = document.querySelectorAll(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
     // Check each element to see if it matches our target filter name
     for (const element of filterElements) {
-        const elementFilterName = _getFilterCategory(element);
+        const elementFilterName = _getCategoryOfClickedItem(element); //e.g. colours.orange
         if (elementFilterName === filterName) {
             return element;
         }
@@ -472,9 +457,12 @@ function _updateFilterHeader() {
     const filterTiles = _get_fresh_filter_tiles(HEADER_FILTER_TILE_HTML_WRAPPER_CLASS);
     for (let i = 0; i < filterTiles.length; i++) {
         const tile = filterTiles[i];
-        const category = _getFilterCategory(tile); //e.g. tables.colours.orange
+        const category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
         // Since the tiles are in order, we can just check whether each is equal to the current sub filter element
-        if (category === HEADER_FILTERS[HEADER_FILTERSPointer]) {
+        let currentHeaderFilter = HEADER_FILTERS[HEADER_FILTERSPointer];
+        if (category === currentHeaderFilter) {
+            const deleteme_category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+            console.log(`....showing(3) : ${deleteme_category}`);
             tile.style.display = ''; // Change it from displaying 'none' to displaying
             HEADER_FILTERSPointer++;
             if (HEADER_FILTERSPointer === HEADER_FILTERS.length) {
@@ -494,13 +482,7 @@ function filterHeaderReturnToParentClicked(element) {
        --- update tiles being shown / the filter headers ---
        3) Call the category_filter's filterIconClicked() method, passing the header that was clicked as the element (e.g. pass 'all_colours')
        */
-    // e.g. the 'return back to "all_colours" was clicked" => headerClicked="all_colours"
-    // == GET THE TEXT IN THE DIV ==
-    const filename = element.dataset.text;
-    console.log('>>>> Clicked filename:', filename);
-    // == GET THE TEXT IN THE DIV ==
-    const headerClicked = filename.replace(/\.[^/.]+$/, '');
-    console.log(`>>>> parent filter that was clicked: ${headerClicked}`);
+    const headerClicked = _getCategoryOfClickedItem(element); //e.g. colours.orange
     // ======================================================================
     if (HEADER_FILTERS.indexOf(headerClicked) === -1) { // header not found
         console.warn("CLICKED HEADER FILTER 'return/move up to this tier' NOT FOUND IN THE HEADERS LIST!", HEADER_FILTERS);
@@ -519,24 +501,41 @@ function filterHeaderReturnToParentClicked(element) {
             break; //prevent infinite loop
     }
     // ======================================================================
-    // UPDATE THE HEADERS TO SHOW THE THING THAT WAS CLICKED
-    // ====================
-    HEADER_FILTERS.push(headerClicked); //e.g. after running, HEADER_FILTERS=["all.colours"]
-    // GET THE CHILDREN TIERS
-    // ====================
-    let childTiers = _getAllChildren(headerClicked); //e.g. ["all.colours.orange", "all.colours.blue"]
-    console.log(`>>>> child tiers: ${childTiers}`);
-    // if there are no child tiers, we should throw an error, as the filter icon should only be visible when child tiers are available!
-    if (childTiers.length === 0) {
-        console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
-        return null;
-    }
-    // HIDE CURRENT TILES, AND THEN UNHIDE EACH OF THE CHILDREN
-    //=========================================================
-    _updateVisibleFilterTiles(childTiers);
-    // UPDATE THE HEADER
-    //=========================================================
-    _updateFilterHeader();
+    filterFurtherClicked(element);
+    // // UPDATE THE HEADERS TO SHOW THE THING THAT WAS CLICKED
+    // // ====================
+    // HEADER_FILTERS.push(headerClicked); //e.g. after running, HEADER_FILTERS=["all.colours"]
+    // 
+    // // GET THE CHILDREN TIERS
+    // // ====================
+    // let childTiers: string[] = _getAllChildren(headerClicked) //e.g. ["all.colours.orange", "all.colours.blue"]
+    // console.log(`>>>> child tiers: ${childTiers}`);
+    // 
+    // 
+    // // if there are no child tiers, we should throw an error, as the filter icon should only be visible when child tiers are available!
+    // if(childTiers.length === 0){
+    // console.warn("ERROR! The filter icon should not have been clickable as there are no child tiers available!");
+    // return null;
+    // }
+    // 
+    // // HIDE CURRENT TILES, AND THEN UNHIDE EACH OF THE CHILDREN
+    // //=========================================================
+    // _updateVisibleFilterTiles(childTiers)
+    // 
+    // // UPDATE THE HEADER
+    // //=========================================================
+    // _updateFilterHeader()
+}
+function _getCategoryOfClickedItem(element) {
+    /*
+    e.g. If a html element is tagged with the file 'colours.orange.png'
+    This will return 'colours.orange'
+   */
+    // == GET THE TEXT IN THE DIV ==
+    const filename = element.dataset.text; // e.g. colours.orange.png
+    // == remove the file extension ==
+    const headerClicked = filename.replace(/\.[^/.]+$/, ''); //e.g. colours.orange
+    return headerClicked;
 }
 // ============================
 // OTHER FILTER-RELATED THINGS
@@ -556,95 +555,30 @@ function _updateVisibleFilterTiles(childTiers) {
     const filterTiles = document.querySelectorAll(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
     // First, hide all filter tiles
     filterTiles.forEach((tile) => {
+        const deleteme_hiding = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+        console.log(`....hiding(4) : ${deleteme_hiding}`);
         tile.style.display = 'none';
     });
     // Then, show only the tiles that match the childTiers
     filterTiles.forEach((tile) => {
-        const category = _getFilterCategory(tile);
-        if (category && childTiers.indexOf(category) !== -1) {
-            tile.style.display = ''; // Reset to default display value
+        const category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+        if (!category) {
+            console.warn("ERROR CATEGORY COULDN'T BE FOUND");
+            return;
         }
+        if (childTiers.indexOf(category) === -1) {
+            console.log(`<<<<<<<<<<<<<<<<<<<<<<2 Element: '${category}' is not in the child tiers: ${JSON.stringify(childTiers)} `);
+            return;
+        }
+        const deleteme_category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+        console.log(`....showing(4) : ${deleteme_category}`);
+        tile.style.display = ''; // Reset to default display value
     });
-}
-function _getFilterState(element) {
-    /*
-       @return the image path of the filter; return null if the image url couldn't be processed
-
-       i.e. Either full (selected); partial (some of the sub categories are selected) or empty (none)
-
-       e.g. May return: /shared/images/filtering/test-tube-half.avif
-       */
-    const style = window.getComputedStyle(element);
-    const backgroundImage = style.backgroundImage; //e.g. https://localhost:8000/static/img/shared/images/filtering/test-tube-half.avif
-    // strip the https://localhost:8000/ from the start
-    const urlMatch = backgroundImage.match(/url\(["']?(.*?)["']?\)/);
-    if (!(urlMatch && urlMatch[1])) {
-        console.warn("No background image URL found.");
-        return null;
-    }
-    const fullUrl = urlMatch[1];
-    const urlObj = new URL(fullUrl, window.location.origin); // handles relative or absolute
-    // Get only the pathname (e.g., /shared/images/filtering/test-tube-half.avif)
-    const currentImg = urlObj.pathname;
-    return currentImg;
-}
-function _getFilterCategory(element) {
-    /*
-    returns the id, used in the filter_tiers map, that corresponds to the image shown by this partricular filter tile
-
-    e.g. The user may see a tile showing a shoe.
-        This function will get that tile, find its image path , and from that determine it is a shoes.
-        It will then return "shoes" as that is the correponding key in the filter_tiers map
-    
-    e.g.2. may return "tables.colours.orange"
-    */
-    const imageName = _getElementsImageName(element, FILTER_TILE_IMAGE_CLASS, "Filter icon");
-    // -- check the key exists --
-    // 1. Determine the parent group key from the filter's name.
-    const lastDotIndex = imageName.lastIndexOf('.');
-    const parentGroupKey = _getParentName(imageName); // e.g. for 'colours.orange' -> parent group = 'colours'
-    // 2. Check if the parent group exists AND if the key exists within that group.
-    if (!(filterTiersNew[parentGroupKey])) {
-        // Make sure to log the new data structure in the warning message.
-        console.warn(`Filter ${imageName}'s parent: ${parentGroupKey} is not present within the filter tiers: ${JSON.stringify(filterTiersNew)}!`);
-        return null;
-    }
-    //-----------------------------
-    return imageName;
 }
 function _getParentName(name) {
     // e.g. for 'colours.orange' -> parent group = 'colours'
     const lastDotIndex = name.lastIndexOf('.');
     return lastDotIndex === -1 ? '' : name.substring(0, lastDotIndex);
-}
-/**
- * Gets the filter category when clicked from a filter-under-filter element
- * This function navigates up to the parent filter-main-wrapper and then uses
- * the existing _getFilterCategory function
- * @param element - The filter-under-filter-wrapper element that was clicked
- * @returns The filter category name or null if not found. e.g. "tables.colours.orange"
- */
-function _getFilterCategoryFromUnderFilter(element) {
-    // Navigate up to the parent filter-main-wrapper
-    // Assume it is a regular tile first, search html above to check if it is a regular tile
-    let mainWrapper = element.closest(REGULAR_FILTER_TILE_HTML_WRAPPER_CLASS);
-    if (!mainWrapper) {
-        // Assume that if we can find the html line indicating that it is a regular tile, assume it is a header tile
-        mainWrapper = element.closest(HEADER_FILTER_TILE_HTML_WRAPPER_CLASS);
-    }
-    if (!mainWrapper) {
-        // if we still haven't found what it is, throw error
-        console.warn("Could not find parent filter-main-wrapper element.");
-        return null;
-    }
-    // Find the filter-sticker element (which contains the filter icon)
-    const filterSticker = mainWrapper.querySelector(REGULAR_ITEM_SELECT_WRAPPER_CLASS);
-    if (!filterSticker) {
-        console.warn("Filter sticker not found within the main wrapper.");
-        return null;
-    }
-    // Use the existing function to get the category from the filter sticker
-    return _getFilterCategory(filterSticker);
 }
 // 	/*
 //    - hides all of the filter tiles
@@ -672,42 +606,11 @@ function _get_fresh_filter_tiles(html_wrapper_class) {
     const filterTilesArray = Array.from(filterTiles).map(tile => tile);
     // Hide all filter tiles first
     filterTilesArray.forEach((tile) => {
+        const deleteme_category = _getCategoryOfClickedItem(tile); //e.g. colours.orange
+        console.log(`....hiding: ${deleteme_category}`);
         tile.style.display = 'none';
     });
     return filterTilesArray;
-}
-function _getElementsImageName(element, imgsHtmlClass, textNameOfElement) {
-    /*
-    @param imgsHtmlClass
-            e.g. imgsHtmlClass = .filter-icon
-    @param textNameOfElement = descriptive plain text name to represent the element
-        e.g. "Filter icon" // "item"
-    @return the image path of the image element within that html block.
-    */
-    // Get the icon representing what is being filtered
-    const itemsHtmlImgElement = element.querySelector(imgsHtmlClass);
-    if (!itemsHtmlImgElement) {
-        console.warn(`${textNameOfElement} image not found`);
-        return null;
-    }
-    // Get the src attribute from the image element
-    const imagePath = itemsHtmlImgElement.getAttribute('src');
-    if (!imagePath) {
-        console.warn(`${textNameOfElement} image path not found`);
-        return null;
-    }
-    const filename = imagePath.split('/').pop();
-    if (!filename) {
-        console.warn(`${textNameOfElement} src attribute not found`);
-        return null;
-    }
-    const nameWithoutExtension = filename.replace(/\.[^/.]+$/, '');
-    return nameWithoutExtension;
-}
-function isValidImagePath(path) {
-    return (typeof path === "string" &&
-        path.trim() !== "" &&
-        /\.(png|jpe?g|gif|svg|webp|avif)$/.test(path));
 }
 // ============================================================================
 // ============================================================================
@@ -751,14 +654,14 @@ function filterItems() {
     console.log(`Filter tiers new: ${JSON.stringify(filterTiersNew)}!`);
     console.log(`1`);
     // 1) 
-    const allHtmlItemElements = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS);
+    const allTableEntries = _get_fresh_filter_tiles(ITEM_WRAPPER_CLASS);
     console.log(`2 `);
-    for (const item of allHtmlItemElements) {
-        //e.g. item = the sapp boot html element
+    for (const item of allTableEntries) {
+        //e.g. item = the sapp boot element. The entire block wrapped by the ITEM_WRAPPER_CLASS class
         console.log(`=============================`);
         // == get params ===
-        const itemName = _getElementsImageName(item, RESULT_ITEM_IMAGE_CLASS, "Item image"); // e.g. 'SappBoot'
-        const allTagsForItem = itemsToTagsNew[itemName]; //e.g. { '':['shoe', 'boot'],'colours':['red', 'orange'], },
+        const itemName = _getCategoryOfClickedItem(item); //e.g. 'sapp-boot'
+        const allTagsForItem = itemsToTagsNew[itemName];
         if (!allTagsForItem) {
             console.error(`[ERROR] No Item tag found for '${itemName}'`);
             console.error('Available item keys:');
@@ -767,42 +670,6 @@ function filterItems() {
         }
         console.log(`Checking whether item: ${itemName} should be shown............`);
         // == determine whether to show ===
-        // shouldSee = shouldWeShowItem()
-        // 
-        // def shouldWeShowItem():
-        // for filterGroup, filterSubGroups in allTagsForItem:
-        // # e.g. filterGroup = 'colours'
-        // # e.g. filterSubGroup = 'red', 'orange'
-        // shouldShow=itemPassedFilterGroup()
-        // 
-        // 
-        // def itemPassedFilterGroup():
-        // //get the group:
-        // selectedSubFiltersListForGivenGroup=filterTiers[filterGroup]
-        // // e.g. selectedSubFiltersListForGivenGroup = {red:false, orange:true,black:true,...}
-        // if not selectedSubFiltersListForGivenGroup:
-        // console.error(`[ERROR] no sub filters found for: `)
-        // 
-        // # 1) For each value, check if that particular value is true. Skip on if any are true (that means user is filtering for them, so we are good)
-        // 
-        // for subGroupTag in filterSubGroup:
-        // if selectedSubFiltersListForGivenGroup[subGroupTag] == true:
-        // return True
-        // 
-        // # 2) Check if all filters are false (which means NO filters are being applied for that group)
-        // if all(value=False for value in selectedSubFiltersListForGivenGroup.values()):
-        // return True
-        // 
-        // # 3) User has chosen to filter out this item. Hide it. (i.e. don't unhide it!)
-        // return False
-        // 
-        // 
-        // 
-        // if not shouldShow:
-        // return False
-        // 
-        // // only show if all of its tags are being filtered for 
-        // return True
         const shouldSee = shouldWeShowItem();
         console.log(`Are we showing the item?   ${shouldSee}`);
         console.log(`All tags for item: ${allTagsForItem}`);
@@ -860,8 +727,9 @@ function filterItems() {
             console.log(`		~~> :):):) All tags are being filtered by user. Showing this item.`);
             return true;
         }
-        // TODO if not should see... (unhide)
         if (shouldSee == true) {
+            const deleteme_category = _getCategoryOfClickedItem(item); //e.g. colours.orange
+            console.log(`....showing: ${deleteme_category}`);
             item.style.display = ''; // Change it from displaying 'none' to displaying
         }
     }
@@ -902,7 +770,7 @@ function reorderItemsWithFlexbox() {
     // 4. Loop through all the items found on the page.
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        const itemName = _getElementsImageName(item, ".item-images", "Item image"); // e.g. 'sapp-boot'
+        const itemName = _getCategoryOfClickedItem(item); //e.g. 'sapp-boot'
         // Find the position of this item in our desiredOrder array.
         const order = desiredOrder.indexOf(itemName);
         // 5. Apply the order directly to the element's style.
