@@ -178,15 +178,17 @@ function handleFilterTileClicked(element, isSelected:boolean) {
 		
 	*/
 
+   console.log(`\n\n.....`);
 
-	let tileStateNow = _updateTheFilterImage(element, isSelected)
+
+	let newTileState= _updateTheFilterImage(element, isSelected) //e.g. 'false' if the tile was 'unselected' when it was initially clicked
 
 
-	_updateSelectedState(element, tileStateNow)
+	_updateSelectedState(element, newTileState)
 
 	// i.e. If this is the first click; NOT part of a cascading update... perform the cascading update...
 	if(isSelected === undefined){
-		_updateDescendentsAndAncestors(element, tileStateNow)
+		_updateDescendentsAndAncestors(element, newTileState)
 	}
 
 
@@ -206,6 +208,7 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 	update the image 
 	-----------------
 	*/
+	console.log(`updating the filter image`);
    if(isSelectedState === undefined){
 	   // if next img is none, that means that this is just a regular tile click
 	   // Therefore, we need to determine what the next state is and set the image accordingly.
@@ -213,17 +216,24 @@ function _updateTheFilterImage(element, isSelectedState:boolean){
 	   // if to match its parent / ancestor.
 
 		// NEW NEW NEW
-		console.log(`bbbbbbbbbbbbbbbb) filter state is undefinined...`);
 		isSelectedState=_isFilterTileSelected(element)
+
+		console.log(`--> UNDEFINED) filter state is undefinined... but has current status: ${isSelectedState}`);
+
+		isSelectedState = !isSelectedState
    }
 
-	if(!isSelectedState){
+	if(isSelectedState){
+		console.log(`			true, so making the element look selected...`);
 		_updateFilterTileToLookSelected(element);
 	} else{
+		console.log(`			false, so making the element look unselected...`);
 		_updateFilterTileToLookUnselected(element);
 	}
 
-	return !isSelectedState
+	console.log(`returning the selected state: ${isSelectedState}`);
+
+	return isSelectedState
 }
 
 
@@ -270,7 +280,7 @@ function _updateSelectedState(element: Element, isSelected:boolean): void {
 
 	// -- update the map --
 
-	console.log(`(a)(aaaaaaaaa) Updating the value of ${parentGroupKey} -> ${thingBeingFilteredFor} to ${isSelected}.. `);
+	console.log(`(bbbbbbbbb) Updating the value of ${parentGroupKey} -> ${thingBeingFilteredFor} to ${isSelected}.. `);
 	filterTiersNew[parentGroupKey][thingBeingFilteredFor] = isSelected;
 	console.log(`Here is the udpated map: ${JSON.stringify(filterTiersNew)}`);
 }
@@ -327,45 +337,66 @@ function _updateDescendentsAndAncestors(element,isSelected:boolean): void {
 	_applyAutomaticFilterIfNeeded();
 
 function _getAllDescendants(parentFilterThatWasClicked: string): string[] {
-  // get all entries from filterTiersNew that have the parentFilterThatWasClicked as an ancestor
-  // i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
-  // @return an array of the descendant's names
-		// e.g. if 'tables.colours' was the parent, then it will return:  
-		// const descendantTiers = ["tables.colours.red",
-		// 						   "tables.colours.blue", 
-		// 						   "tables.colours.yellow",
-		// 						   "tables.colours.orange",
-		// 						   "tables.colours.blue.lightblue",
-		// 						   "tables.colours.orange.tangerine",
-		// 						   "tables.colours.orange.tangerine.juicy"]
+	// get all entries from filterTiersNew that have the parentFilterThatWasClicked as an ancestor
+	// i.e. all entries which start with parentFilterThatWasClicked, regardless of nesting level
+	// @return an array of the descendant's names
+	// e.g. if 'tables.colours' was the parent, then it will return:  
+	// const descendantTiers = ["tables.colours.red",
+	// 						   "tables.colours.blue", 
+	// 						   "tables.colours.yellow",
+	// 						   "tables.colours.orange",
+	// 						   "tables.colours.blue.lightblue",
+	// 						   "tables.colours.orange.tangerine",
+	// 						   "tables.colours.orange.tangerine.juicy"]
 
 
-  if (parentFilterThatWasClicked === "all") {
-    // --- Start of Updated Code ---
-    // Replaced Object.values().flatMap() with a compatible Object.keys().reduce()
-    // to flatten all keys from the inner objects into a single array.
-    const allTiers = Object.keys(filterTiersNew).reduce((accumulator, key) => {
-      return accumulator.concat(Object.keys(filterTiersNew[key]));
-    }, [] as string[]);
-    // --- End of Updated Code ---
+	if (parentFilterThatWasClicked === "all") {
+		// --- Start of Updated Code ---
+		// Replaced Object.values().flatMap() with a compatible Object.keys().reduce()
+		// to flatten all keys from the inner objects into a single array.
+		const allTiers = Object.keys(filterTiersNew).reduce((accumulator, key) => {
+			return accumulator.concat(Object.keys(filterTiersNew[key]));
+		}, [] as string[]);
+		// --- End of Updated Code ---
 
-    return allTiers.filter(key => key !== 'all');
-  }
+		return allTiers.filter(key => key !== 'all');
+	}
 
-  const descendantTiers: string[] = [];
-  const prefix = parentFilterThatWasClicked + '.';
+	// const descendantTiers: string[] = [];
+	// const prefix = parentFilterThatWasClicked + '.';
+// 
+	// // Iterate over the parent groups in the new structure
+	// for (const groupKey in filterTiersNew) {
+		// // A group contains descendants if its own key IS the parent we're looking for,
+		// // OR if its key STARTS WITH the parent's prefix (for deeper nesting).
+		// if (groupKey === parentFilterThatWasClicked || groupKey.startsWith(prefix)) {
+			// // Add all the full-path keys from this matching descendant group
+			// descendantTiers.push(...Object.keys(filterTiersNew[groupKey]));
+		// }
+	// }
+// 
+	// return descendantTiers;
 
-  // Iterate over the parent groups in the new structure
-  for (const groupKey in filterTiersNew) {
-    // A group contains descendants if its own key IS the parent we're looking for,
-    // OR if its key STARTS WITH the parent's prefix (for deeper nesting).
-    if (groupKey === parentFilterThatWasClicked || groupKey.startsWith(prefix)) {
-      // Add all the full-path keys from this matching descendant group
-      descendantTiers.push(...Object.keys(filterTiersNew[groupKey]));
-    }
-  }
+	const descendantTiers: string[] = [];
+	const prefix = parentFilterThatWasClicked + '.';
 
-  return descendantTiers;
+	// Iterate over the parent groups in the new structure
+	for (const groupKey in filterTiersNew) {
+		// A group contains descendants if its own key IS the parent we're looking for,
+		// OR if its key STARTS WITH the parent's prefix (for deeper nesting).
+		if (groupKey === parentFilterThatWasClicked || groupKey.startsWith(prefix)) {
+			const childGroup = filterTiersNew[groupKey];
+
+			// For each child key, reconstruct the full path
+			for (const childKey in childGroup) {
+				// If groupKey is empty string, don't add a dot prefix
+				const fullKey = groupKey === '' ? childKey : `${groupKey}.${childKey}`;
+				descendantTiers.push(fullKey);
+			}
+		}
+	}
+
+	return descendantTiers;
 }
 
 
@@ -797,7 +828,7 @@ function filterItems():void{
 
    */
 
-  console.log("-------------------");
+  console.log("SSSSSSSSSSSSSSSSSSS");
 
   console.log(`Filter tiers new: ${JSON.stringify(filterTiersNew)}!`);
 
@@ -830,16 +861,16 @@ function filterItems():void{
 		const shouldSee = shouldWeShowItem();
 
 		console.log(`Are we showing the item?   ${shouldSee}`);
-		console.log(`All tags for item: ${allTagsForItem}`);
+		console.log(`All tags for item: ${JSON.stringify(allTagsForItem)}`);
 
 		function shouldWeShowItem(): boolean {
 
 			const filterGroups = Object.keys(allTagsForItem);
 			for (let i = 0; i < filterGroups.length; i++) {
-				const filterGroup = filterGroups[i];
-				const filterSubGroups = allTagsForItem[filterGroup];
-				// e.g. filterGroup = 'colours'
-				// e.g. filterSubGroups = ['red', 'orange']
+				const filterGroup = filterGroups[i];// e.g. filterGroup = 'colours'
+				const filterSubGroups = allTagsForItem[filterGroup];// e.g. filterSubGroups = ['red', 'orange']
+				
+				
 				console.log(`==> working with (new): ${filterGroup} and sub: ${filterSubGroups}`);
 				const shouldShow = itemPassedFilterGroup();
 				
@@ -863,7 +894,7 @@ function filterItems():void{
 						}
 					}
 
-					console.log(`.... It seems that, none of the sub keys in the group: '${JSON.stringify(filterSubGroups)}' are true... here's the proof: '${JSON.stringify(selectedSubFiltersListForGivenGroup)}'`);
+					console.log(`.... It seems that none of the sub keys in the group: '${JSON.stringify(filterSubGroups)}' are true... here's the proof: '${JSON.stringify(selectedSubFiltersListForGivenGroup)}'`);
 					
 					// 2) Check if all filters are false (which means NO filters are being applied for that group)
 					let allFalse = true;
