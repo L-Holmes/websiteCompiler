@@ -2,9 +2,7 @@
 
 
 .filterable {
-  width: 100%;
-  max-width: 920px;
-  position: relative;
+  @include two-thirds-centrerer;
 }
 
 /* --- HIDDEN CONTROL INPUTS --- */
@@ -20,81 +18,6 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
-
-/* --- HEADER / CONTROLS --- */
- // .filterable .header {
-   // display: flex;
-   // flex-wrap: wrap;
-   // gap: 10px;
-   // align-items: center;
-   // padding: 10px;
-   // background: #fff;
-   // border-radius: 10px;
-   // box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-   // z-index: 2;
-   // position: relative;
- // }
- // 
- // .filterable .controls {
-   // display: flex;
-   // flex-wrap: wrap;
-   // gap: 18px;
-   // align-items: center;
-   // width: 100%;
- // }
- // 
- // .filterable .group {
-   // display: flex;
-   // gap: 8px;
-   // align-items: center;
- // }
- // 
- // .filterable .group-title {
-   // font-size: 12px;
-   // color: #666;
-   // margin-right: 6px;
-   // font-weight: bold;
- // }
- // 
- // .filterable .filter-btn {
-   // display: inline-flex;
-   // align-items: center;
-   // padding: 6px 12px;
-   // border-radius: 8px;
-   // border: 1px solid #e6e6e6;
-   // background: #fafafa;
-   // cursor: pointer;
-   // font-weight: 600;
-   // font-size: 14px;
-   // transition: all 0.12s ease;
-   // user-select: none;
- // }
- // 
- // .filterable .filter-btn:hover {
-   // transform: translateY(-1px);
-   // border-color: #d0d0d0;
- // }
- // 
- // /* --- PANEL / ITEMS --- */
- // .filterable .panel {
-   // margin-top: 14px;
- // }
- // 
- // .filterable .items {
-   // padding: 10px;
-   // background: #f8f8f9;
-   // border-radius: 10px;
-   // box-shadow: 0 12px 36px rgba(0,0,0,0.04);
-   // display: grid;
-   // gap: 8px;
- // }
- // 
- // .filterable .item {
-   // background: #fff;
-   // border: 1px solid #eee;
-   // padding: 12px 15px;
-   // border-radius: 8px;
- // }
 
 /* --- HYBRID FILTERING LOGIC --- */
 
@@ -117,18 +40,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 /* 3. SHOW SUB LEVEL WHEN CHECKED
 // -----------------------------------------------------------------------------------
 // PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-// /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
-// #type-shoes:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.shoes"]),
-// #type-boots:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.boots"]),
-// #type-tables:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.tables"]) {
-  // display: none;
-// }
-// 
-// /* If multiple product types are selected (OR logic), show items that match ANY of them. */
-// #type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.shoes"],
-// #type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.tables"] {
-  // display: block;
-// }
 
 /* If any blog sub-filter is checked, hide all blog items */
 .filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked)
@@ -194,8 +105,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 // -----------------------------------------------------------------------------------
 
 
-
-
 /* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
 // -----------------------------------------------------------------------------------
 /* Hide all sub-filter groups by default */
@@ -239,102 +148,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
     }
 }
 
-
-// --------------------------------------------
-
-
-// /* Default: show all items (no hash = everything visible) */
-// .filterable .panel .item {
-  // display: block;
-// }
-// 
-// /* ---------- When #blogs-target is active: hide everything then show only blogs ---------- */
-// #blogs-target:target ~ .panel .item {
-  // display: none;
-// }
-// #blogs-target:target ~ .panel .item[data-tags~="blogs"] {
-  // display: block;
-// }
-// 
-// /* Visual: make the Blogs button look active when #blogs-target is present */
-// #blogs-target:target ~ .header label[for="cat-blogs"] {
-  // background: #eef6ff;
-  // border-color: #cde0ff;
-  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
-  // color: #0056e0;
-// }
-// 
-// /* ---------- When #products-target is active: hide everything then show only products ---------- */
-// #products-target:target ~ .panel .item {
-  // display: none;
-// }
-// #products-target:target ~ .panel .item[data-tags~="products"] {
-  // display: block;
-// }
-// 
-// /* Visual: make the Products button look active when #products-target is present */
-// #products-target:target ~ .header label[for="cat-products"] {
-  // background: #eef6ff;
-  // border-color: #cde0ff;
-  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
-  // color: #0056e0;
-// }
-
-
-////////////////////////////////////////////////////////////
-
-// /* --- Parent hide when a sub-filter is active --- */
-// /* Products parent hides if any product subtype is checked OR #products-target is NOT active */
-// #type-shoes:checked ~ .header label[for="cat-products"],
-// #type-boots:checked ~ .header label[for="cat-products"],
-// #type-tables:checked ~ .header label[for="cat-products"] {
-  // display: none;
-// }
-// 
-// /* Blogs parent hides if any blog subtype is checked OR #blogs-target is NOT active */
-// #type-article:checked ~ .header label[for="cat-blogs"],
-// #type-video:checked ~ .header label[for="cat-blogs"],
-// #type-newsub:checked ~ .header label[for="cat-blogs"] {
-  // display: none;
-// }
-
-////////
-
-
-// /* Parent label active state is now driven purely by the checkbox */
-// #cat-products:checked ~ .header label[for="cat-products"],
-// #cat-blogs:checked ~ .header label[for="cat-blogs"] {
-  // background: #eef6ff;
-  // border-color: #cde0ff;
-  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
-  // color: #0056e0;
-// }
-// 
-// 
-// 
-// /* Default: show all items if no filter is checked */
-// .filterable .panel .item {
-  // display: block;
-// }
-// 
-// /* Show blogs if #blogs-target in URL */
-// #blogs-target:target ~ .panel .item {
-  // display: none;
-// }
-// #blogs-target:target ~ .panel .item[data-tags~="blogs"] {
-  // display: block;
-// }
-// 
-// /* Show products if #products-target in URL */
-// #products-target:target ~ .panel .item {
-  // display: none;
-// }
-// #products-target:target ~ .panel .item[data-tags~="products"] {
-  // display: block;
-// }
-// 
-// 
-
 // ===================================================================================================================
 // ===================================================================================================================
 // ===================================================================================================================
@@ -351,12 +164,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   padding-bottom:10px;
 }
 
-// .filter-main-wrapper{
-  // @extend .ux-grid;
-  // grid-template-columns: auto; 
-  // grid-template-rows: 0.8fr 0.2fr; //This is above-and-below by default
-// }
-
 .filter-squares-wrapper{
   display: flex;
   flex-wrap: wrap;
@@ -367,23 +174,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 .search-button{
   width:50px;
 }
-// .info-img{
-  // //width: 35%;
-  // max-width: 100%;
-  // max-height:100%;
-// }
-
-// .filter-icon{
-  // width: 100%;
-  // height: 100%;
-  // object-fit: contain;
-// }
-
-// .filter-tile {
-  // //position: relative;
-  // width: 55px;
-  // height:60px;
-// }
 
 .filter-tile-bg-test-tube {
   //position: absolute;
@@ -435,8 +225,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   overflow: hidden;
 }
 
-
-
 // ==========================================================
 // ==========================================================
 // ==========================================================
@@ -481,13 +269,11 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
 // ================
 
-
 .bar {
   width: 100%;   /* full width of container */
   height: 10px;  /* 10px tall */
   background: #333; /* optional: give it a color so you can see it */
 }
-
 
 // ================
 
@@ -579,19 +365,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 // ==================================
 
 
-
-// .filter-main-wrapper{
-  // @extend .ux-grid;
-  // grid-template-columns: auto; 
-  // grid-template-rows: 0.5fr 0.4fr 0.1fr; //This is above-and-below by default 
-// 
-  // border: solid white 1px;
-  // border-radius:12px;
-// 
-  // width:200px;
-// }
-
-
 // todo: rename to 'filter title and image'
 // todo: on hover, background turns slight light blue highlight...
 .filter-sticker{
@@ -644,10 +417,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   overflow-x: scroll;
   font-size: $font-size-xs;
 }
-
-
-
-
 
 
 // ===================================
@@ -749,18 +518,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
     object-fit: contain;
     pointer-events: none;  // prevent on-hover etc. of parent triggering
 }
-
-// .sub-filter-icon {
-  // height: 25px;
-  // width: 25px;
-  // object-fit: contain;
-  // background: url("shared/images/filtering/filter-icon.png") no-repeat center / contain;
-// 
-  // &:hover {
-    // background-image: url("shared/images/filtering/filter-hover-icon.png");
-  // }
-// }
-
 
 .right-arrow{
     height:20px;

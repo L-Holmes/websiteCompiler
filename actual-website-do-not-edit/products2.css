@@ -460,9 +460,18 @@ jkp .vert-spacing-xs {
 }
 
 .filterable {
+  height: auto;
   width: 100%;
-  max-width: 920px;
-  position: relative;
+}
+@media screen and (min-width: 700px) {
+  .filterable {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .filterable {
+    width: 1080px;
+  }
 }
 
 /* --- HIDDEN CONTROL INPUTS --- */
@@ -479,7 +488,6 @@ jkp .vert-spacing-xs {
   white-space: nowrap;
 }
 
-/* --- HEADER / CONTROLS --- */
 /* --- HYBRID FILTERING LOGIC --- */
 /* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
 .filter-input:checked ~ .panel .item {
@@ -497,7 +505,7 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 /* 3. SHOW SUB LEVEL WHEN CHECKED
 // -----------------------------------------------------------------------------------
 // PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-// /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
+
 /* If any blog sub-filter is checked, hide all blog items */
 .filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked) .panel .item[data-tags~=products] {
   display: none;

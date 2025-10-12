@@ -1,8 +1,19 @@
--> Add the parts of the original designs back in...
-    -> Add the filter buttons in next...
+- Can you make it such that:
+    - when products sub-filter is clicked, after it hides the parent, it unhides a substitue for the parent, that looks just like the parent
+    --> and when clicked, it acts like the 'clear all' button, but instead of removing all filters, it instead unselects all of the children of products.
+- Extract the new button design into its own reusable (like i did with filter tiles)
+- Add the sort back in;
+    -> Use the logic from that reorder button, but integrate it with the actual sort.
+    -> will need to add a js file potentially, and import it in. 
+    -> will need to add something to actually sort items by as well...
+- clean up products2.html -> remove all uneeded css...
+- sort out the catastrophe of text below...
 
 
 
+
+
+----------------------------------------------------
 
 
 # TODO:

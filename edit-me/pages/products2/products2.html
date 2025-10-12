@@ -18,7 +18,6 @@
 				// --> only add 'category' if no subtypes are selected. 
 				// --> don't add 'category=blogs' if say blogs.video already selected...
 
-
 				const params = new URLSearchParams(window.location.search);
 
 				// Parent categories
@@ -29,6 +28,7 @@
 				// Mapping subcategory ID → parent checkbox ID
 				const subToParent = {
 					shoes: 'cat-products',
+					boots: 'cat-products',
 					tables: 'cat-products',
 					article: 'cat-blogs',
 					video: 'cat-blogs',
@@ -54,205 +54,146 @@
 	</head>
 	<body>
 
-		<form class="filterable" id="catalog" aria-label="Product filters">
+		<div class="centre-wrapper">
+			<form class="filterable" id="catalog" aria-label="Product filters">
 
 
-			<!-- Add these target anchors anywhere inside .filterable BEFORE the .panel -->
-			<a id="blogs-target" aria-hidden="true"></a>
-			<a id="products-target" aria-hidden="true"></a>
+				<!-- Add these target anchors anywhere inside .filterable BEFORE the .panel -->
+				<a id="blogs-target" aria-hidden="true"></a>
+				<a id="products-target" aria-hidden="true"></a>
 
-			<!-- ---------------------- These are hidden checkboxes that control the state ---------------------- -->
-			<!-- Parent Category Filters -->
-			<input type="checkbox" id="cat-products" class="filter-input" />
-			<input type="checkbox" id="cat-blogs" class="filter-input" />
+				<!-- ---------------------- These are hidden checkboxes that control the state ---------------------- -->
+				<!-- Parent Category Filters -->
+				<input type="checkbox" id="cat-products" class="filter-input" />
+				<input type="checkbox" id="cat-blogs" class="filter-input" />
 
-			<!-- ==> Product Sub-filters -->
-			<input type="checkbox" id="type-shoes" class="filter-input" />
-			<input type="checkbox" id="type-tables" class="filter-input" />
-			<input type="checkbox" id="type-boots" class="filter-input" />
+				<!-- ==> Product Sub-filters -->
+				<input type="checkbox" id="type-shoes" class="filter-input" />
+				<input type="checkbox" id="type-tables" class="filter-input" />
+				<input type="checkbox" id="type-boots" class="filter-input" />
 
-			<!-- ==> Blogs Sub-filters -->
-			<input type="checkbox" id="type-article" class="filter-input" />
-			<input type="checkbox" id="type-video" class="filter-input" />
-			<input type="checkbox" id="type-newsub" class="filter-input" />
-			<input type="checkbox" id="type-fourth" class="filter-input" />
+				<!-- ==> Blogs Sub-filters -->
+				<input type="checkbox" id="type-article" class="filter-input" />
+				<input type="checkbox" id="type-video" class="filter-input" />
+				<input type="checkbox" id="type-newsub" class="filter-input" />
+				<input type="checkbox" id="type-fourth" class="filter-input" />
 
-			<!-- ------------------------------------------------------------------------------------------------- -->
+				<!-- ------------------------------------------------------------------------------------------------- -->
 
 
-			<!-- HEADER / CONTROLS -->
-			<div class="header" role="toolbar" aria-label="Filters header">
-				<div class="controls">
+				<!-- HEADER / CONTROLS -->
+				<div class="header" role="toolbar" aria-label="Filters header">
+					<div class="controls">
 
-					<!-- ---------------------- These are the actual toggle buttons for the user to click ---------------------- -->
+						<!-- ---------------------- These are the actual toggle buttons for the user to click ---------------------- -->
 
-					<!-- Main Categories -->
-					<div class="group">
-						<span class="group-title">Category</span>
+						<!-- Main Categories -->
 
-						<label for="cat-products" class="filter-tile filter-btn">
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="filter-icon-wrapper">
-								<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+
+						<div class="filter-outer-grid">
+							<div class="group filter-squares-wrapper">
+								<span class="group-title">Category</span>
+
+
+								<r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
+								<r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
+
+
 							</div>
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="title-and-info-wrapper">
-								<div class="item-title"> 
-									Products
-									<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-									<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-								</div>
-							</div>
-						</label>
+						</div>
 
+						<!-- ==> Product Filters -->
+						<div class="filter-outer-grid">
+						<div class="group product-types filter-squares-wrapper">
+							<span class="group-title">Products</span>
 
-						<label for="cat-blogs" class="filter-tile filter-btn">
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="filter-icon-wrapper">
-								<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-							</div>
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="title-and-info-wrapper">
-								<div class="item-title"> 
-									Blogs
-									<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-									<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-								</div>
-							</div>
-						</label>
+							<r-filter-element filterImage=shoe.png filterText="Products → Shoes" filterType="type-shoes">
+							<r-filter-element filterImage=table.png filterText="Products → Tables" filterType="type-tables">
+							<r-filter-element filterImage=boot.png filterText="Products → Boots" filterType="type-boots">
 
+						</div>
+						</div>
+
+						<!-- ==> Blogs Filters -->
+						<div class="filter-outer-grid">
+						<div class="group blog-types filter-squares-wrapper"> 
+							<span class="group-title">Products</span>
+
+							<r-filter-element filterImage=shoe.png filterText="Blogs → Articles" filterType="type-article">
+							<r-filter-element filterImage=table.png filterText="Blogs → Videos" filterType="type-video">
+							<r-filter-element filterImage=boot.png filterText="Blogs → New Sub" filterType="type-newsub">
+							<r-filter-element filterImage=boot.png filterText="Blogs → Fourth" filterType="type-fourth">
+						</div>
+						</div>
+
+						<!-- ------------------------------------------------------------------------------------------------- -->
+
+						<div class="group">
+							<button type="reset" class="filter-btn">Clear all</button>
+						</div>
 
 					</div>
-
-					<!-- ==> Product Filters -->
-					<div class="group product-types">
-						<span class="group-title">Products</span>
-
-
-						<label for="type-shoes" class="filter-tile filter-btn">
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="filter-icon-wrapper">
-								<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-							</div>
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="title-and-info-wrapper">
-								<div class="item-title"> 
-									Products → Shoes
-									<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-									<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-								</div>
-							</div>
-						</label>
-
-						<label for="type-tables" class="filter-tile filter-btn">
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="filter-icon-wrapper">
-								<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-							</div>
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="title-and-info-wrapper">
-								<div class="item-title"> 
-									Products → Tables
-									<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-									<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-								</div>
-							</div>
-						</label>
-
-						<label for="type-boots" class="filter-tile filter-btn">
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="filter-icon-wrapper">
-								<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-							</div>
-							<!-- {image-icon} --> <!-- Optional image icon -->
-							<div class="title-and-info-wrapper">
-								<div class="item-title"> 
-									Products → Boots
-									<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-									<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-								</div>
-							</div>
-						</label>
-
-
-					</div>
-
-					<!-- ==> Blogs Filters -->
-					<div class="group blog-types"> 
-						<span class="group-title">Products</span>
-						<label for="type-article" class="filter-btn">Blogs -> Article</label>
-						<label for="type-video" class="filter-btn">Blogs -> Video</label>
-						<label for="type-newsub" class="filter-btn">Blogs -> New Sub </label>
-						<label for="type-fourth" class="filter-btn">Blogs -> fourth </label>
-					</div>
-
-					<!-- ------------------------------------------------------------------------------------------------- -->
-
-					<div class="group">
-						<button type="reset" class="filter-btn">Clear all</button>
-					</div>
-
 				</div>
-			</div>
 
 
-			<div class="panel" id="panel" aria-live="polite">
-				<div id="products-wrapper items">
-					<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
-						<div class="item-title" add-text-section="item-SappBoot-title"></div>
-						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
-						<div class="item-further">
-							<img class="item-images" src="<root>/shared/images/page-images/products/sapp-boot.avif" alt="Awpen Industries Logo"  loading="lazy">
-							<div class="item-description" add-text-section="item-SappBoot-desc"> 
+				<div class="panel" id="panel" aria-live="polite">
+					<div id="products-wrapper items">
+						<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
+							<div class="item-title" add-text-section="item-SappBoot-title"></div>
+							<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+							<div class="item-further">
+								<img class="item-images" src="<root>/shared/images/page-images/products/sapp-boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+								<div class="item-description" add-text-section="item-SappBoot-desc"> 
 
-							</div>
-							<div class="item-learn-or-buy">
-								<button add-text-section="learn-more"> Learn more </button>
-								<button add-text-section="buy-now"> Buy now </button>
-							</div>
-						</div>
-					</div>
-
-					<div class="table-entry item" data-text="table" data-tags="products products.tables">
-						<div class="item-title" add-text-section="item-SappBoot-title"></div>
-						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
-						<div class="item-further">
-							<img class="item-images" src="<root>/shared/images/page-images/products/table.avif" alt="Awpen Industries Logo"  loading="lazy">
-							<div class="item-description" add-text-section="item-SappBoot-desc"> 
-
-							</div>
-							<div class="item-learn-or-buy">
-								<button add-text-section="learn-more"> Learn more </button>
-								<button add-text-section="buy-now"> Buy now </button>
+								</div>
+								<div class="item-learn-or-buy">
+									<button add-text-section="learn-more"> Learn more </button>
+									<button add-text-section="buy-now"> Buy now </button>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="table-entry item" data-text="boot" data-tags="products products.boots">
-						<div class="item-title" add-text-section="item-SappBoot-title"></div>
-						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
-						<div class="item-further">
-							<img class="item-images" src="<root>/shared/images/page-images/products/boot.avif" alt="Awpen Industries Logo"  loading="lazy">
-							<div class="item-description" add-text-section="item-SappBoot-desc"> 
+						<div class="table-entry item" data-text="table" data-tags="products products.tables">
+							<div class="item-title" add-text-section="item-SappBoot-title"></div>
+							<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+							<div class="item-further">
+								<img class="item-images" src="<root>/shared/images/page-images/products/table.avif" alt="Awpen Industries Logo"  loading="lazy">
+								<div class="item-description" add-text-section="item-SappBoot-desc"> 
 
-							</div>
-							<div class="item-learn-or-buy">
-								<button add-text-section="learn-more"> Learn more </button>
-								<button add-text-section="buy-now"> Buy now </button>
+								</div>
+								<div class="item-learn-or-buy">
+									<button add-text-section="learn-more"> Learn more </button>
+									<button add-text-section="buy-now"> Buy now </button>
+								</div>
 							</div>
 						</div>
-					</div>
 
+						<div class="table-entry item" data-text="boot" data-tags="products products.boots">
+							<div class="item-title" add-text-section="item-SappBoot-title"></div>
+							<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+							<div class="item-further">
+								<img class="item-images" src="<root>/shared/images/page-images/products/boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+								<div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+								</div>
+								<div class="item-learn-or-buy">
+									<button add-text-section="learn-more"> Learn more </button>
+									<button add-text-section="buy-now"> Buy now </button>
+								</div>
+							</div>
+						</div>
+
+					</div>
 				</div>
-			</div>
 
-			<div class="vert-spacing-s"></div>
+				<div class="vert-spacing-s"></div>
 
-			<h2> Blogs </h2>
+				<h2> Blogs </h2>
 
-			<a href='<root>/blog/about-us.html'> About us blog </a>
+				<a href='<root>/blog/about-us.html'> About us blog </a>
 
-		</form>
+			</form>
+		</div>
 
 	</body>
 </html>
