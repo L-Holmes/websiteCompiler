@@ -111,7 +111,7 @@ body {
   display: none;
 }
 
-/* 2. ADDITIVE "OR" LOGIC: Show items that match selected categories. 
+/* 2. SHOW ALL TOP LEVEL WHEN ALL TOP LEVEL ARE CHECKED
 // -----------------------------------------------------------------------------------
 If both products and blogs are checked, items with EITHER tag will be shown. */
 #cat-products:checked ~ .panel .item[data-tags~=products],
@@ -119,7 +119,9 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   display: block;
 }
 
-/* 3. SUBTRACTIVE "AND" LOGIC: Now, we re-hide items for drill-down. */
+/* 3. SHOW SUB LEVEL WHEN CHECKED
+// -----------------------------------------------------------------------------------
+// PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
 /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
 #type-shoes:checked ~ .panel .item[data-tags~=products]:not([data-tags~="products.shoes"]),
 #type-tables:checked ~ .panel .item[data-tags~=products]:not([data-tags~="products.tables"]) {
@@ -142,6 +144,36 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 #type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.article"],
 #type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.video"] {
   display: block;
+}
+
+/* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
+/* PRODUCTS CATEGORY - Hide when sub-filters are active */
+#type-shoes:checked ~ .header label[for=cat-products],
+#type-tables:checked ~ .header label[for=cat-products] { /* Hide Products when Tables selected */
+  display: none; /* Makes the Products button disappear */
+}
+
+/* BLOGS CATEGORY - Hide when sub-filters are active */
+#type-article:checked ~ .header label[for=cat-blogs],
+#type-video:checked ~ .header label[for=cat-blogs] { /* Hide Blogs when Video selected */
+  display: none; /* Makes the Blogs button disappear */
+}
+
+/* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
+/* Hide all sub-filter groups by default */
+.filterable .product-types,
+.filterable .blog-types {
+  display: none; /* This hides the entire group container */
+}
+
+/* Show Product Types group ONLY when Products category is checked */
+#cat-products:checked ~ .header .product-types {
+  display: flex; /* This shows the product types group */
+}
+
+/* Show Blog Types group ONLY when Blogs category is checked */
+#cat-blogs:checked ~ .header .blog-types {
+  display: flex; /* This shows the blog types group */
 }
 
 /* --- ACTIVE STATE STYLING --- */
