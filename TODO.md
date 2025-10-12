@@ -1,3 +1,67 @@
+option 1:
+- seperate pages for blogs and products....
+- just 1 tier of filters...
+option 2:
+- go back to my 1000 line javascript file...
+    - add even more lines and complexity achieving what is my current goal...
+    - waste another 10+ hours of my life going for that...
+
+
+
+
+
+
+well...
+yet again, i've wasted my precious time and energy.
+I can only get css to work when we have loads of single level filters.  f
+
+
+
+RIGHT
+- I feel we are getting overcomplicated again... because the ai can't do it...
+- but we are almost there.
+    - i think the ai got confused with the subcategory definitions... its just the issue with hiding/unhiding irrelevant stuff now...
+
+
+
+# Summary, no js filtering etc.
+- not possible... just like how fli*** sorting isn't possible...
+- can only;
+    - Filter using 'OR'.
+    - This means; we can only filter for top level things (categories like shoes, boots, etc.), not for attributes (things like colour, etc.)
+
+
+
+
+
+
+# -> Make a guide for future me on the todo / design of the 'ultimate filter' system...
+# -> consider the simplest html/css only method for now...
+    -> Just go with the top-level 'or' filters...
+    -> 
+
+Can you make it so that:
+    - I select 'products', it then shows 'products -> shoes', 'products -> tables'.
+    --> If I then click on 'shoes', it unselects 'products -> shoes', such that now only 'shoes' is selected. But here's the catch; that 'shoes' filter will actually filter items that have the tag 'products.shoes'.
+        - i.e. when i click 'products' it unhides 'products.shoes', 'products.tables' etc. but not 'blogs.shoes', 'blogs.tables'
+        - this way, it will not show all products when shoes is selected; it will only show shoes
+        - continuing, 
+        - i.e. so then say the 'sapp boot' will have the tags: 'products', 'products.shoes', 'products.shoes.red', 'products.shoes.yellow', 'products.shoes.laces' etc...
+        - aahhhhhh but that still will be too many permutations for the colours and subcategories...
+        -> again, we'll have to limit to only the OR things. That means... no colours.. no 'laces', etc...
+Okay, lets just ignore the subfilters for now.
+
+could you not have a 'hide if it has this tag'?
+i.e. so if the users want red, then anything not red will have a 'hide if not red' tag.. so that you can have a button, which when clicked, just hides everything with that tag?
+
+
+
+
+
+
+
+====================
+
 distinguish:
 -> possibly have an underline for clickable ones like 'shoes'.. 
     and remove vertical bar seperator and have like an arrow for the non-clickable???
@@ -86,7 +150,7 @@ Thouhgts frmo above reasearch:
         (shoes // tops // jackets // tables)
         AND
         modifiers: (colours etc)
-    --> Anything that cannot be directly selected (e.g. 
+    --> Anything that cannot be directly selected...
         -> when you select an item, there will be a quick access tool tip? (select all in this group?????)
             -> (or do i just have a 'select all' button?)
     - There shall be 2 main types of filters:
@@ -104,6 +168,10 @@ Thouhgts frmo above reasearch:
 - When you sort a section, there will be a pop-up:
     - "Quick Access: Apply sort [high to low] across all sections"
     --> in fact, have this quick access / mass update always visible???
+
+
+hmmm.. everything could be OR by default, but then you can click 'add and option', which will be a button next to a selected option, and then select the things you want to 'and' with that.
+e.g. 'shoes' -> click & -> red, -> 50 grams -> done...
 
 - Other:
     - there shall be keys assigned; (assume querty)

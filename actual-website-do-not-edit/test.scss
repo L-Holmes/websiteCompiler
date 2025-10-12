@@ -1,0 +1,167 @@
+/* General Setup */
+body {
+  background-color: #f0f2f5;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.filterable {
+  width: 100%;
+  max-width: 920px;
+  position: relative;
+}
+
+/* --- HIDDEN CONTROL INPUTS --- */
+.filterable .filter-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- HEADER / CONTROLS --- */
+.filterable .header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+  z-index: 2;
+  position: relative;
+}
+
+.filterable .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  width: 100%;
+}
+
+.filterable .group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filterable .group-title {
+  font-size: 12px;
+  color: #666;
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+.filterable .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.12s ease;
+  user-select: none;
+}
+
+.filterable .filter-btn:hover {
+  transform: translateY(-1px);
+  border-color: #d0d0d0;
+}
+
+/* --- PANEL / ITEMS --- */
+.filterable .panel {
+  margin-top: 14px;
+}
+
+.filterable .items {
+  padding: 10px;
+  background: #f8f8f9;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.04);
+  display: grid;
+  gap: 8px;
+}
+
+.filterable .item {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 12px 15px;
+  border-radius: 8px;
+}
+
+/* --- HYBRID FILTERING LOGIC --- */
+
+/* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
+.filter-input:checked ~ .panel .item {
+  display: none;
+}
+
+/* 2. ADDITIVE "OR" LOGIC: Show items that match selected categories. 
+// -----------------------------------------------------------------------------------
+If both products and blogs are checked, items with EITHER tag will be shown. */
+#cat-products:checked ~ .panel .item[data-tags~="products"],
+#cat-blogs:checked ~ .panel .item[data-tags~="blogs"] {
+  display: block;
+}
+// -----------------------------------------------------------------------------------
+
+
+
+/* 3. SUBTRACTIVE "AND" LOGIC: Now, we re-hide items for drill-down. */
+// -----------------------------------------------------------------------------------
+// PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+/* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
+#type-shoes:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.shoes"]),
+#type-tables:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.tables"]) {
+  display: none;
+}
+
+/* If multiple product types are selected (OR logic), show items that match ANY of them. */
+#type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.shoes"],
+#type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.tables"] {
+  display: block;
+}
+
+// BLOGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+/* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
+#type-article:checked ~ .panel .item[data-tags~="blogs"]:not([data-tags~="blogs.article"]),
+#type-video:checked ~ .panel .item[data-tags~="blogs"]:not([data-tags~="blogs.video"]) {
+  display: none;
+}
+
+/* If multiple product types are selected (OR logic), show items that match ANY of them. */
+#type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.article"],
+#type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.video"] {
+  display: block;
+}
+// -----------------------------------------------------------------------------------
+
+/* --- ACTIVE STATE STYLING --- */
+#cat-products:checked ~ .header label[for="cat-products"],
+#cat-blogs:checked ~ .header label[for="cat-blogs"],
+#type-shoes:checked ~ .header label[for="type-shoes"],
+#type-tables:checked ~ .header label[for="type-tables"],
+#type-article:checked ~ .header label[for="type-article"],
+#type-video:checked ~ .header label[for="type-video"]
+{
+  background: #eef6ff;
+  border-color: #cde0ff;
+  box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+  color: #0056e0;
+}

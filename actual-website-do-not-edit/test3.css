@@ -1,0 +1,149 @@
+.filterable {
+  width: 920px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  position: relative;
+}
+.filterable .filter-input,
+.filterable .aux-toggle,
+.filterable .ctrl-open {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.filterable .header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+  position: relative;
+}
+.filterable .open-btn {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.filterable .controls {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-left: 8px;
+}
+.filterable .controls .group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.filterable .controls .group .group-title {
+  font-size: 12px;
+  color: #666;
+  margin-right: 6px;
+}
+.filterable .controls .group .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fafafa;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.filterable .controls .group .filter-btn:hover {
+  transform: translateY(-1px);
+}
+.filterable .controls .group .small {
+  padding: 4px 8px;
+  font-size: 13px;
+}
+.filterable .controls .group .more-colours {
+  display: none;
+  gap: 6px;
+}
+.filterable .controls .group #show-more-colours:checked ~ .header .controls .more-colours {
+  display: flex;
+}
+.filterable .controls .product-types {
+  display: none;
+}
+.filterable .controls .subfilters {
+  display: none;
+  gap: 8px;
+  align-items: center;
+}
+.filterable .panel {
+  margin-top: 14px;
+  z-index: 1;
+}
+.filterable .panel .items {
+  padding: 10px;
+  background: #f8f8f9;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  display: grid;
+  gap: 8px;
+}
+.filterable .panel .item {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 10px;
+  border-radius: 8px;
+  display: block;
+}
+.filterable .filter-input:checked ~ .panel .item {
+  display: none;
+}
+.filterable #f-red:checked ~ .panel [data-tags~=red],
+.filterable #f-blue:checked ~ .panel [data-tags~=blue],
+.filterable #f-green:checked ~ .panel [data-tags~=green],
+.filterable #f-yellow:checked ~ .panel [data-tags~=yellow],
+.filterable #f-black:checked ~ .panel [data-tags~=black],
+.filterable #cat-products:checked ~ .panel [data-category~=products],
+.filterable #cat-services:checked ~ .panel [data-category~=services],
+.filterable #shoe-shoes:checked ~ .panel [data-tags~=shoes] {
+  display: block;
+}
+.filterable #f-red:checked ~ .header label[for=f-red],
+.filterable #f-blue:checked ~ .header label[for=f-blue],
+.filterable #f-green:checked ~ .header label[for=f-green],
+.filterable #f-yellow:checked ~ .header label[for=f-yellow],
+.filterable #f-black:checked ~ .header label[for=f-black],
+.filterable #cat-products:checked ~ .header label[for=cat-products],
+.filterable #cat-services:checked ~ .header label[for=cat-services],
+.filterable #shoe-shoes:checked ~ .header label[for=shoe-shoes] {
+  background: #eef6ff;
+  border-color: #cde0ff;
+  box-shadow: 0 4px 10px rgba(22, 90, 255, 0.06);
+}
+.filterable #show-more-colours:checked ~ .header .controls .more-colours {
+  display: flex;
+}
+.filterable #cat-products:checked ~ .header .controls .product-types {
+  display: flex;
+}
+.filterable #cat-products:checked ~ #shoe-shoes:checked ~ .header .controls .subfilters {
+  display: flex;
+}
+@supports (selector(:has(*))) {
+  .filterable:has(#cat-products:checked) .product-types {
+    display: flex;
+  }
+  .filterable:has(#cat-products:checked):has(#shoe-shoes:checked) .subfilters {
+    display: flex;
+  }
+}
+
+/*# sourceMappingURL=test3.css.map */

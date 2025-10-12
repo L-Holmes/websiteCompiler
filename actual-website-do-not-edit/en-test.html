@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title> Awpen </title>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="A cool website">
+
+		<link rel=stylesheet href="test.css">
+	</head>
+	<body>
+
+		<form class="filterable" id="catalog" aria-label="Product filters">
+			<!-- Parent Category Filters -->
+			<input type="checkbox" id="cat-products" class="filter-input" />
+			<input type="checkbox" id="cat-blogs" class="filter-input" />
+
+			<!-- ==> Product Sub-filters -->
+			<input type="checkbox" id="type-shoes" class="filter-input" />
+			<input type="checkbox" id="type-tables" class="filter-input" />
+
+			<!-- ==> Blogs Sub-filters -->
+			<input type="checkbox" id="type-article" class="filter-input" />
+			<input type="checkbox" id="type-video" class="filter-input" />
+
+			<!-- HEADER / CONTROLS -->
+			<div class="header" role="toolbar" aria-label="Filters header">
+				<div class="controls">
+					<!-- Main Categories -->
+					<div class="group">
+						<span class="group-title">Category</span>
+						<label for="cat-products" class="filter-btn">Products</label>
+						<label for="cat-blogs" class="filter-btn">Blogs</label>
+					</div>
+
+					<!-- Product Filters -->
+					<div class="group product-types">
+						<span class="group-title">Prod. Type</span>
+						<label for="type-shoes" class="filter-btn">Shoes</label>
+						<label for="type-tables" class="filter-btn">Tables</label>
+					</div>
+
+					<!-- Blogs Filters -->
+					<div class="group product-types">
+						<span class="group-title">Blogs. Type</span>
+						<label for="type-article" class="filter-btn">Article</label>
+						<label for="type-video" class="filter-btn">Video</label>
+					</div>
+
+					<div class="group">
+						<button type="reset" class="filter-btn">Clear all</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- PANEL / ITEMS -->
+			<div class="panel" id="panel" aria-live="polite">
+				<div class="items">
+					<!-- Each item has a space-separated list of all tags it belongs to -->
+					<div class="item" data-tags="products products.shoes">Trainer</div>
+					<div class="item" data-tags="products products.shoes">Cowboy Boot</div>
+					<div class="item" data-tags="products products.tables">Table</div>
+					<div class="item" data-tags="blogs blogs.article"> Article 1</div>
+					<div class="item" data-tags="blogs blogs.article"> Article 2</div>
+					<div class="item" data-tags="blogs blogs.video"> video 1</div>
+				</div>
+			</div>
+		</form>
+
+	</body>
+</html>

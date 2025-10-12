@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Drill-Down CSS Filter</title>
+    <style>
+        /* General Setup */
+        body {
+            background-color: #f0f2f5;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .filterable {
+            width: 100%;
+            max-width: 920px;
+            position: relative;
+        }
+
+        /* --- HIDDEN CONTROL INPUTS --- */
+        .filterable .filter-input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            white-space: nowrap;
+        }
+
+        /* --- HEADER / CONTROLS --- */
+        .filterable .header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+            z-index: 2;
+            position: relative;
+        }
+
+        .filterable .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .filterable .group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .filterable .group-title {
+            font-size: 12px;
+            color: #666;
+            margin-right: 6px;
+            font-weight: bold;
+        }
+
+        .filterable .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid #e6e6e6;
+            background: #fafafa;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.12s ease;
+            user-select: none;
+        }
+
+        .filterable .filter-btn:hover {
+            transform: translateY(-1px);
+            border-color: #d0d0d0;
+        }
+
+        /* --- CONDITIONAL SUB-FILTER VISIBILITY --- */
+        .filterable .product-types,
+        .filterable .service-colours {
+            display: none;
+        }
+
+        /* Show relevant sub-filters when parent is checked */
+        #cat-products:checked ~ .header .product-types {
+            display: flex;
+        }
+        #cat-services:checked ~ .header .service-colours {
+            display: flex;
+        }
+
+        /* --- PANEL / ITEMS --- */
+        .filterable .panel {
+            margin-top: 14px;
+        }
+
+        .filterable .items {
+            padding: 10px;
+            background: #f8f8f9;
+            border-radius: 10px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.04);
+            display: grid;
+            gap: 8px;
+        }
+
+        .filterable .item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+
+        /* --- SIMPLIFIED 2-LEVEL FILTERING LOGIC --- */
+        
+        /* Default: show all items */
+        .filterable .item {
+            display: block;
+        }
+        
+        /* --- INDEPENDENT CATEGORIES --- */
+        /* When products is checked (and no sub-filters), show only products */
+        #cat-products:checked ~ #type-shoes:not(:checked) ~ #type-tables:not(:checked) ~ #type-chairs:not(:checked) ~ .panel .item:not([data-tags*="products"]) {
+            display: none;
+        }
+        
+        /* When services is checked (and no sub-filters), show only services */
+        #cat-services:checked ~ #colour-red:not(:checked) ~ #colour-green:not(:checked) ~ #colour-blue:not(:checked) ~ #colour-yellow:not(:checked) ~ .panel .item:not([data-tags*="services"]) {
+            display: none;
+        }
+        
+        /* --- PRODUCT SUB-FILTERS --- */
+        /* When shoes is checked, show only shoes */
+        #type-shoes:checked ~ .panel .item:not([data-tags*="products.shoes"]) {
+            display: none;
+        }
+        
+        /* When tables is checked, show only tables */
+        #type-tables:checked ~ .panel .item:not([data-tags*="products.tables"]) {
+            display: none;
+        }
+        
+        /* When chairs is checked, show only chairs */
+        #type-chairs:checked ~ .panel .item:not([data-tags*="products.chairs"]) {
+            display: none;
+        }
+        
+        /* --- SERVICE SUB-FILTERS --- */
+        /* When red services is checked, show only red services */
+        #colour-red:checked ~ .panel .item:not([data-tags*="services.red"]) {
+            display: none;
+        }
+        
+        /* When green services is checked, show only green services */
+        #colour-green:checked ~ .panel .item:not([data-tags*="services.green"]) {
+            display: none;
+        }
+        
+        /* When blue services is checked, show only blue services */
+        #colour-blue:checked ~ .panel .item:not([data-tags*="services.blue"]) {
+            display: none;
+        }
+        
+        /* When yellow services is checked, show only yellow services */
+        #colour-yellow:checked ~ .panel .item:not([data-tags*="services.yellow"]) {
+            display: none;
+        }
+        
+        /* --- EXCLUSION LOGIC: Hide parent filters when children are active --- */
+        /* Hide Products when any product child is selected */
+        #type-shoes:checked ~ .header label[for="cat-products"],
+        #type-tables:checked ~ .header label[for="cat-products"],
+        #type-chairs:checked ~ .header label[for="cat-products"] {
+            display: none;
+        }
+        
+        /* Hide Services when any service child is selected */
+        #colour-red:checked ~ .header label[for="cat-services"],
+        #colour-green:checked ~ .header label[for="cat-services"],
+        #colour-blue:checked ~ .header label[for="cat-services"],
+        #colour-yellow:checked ~ .header label[for="cat-services"] {
+            display: none;
+        }
+        
+        /* --- ACTIVE STATE STYLING --- */
+        #cat-products:checked ~ .header label[for="cat-products"],
+        #cat-services:checked ~ .header label[for="cat-services"],
+        #type-shoes:checked ~ .header label[for="type-shoes"],
+        #type-tables:checked ~ .header label[for="type-tables"],
+        #type-chairs:checked ~ .header label[for="type-chairs"],
+        #colour-red:checked ~ .header label[for="colour-red"],
+        #colour-green:checked ~ .header label[for="colour-green"],
+        #colour-blue:checked ~ .header label[for="colour-blue"],
+        #colour-yellow:checked ~ .header label[for="colour-yellow"] {
+            background: #eef6ff;
+            border-color: #cde0ff;
+            box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+            color: #0056e0;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="filterable" id="catalog" aria-label="Product filters">
+        <!-- Parent Category Filters -->
+        <input type="checkbox" id="cat-products" class="filter-input" />
+        <input type="checkbox" id="cat-services" class="filter-input" />
+
+        <!-- Product Sub-filters -->
+        <input type="checkbox" id="type-shoes" class="filter-input" />
+        <input type="checkbox" id="type-tables" class="filter-input" />
+        <input type="checkbox" id="type-chairs" class="filter-input" />
+        
+        <!-- Service Sub-filters -->
+        <input type="checkbox" id="colour-red" class="filter-input" />
+        <input type="checkbox" id="colour-green" class="filter-input" />
+        <input type="checkbox" id="colour-blue" class="filter-input" />
+        <input type="checkbox" id="colour-yellow" class="filter-input" />
+
+        <!-- HEADER / CONTROLS -->
+        <div class="header" role="toolbar" aria-label="Filters header">
+            <div class="controls">
+                <!-- Main Categories -->
+                <div class="group">
+                    <span class="group-title">Category</span>
+                    <label for="cat-products" class="filter-btn">Products</label>
+                    <label for="cat-services" class="filter-btn">Services</label>
+                </div>
+                
+                <!-- Product Types (visible only when Products is checked) -->
+                <div class="group product-types">
+                    <span class="group-title">Type</span>
+                    <label for="type-shoes" class="filter-btn">Shoes</label>
+                    <label for="type-tables" class="filter-btn">Tables</label>
+                    <label for="type-chairs" class="filter-btn">Chairs</label>
+                </div>
+                
+                <!-- Service Colours (visible only when Services is checked) -->
+                <div class="group service-colours">
+                    <span class="group-title">Colour</span>
+                    <label for="colour-red" class="filter-btn">Red</label>
+                    <label for="colour-green" class="filter-btn">Green</label>
+                    <label for="colour-blue" class="filter-btn">Blue</label>
+                    <label for="colour-yellow" class="filter-btn">Yellow</label>
+                </div>
+
+                <div class="group">
+                    <button type="reset" class="filter-btn">Clear all</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL / ITEMS -->
+        <div class="panel" id="panel" aria-live="polite">
+            <div class="items">
+                <!-- Simplified 2-level tags with more variety -->
+                <div class="item" data-tags="products products.shoes">Red Trainer</div>
+                <div class="item" data-tags="products products.shoes">Black Cowboy Boot</div>
+                <div class="item" data-tags="products products.tables">Green Table</div>
+                <div class="item" data-tags="products products.tables">Red Table</div>
+                <div class="item" data-tags="products products.chairs">Blue Chair</div>
+                <div class="item" data-tags="products products.chairs">Yellow Chair</div>
+                <div class="item" data-tags="services services.red">Red Service</div>
+                <div class="item" data-tags="services services.green">Green Service</div>
+                <div class="item" data-tags="services services.blue">Blue Service</div>
+                <div class="item" data-tags="services services.yellow">Yellow Service</div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
