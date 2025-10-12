@@ -1,3 +1,18 @@
+
+# TODO:
+- New filter system:
+    - Try to see if you can integrate url params into this filtering system
+    - If I'm feeling brave / stupid enough, try to add a 3rd level of filters.... 
+- integration of new filter system:
+    - integrate new filter system into my products page.
+- documentation
+    - document my old 'ultimate' method. 
+    - store the code somewhere...
+
+
+
+
+
 look back through deepseek code;
     -> work out how to hide the parent when the child is selected.
     -> work out what happens when i add more filters! (e.g. add at least 1 more to each category...)

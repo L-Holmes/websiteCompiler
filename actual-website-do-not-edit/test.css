@@ -134,16 +134,26 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   display: block;
 }
 
-/* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
-#type-article:checked ~ .panel .item[data-tags~=blogs]:not([data-tags~="blogs.article"]),
-#type-video:checked ~ .panel .item[data-tags~=blogs]:not([data-tags~="blogs.video"]) {
+/* --- BLOGS (scalable :has() replacement) --- */
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked) .panel .item[data-tags~=blogs] {
   display: none;
 }
 
-/* If multiple product types are selected (OR logic), show items that match ANY of them. */
-#type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.article"],
-#type-article:checked ~ #type-video:checked ~ .panel .item[data-tags~="blogs.video"] {
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-article:checked) .panel .item[data-tags~="blogs.article"],
+.filterable:has(#type-newsub:checked) .panel .item[data-tags~="blogs.newsub"],
+.filterable:has(#type-fourth:checked) .panel .item[data-tags~="blogs.fourth"],
+.filterable:has(#type-video:checked) .panel .item[data-tags~="blogs.video"] {
   display: block;
+}
+
+/* Hide the Blogs parent button when any blog sub-filter is active */
+.filterable:has(#type-article:checked) .header label[for=cat-blogs],
+.filterable:has(#type-newsub:checked) .header label[for=cat-blogs],
+.filterable:has(#type-fourth:checked) .header label[for=cat-blogs],
+.filterable:has(#type-video:checked) .header label[for=cat-blogs] {
+  display: none;
 }
 
 /* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
@@ -182,11 +192,98 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 #type-shoes:checked ~ .header label[for=type-shoes],
 #type-tables:checked ~ .header label[for=type-tables],
 #type-article:checked ~ .header label[for=type-article],
+#type-newsub:checked ~ .header label[for=type-newsub],
+#type-fourth:checked ~ .header label[for=type-fourth],
 #type-video:checked ~ .header label[for=type-video] {
   background: #eef6ff;
   border-color: #cde0ff;
   box-shadow: 0 4px 10px rgba(22, 90, 255, 0.06);
   color: #0056e0;
+}
+
+/* Default: show all items (no hash = everything visible) */
+.filterable .panel .item {
+  display: block;
+}
+
+/* ---------- When #blogs-target is active: hide everything then show only blogs ---------- */
+#blogs-target:target ~ .panel .item {
+  display: none;
+}
+
+#blogs-target:target ~ .panel .item[data-tags~=blogs] {
+  display: block;
+}
+
+/* Visual: make the Blogs button look active when #blogs-target is present */
+#blogs-target:target ~ .header label[for=cat-blogs] {
+  background: #eef6ff;
+  border-color: #cde0ff;
+  box-shadow: 0 4px 10px rgba(22, 90, 255, 0.06);
+  color: #0056e0;
+}
+
+/* ---------- When #products-target is active: hide everything then show only products ---------- */
+#products-target:target ~ .panel .item {
+  display: none;
+}
+
+#products-target:target ~ .panel .item[data-tags~=products] {
+  display: block;
+}
+
+/* Visual: make the Products button look active when #products-target is present */
+#products-target:target ~ .header label[for=cat-products] {
+  background: #eef6ff;
+  border-color: #cde0ff;
+  box-shadow: 0 4px 10px rgba(22, 90, 255, 0.06);
+  color: #0056e0;
+}
+
+/* --- Parent hide when a sub-filter is active --- */
+/* Products parent hides if any product subtype is checked OR #products-target is NOT active */
+#type-shoes:checked ~ .header label[for=cat-products],
+#type-tables:checked ~ .header label[for=cat-products] {
+  display: none;
+}
+
+/* Blogs parent hides if any blog subtype is checked OR #blogs-target is NOT active */
+#type-article:checked ~ .header label[for=cat-blogs],
+#type-video:checked ~ .header label[for=cat-blogs],
+#type-newsub:checked ~ .header label[for=cat-blogs] {
+  display: none;
+}
+
+/* Parent label active state is now driven purely by the checkbox */
+#cat-products:checked ~ .header label[for=cat-products],
+#cat-blogs:checked ~ .header label[for=cat-blogs] {
+  background: #eef6ff;
+  border-color: #cde0ff;
+  box-shadow: 0 4px 10px rgba(22, 90, 255, 0.06);
+  color: #0056e0;
+}
+
+/* Default: show all items if no filter is checked */
+.filterable .panel .item {
+  display: block;
+}
+
+/* Show blogs if #blogs-target in URL */
+#blogs-target:target ~ .panel .item {
+  display: none;
+}
+
+#blogs-target:target ~ .panel .item[data-tags~=blogs] {
+  display: block;
+}
+
+/* Show products if #products-target in URL */
+#products-target:target ~ .panel .item {
+  display: none;
+}
+
+#products-target:target ~ .panel .item[data-tags~=products] {
+  display: block;
 }
 
 /*# sourceMappingURL=test.css.map */

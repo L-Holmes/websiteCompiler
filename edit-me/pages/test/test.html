@@ -10,6 +10,10 @@
 	<body>
 
 		<form class="filterable" id="catalog" aria-label="Product filters">
+			
+			<!-- Add these target anchors anywhere inside .filterable BEFORE the .panel -->
+			<a id="blogs-target" aria-hidden="true"></a>
+			<a id="products-target" aria-hidden="true"></a>
 
 			<!-- ---------------------- These are hidden checkboxes that control the state ---------------------- -->
 			<!-- Parent Category Filters -->
@@ -23,6 +27,8 @@
 			<!-- ==> Blogs Sub-filters -->
 			<input type="checkbox" id="type-article" class="filter-input" />
 			<input type="checkbox" id="type-video" class="filter-input" />
+			<input type="checkbox" id="type-newsub" class="filter-input" />
+			<input type="checkbox" id="type-fourth" class="filter-input" />
 
 			<!-- ------------------------------------------------------------------------------------------------- -->
 
@@ -40,18 +46,20 @@
 						<label for="cat-blogs" class="filter-btn">Blogs</label>
 					</div>
 
-					<!-- Product Filters -->
+					<!-- ==> Product Filters -->
 					<div class="group product-types">
-						<span class="group-title">Prod. Type</span>
-						<label for="type-shoes" class="filter-btn">Shoes</label>
-						<label for="type-tables" class="filter-btn">Tables</label>
+						<span class="group-title">Products</span>
+						<label for="type-shoes" class="filter-btn">Products -> Shoes</label>
+						<label for="type-tables" class="filter-btn">Products -> Tables</label>
 					</div>
 
-					<!-- Blogs Filters -->
+					<!-- ==> Blogs Filters -->
 					<div class="group blog-types"> 
-						<span class="group-title">Blogs. Type</span>
-						<label for="type-article" class="filter-btn">Article</label>
-						<label for="type-video" class="filter-btn">Video</label>
+						<span class="group-title">Products</span>
+						<label for="type-article" class="filter-btn">Blogs -> Article</label>
+						<label for="type-video" class="filter-btn">Blogs -> Video</label>
+						<label for="type-newsub" class="filter-btn">Blogs -> New Sub </label>
+						<label for="type-fourth" class="filter-btn">Blogs -> fourth </label>
 					</div>
 
 					<!-- ------------------------------------------------------------------------------------------------- -->
@@ -67,12 +75,15 @@
 			<div class="panel" id="panel" aria-live="polite">
 				<div class="items">
 					<!-- Each item has a space-separated list of all tags it belongs to -->
-					<div class="item" data-tags="products products.shoes">Products -> Trainer</div>
-					<div class="item" data-tags="products products.shoes">Products -> Cowboy Boot</div>
-					<div class="item" data-tags="products products.tables">Products -> Table</div>
-					<div class="item" data-tags="blogs blogs.article"> Blogs -> Article 1</div>
-					<div class="item" data-tags="blogs blogs.article"> Blogs -> Article 2</div>
-					<div class="item" data-tags="blogs blogs.video"> Blogs -> video 1</div>
+					<div class="item" data-tags="products products.shoes">Trainer</div>
+					<div class="item" data-tags="products products.shoes">Cowboy Boot</div>
+					<div class="item" data-tags="products products.tables">Table</div>
+					<div class="item" data-tags="blogs blogs.article">Article 1</div>
+					<div class="item" data-tags="blogs blogs.article">Article 2</div>
+					<div class="item" data-tags="blogs blogs.video">video 1</div>
+					<div class="item" data-tags="blogs blogs.newsub">new new </div>
+					<div class="item" data-tags="blogs blogs.fourth">new fourth filter test</div>
+					<div class="item" data-tags="blogs blogs.fourth blogs.newsub">fingers crossed</div>
 				</div>
 			</div>
 		</form>
