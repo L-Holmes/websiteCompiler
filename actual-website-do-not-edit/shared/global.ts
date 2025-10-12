@@ -120,6 +120,8 @@ function toggleDyslexiaFont() {
 ;(window as any).toggleBigFont = toggleBigFont;
 ;(window as any).toggleDyslexiaFont = toggleDyslexiaFont;
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   applySettingsFromParams();
   appendParamsToInternalLinks();
@@ -127,3 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // this must be last
   applyLanguagePrefixToLinks();  
 });
+
+
+

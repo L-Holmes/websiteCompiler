@@ -123,15 +123,23 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 // -----------------------------------------------------------------------------------
 // PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
 /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
-#type-shoes:checked ~ .panel .item[data-tags~=products]:not([data-tags~="products.shoes"]),
-#type-tables:checked ~ .panel .item[data-tags~=products]:not([data-tags~="products.tables"]) {
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked) .panel .item[data-tags~=products] {
   display: none;
 }
 
-/* If multiple product types are selected (OR logic), show items that match ANY of them. */
-#type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.shoes"],
-#type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.tables"] {
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-shoes:checked) .panel .item[data-tags~="products.shoes"],
+.filterable:has(#type-boots:checked) .panel .item[data-tags~="products.boots"],
+.filterable:has(#type-tables:checked) .panel .item[data-tags~="products.tables"] {
   display: block;
+}
+
+/* Hide the products parent button when any blog sub-filter is active */
+.filterable:has(#type-shoes:checked) .header label[for=cat-products],
+.filterable:has(#type-boots:checked) .header label[for=cat-products],
+.filterable:has(#type-tables:checked) .header label[for=cat-products] {
+  display: none;
 }
 
 /* --- BLOGS (scalable :has() replacement) --- */

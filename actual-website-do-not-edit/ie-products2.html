@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title> Awpen </title>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="A cool website">
+		
+	  <meta charset="UTF-8">
+
+		<link rel=stylesheet href="products2.css">
+
+
+		<script>
+			// -- PROCESSING THE URL PARAMETERS --
+			document.addEventListener('DOMContentLoaded', () => {
+				// e.g. http://127.0.0.1:8000/products2.html?category=products&type=video,newsub
+				// --> to note: need to be careful when adding params to the url. only add 'type' if a subtype is selected.
+				// --> only add 'category' if no subtypes are selected. 
+				// --> don't add 'category=blogs' if say blogs.video already selected...
+
+
+				const params = new URLSearchParams(window.location.search);
+
+				// Parent categories
+				const category = (params.get('category') || '').toLowerCase();
+				const categoryMap = { products: 'cat-products', blogs: 'cat-blogs' };
+				if (categoryMap[category]) document.getElementById(categoryMap[category]).checked = true;
+
+				// Mapping subcategory ID → parent checkbox ID
+				const subToParent = {
+					shoes: 'cat-products',
+					tables: 'cat-products',
+					article: 'cat-blogs',
+					video: 'cat-blogs',
+					newsub: 'cat-blogs',
+					fourth: 'cat-blogs',
+					// add more as needed
+				};
+
+				// Check subcategories
+				const typeParam = params.get('type');
+				if (typeParam) {
+					typeParam.split(',').map(s => s.trim().toLowerCase()).forEach(sub => {
+						const el = document.getElementById('type-' + sub);
+						if (el) el.checked = true;
+
+						// Check parent based on mapping
+						const parentId = subToParent[sub];
+						if (parentId) document.getElementById(parentId).checked = true;
+					});
+				}
+			});
+		</script>
+	</head>
+	<body>
+
+		<form class="filterable" id="catalog" aria-label="Product filters">
+
+
+			<!-- Add these target anchors anywhere inside .filterable BEFORE the .panel -->
+			<a id="blogs-target" aria-hidden="true"></a>
+			<a id="products-target" aria-hidden="true"></a>
+
+			<!-- ---------------------- These are hidden checkboxes that control the state ---------------------- -->
+			<!-- Parent Category Filters -->
+			<input type="checkbox" id="cat-products" class="filter-input" />
+			<input type="checkbox" id="cat-blogs" class="filter-input" />
+
+			<!-- ==> Product Sub-filters -->
+			<input type="checkbox" id="type-shoes" class="filter-input" />
+			<input type="checkbox" id="type-tables" class="filter-input" />
+			<input type="checkbox" id="type-boots" class="filter-input" />
+
+			<!-- ==> Blogs Sub-filters -->
+			<input type="checkbox" id="type-article" class="filter-input" />
+			<input type="checkbox" id="type-video" class="filter-input" />
+			<input type="checkbox" id="type-newsub" class="filter-input" />
+			<input type="checkbox" id="type-fourth" class="filter-input" />
+
+			<!-- ------------------------------------------------------------------------------------------------- -->
+
+
+			<!-- HEADER / CONTROLS -->
+			<div class="header" role="toolbar" aria-label="Filters header">
+				<div class="controls">
+
+					<!-- ---------------------- These are the actual toggle buttons for the user to click ---------------------- -->
+
+					<!-- Main Categories -->
+					<div class="group">
+						<span class="group-title">Category</span>
+
+						<label for="cat-products" class="filter-tile filter-btn">
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="filter-icon-wrapper">
+								<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+							</div>
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="title-and-info-wrapper">
+								<div class="item-title"> 
+									Products
+									<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+									<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+								</div>
+							</div>
+						</label>
+
+
+						<label for="cat-blogs" class="filter-tile filter-btn">
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="filter-icon-wrapper">
+								<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+							</div>
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="title-and-info-wrapper">
+								<div class="item-title"> 
+									Blogs
+									<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+									<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+								</div>
+							</div>
+						</label>
+
+
+					</div>
+
+					<!-- ==> Product Filters -->
+					<div class="group product-types">
+						<span class="group-title">Products</span>
+
+
+						<label for="type-shoes" class="filter-tile filter-btn">
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="filter-icon-wrapper">
+								<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+							</div>
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="title-and-info-wrapper">
+								<div class="item-title"> 
+									Products → Shoes
+									<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+									<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+								</div>
+							</div>
+						</label>
+
+						<label for="type-tables" class="filter-tile filter-btn">
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="filter-icon-wrapper">
+								<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+							</div>
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="title-and-info-wrapper">
+								<div class="item-title"> 
+									Products → Tables
+									<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+									<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+								</div>
+							</div>
+						</label>
+
+						<label for="type-boots" class="filter-tile filter-btn">
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="filter-icon-wrapper">
+								<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+							</div>
+							<!-- {image-icon} --> <!-- Optional image icon -->
+							<div class="title-and-info-wrapper">
+								<div class="item-title"> 
+									Products → Boots
+									<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+									<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+								</div>
+							</div>
+						</label>
+
+
+					</div>
+
+					<!-- ==> Blogs Filters -->
+					<div class="group blog-types"> 
+						<span class="group-title">Products</span>
+						<label for="type-article" class="filter-btn">Blogs -> Article</label>
+						<label for="type-video" class="filter-btn">Blogs -> Video</label>
+						<label for="type-newsub" class="filter-btn">Blogs -> New Sub </label>
+						<label for="type-fourth" class="filter-btn">Blogs -> fourth </label>
+					</div>
+
+					<!-- ------------------------------------------------------------------------------------------------- -->
+
+					<div class="group">
+						<button type="reset" class="filter-btn">Clear all</button>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="panel" id="panel" aria-live="polite">
+				<div id="products-wrapper items">
+					<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
+						<div class="item-title" add-text-section="item-SappBoot-title"></div>
+						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+						<div class="item-further">
+							<img class="item-images" src="shared/images/page-images/products/sapp-boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+							<div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+							</div>
+							<div class="item-learn-or-buy">
+								<button add-text-section="learn-more"> Learn more </button>
+								<button add-text-section="buy-now"> Buy now </button>
+							</div>
+						</div>
+					</div>
+
+					<div class="table-entry item" data-text="table" data-tags="products products.tables">
+						<div class="item-title" add-text-section="item-SappBoot-title"></div>
+						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+						<div class="item-further">
+							<img class="item-images" src="shared/images/page-images/products/table.avif" alt="Awpen Industries Logo"  loading="lazy">
+							<div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+							</div>
+							<div class="item-learn-or-buy">
+								<button add-text-section="learn-more"> Learn more </button>
+								<button add-text-section="buy-now"> Buy now </button>
+							</div>
+						</div>
+					</div>
+
+					<div class="table-entry item" data-text="boot" data-tags="products products.boots">
+						<div class="item-title" add-text-section="item-SappBoot-title"></div>
+						<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+						<div class="item-further">
+							<img class="item-images" src="shared/images/page-images/products/boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+							<div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+							</div>
+							<div class="item-learn-or-buy">
+								<button add-text-section="learn-more"> Learn more </button>
+								<button add-text-section="buy-now"> Buy now </button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="vert-spacing-s"></div>
+
+			<h2> Blogs </h2>
+
+			<a href='blog/about-us.html'> About us blog </a>
+
+		</form>
+
+	</body>
+</html>

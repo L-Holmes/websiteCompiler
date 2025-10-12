@@ -6,11 +6,54 @@
 		<meta name="description" content="A cool website">
 
 		<link rel=stylesheet href="test.css">
+
+
+		<script>
+			// -- PROCESSING THE URL PARAMETERS --
+			document.addEventListener('DOMContentLoaded', () => {
+				// e.g. http://127.0.0.1:8000/test.html?category=products&type=video,newsub
+				// --> to note: need to be careful when adding params to the url. only add 'type' if a subtype is selected.
+				// --> only add 'category' if no subtypes are selected. 
+				// --> don't add 'category=blogs' if say blogs.video already selected...
+
+
+				const params = new URLSearchParams(window.location.search);
+
+				// Parent categories
+				const category = (params.get('category') || '').toLowerCase();
+				const categoryMap = { products: 'cat-products', blogs: 'cat-blogs' };
+				if (categoryMap[category]) document.getElementById(categoryMap[category]).checked = true;
+
+				// Mapping subcategory ID → parent checkbox ID
+				const subToParent = {
+					shoes: 'cat-products',
+					tables: 'cat-products',
+					article: 'cat-blogs',
+					video: 'cat-blogs',
+					newsub: 'cat-blogs',
+					fourth: 'cat-blogs',
+					// add more as needed
+				};
+
+				// Check subcategories
+				const typeParam = params.get('type');
+				if (typeParam) {
+					typeParam.split(',').map(s => s.trim().toLowerCase()).forEach(sub => {
+						const el = document.getElementById('type-' + sub);
+						if (el) el.checked = true;
+
+						// Check parent based on mapping
+						const parentId = subToParent[sub];
+						if (parentId) document.getElementById(parentId).checked = true;
+					});
+				}
+			});
+		</script>
 	</head>
 	<body>
 
 		<form class="filterable" id="catalog" aria-label="Product filters">
-			
+
 			<!-- Add these target anchors anywhere inside .filterable BEFORE the .panel -->
 			<a id="blogs-target" aria-hidden="true"></a>
 			<a id="products-target" aria-hidden="true"></a>

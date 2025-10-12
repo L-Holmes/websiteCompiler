@@ -1,0 +1,114 @@
+
+			<div class="filter-top-bar">
+				<div class="filter-top-bar-option" data-text="all.png" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;"> 
+	<div class="filter-top-bar-text"> All </div>
+</div>
+
+				<img class="right-arrow" src="shared/images/filtering/right-arrow.png" alt="info">   
+				<div class="filter-top-bar-option" data-text="colours.png" onclick="filterHeaderReturnToParentClicked(this)" style="cursor: pointer;"> 
+	<div class="filter-top-bar-text"> Colours </div>
+</div>
+
+			</div>
+
+			<div class="filter-outer-grid">
+				<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+				<div class="filter-squares-wrapper">
+
+					<button class="filter-tile" data-text="shoe.png" onclick="handleFilterTileClicked(this, undefined)">
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="filter-icon-wrapper">
+        <img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+    </div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="title-and-info-wrapper">
+        <div class="item-title"> 
+            Shoe 
+            <img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+        </div>
+    </div>
+    <div class="sub-filter-wrapper" data-text="shoe.png" onclick="filterFurtherClicked(this)">
+        <img class="sub-filter-icon" src="shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
+    </div>
+</button>
+
+					<button class="filter-tile" data-text="boot.png" onclick="handleFilterTileClicked(this, undefined)">
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="filter-icon-wrapper">
+        <img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+    </div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="title-and-info-wrapper">
+        <div class="item-title"> 
+            Boot 
+            <img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+        </div>
+    </div>
+    <div class="sub-filter-wrapper" data-text="boot.png" onclick="filterFurtherClicked(this)">
+        <img class="sub-filter-icon" src="shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
+    </div>
+</button>
+
+					<button class="filter-tile" data-text="table.png" onclick="handleFilterTileClicked(this, undefined)">
+    <!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="filter-icon-wrapper">
+        <img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+    </div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+    <div class="title-and-info-wrapper">
+        <div class="item-title"> 
+            Table 
+            <img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+            <img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+        </div>
+    </div>
+    <div class="sub-filter-wrapper" data-text="table.png" onclick="filterFurtherClicked(this)">
+        <img class="sub-filter-icon" src="shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+        <img class="sub-filter-hover-icon" src="shared/images/filtering/filter-hover-icon.png" alt="filter-img" loading="lazy">
+    </div>
+</button>
+
+
+				</div>
+
+			</div>
+
+			<div class="bar"></div>
+
+			<div class="vert-spacing-s"></div>
+
+			<button onclick="filterItems()" class="filter-search-button" add-text-section="filter-search"></button>
+
+			<div class="vert-spacing-s"></div>
+
+			<button onclick="handleSortClicked()" id="reorderButton">Reorder Items</button>
+
+			<div class="vert-spacing-s"></div>
+
+			<h2> Products </h2>
+
+			<button class="sort-button" onclick="handleSortClickedNew()">
+				<div class="sort-img">
+					<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3 6l5-4 5 4H3z" fill="white"/>
+						<path d="M3 10l5 4 5-4H3z" fill="white"/>
+					</svg>
+				</div>
+				<div class="sort-text">Sort</div>
+			</button>
+
+			<!-- Sort Overlay -->
+			<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
+				<div class="sort-box">
+					<div class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
+					<div class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
+					<div class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
+				</div>
+			</div>
+
+
+			<div class="vert-spacing-s"></div>

@@ -1,0 +1,900 @@
+@use "<root>/shared/global.scss"  as *;
+
+
+.filterable {
+  width: 100%;
+  max-width: 920px;
+  position: relative;
+}
+
+/* --- HIDDEN CONTROL INPUTS --- */
+.filterable .filter-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- HEADER / CONTROLS --- */
+ // .filterable .header {
+   // display: flex;
+   // flex-wrap: wrap;
+   // gap: 10px;
+   // align-items: center;
+   // padding: 10px;
+   // background: #fff;
+   // border-radius: 10px;
+   // box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+   // z-index: 2;
+   // position: relative;
+ // }
+ // 
+ // .filterable .controls {
+   // display: flex;
+   // flex-wrap: wrap;
+   // gap: 18px;
+   // align-items: center;
+   // width: 100%;
+ // }
+ // 
+ // .filterable .group {
+   // display: flex;
+   // gap: 8px;
+   // align-items: center;
+ // }
+ // 
+ // .filterable .group-title {
+   // font-size: 12px;
+   // color: #666;
+   // margin-right: 6px;
+   // font-weight: bold;
+ // }
+ // 
+ // .filterable .filter-btn {
+   // display: inline-flex;
+   // align-items: center;
+   // padding: 6px 12px;
+   // border-radius: 8px;
+   // border: 1px solid #e6e6e6;
+   // background: #fafafa;
+   // cursor: pointer;
+   // font-weight: 600;
+   // font-size: 14px;
+   // transition: all 0.12s ease;
+   // user-select: none;
+ // }
+ // 
+ // .filterable .filter-btn:hover {
+   // transform: translateY(-1px);
+   // border-color: #d0d0d0;
+ // }
+ // 
+ // /* --- PANEL / ITEMS --- */
+ // .filterable .panel {
+   // margin-top: 14px;
+ // }
+ // 
+ // .filterable .items {
+   // padding: 10px;
+   // background: #f8f8f9;
+   // border-radius: 10px;
+   // box-shadow: 0 12px 36px rgba(0,0,0,0.04);
+   // display: grid;
+   // gap: 8px;
+ // }
+ // 
+ // .filterable .item {
+   // background: #fff;
+   // border: 1px solid #eee;
+   // padding: 12px 15px;
+   // border-radius: 8px;
+ // }
+
+/* --- HYBRID FILTERING LOGIC --- */
+
+/* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
+.filter-input:checked ~ .panel .item {
+  display: none;
+}
+
+/* 2. SHOW ALL TOP LEVEL WHEN ALL TOP LEVEL ARE CHECKED
+// -----------------------------------------------------------------------------------
+If both products and blogs are checked, items with EITHER tag will be shown. */
+#cat-products:checked ~ .panel .item[data-tags~="products"],
+#cat-blogs:checked ~ .panel .item[data-tags~="blogs"] {
+  display: block;
+}
+// -----------------------------------------------------------------------------------
+
+
+
+/* 3. SHOW SUB LEVEL WHEN CHECKED
+// -----------------------------------------------------------------------------------
+// PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+// /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
+// #type-shoes:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.shoes"]),
+// #type-boots:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.boots"]),
+// #type-tables:checked ~ .panel .item[data-tags~="products"]:not([data-tags~="products.tables"]) {
+  // display: none;
+// }
+// 
+// /* If multiple product types are selected (OR logic), show items that match ANY of them. */
+// #type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.shoes"],
+// #type-shoes:checked ~ #type-tables:checked ~ .panel .item[data-tags~="products.tables"] {
+  // display: block;
+// }
+
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked)
+  .panel .item[data-tags~="products"] {
+  display: none;
+}
+
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-shoes:checked) .panel .item[data-tags~="products.shoes"],
+.filterable:has(#type-boots:checked) .panel .item[data-tags~="products.boots"],
+.filterable:has(#type-tables:checked)   .panel .item[data-tags~="products.tables"] {
+  display: block;
+}
+
+/* Hide the products parent button when any blog sub-filter is active */
+.filterable:has(#type-shoes:checked) .header label[for="cat-products"],
+.filterable:has(#type-boots:checked) .header label[for="cat-products"],
+.filterable:has(#type-tables:checked)   .header label[for="cat-products"] {
+  display: none;
+}
+
+// BLOGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked)
+  .panel .item[data-tags~="blogs"] {
+  display: none;
+}
+
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-article:checked) .panel .item[data-tags~="blogs.article"],
+.filterable:has(#type-newsub:checked) .panel .item[data-tags~="blogs.newsub"],
+.filterable:has(#type-fourth:checked) .panel .item[data-tags~="blogs.fourth"],
+.filterable:has(#type-video:checked)   .panel .item[data-tags~="blogs.video"] {
+  display: block;
+}
+
+/* Hide the Blogs parent button when any blog sub-filter is active */
+.filterable:has(#type-article:checked) .header label[for="cat-blogs"],
+.filterable:has(#type-newsub:checked) .header label[for="cat-blogs"],
+.filterable:has(#type-fourth:checked) .header label[for="cat-blogs"],
+.filterable:has(#type-video:checked)   .header label[for="cat-blogs"] {
+  display: none;
+}
+
+// -----------------------------------------------------------------------------------
+
+
+/* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
+// -----------------------------------------------------------------------------------
+/* PRODUCTS CATEGORY - Hide when sub-filters are active */
+#type-shoes:checked ~ .header label[for="cat-products"],      /* Hide Products when Shoes selected */
+#type-boots:checked ~ .header label[for="cat-products"],      /* Hide Products when boots selected */
+#type-tables:checked ~ .header label[for="cat-products"] {    /* Hide Products when Tables selected */
+  display: none;  /* Makes the Products button disappear */
+}
+
+/* BLOGS CATEGORY - Hide when sub-filters are active */  
+#type-article:checked ~ .header label[for="cat-blogs"],       /* Hide Blogs when Article selected */
+#type-video:checked ~ .header label[for="cat-blogs"] {        /* Hide Blogs when Video selected */
+  display: none;  /* Makes the Blogs button disappear */
+}
+// -----------------------------------------------------------------------------------
+
+
+
+
+/* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
+// -----------------------------------------------------------------------------------
+/* Hide all sub-filter groups by default */
+.filterable .product-types,
+.filterable .blog-types {
+  display: none; /* This hides the entire group container */
+}
+
+/* Show Product Types group ONLY when Products category is checked */
+#cat-products:checked ~ .header .product-types {
+  display: flex; /* This shows the product types group */
+}
+
+/* Show Blog Types group ONLY when Blogs category is checked */
+#cat-blogs:checked ~ .header .blog-types {
+  display: flex; /* This shows the blog types group */
+}
+// -----------------------------------------------------------------------------------
+
+
+
+/* --- ACTIVE STATE STYLING --- */
+#cat-products:checked ~ .header label[for="cat-products"],
+#cat-blogs:checked ~ .header label[for="cat-blogs"],
+#type-shoes:checked ~ .header label[for="type-shoes"],
+#type-boots:checked ~ .header label[for="type-boots"],
+#type-tables:checked ~ .header label[for="type-tables"],
+#type-article:checked ~ .header label[for="type-article"],
+#type-newsub:checked ~ .header label[for="type-newsub"],
+#type-fourth:checked ~ .header label[for="type-fourth"],
+#type-video:checked ~ .header label[for="type-video"]
+{
+  // background: #eef6ff;
+  // border-color: #cde0ff;
+  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+  // color: #0056e0;
+
+  border: 2px solid white;
+  &:hover {
+      border: 2px solid #48E0C8; 
+    }
+}
+
+
+// --------------------------------------------
+
+
+// /* Default: show all items (no hash = everything visible) */
+// .filterable .panel .item {
+  // display: block;
+// }
+// 
+// /* ---------- When #blogs-target is active: hide everything then show only blogs ---------- */
+// #blogs-target:target ~ .panel .item {
+  // display: none;
+// }
+// #blogs-target:target ~ .panel .item[data-tags~="blogs"] {
+  // display: block;
+// }
+// 
+// /* Visual: make the Blogs button look active when #blogs-target is present */
+// #blogs-target:target ~ .header label[for="cat-blogs"] {
+  // background: #eef6ff;
+  // border-color: #cde0ff;
+  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+  // color: #0056e0;
+// }
+// 
+// /* ---------- When #products-target is active: hide everything then show only products ---------- */
+// #products-target:target ~ .panel .item {
+  // display: none;
+// }
+// #products-target:target ~ .panel .item[data-tags~="products"] {
+  // display: block;
+// }
+// 
+// /* Visual: make the Products button look active when #products-target is present */
+// #products-target:target ~ .header label[for="cat-products"] {
+  // background: #eef6ff;
+  // border-color: #cde0ff;
+  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+  // color: #0056e0;
+// }
+
+
+////////////////////////////////////////////////////////////
+
+// /* --- Parent hide when a sub-filter is active --- */
+// /* Products parent hides if any product subtype is checked OR #products-target is NOT active */
+// #type-shoes:checked ~ .header label[for="cat-products"],
+// #type-boots:checked ~ .header label[for="cat-products"],
+// #type-tables:checked ~ .header label[for="cat-products"] {
+  // display: none;
+// }
+// 
+// /* Blogs parent hides if any blog subtype is checked OR #blogs-target is NOT active */
+// #type-article:checked ~ .header label[for="cat-blogs"],
+// #type-video:checked ~ .header label[for="cat-blogs"],
+// #type-newsub:checked ~ .header label[for="cat-blogs"] {
+  // display: none;
+// }
+
+////////
+
+
+// /* Parent label active state is now driven purely by the checkbox */
+// #cat-products:checked ~ .header label[for="cat-products"],
+// #cat-blogs:checked ~ .header label[for="cat-blogs"] {
+  // background: #eef6ff;
+  // border-color: #cde0ff;
+  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
+  // color: #0056e0;
+// }
+// 
+// 
+// 
+// /* Default: show all items if no filter is checked */
+// .filterable .panel .item {
+  // display: block;
+// }
+// 
+// /* Show blogs if #blogs-target in URL */
+// #blogs-target:target ~ .panel .item {
+  // display: none;
+// }
+// #blogs-target:target ~ .panel .item[data-tags~="blogs"] {
+  // display: block;
+// }
+// 
+// /* Show products if #products-target in URL */
+// #products-target:target ~ .panel .item {
+  // display: none;
+// }
+// #products-target:target ~ .panel .item[data-tags~="products"] {
+  // display: block;
+// }
+// 
+// 
+
+// ===================================================================================================================
+// ===================================================================================================================
+// ===================================================================================================================
+// ===================================================================================================================
+
+
+
+//============================================================
+// FILTERING
+//============================================================
+
+.filter-outer-grid{
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+// .filter-main-wrapper{
+  // @extend .ux-grid;
+  // grid-template-columns: auto; 
+  // grid-template-rows: 0.8fr 0.2fr; //This is above-and-below by default
+// }
+
+.filter-squares-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.search-button{
+  width:50px;
+}
+// .info-img{
+  // //width: 35%;
+  // max-width: 100%;
+  // max-height:100%;
+// }
+
+// .filter-icon{
+  // width: 100%;
+  // height: 100%;
+  // object-fit: contain;
+// }
+
+// .filter-tile {
+  // //position: relative;
+  // width: 55px;
+  // height:60px;
+// }
+
+.filter-tile-bg-test-tube {
+  //position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-tile-content {
+  //position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-tile-sticker{
+  //position: absolute;
+  width: 50%;
+  height: 75%;
+  background-color: white;
+  border-radius: 10px;
+  border-color: transparent;
+  margin-left: 24%;
+  margin-top: 15%;
+  border: solid black 0.5px;
+}
+
+/* want all of the top-level things to have position absolute. Everything underneath does not */
+
+.filter-tile-img-wrapper{
+  @extend .ux-grid;	
+  grid-template-columns: auto; 
+  grid-template-rows: 0.2fr 0.8fr;
+
+  //position: absolute;
+  width:100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.info-img-wrapper{
+  display: flex;
+  justify-content: flex-end; /* Right-aligns the child */
+  align-items: flex-start; /* Aligns at the top, change as needed */
+  height: 100%;
+  width:100%;
+  overflow: hidden;
+}
+
+
+
+// ==========================================================
+// ==========================================================
+// ==========================================================
+
+
+.filter-search-button{
+  height: 25px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 5px;
+  width:100%;
+
+  display:none;
+
+
+  // ON MOBILE
+  @media screen and (max-width: 441px){
+    display:inline-block;
+  }
+}
+
+.filter-central-divider{
+  width:100%;
+}
+
+.filter-under-filter-wrapper{
+  @extend .centre-wrapper;
+  height:25px;
+  width:100%;
+}
+
+.filter-under-filter{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.filter-parent-top-bar{
+  @extend .centre-wrapper;
+  height:auto;
+}
+
+// ================
+
+
+.bar {
+  width: 100%;   /* full width of container */
+  height: 10px;  /* 10px tall */
+  background: #333; /* optional: give it a color so you can see it */
+}
+
+
+// ================
+
+/* Sort button styling */
+.sort-button {
+  display: flex;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sort-button:hover {
+  background-color: #555;
+}
+
+.sort-img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Overlay backdrop */
+.sort-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Sort options box */
+.sort-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+/* Sort option items */
+.sort-option {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.sort-option:hover {
+  background-color: #f5f5f5;
+}
+
+.sort-option:last-child {
+  border-bottom: none;
+}
+
+/* Active state */
+.sort-option.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.sort-option.active:hover {
+  background-color: #0056b3;
+}
+
+
+
+// =================================
+// ==================================
+// ==================================
+
+
+
+// .filter-main-wrapper{
+  // @extend .ux-grid;
+  // grid-template-columns: auto; 
+  // grid-template-rows: 0.5fr 0.4fr 0.1fr; //This is above-and-below by default 
+// 
+  // border: solid white 1px;
+  // border-radius:12px;
+// 
+  // width:200px;
+// }
+
+
+// todo: rename to 'filter title and image'
+// todo: on hover, background turns slight light blue highlight...
+.filter-sticker{
+   @extend .ux-grid;
+   grid-template-columns: auto; 
+   grid-template-rows: 0.3fr 0.7fr; //This is above-and-below by default
+
+  width:90%;
+  height:90%;
+
+  overflow-y:hidden;
+}
+
+// .filter-icon{
+  // width: 75px;
+  // height: 75px;
+  // object-fit: contain;
+// }
+
+.filter-further-wrapper{
+  @extend .ux-grid;
+   grid-template-columns: auto; 
+   grid-template-rows: 0.3fr 0.2fr 0.5fr; //This is above-and-below by default
+
+  width:90%;
+  height:90%;
+  overflow-y:hidden;
+
+ }
+
+ .more-info-wrapper{
+  width:90%;
+  height:90%;
+
+  overflow-y:hidden;
+ }
+
+ .centred-with-bottom-border{
+   @extend .centre-wrapper;
+   border-bottom: solid white 1px;
+
+ }
+
+ .filter-further-description-wrapper{
+ }
+
+.filter-further-description-content {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: scroll;
+  font-size: $font-size-xs;
+}
+
+
+
+
+
+
+// ===================================
+// =================================
+// ==================================
+
+// FILTER STICKER
+
+.filter-tile{
+    // grows in accordance to its contents (i.e. the text length)
+    // when text gets too long, it flow onto the next line.
+    display:inline-flex;
+    max-width:40vw; //take up no more than half of the width of the page
+    height:auto; // height can grow if text gets too long.
+
+    border: solid #404040 2px;
+    border-radius:12px;
+
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      max-width:90vw;
+	}
+
+    // SELECTED STATE
+    &.selected {
+      border: 2px solid white;
+      &:hover {
+          border: 2px solid #48E0C8; 
+        }
+    }
+
+}
+
+.filter-tile:hover {
+  border: 2px solid #D2FFF8;
+}
+
+/* But when hovering the sub-filter area, cancel that */
+.filter-tile:has(.sub-filter-wrapper:hover) {
+  border: 2px solid #404040; /* revert to normal */
+}
+
+
+.filter-icon-wrapper{
+  @extend .align-centre;
+  padding:5px;
+  pointer-events: none;  // prevent on-hover etc. of parent triggering
+}
+
+.title-and-info-wrapper{
+    // we want only the text and the info icon to flow onto the next lines together, should they get too long.
+    display: flex;
+    flex-wrap: wrap;          /* Only this wraps */
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;          /* Respect parent's max-width */
+    padding:5px;
+    padding-right:15px;
+}
+
+.sub-filter-wrapper{
+    @extend .align-centre;
+    border-left: solid white 1px;
+    padding:5px;
+
+    .sub-filter-icon{
+      height: 25px;
+      width: 25px;
+      object-fit: contain;
+    }
+
+    .sub-filter-hover-icon{
+      height: 25px;
+      width: 25px;
+      object-fit: contain;
+      
+      display:none;
+    }
+
+    &:hover .sub-filter-icon{
+      display:none;
+    }
+    
+    &:hover .sub-filter-hover-icon{
+      // background-image: url("<root>/shared/images/filtering/filter-hover-icon.png");
+      display:inline;
+    }
+
+    &:hover{
+      border-left: solid #D2FFF8 1px;
+    }
+}
+
+
+.filter-icon{
+    height:25px;
+    width:25px;
+    object-fit: contain;
+    pointer-events: none;  // prevent on-hover etc. of parent triggering
+}
+
+// .sub-filter-icon {
+  // height: 25px;
+  // width: 25px;
+  // object-fit: contain;
+  // background: url("<root>/shared/images/filtering/filter-icon.png") no-repeat center / contain;
+// 
+  // &:hover {
+    // background-image: url("<root>/shared/images/filtering/filter-hover-icon.png");
+  // }
+// }
+
+
+.right-arrow{
+    height:20px;
+    width:20px;
+    object-fit: contain;
+}
+
+.big-image-wrapper{
+    // pass
+    display:none;
+}
+
+.item-title {
+  display: inline;        /* Makes text + icon flow together */
+
+  .info-icon{
+    height:15px;
+    width:15px;
+    object-fit: contain;
+    padding-bottom:10px;
+
+    display:none;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      display:inline;
+    }
+  }
+
+  .info-hover-icon{
+    height:15px;
+    width:15px;
+    object-fit: contain;
+    padding-bottom:10px;
+
+    display:none;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      display:none;
+    }
+  }
+
+
+  &:hover .info-icon{
+    display:none;
+  }
+
+  &:hover .info-hover-icon{
+    display:none;
+
+    @media screen and (max-width: 441px){
+      display:inline;
+    }
+  }
+}
+
+// =======================================
+// FILTER TOP BAR
+
+
+.filter-top-bar{
+  display:flex;
+  align-items: center;      /* vertical centering */
+  gap: 20px;                /* spacing between items */
+  overflow-x: auto;         /* horizontal scroll if needed */
+  width: 100%;              /* full width */
+  white-space: nowrap;      /* optional, but ensures text doesn't wrap */
+
+  padding-top:30px;
+  padding-bottom:10px;
+}
+
+.filter-top-bar-option{
+  @extend .button-hitbox;
+  width:auto;
+  }
+
+  .filter-top-bar-text{
+  @extend .text-itself;
+  text-decoration:underline;
+  }
+
+
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+
+  
+// =================
+// TABLE STUFF
+// =================
+.table-entry{
+	@extend .ux-grid;	
+	grid-template-columns: auto; 
+	grid-template-rows: 0.1fr 0.1fr 0.8fr;
+	height:auto;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+.item-title{
+
+}
+
+.item-stats{
+
+}
+
+.item-further{
+    @extend .ux-grid;	
+	grid-template-columns: 0.1fr 0.7fr 0.2fr; 
+	grid-template-rows: auto;
+	height:auto;
+}
+
+.item-images{
+  width: 80px;
+  height: 80px;
+}
+
+.item-description{
+
+}
+
+.item-learn-or-buy{
+	@extend .ux-grid;	
+	grid-template-columns: auto; 
+	grid-template-rows: 0.5fr 0.5fr;
+	height:auto;
+    padding: 5px 5px 5px 5px;
+}
+
+
+

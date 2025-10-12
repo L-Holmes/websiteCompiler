@@ -1,0 +1,977 @@
+@font-face {
+  font-family: "OpenDyslexic-Bold";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic-BoldItalic";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-BoldItalic.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic-Italic";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Italic.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic-Regular";
+  src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Regular.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-Bold";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-Bold.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-BoldItalic";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-BoldItalic.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin-Italic";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin-Italic.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SylexiadSerifThin";
+  src: url("../shared/fonts/sylexiad/SylexiadSerifThin.woff") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "MerriweatherSans-Medium";
+  src: url("../shared/fonts/Merriweather-sans/MerriweatherSans-Medium.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "DoppioOne-Regular";
+  src: url("../shared/fonts/doppio_one/DoppioOne-Regular.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suwannaphum-Regular";
+  src: url("../shared/fonts/Suwannaphum/Suwannaphum-Regular.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suwannaphum-Bold";
+  src: url("../shared/fonts/Suwannaphum/Suwannaphum-Bold.ttf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Bold";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-BoldItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-BoldItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Italic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Italic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Light";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Light.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-LightItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-LightItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Medium";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-MediumItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-MediumItalic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-Regular";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-SemiBold";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "CormorantGaramond-SemiBoldItalic";
+  src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf") format("truetype");
+  font-display: swap;
+}
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0px;
+  font-family: "CormorantGaramond-Regular", serif;
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+h1 {
+  color: #f5f5f5;
+  margin: 0px;
+  font-size: 2.5rem;
+}
+
+h2 {
+  color: #f5f5f5;
+  margin: 0px;
+  font-family: "CormorantGaramond-Bold", serif;
+  font-size: 2rem;
+}
+
+h3 {
+  color: #f5f5f5;
+  margin: 0px;
+  font-family: "CormorantGaramond-Bold", serif;
+  font-size: 1.5rem;
+}
+
+h4 {
+  color: #f5f5f5;
+  margin: 0px;
+  font-family: "CormorantGaramond-Bold", serif;
+}
+
+div {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: transparent;
+  color: #f5f5f5;
+}
+
+button:hover {
+  background-color: transparent;
+}
+
+/* BIG FONT toggle  */
+html.big-font {
+  font-size: 24px;
+}
+
+/* Dyslexia-friendly font toggle */
+body.font-dyslexia {
+  font-family: "SylexiadSerifThin", sans-serif;
+}
+
+body.font-dyslexia h1 {
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
+}
+
+body.font-dyslexia h2 {
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
+}
+
+body.font-dyslexia h3 {
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
+}
+
+body.font-dyslexia h4 {
+  font-family: "SylexiadSerifThin-Bold", sans-serif;
+}
+
+.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .ux-grid-specific {
+  display: grid;
+  height: 100%;
+}
+
+.ux-grid-specific {
+  grid-template-columns: auto;
+  grid-template-rows: 0.25fr 0.5fr 0.25fr;
+}
+
+.centre-wrapper, .filter-under-filter-wrapper, .filter-parent-top-bar, .centred-with-bottom-border {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.centre-at-top-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.full-width-img {
+  border-radius: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+@media screen and (max-width: 860px) {
+  .full-width-img {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .full-width-img {
+    max-width: 400px;
+  }
+}
+
+.half-width-img {
+  border-radius: 30px;
+  width: 90%;
+  max-width: 800px;
+  margin: 8px 8px 8px 8px;
+}
+@media screen and (max-width: 860px) {
+  .half-width-img {
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .half-width-img {
+    max-width: 400px;
+  }
+}
+
+.ux-red {
+  background-color: red;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.align-centre, .filter-icon-wrapper, .sub-filter-wrapper {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
+}
+
+.vertically-centre {
+  display: flex;
+  align-items: center; /* Vertical center */
+}
+
+.horizontally-centre {
+  display: flex;
+  justify-content: center; /* horizontal center */
+}
+
+/* Top left, anchored at the top of its container */
+.top-left-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align horizontally */
+  align-items: flex-start; /* align to the top (vertical) */
+  width: 100%;
+}
+
+/* Top center, anchored at the top of its container */
+.top-middle-wrapper {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: flex-start; /* align to the top (vertical) */
+  width: 100%;
+}
+
+/* Top right, anchored at the top of its container */
+.top-right-wrapper {
+  display: flex;
+  justify-content: flex-end; /* left align horizontally */
+  align-items: flex-start; /* align to the top (vertical) */
+  width: 100%;
+}
+
+/* Middle-left: vertically centered, left-aligned horizontally */
+.middle-left-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align horizontally */
+  align-items: center; /* vertical center */
+  width: 100%;
+}
+
+/* Middle-right: vertically centered, right-aligned horizontally */
+.middle-right-wrapper {
+  display: flex;
+  justify-content: flex-end; /* right align horizontally */
+  align-items: center; /* vertical center */
+  width: 100%;
+}
+
+/* bottom left, anchored at the bottom of its container */
+.bottom-left-wrapper {
+  display: flex;
+  justify-content: flex-start; /* left align horizontally */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+}
+
+/* bottom center, anchored at the bottom of its container */
+.bottom-middle-wrapper {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+}
+
+/* bottom right, anchored at the bottom of its container */
+.bottom-right-wrapper {
+  display: flex;
+  justify-content: flex-end; /* left align horizontally */
+  align-items: flex-end; /* align to the bottom (vertical) */
+  width: 100%;
+}
+
+.centre-me-wrapper-no-overflow-block, .centre-me-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.centre-me-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.align-middle-right {
+  display: flex;
+  justify-content: flex-end; /* Align contents to the right */
+  align-items: center; /* Vertical center */
+  width: 100%;
+}
+
+.page-contents-wrapper {
+  margin: 40px 100px 40px 40px;
+}
+@media screen and (max-width: 720px) {
+  .page-contents-wrapper {
+    margin: 20px 20px 20px 20px; /* top right bottom left */
+  }
+}
+
+.page-title {
+  margin-right: 30px;
+}
+
+.page-header {
+  background: #493DAF;
+  color: #f5f5f5;
+  border-radius: 15px 15px 15px 15px;
+  padding: 30px 20px 30px 20px;
+  font-size: 1.5rem;
+}
+
+.page-intro {
+  margin: 20px 0px 0px 0px;
+}
+@media screen and (max-width: 720px) {
+  .page-intro {
+    margin-right: 30px; /*stop the text from overlapping with the side bar on mobile */
+  }
+}
+
+.section-intro {
+  margin: 20px 0px 0px 0px;
+  padding: 0px 20px 0px 20px;
+}
+
+.vert-spacing-m {
+  padding: 20px 0px 20px 0px;
+}
+
+.vert-spacing-s {
+  padding: 10px 0px 10px 0px;
+}
+
+jkp .vert-spacing-xs {
+  padding: 5px 0px 5px 0px;
+}
+
+.vert-spacing-xxs {
+  padding: 3px 0px 3px 0px;
+}
+
+.standard-button, .button-no-margin {
+  background-color: #FFDD56;
+  border: 1px solid black;
+  border-radius: 13px;
+  padding: 10px;
+  width: 150px;
+  height: 50px;
+  margin: 20px 0px 0px 20px;
+}
+
+.button-no-margin {
+  padding: 0px;
+  margin: 20px 0px 0px 0px;
+}
+
+.full-width {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.button-hitbox, .filter-top-bar-option {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+.button-hitbox .button-itelf, .filter-top-bar-option .button-itelf {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  pointer-events: none;
+}
+.button-hitbox .text-itself, .filter-top-bar-option .text-itself, .button-hitbox .filter-top-bar-text, .filter-top-bar-option .filter-top-bar-text {
+  color: #f5f5f5;
+}
+.button-hitbox:hover .button-itelf, .filter-top-bar-option:hover .button-itelf {
+  background: #0056b3;
+}
+.button-hitbox:hover .text-itself, .filter-top-bar-option:hover .text-itself, .button-hitbox:hover .filter-top-bar-text, .filter-top-bar-option:hover .filter-top-bar-text {
+  color: #F0B300;
+}
+.button-hitbox:focus, .filter-top-bar-option:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+.filterable {
+  width: 100%;
+  max-width: 920px;
+  position: relative;
+}
+
+/* --- HIDDEN CONTROL INPUTS --- */
+.filterable .filter-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- HEADER / CONTROLS --- */
+/* --- HYBRID FILTERING LOGIC --- */
+/* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
+.filter-input:checked ~ .panel .item {
+  display: none;
+}
+
+/* 2. SHOW ALL TOP LEVEL WHEN ALL TOP LEVEL ARE CHECKED
+// -----------------------------------------------------------------------------------
+If both products and blogs are checked, items with EITHER tag will be shown. */
+#cat-products:checked ~ .panel .item[data-tags~=products],
+#cat-blogs:checked ~ .panel .item[data-tags~=blogs] {
+  display: block;
+}
+
+/* 3. SHOW SUB LEVEL WHEN CHECKED
+// -----------------------------------------------------------------------------------
+// PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+// /* If a product type (shoes/tables) is selected, hide products that DON'T match that type. */
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked) .panel .item[data-tags~=products] {
+  display: none;
+}
+
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-shoes:checked) .panel .item[data-tags~="products.shoes"],
+.filterable:has(#type-boots:checked) .panel .item[data-tags~="products.boots"],
+.filterable:has(#type-tables:checked) .panel .item[data-tags~="products.tables"] {
+  display: block;
+}
+
+/* Hide the products parent button when any blog sub-filter is active */
+.filterable:has(#type-shoes:checked) .header label[for=cat-products],
+.filterable:has(#type-boots:checked) .header label[for=cat-products],
+.filterable:has(#type-tables:checked) .header label[for=cat-products] {
+  display: none;
+}
+
+/* If any blog sub-filter is checked, hide all blog items */
+.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked) .panel .item[data-tags~=blogs] {
+  display: none;
+}
+
+/* Show matching blog items for each checked sub-filter (one line per subtype) */
+.filterable:has(#type-article:checked) .panel .item[data-tags~="blogs.article"],
+.filterable:has(#type-newsub:checked) .panel .item[data-tags~="blogs.newsub"],
+.filterable:has(#type-fourth:checked) .panel .item[data-tags~="blogs.fourth"],
+.filterable:has(#type-video:checked) .panel .item[data-tags~="blogs.video"] {
+  display: block;
+}
+
+/* Hide the Blogs parent button when any blog sub-filter is active */
+.filterable:has(#type-article:checked) .header label[for=cat-blogs],
+.filterable:has(#type-newsub:checked) .header label[for=cat-blogs],
+.filterable:has(#type-fourth:checked) .header label[for=cat-blogs],
+.filterable:has(#type-video:checked) .header label[for=cat-blogs] {
+  display: none;
+}
+
+/* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
+/* PRODUCTS CATEGORY - Hide when sub-filters are active */
+#type-shoes:checked ~ .header label[for=cat-products],
+#type-boots:checked ~ .header label[for=cat-products],
+#type-tables:checked ~ .header label[for=cat-products] { /* Hide Products when Tables selected */
+  display: none; /* Makes the Products button disappear */
+}
+
+/* BLOGS CATEGORY - Hide when sub-filters are active */
+#type-article:checked ~ .header label[for=cat-blogs],
+#type-video:checked ~ .header label[for=cat-blogs] { /* Hide Blogs when Video selected */
+  display: none; /* Makes the Blogs button disappear */
+}
+
+/* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
+/* Hide all sub-filter groups by default */
+.filterable .product-types,
+.filterable .blog-types {
+  display: none; /* This hides the entire group container */
+}
+
+/* Show Product Types group ONLY when Products category is checked */
+#cat-products:checked ~ .header .product-types {
+  display: flex; /* This shows the product types group */
+}
+
+/* Show Blog Types group ONLY when Blogs category is checked */
+#cat-blogs:checked ~ .header .blog-types {
+  display: flex; /* This shows the blog types group */
+}
+
+/* --- ACTIVE STATE STYLING --- */
+#cat-products:checked ~ .header label[for=cat-products],
+#cat-blogs:checked ~ .header label[for=cat-blogs],
+#type-shoes:checked ~ .header label[for=type-shoes],
+#type-boots:checked ~ .header label[for=type-boots],
+#type-tables:checked ~ .header label[for=type-tables],
+#type-article:checked ~ .header label[for=type-article],
+#type-newsub:checked ~ .header label[for=type-newsub],
+#type-fourth:checked ~ .header label[for=type-fourth],
+#type-video:checked ~ .header label[for=type-video] {
+  border: 2px solid white;
+}
+#cat-products:checked ~ .header label[for=cat-products]:hover,
+#cat-blogs:checked ~ .header label[for=cat-blogs]:hover,
+#type-shoes:checked ~ .header label[for=type-shoes]:hover,
+#type-boots:checked ~ .header label[for=type-boots]:hover,
+#type-tables:checked ~ .header label[for=type-tables]:hover,
+#type-article:checked ~ .header label[for=type-article]:hover,
+#type-newsub:checked ~ .header label[for=type-newsub]:hover,
+#type-fourth:checked ~ .header label[for=type-fourth]:hover,
+#type-video:checked ~ .header label[for=type-video]:hover {
+  border: 2px solid #48E0C8;
+}
+
+.filter-outer-grid {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.filter-squares-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.search-button {
+  width: 50px;
+}
+
+.filter-tile-bg-test-tube {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-tile-content {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-tile-sticker {
+  width: 50%;
+  height: 75%;
+  background-color: white;
+  border-radius: 10px;
+  border-color: transparent;
+  margin-left: 24%;
+  margin-top: 15%;
+  border: solid black 0.5px;
+}
+
+/* want all of the top-level things to have position absolute. Everything underneath does not */
+.filter-tile-img-wrapper {
+  grid-template-columns: auto;
+  grid-template-rows: 0.2fr 0.8fr;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.info-img-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Right-aligns the child */
+  align-items: flex-start; /* Aligns at the top, change as needed */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.filter-search-button {
+  height: 25px;
+  background-color: lightgray;
+  color: black;
+  border-radius: 5px;
+  width: 100%;
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .filter-search-button {
+    display: inline-block;
+  }
+}
+
+.filter-central-divider {
+  width: 100%;
+}
+
+.filter-under-filter-wrapper {
+  height: 25px;
+  width: 100%;
+}
+
+.filter-under-filter {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.filter-parent-top-bar {
+  height: auto;
+}
+
+.bar {
+  width: 100%; /* full width of container */
+  height: 10px; /* 10px tall */
+  background: #333; /* optional: give it a color so you can see it */
+}
+
+/* Sort button styling */
+.sort-button {
+  display: flex;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sort-button:hover {
+  background-color: #555;
+}
+
+.sort-img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Overlay backdrop */
+.sort-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Sort options box */
+.sort-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+/* Sort option items */
+.sort-option {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.sort-option:hover {
+  background-color: #f5f5f5;
+}
+
+.sort-option:last-child {
+  border-bottom: none;
+}
+
+/* Active state */
+.sort-option.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.sort-option.active:hover {
+  background-color: #0056b3;
+}
+
+.filter-sticker {
+  grid-template-columns: auto;
+  grid-template-rows: 0.3fr 0.7fr;
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.filter-further-wrapper {
+  grid-template-columns: auto;
+  grid-template-rows: 0.3fr 0.2fr 0.5fr;
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.more-info-wrapper {
+  width: 90%;
+  height: 90%;
+  overflow-y: hidden;
+}
+
+.centred-with-bottom-border {
+  border-bottom: solid white 1px;
+}
+
+.filter-further-description-content {
+  white-space: nowrap;
+  display: inline-block;
+  overflow-x: scroll;
+  font-size: 0.75rem;
+}
+
+.filter-tile {
+  display: inline-flex;
+  max-width: 40vw;
+  height: auto;
+  border: solid #404040 2px;
+  border-radius: 12px;
+}
+@media screen and (max-width: 441px) {
+  .filter-tile {
+    max-width: 90vw;
+  }
+}
+.filter-tile.selected {
+  border: 2px solid white;
+}
+.filter-tile.selected:hover {
+  border: 2px solid #48E0C8;
+}
+
+.filter-tile:hover {
+  border: 2px solid #D2FFF8;
+}
+
+/* But when hovering the sub-filter area, cancel that */
+.filter-tile:has(.sub-filter-wrapper:hover) {
+  border: 2px solid #404040; /* revert to normal */
+}
+
+.filter-icon-wrapper {
+  padding: 5px;
+  pointer-events: none;
+}
+
+.title-and-info-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Only this wraps */
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 100%; /* Respect parent's max-width */
+  padding: 5px;
+  padding-right: 15px;
+}
+
+.sub-filter-wrapper {
+  border-left: solid white 1px;
+  padding: 5px;
+}
+.sub-filter-wrapper .sub-filter-icon {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+}
+.sub-filter-wrapper .sub-filter-hover-icon {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+  display: none;
+}
+.sub-filter-wrapper:hover .sub-filter-icon {
+  display: none;
+}
+.sub-filter-wrapper:hover .sub-filter-hover-icon {
+  display: inline;
+}
+.sub-filter-wrapper:hover {
+  border-left: solid #D2FFF8 1px;
+}
+
+.filter-icon {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.right-arrow {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+
+.big-image-wrapper {
+  display: none;
+}
+
+.item-title {
+  display: inline; /* Makes text + icon flow together */
+}
+.item-title .info-icon {
+  height: 15px;
+  width: 15px;
+  object-fit: contain;
+  padding-bottom: 10px;
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .item-title .info-icon {
+    display: inline;
+  }
+}
+.item-title .info-hover-icon {
+  height: 15px;
+  width: 15px;
+  object-fit: contain;
+  padding-bottom: 10px;
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .item-title .info-hover-icon {
+    display: none;
+  }
+}
+.item-title:hover .info-icon {
+  display: none;
+}
+.item-title:hover .info-hover-icon {
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .item-title:hover .info-hover-icon {
+    display: inline;
+  }
+}
+
+.filter-top-bar {
+  display: flex;
+  align-items: center; /* vertical centering */
+  gap: 20px; /* spacing between items */
+  overflow-x: auto; /* horizontal scroll if needed */
+  width: 100%; /* full width */
+  white-space: nowrap; /* optional, but ensures text doesn't wrap */
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.filter-top-bar-option {
+  width: auto;
+}
+
+.filter-top-bar-text {
+  text-decoration: underline;
+}
+
+.table-entry {
+  grid-template-columns: auto;
+  grid-template-rows: 0.1fr 0.1fr 0.8fr;
+  height: auto;
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+}
+
+.item-further {
+  grid-template-columns: 0.1fr 0.7fr 0.2fr;
+  grid-template-rows: auto;
+  height: auto;
+}
+
+.item-images {
+  width: 80px;
+  height: 80px;
+}
+
+.item-learn-or-buy {
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr 0.5fr;
+  height: auto;
+  padding: 5px 5px 5px 5px;
+}
+
+/*# sourceMappingURL=products2.css.map */
