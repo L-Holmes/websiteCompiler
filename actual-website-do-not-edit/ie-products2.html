@@ -5,179 +5,11 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="A cool website">
 		
-	  <meta charset="UTF-8">
+		  <meta charset="UTF-8">
 
 		<link rel=stylesheet href="products2.css">
 
-
-		<script>
-			// ===================================================
-			// PROCESSING THE URL PARAMETERS  
-			// ===================================================
-			document.addEventListener('DOMContentLoaded', () => {
-				// e.g. http://127.0.0.1:8000/products2.html?category=products&type=video,newsub
-				// --> to note: need to be careful when adding params to the url. only add 'type' if a subtype is selected.
-				// --> only add 'category' if no subtypes are selected. 
-				// --> don't add 'category=blogs' if say blogs.video already selected...
-
-				const params = new URLSearchParams(window.location.search);
-
-				// Parent categories
-				const category = (params.get('category') || '').toLowerCase();
-				const categoryMap = { products: 'cat-products', blogs: 'cat-blogs' };
-				if (categoryMap[category]) document.getElementById(categoryMap[category]).checked = true;
-
-				// Mapping subcategory ID → parent checkbox ID
-				const subToParent = {
-					shoes: 'cat-products',
-					boots: 'cat-products',
-					tables: 'cat-products',
-					article: 'cat-blogs',
-					video: 'cat-blogs',
-					newsub: 'cat-blogs',
-					fourth: 'cat-blogs',
-					// add more as needed
-				};
-
-				// Check subcategories
-				const typeParam = params.get('type');
-				if (typeParam) {
-					typeParam.split(',').map(s => s.trim().toLowerCase()).forEach(sub => {
-						const el = document.getElementById('type-' + sub);
-						if (el) el.checked = true;
-
-						// Check parent based on mapping
-						const parentId = subToParent[sub];
-						if (parentId) document.getElementById(parentId).checked = true;
-					});
-				}
-			});
-
-
-			// ===================================================
-			// SORTING 
-			// ===================================================
-
-			const ITEM_WRAPPER_CLASS:string=".table-entry"                                   // HTML 'class' of the div that wraps: An item that the user may buy.
-
-
-			// const filterOptions= [ "price_high_to_low", "price_low_to_high", "date_added" ];
-
-			function handleSortClicked(){
-				reorderItemsWithFlexbox();
-
-				// Get all of the items on screen (by getting blocks wrapped by 'table-entry')
-				
-				// through some abosolute magic, rearrange those blocks.
-			}
-
-
-			//----------------------------------
-
-			function reorderItemsWithFlexbox(): void {
-				
-				// 1. Define your desired order using unique keywords from the image sources.
-				const desiredOrder: string[] = ['table', 'boot', 'sapp-boot'];
-				
-				// 2. Grab all the elements you want to sort.
-				const nodeList = document.querySelectorAll(ITEM_WRAPPER_CLASS);
-				const items: HTMLElement[] = Array.from(nodeList).map(el => el as HTMLElement);
-				
-				// If there's nothing to sort, we can stop.
-				if (items.length === 0) {
-					return;
-				}
-				
-				// 3. Get the parent container and apply flexbox styles directly.
-				// This turns on the flexbox layout, enabling the `order` property to work.
-				const container: HTMLElement | null = document.getElementById('products-wrapper');
-				if (!container) {
-					console.error('Container not found');
-					return;
-				}
-				
-				container.style.display = 'flex';
-				container.style.flexDirection = 'column';
-				
-				// 4. Loop through all the items found on the page.
-				for (let i = 0; i < items.length; i++) {
-					const item: HTMLElement = items[i];
-
-					const itemName:string = _getCategoryOfClickedItem(item); //e.g. 'sapp-boot'
-					
-					// Find the position of this item in our desiredOrder array.
-					const order: number = desiredOrder.indexOf(itemName);
-					
-					// 5. Apply the order directly to the element's style.
-					// If an item isn't in our list, we can give it a high order number to send it to the end.
-					if (order === -1) {
-						item.style.order = '99'; // Put unsorted items last
-						console.error(`OOh dear! no order found for: ${itemName} to ${order}`);
-						continue
-					}
-
-					item.style.order = order.toString();
-				}
-				
-			}
-
-
-
-			// Show the sort overlay
-			function handleSortClickedNew(): void {
-				const overlay: HTMLElement | null = document.getElementById('sortOverlay');
-				if (overlay) {
-					overlay.style.display = 'block';
-				}
-			}
-
-			// Hide the sort overlay
-			function closeSortOverlay(): void {
-				const overlay: HTMLElement | null = document.getElementById('sortOverlay');
-				if (overlay) {
-					overlay.style.display = 'none';
-				}
-			}
-
-			// Handle clicking on the overlay backdrop (close if clicked outside the box)
-			function handleOverlayClick(event: MouseEvent): void {
-				const target = event.target as HTMLElement;
-				if (target && target.classList.contains('sort-overlay')) {
-					closeSortOverlay();
-				}
-			}
-
-			// Sort option handlers
-			function handleHighLowClicked(): void {
-				closeSortOverlay();
-				// Add your sort logic here
-			}
-
-			function handleLowHighClicked(): void {
-				closeSortOverlay();
-				// Add your sort logic here
-			}
-
-			function handleDateAddedClicked(): void {
-				closeSortOverlay();
-				// Add your sort logic here
-			}
-
-			// Close overlay with Escape key
-			document.addEventListener('keydown', function(event: KeyboardEvent): void {
-				if (event.key === 'Escape') {
-					closeSortOverlay();
-				}
-			});
-
-			// Make functions available globally for onclick handlers
-			(window as any).handleSortClicked = handleSortClicked;
-			(window as any).handleOverlayClick = handleOverlayClick;
-			(window as any).handleHighLowClicked = handleHighLowClicked;
-			(window as any).handleLowHighClicked = handleLowHighClicked;
-			(window as any).handleDateAddedClicked = handleDateAddedClicked;
-
-		</script>
+		<script defer src="products2.js"></script>
 	</head>
 	<body>
 
@@ -426,15 +258,12 @@
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<!-- FILTER START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
-				<div class="vert-spacing-s"></div>
-
-				<button onclick="handleSortClicked()" id="reorderButton">Reorder Items</button>
 
 				<div class="vert-spacing-s"></div>
 
 				<h2> Products </h2>
 
-				<button class="sort-button" onclick="handleSortClickedNew()">
+				<button  type="button"  class="sort-button" onclick="handleSortClickedNew()">
 					<div class="sort-img">
 						<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
 							<path d="M3 6l5-4 5 4H3z" fill="white"/>
@@ -447,9 +276,9 @@
 				<!-- Sort Overlay -->
 				<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
 					<div class="sort-box">
-						<div class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
-						<div class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
-						<div class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
+						<div  type="button" class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
+						<div  type="button" class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
+						<div  type="button" class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
 					</div>
 				</div>
 
@@ -463,7 +292,7 @@
 				<!-- ITEMS/RESULTS START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<div class="panel" id="panel" aria-live="polite">
-					<div id="products-wrapper items">
+					<div id="products-wrapper" class="items">
 						<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
 							<div class="item-title" add-text-section="item-SappBoot-title"></div>
 							<div class="item-stats" add-text-section="item-SappBoot-stats"></div>
