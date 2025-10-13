@@ -26,10 +26,6 @@
     - document my old 'ultimate' method. 
     - store the code somewhere...
 
-
-
-
-
 look back through deepseek code;
     -> work out how to hide the parent when the child is selected.
     -> work out what happens when i add more filters! (e.g. add at least 1 more to each category...)

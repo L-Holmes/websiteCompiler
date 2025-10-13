@@ -226,7 +226,7 @@ $spacing-xxs: 3px;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 html{
-	font-size:18px;
+	font-size:20px;
 }
 
 body {
@@ -290,7 +290,7 @@ button:hover {
 
 /* BIG FONT toggle  */
 html.big-font {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 /* Dyslexia-friendly font toggle */
@@ -570,6 +570,18 @@ $page-contents-margin-right:100px;
 }
 
 //vertical spacing medium 
+
+.vert-spacing-xl{
+	padding: $spacing-xl 0px $spacing-xl 0px;
+}
+
+.vert-spacing-l{
+	padding: $spacing-l 0px $spacing-l 0px;
+}
+
+.vert-spacing-m-l{
+	padding: $spacing-m-l 0px $spacing-m-l 0px;
+}
 .vert-spacing-m{
 	padding: $spacing-m 0px $spacing-m 0px;
 }
@@ -577,7 +589,6 @@ $page-contents-margin-right:100px;
 .vert-spacing-s{
 	padding: $spacing-s 0px $spacing-s 0px;
 }
-jkp
 
 .vert-spacing-xs{
 	padding: $spacing-xs 0px $spacing-xs 0px;

@@ -392,6 +392,18 @@ body.font-dyslexia h4 {
   padding: 0px 20px 0px 20px;
 }
 
+.vert-spacing-xl {
+  padding: 50px 0px 50px 0px;
+}
+
+.vert-spacing-l {
+  padding: 30px 0px 30px 0px;
+}
+
+.vert-spacing-m-l {
+  padding: 25px 0px 25px 0px;
+}
+
 .vert-spacing-m {
   padding: 20px 0px 20px 0px;
 }
@@ -400,7 +412,7 @@ body.font-dyslexia h4 {
   padding: 10px 0px 10px 0px;
 }
 
-jkp .vert-spacing-xs {
+.vert-spacing-xs {
   padding: 5px 0px 5px 0px;
 }
 
