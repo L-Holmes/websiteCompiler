@@ -109,7 +109,7 @@
   font-display: swap;
 }
 html {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 body {
@@ -165,7 +165,7 @@ button:hover {
 
 /* BIG FONT toggle  */
 html.big-font {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 /* Dyslexia-friendly font toggle */

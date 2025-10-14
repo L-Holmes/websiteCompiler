@@ -109,7 +109,7 @@
   font-display: swap;
 }
 html {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 body {
@@ -149,6 +149,10 @@ div {
   font-size: 1rem;
 }
 
+button {
+  font-size: 1rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -165,7 +169,7 @@ button:hover {
 
 /* BIG FONT toggle  */
 html.big-font {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 /* Dyslexia-friendly font toggle */

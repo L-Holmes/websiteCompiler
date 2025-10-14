@@ -19,6 +19,16 @@
   white-space: nowrap;
 }
 
+// .filter-options {
+  // display: flex;
+  // flex-direction: column; // stack heading on top
+  // gap: 0.5rem;           // space between heading and tiles
+// }
+
+.sub-filter-header{
+  padding-right:10px;
+}
+
 /* --- HYBRID FILTERING LOGIC --- */
 
 /* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
@@ -64,8 +74,7 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 // BLOGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
 
 /* If any blog sub-filter is checked, hide all blog items */
-.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked)
-  .panel .item[data-tags~="blogs"] {
+.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked) .panel .item[data-tags~="blogs"] {
   display: none;
 }
 
@@ -98,10 +107,49 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 }
 
 /* BLOGS CATEGORY - Hide when sub-filters are active */  
-#type-article:checked ~ .header label[for="cat-blogs"],       /* Hide Blogs when Article selected */
-#type-video:checked ~ .header label[for="cat-blogs"] {        /* Hide Blogs when Video selected */
+#type-article:checked ~ .header label[for="cat-blogs"],       
+#type-newsub:checked ~ .header label[for="cat-blogs"],
+#type-fourth:checked ~ .header label[for="cat-blogs"],
+#type-video:checked ~ .header label[for="cat-blogs"] {        
   display: none;  /* Makes the Blogs button disappear */
 }
+
+// !!! NEW NEW NEW !!! Hide the 'unselect group' by default
+.unselect-parent{
+    max-width:40vw; //take up no more than half of the width of the page
+    height:auto; // height can grow if text gets too long.
+
+    border: 2px solid #000023;
+    border-radius:4px;
+    background-color:#000023;
+
+    // ON MOBILE
+    @media screen and (max-width: 441px){
+      max-width:90vw;
+	}
+
+    display:none;
+}
+
+
+// !!! NEW NEW NEW !!! Show the 'unselect group' when any of the children are selected
+#type-shoes:checked ~ .header label[for="cat-products-UNSELECT"],      
+#type-boots:checked ~ .header label[for="cat-products-UNSELECT"],      
+#type-tables:checked ~ .header label[for="cat-products-UNSELECT"] {    
+    display:inline-flex;
+}
+
+#type-article:checked ~ .header label[for="cat-blogs-UNSELECT"],      
+#type-newsub:checked ~ .header label[for="cat-blogs-UNSELECT"],
+#type-fourth:checked ~ .header label[for="cat-blogs-UNSELECT"],
+#type-video:checked ~ .header label[for="cat-blogs-UNSELECT"] {        
+    display:inline-flex;
+}
+
+
+//TODO:
+// --> Make it so that on-click, it unselect just things in that group, and then it itself is hidden.
+
 // -----------------------------------------------------------------------------------
 
 
@@ -113,6 +161,7 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   display: none; /* This hides the entire group container */
 }
 
+
 /* Show Product Types group ONLY when Products category is checked */
 #cat-products:checked ~ .header .product-types {
   display: flex; /* This shows the product types group */
@@ -122,6 +171,8 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 #cat-blogs:checked ~ .header .blog-types {
   display: flex; /* This shows the blog types group */
 }
+
+
 // -----------------------------------------------------------------------------------
 
 
@@ -146,6 +197,8 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   &:hover {
       border: 2px solid #48E0C8; 
     }
+
+  background-color:#000023;
 }
 
 // ===================================================================================================================
@@ -426,6 +479,8 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 // FILTER STICKER
 
 .filter-tile{
+
+    cursor: pointer;   // 👈 makes it show the hand icon
     // grows in accordance to its contents (i.e. the text length)
     // when text gets too long, it flow onto the next line.
     display:inline-flex;
@@ -434,7 +489,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
     border: solid #404040 2px;
     border-radius:12px;
-
 
     // ON MOBILE
     @media screen and (max-width: 441px){
@@ -447,8 +501,15 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
       &:hover {
           border: 2px solid #48E0C8; 
         }
+      background-color:#000023;
     }
 
+}
+
+.clear-all-button{
+    cursor: pointer;   // 👈 makes it show the hand icon
+  background-color:#21282d;
+  padding:5px;
 }
 
 .filter-tile:hover {
@@ -509,6 +570,13 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
     &:hover{
       border-left: solid #D2FFF8 1px;
     }
+}
+
+
+.sub-filter-icon{
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 

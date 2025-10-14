@@ -29,6 +29,9 @@
 				<!-- Parent Category Filters -->
 				<input type="checkbox" id="cat-products" class="filter-input" />
 				<input type="checkbox" id="cat-blogs" class="filter-input" />
+				<!-- Parent Category Filters -> UNSELECT -->
+				<input type="checkbox" id="cat-products-UNSELECT" class="filter-input" />
+				<input type="checkbox" id="cat-blogs-UNSELECT" class="filter-input" />
 
 				<!-- ==> Product Sub-filters -->
 				<input type="checkbox" id="type-shoes" class="filter-input" />
@@ -51,54 +54,93 @@
 					<div class="controls">
 
 						<!-- ---------------------- These are the actual toggle buttons for the user to click ---------------------- -->
-
 						<!-- Main Categories -->
 
 
 						<div class="filter-outer-grid">
 							<div class="group filter-squares-wrapper">
-								<span class="group-title">Category</span>
+
+									<img class="sub-filter-icon" src="<root>/shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+
+										<r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
+
+										<label for="cat-products-UNSELECT" class="filter-btn unselect-parent">
+											<div class="filter-icon-wrapper">
+												<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+											</div>
+											<div class="title-and-info-wrapper">
+												<div class="item-title"> 
+													Products
+													<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
+													<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
+												</div>
+											</div>
+										</label>
 
 
-								<r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
-								<r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
+										<r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
 
+										<label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
+											<div class="filter-icon-wrapper">
+												<img class="filter-icon" src="<root>/shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+											</div>
+											<div class="title-and-info-wrapper">
+												<div class="item-title"> 
+													Blogs
+													<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
+													<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
+												</div>
+											</div>
+										</label>
 
+										</div>
 							</div>
-						</div>
 
-						<!-- ==> Product Filters -->
-						<div class="filter-outer-grid">
-						<div class="group product-types filter-squares-wrapper">
-							<span class="group-title">Products</span>
+							<!-- ==> Product Filters -->
 
-							<r-filter-element filterImage=shoe.png filterText="→ Shoes" filterType="type-shoes">
-							<r-filter-element filterImage=table.png filterText="→ Tables" filterType="type-tables">
-							<r-filter-element filterImage=boot.png filterText="→ Boots" filterType="type-boots">
+							<div class="filter-outer-grid">
+								<div class="group product-types filter-squares-wrapper">
+										<div class="sub-filter-header">
+											<span class="group-title">→</span>
+											<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+										</div>
 
-						</div>
-						</div>
+										<r-filter-element filterImage=shoe.png filterText="Shoes" filterType="type-shoes">
+										<r-filter-element filterImage=table.png filterText="Tables" filterType="type-tables">
+										<r-filter-element filterImage=boot.png filterText="Boots" filterType="type-boots">
+								</div>
+							</div>
 
-						<!-- ==> Blogs Filters -->
-						<div class="filter-outer-grid">
-						<div class="group blog-types filter-squares-wrapper"> 
-							<span class="group-title">Products</span>
+							<!-- ==> Blogs Filters -->
+							<div class="filter-outer-grid">
+								<div class="group blog-types filter-squares-wrapper"> 
 
-							<r-filter-element filterImage=shoe.png filterText="→ Articles" filterType="type-article">
-							<r-filter-element filterImage=table.png filterText="→ Videos" filterType="type-video">
-							<r-filter-element filterImage=boot.png filterText="→ New Sub" filterType="type-newsub">
-							<r-filter-element filterImage=boot.png filterText="→ Fourth" filterType="type-fourth">
-						</div>
-						</div>
+										<div class="sub-filter-header">
+											<span class="group-title">→</span>
+											<img class="filter-icon" src="<root>/shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+										</div>
+
+										<r-filter-element filterImage=shoe.png filterText=" Articles" filterType="type-article">
+										<r-filter-element filterImage=table.png filterText="Videos" filterType="type-video">
+										<r-filter-element filterImage=boot.png filterText="New Sub" filterType="type-newsub">
+										<r-filter-element filterImage=boot.png filterText="Fourth" filterType="type-fourth">
+									</div>
+							</div>
 
 						<!-- ------------------------------------------------------------------------------------------------- -->
 
+						<div class="vert-spacing-xs"></div>
 						<div class="group">
-							<button type="reset" class="filter-btn">Clear all</button>
+							<button type="reset" class="filter-btn clear-all-button">Clear all</button>
 						</div>
 
 					</div>
 				</div>
+
+				<div class="vert-spacing-s"></div>
+				<div class="bar"></div>
+				<div class="vert-spacing-xs"></div>
+
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
 
@@ -107,7 +149,6 @@
 				<!-- FILTER START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
 
-				<div class="vert-spacing-s"></div>
 
 				<h2> Products </h2>
 

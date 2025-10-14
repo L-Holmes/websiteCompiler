@@ -109,7 +109,7 @@
   font-display: swap;
 }
 html {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 body {
@@ -149,6 +149,10 @@ div {
   font-size: 1rem;
 }
 
+button {
+  font-size: 0.75rem;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -165,7 +169,7 @@ button:hover {
 
 /* BIG FONT toggle  */
 html.big-font {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 /* Dyslexia-friendly font toggle */
@@ -500,6 +504,10 @@ body.font-dyslexia h4 {
   white-space: nowrap;
 }
 
+.sub-filter-header {
+  padding-right: 10px;
+}
+
 /* --- HYBRID FILTERING LOGIC --- */
 /* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
 .filter-input:checked ~ .panel .item {
@@ -568,8 +576,37 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
 /* BLOGS CATEGORY - Hide when sub-filters are active */
 #type-article:checked ~ .header label[for=cat-blogs],
-#type-video:checked ~ .header label[for=cat-blogs] { /* Hide Blogs when Video selected */
+#type-newsub:checked ~ .header label[for=cat-blogs],
+#type-fourth:checked ~ .header label[for=cat-blogs],
+#type-video:checked ~ .header label[for=cat-blogs] {
   display: none; /* Makes the Blogs button disappear */
+}
+
+.unselect-parent {
+  max-width: 40vw;
+  height: auto;
+  border: 2px solid #000023;
+  border-radius: 4px;
+  background-color: #000023;
+  display: none;
+}
+@media screen and (max-width: 441px) {
+  .unselect-parent {
+    max-width: 90vw;
+  }
+}
+
+#type-shoes:checked ~ .header label[for=cat-products-UNSELECT],
+#type-boots:checked ~ .header label[for=cat-products-UNSELECT],
+#type-tables:checked ~ .header label[for=cat-products-UNSELECT] {
+  display: inline-flex;
+}
+
+#type-article:checked ~ .header label[for=cat-blogs-UNSELECT],
+#type-newsub:checked ~ .header label[for=cat-blogs-UNSELECT],
+#type-fourth:checked ~ .header label[for=cat-blogs-UNSELECT],
+#type-video:checked ~ .header label[for=cat-blogs-UNSELECT] {
+  display: inline-flex;
 }
 
 /* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
@@ -600,6 +637,7 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 #type-fourth:checked ~ .header label[for=type-fourth],
 #type-video:checked ~ .header label[for=type-video] {
   border: 2px solid white;
+  background-color: #000023;
 }
 #cat-products:checked ~ .header label[for=cat-products]:hover,
 #cat-blogs:checked ~ .header label[for=cat-blogs]:hover,
@@ -826,6 +864,7 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 }
 
 .filter-tile {
+  cursor: pointer;
   display: inline-flex;
   max-width: 40vw;
   height: auto;
@@ -839,9 +878,16 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 }
 .filter-tile.selected {
   border: 2px solid white;
+  background-color: #000023;
 }
 .filter-tile.selected:hover {
   border: 2px solid #48E0C8;
+}
+
+.clear-all-button {
+  cursor: pointer;
+  background-color: #21282d;
+  padding: 5px;
 }
 
 .filter-tile:hover {
@@ -891,6 +937,12 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 }
 .sub-filter-wrapper:hover {
   border-left: solid #D2FFF8 1px;
+}
+
+.sub-filter-icon {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
 }
 
 .filter-icon {

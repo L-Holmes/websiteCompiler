@@ -29,6 +29,9 @@
 				<!-- Parent Category Filters -->
 				<input type="checkbox" id="cat-products" class="filter-input" />
 				<input type="checkbox" id="cat-blogs" class="filter-input" />
+				<!-- Parent Category Filters -> UNSELECT -->
+				<input type="checkbox" id="cat-products-UNSELECT" class="filter-input" />
+				<input type="checkbox" id="cat-blogs-UNSELECT" class="filter-input" />
 
 				<!-- ==> Product Sub-filters -->
 				<input type="checkbox" id="type-shoes" class="filter-input" />
@@ -51,16 +54,15 @@
 					<div class="controls">
 
 						<!-- ---------------------- These are the actual toggle buttons for the user to click ---------------------- -->
-
 						<!-- Main Categories -->
 
 
 						<div class="filter-outer-grid">
 							<div class="group filter-squares-wrapper">
-								<span class="group-title">Category</span>
 
+									<img class="sub-filter-icon" src="shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
 
-								
+										
 
 
 <label for="cat-products" class="filter-tile filter-btn">
@@ -78,7 +80,22 @@
 	</div>
 </label>
 
-								
+
+										<label for="cat-products-UNSELECT" class="filter-btn unselect-parent">
+											<div class="filter-icon-wrapper">
+												<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+											</div>
+											<div class="title-and-info-wrapper">
+												<div class="item-title"> 
+													Products
+													<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+													<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+												</div>
+											</div>
+										</label>
+
+
+										
 
 
 <label for="cat-blogs" class="filter-tile filter-btn">
@@ -97,16 +114,32 @@
 </label>
 
 
+										<label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
+											<div class="filter-icon-wrapper">
+												<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+											</div>
+											<div class="title-and-info-wrapper">
+												<div class="item-title"> 
+													Blogs
+													<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+													<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+												</div>
+											</div>
+										</label>
 
+										</div>
 							</div>
-						</div>
 
-						<!-- ==> Product Filters -->
-						<div class="filter-outer-grid">
-						<div class="group product-types filter-squares-wrapper">
-							<span class="group-title">Products</span>
+							<!-- ==> Product Filters -->
 
-							
+							<div class="filter-outer-grid">
+								<div class="group product-types filter-squares-wrapper">
+										<div class="sub-filter-header">
+											<span class="group-title">→</span>
+											<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+										</div>
+
+										
 
 
 <label for="type-shoes" class="filter-tile filter-btn">
@@ -117,14 +150,14 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Shoes
+			Shoes
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-							
+										
 
 
 <label for="type-tables" class="filter-tile filter-btn">
@@ -135,14 +168,14 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Tables
+			Tables
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-							
+										
 
 
 <label for="type-boots" class="filter-tile filter-btn">
@@ -153,23 +186,26 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Boots
+			Boots
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
+								</div>
+							</div>
 
-						</div>
-						</div>
+							<!-- ==> Blogs Filters -->
+							<div class="filter-outer-grid">
+								<div class="group blog-types filter-squares-wrapper"> 
 
-						<!-- ==> Blogs Filters -->
-						<div class="filter-outer-grid">
-						<div class="group blog-types filter-squares-wrapper"> 
-							<span class="group-title">Products</span>
+										<div class="sub-filter-header">
+											<span class="group-title">→</span>
+											<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+										</div>
 
-							
+										
 
 
 <label for="type-article" class="filter-tile filter-btn">
@@ -180,14 +216,14 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Articles
+			 Articles
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-							
+										
 
 
 <label for="type-video" class="filter-tile filter-btn">
@@ -198,14 +234,14 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Videos
+			Videos
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-							
+										
 
 
 <label for="type-newsub" class="filter-tile filter-btn">
@@ -216,14 +252,14 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ New Sub
+			New Sub
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-							
+										
 
 
 <label for="type-fourth" class="filter-tile filter-btn">
@@ -234,24 +270,30 @@
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
 		<div class="item-title"> 
-			→ Fourth
+			Fourth
 			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
 		</div>
 	</div>
 </label>
 
-						</div>
-						</div>
+									</div>
+							</div>
 
 						<!-- ------------------------------------------------------------------------------------------------- -->
 
+						<div class="vert-spacing-xs"></div>
 						<div class="group">
-							<button type="reset" class="filter-btn">Clear all</button>
+							<button type="reset" class="filter-btn clear-all-button">Clear all</button>
 						</div>
 
 					</div>
 				</div>
+
+				<div class="vert-spacing-s"></div>
+				<div class="bar"></div>
+				<div class="vert-spacing-xs"></div>
+
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
 
@@ -260,7 +302,6 @@
 				<!-- FILTER START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
 
-				<div class="vert-spacing-s"></div>
 
 				<h2> Products </h2>
 

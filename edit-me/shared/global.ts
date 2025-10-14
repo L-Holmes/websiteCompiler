@@ -3,7 +3,6 @@
 
 const PARAM_BIG = 'big_text';
 const PARAM_DYS = 'dyslexia_font';
-const PARAM_LANG = 'lang';
 
 function getParams(): URLSearchParams {
   return new URLSearchParams(window.location.search);
@@ -103,16 +102,14 @@ function toggleBigFont() {
   console.log("==> Called toggle big font");
   const isBig = document.documentElement.classList.toggle('big-font');
   setParam(PARAM_BIG, isBig);
-  appendParamsToInternalLinks();
-	applyLanguagePrefixToLinks();
+  dueDilligence();
 }
 
 function toggleDyslexiaFont() {
   console.log("==> Called toggle dyslexia font");
   const isOn = document.body.classList.toggle('font-dyslexia');
   setParam(PARAM_DYS, isOn);
-  appendParamsToInternalLinks();
-	applyLanguagePrefixToLinks();
+  dueDilligence();
 }
 
 
@@ -120,14 +117,17 @@ function toggleDyslexiaFont() {
 ;(window as any).toggleBigFont = toggleBigFont;
 ;(window as any).toggleDyslexiaFont = toggleDyslexiaFont;
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  applySettingsFromParams();
+function dueDilligence(){
   appendParamsToInternalLinks();
 
   // this must be last
   applyLanguagePrefixToLinks();  
+
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applySettingsFromParams();
+	dueDilligence();
 });
 
 
