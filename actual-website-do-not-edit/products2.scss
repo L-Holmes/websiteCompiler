@@ -723,3 +723,8 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
 
 
+.left-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

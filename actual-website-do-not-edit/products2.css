@@ -1046,4 +1046,10 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   padding: 5px 5px 5px 5px;
 }
 
+.left-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /*# sourceMappingURL=products2.css.map */
