@@ -10,6 +10,7 @@
 - when I navigate to next page after turning off big font, it doesn't carry over. stays on big font.
 - language selection button needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
     - perhaps this is just a translation? for the 'english' text?
+- perhaps sort should be with title if i'm having 1 sort per section...........
 
 
 
