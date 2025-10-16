@@ -193,7 +193,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
+.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -500,11 +500,21 @@ body.font-dyslexia h4 {
   align-items: center; /* align to the top (vertical) */
   padding-left: 40%;
 }
+@media screen and (max-width: 440px) {
+  .open-page-left-box-DESKTOP {
+    padding-left: 0px;
+  }
+}
 
 .open-page-right-box-DESKTOP {
   justify-content: center; /* left align horizontally */
   align-items: center; /* align to the top (vertical) */
   padding-right: 40%;
+}
+@media screen and (max-width: 440px) {
+  .open-page-right-box-DESKTOP {
+    padding-right: 0px;
+  }
 }
 
 .top-bar-img, .top-bar-contact-img {
@@ -517,6 +527,11 @@ body.font-dyslexia h4 {
   width: 47.5px;
 }
 
+.lang-dysl-wrapper-MOBILE {
+  grid-template-columns: auto;
+  grid-template-rows: 0.5fr 0.5fr;
+}
+
 .top-bar-row-grid {
   grid-template-columns: auto;
   grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
@@ -525,6 +540,11 @@ body.font-dyslexia h4 {
 .top-bar-row-1-grid {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+}
+@media screen and (max-width: 441px) {
+  .top-bar-row-1-grid {
+    grid-template-columns: 0.5fr 0.5fr;
+  }
 }
 
 .top-bar-row-2-grid {
@@ -556,6 +576,11 @@ body.font-dyslexia h4 {
 
 .search-bar-wrapper {
   width: 55%;
+}
+@media screen and (max-width: 440px) {
+  .search-bar-wrapper {
+    width: 90%;
+  }
 }
 
 .search-container {
@@ -604,13 +629,7 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid-MOBILE {
   grid-template-columns: auto;
-  grid-template-rows: 0.2ft 0.3fr 0.5fr;
-  display: none;
-}
-@media screen and (max-width: 440px) {
-  .top-bar-row-grid-MOBILE {
-    display: block;
-  }
+  grid-template-rows: 0.4fr 0.2fr 0.2fr 0.2fr;
 }
 
 .top-bar-row-1-grid-MOBILE {
@@ -634,7 +653,6 @@ body.font-dyslexia h4 {
 .top-bar-row-4-grid-MOBILE {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  height: 15vh;
 }
 
 .language-wrapper {
