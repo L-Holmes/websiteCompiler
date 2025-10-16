@@ -663,6 +663,13 @@ body.font-dyslexia h4 {
   border-radius: 12px;
   max-width: 360px;
 }
+@media screen and (max-width: 440px) {
+  .language-wrapper {
+    width: 100%;
+    border: none;
+    border-bottom: dotted white 1px;
+  }
+}
 
 .language-upper-section {
   grid-template-columns: 0.5fr 0.5fr;
