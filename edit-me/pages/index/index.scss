@@ -262,28 +262,53 @@
 .language-lower-section{
   height:30px;
 
-  margin-left:15%;
-  margin-right:15%;
   margin-top:10px;
   margin-bottom:10px;
 }
 
 .language-dropdown{
-  @extend .ux-grid;
-  grid-template-columns:0.4fr 0.4fr 0.2fr; 
-  grid-template-rows: auto; 
+  display:inline-flex;
+
 
   border-top: solid white 1px;
-  // border-radius:12px;
 
   height: 40px;
   background-color:#3d3d3d;
   margin:10px;
   border-radius:16px;
-  width:80%;
+  width:60%;
 
   padding-left: 20px;
   padding-right: 20px;
+
+
+  @media screen and (max-width: 440px){
+    width:100%;
+  }
+
+  // First child takes remaining space
+  > *:first-child {
+    flex: 1 1 auto;
+    min-width: 0; // Allow it to shrink if needed
+  }
+
+  // Last two children take minimal space but don't shrink
+  > *:nth-last-child(-n+2) {
+    flex: 0 0 auto;
+    min-width: min-content; // Ensure they fit their content
+  }
+}
+
+.language-text{
+  overflow-x:hidden;
+  margin-left:10px;
+
+}
+
+.hide-on-mobile{
+  @media screen and (max-width: 440px){
+    display:none;
+  }
 }
 
 .text-bigger-upper-section{
@@ -306,11 +331,20 @@
   width:55px;
   height:55px;
 
+  @media screen and (max-width: 440px){
+    width:40px;
+    height:40px;
+	}
 }
 
 .change-lang-img{
   width:55px;
   height:55px;
+
+  @media screen and (max-width: 440px){
+    width:40px;
+    height:40px;
+	}
 }
 
 .english-flag-img{

@@ -193,7 +193,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .language-dropdown, .ux-grid-specific {
+.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -675,23 +675,44 @@ body.font-dyslexia h4 {
 
 .language-lower-section {
   height: 30px;
-  margin-left: 15%;
-  margin-right: 15%;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .language-dropdown {
-  grid-template-columns: 0.4fr 0.4fr 0.2fr;
-  grid-template-rows: auto;
+  display: inline-flex;
   border-top: solid white 1px;
   height: 40px;
   background-color: #3d3d3d;
   margin: 10px;
   border-radius: 16px;
-  width: 80%;
+  width: 60%;
   padding-left: 20px;
   padding-right: 20px;
+}
+@media screen and (max-width: 440px) {
+  .language-dropdown {
+    width: 100%;
+  }
+}
+.language-dropdown > *:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.language-dropdown > *:nth-last-child(-n+2) {
+  flex: 0 0 auto;
+  min-width: min-content;
+}
+
+.language-text {
+  overflow-x: hidden;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 440px) {
+  .hide-on-mobile {
+    display: none;
+  }
 }
 
 .text-bigger-lower-section {
@@ -704,10 +725,22 @@ body.font-dyslexia h4 {
   width: 55px;
   height: 55px;
 }
+@media screen and (max-width: 440px) {
+  .planet-earth-img {
+    width: 40px;
+    height: 40px;
+  }
+}
 
 .change-lang-img {
   width: 55px;
   height: 55px;
+}
+@media screen and (max-width: 440px) {
+  .change-lang-img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .english-flag-img {
