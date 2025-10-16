@@ -485,12 +485,12 @@ body.font-dyslexia h4 {
 }
 @media screen and (min-width: 700px) {
   .index-main-wrapper {
-    width: 75%;
+    width: 80%;
   }
 }
 @media screen and (min-width: 1440px) {
   .index-main-wrapper {
-    width: 1080px;
+    width: 1152px;
   }
 }
 

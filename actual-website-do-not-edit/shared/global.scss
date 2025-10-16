@@ -368,21 +368,13 @@ body.font-dyslexia h4 {
   width: 100%;
 
   @media screen and (min-width: 700px) {
-    width: 75%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1080px;
+    width: 70%;
   }
 }
 
 @mixin deskptop-centre-on-screen {
   @media screen and (min-width: 700px) {
-    width: 75%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1080px;
+    width: 70%;
   }
 }
 

@@ -14,7 +14,7 @@
 	</head>
 	<body>
 
-		<div class="vert-spacing-xl"></div>
+		<div class="vert-spacing-l"></div>
 		<div class="centre-wrapper">
 			<form class="filterable" id="catalog" aria-label="Product filters">
 
@@ -57,10 +57,12 @@
 						<!-- Main Categories -->
 
 
-						<div class="filter-outer-grid">
-							<div class="group filter-squares-wrapper">
+						<div class="filter-wrapper">
+							<div>
+								<div class="filter-outer-grid">
+									<div class="group filter-squares-wrapper">
 
-									<img class="sub-filter-icon" src="<root>/shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+										<img class="sub-filter-icon" src="<root>/shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
 
 										<r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
 
@@ -81,9 +83,6 @@
 										<r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
 
 										<label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
-											<div class="filter-icon-wrapper">
-												<img class="filter-icon" src="<root>/shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
-											</div>
 											<div class="title-and-info-wrapper">
 												<div class="item-title"> 
 													Blogs
@@ -93,49 +92,70 @@
 											</div>
 										</label>
 
-										</div>
-							</div>
+									</div>
+								</div>
 
-							<!-- ==> Product Filters -->
+								<!-- ==> Product Filters -->
 
-							<div class="filter-outer-grid">
-								<div class="group product-types filter-squares-wrapper">
-										<div class="sub-filter-header">
-											<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-											<span class="group-title">→</span>
-										</div>
-
+								<div class="filter-outer-grid">
+									<div class="group product-types filter-squares-wrapper">
 										<r-filter-element filterImage=shoe.png filterText="Shoes" filterType="type-shoes">
 										<r-filter-element filterImage=table.png filterText="Tables" filterType="type-tables">
 										<r-filter-element filterImage=boot.png filterText="Boots" filterType="type-boots">
+									</div>
 								</div>
-							</div>
 
-							<!-- ==> Blogs Filters -->
-							<div class="filter-outer-grid">
-								<div class="group blog-types filter-squares-wrapper"> 
+								<!-- ==> Blogs Filters -->
+								<div class="filter-outer-grid">
+									<div class="group blog-types filter-squares-wrapper"> 
 
-										<div class="sub-filter-header">
-											<img class="filter-icon" src="<root>/shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
-											<span class="group-title">→</span>
-										</div>
 
 										<r-filter-element filterImage=shoe.png filterText=" Articles" filterType="type-article">
 										<r-filter-element filterImage=table.png filterText="Videos" filterType="type-video">
 										<r-filter-element filterImage=boot.png filterText="New Sub" filterType="type-newsub">
 										<r-filter-element filterImage=boot.png filterText="Fourth" filterType="type-fourth">
 									</div>
+								</div>
+
+
 							</div>
 
-						<!-- ------------------------------------------------------------------------------------------------- -->
+							<!-- ------------------------------------------------------------------------------------------------- -->
 
-						<div class="vert-spacing-xs"></div>
-						<div class="group">
-							<button type="reset" class="filter-btn clear-all-button">Clear all</button>
-						</div>
+							
+							<div class="top-bottom">
+								<div class="group align-at-right">
+									<button type="reset" class="filter-btn clear-all-button">Clear all</button>
+
+								</div>
+
+								<div class="group align-at-right">
+									<button  type="button"  class="sort-button" onclick="handleSortClickedNew()">
+										<div class="sort-img">
+											<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+												<path d="M3 6l5-4 5 4H3z" fill="white"/>
+												<path d="M3 10l5 4 5-4H3z" fill="white"/>
+											</svg>
+										</div>
+										<div class="sort-text">Sort</div>
+									</button>
+								</div>
+							</div>
+
 
 					</div>
 				</div>
+
+
+				<!-- Sort Overlay -->
+				<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
+					<div class="sort-box">
+						<div  type="button" class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
+						<div  type="button" class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
+						<div  type="button" class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
+					</div>
+				</div>
+				<!-- Sort Overlay End -->
 
 				<div class="vert-spacing-s"></div>
 				<div class="bar"></div>
@@ -150,28 +170,6 @@
 				<!-- ------------------------------------------------------------------------------------------------- -->
 
 
-				<div class="left-right">
-					<h2> Products </h2>
-
-					<button  type="button"  class="sort-button" onclick="handleSortClickedNew()">
-						<div class="sort-img">
-							<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-								<path d="M3 6l5-4 5 4H3z" fill="white"/>
-								<path d="M3 10l5 4 5-4H3z" fill="white"/>
-							</svg>
-						</div>
-						<div class="sort-text">Sort</div>
-					</button>
-				</div>
-
-				<!-- Sort Overlay -->
-				<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
-					<div class="sort-box">
-						<div  type="button" class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
-						<div  type="button" class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
-						<div  type="button" class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
-					</div>
-				</div>
 
 
 				<div class="vert-spacing-s"></div>
@@ -182,7 +180,9 @@
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<!-- ITEMS/RESULTS START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
+				<h2> Products </h2>
 				<div class="panel" id="panel" aria-live="polite">
+					<div class="vert-spacing-xs"></div>
 					<div id="products-wrapper" class="items">
 						<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
 							<div class="item-title" add-text-section="item-SappBoot-title"></div>

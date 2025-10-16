@@ -1,3 +1,21 @@
+- make cler all button look nice
+- increase spacing with products header
+- make products/blogs headers disappear if unselected.
+- make the filter area have a max width of like 30% screen?????
+    - after that it scrolls.
+    - perhaps would also need a way to make it fullscreen? Or maybe scrolling would be fine....
+- sort out the divider line. too thick, looks weird.
+- fix toggle dyslexia font
+    - (or maybe it only adds to url? because on next page it seems applied)
+- when I navigate to next page after turning off big font, it doesn't carry over. stays on big font.
+- language selection button needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
+    - perhaps this is just a translation? for the 'english' text?
+
+
+
+
+
+
 - Can you make it such that:
     - when products sub-filter is clicked, after it hides the parent, it unhides a substitue for the parent, that looks just like the parent
     --> and when clicked, it acts like the 'clear all' button, but instead of removing all filters, it instead unselects all of the children of products.

@@ -193,7 +193,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .ux-grid-specific {
+.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .filter-wrapper, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -475,18 +475,21 @@ body.font-dyslexia h4 {
   outline-offset: 2px;
 }
 
+.blog-types {
+  margin-left: 75px;
+}
+
+.product-types {
+  margin-left: 75px;
+}
+
 .filterable {
   height: auto;
   width: 100%;
 }
 @media screen and (min-width: 700px) {
   .filterable {
-    width: 75%;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .filterable {
-    width: 1080px;
+    width: 70%;
   }
 }
 
@@ -505,7 +508,7 @@ body.font-dyslexia h4 {
 }
 
 .sub-filter-header {
-  padding-right: 10px;
+  padding-right: 25px;
 }
 
 /* --- HYBRID FILTERING LOGIC --- */
@@ -888,6 +891,16 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   cursor: pointer;
   background-color: #21282d;
   padding: 5px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 30px;
+}
+
+.clear-all-button:hover {
+  background-color: #555;
 }
 
 .filter-tile:hover {
@@ -943,11 +956,12 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   height: 40px;
   width: 40px;
   object-fit: contain;
+  padding-right: 25px;
 }
 
 .filter-icon {
-  height: 25px;
-  width: 25px;
+  height: 40px;
+  width: 40px;
   object-fit: contain;
   pointer-events: none;
 }
@@ -1050,6 +1064,22 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.top-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.align-at-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-wrapper {
+  grid-template-columns: 0.8fr 0.2fr;
+  grid-template-rows: auto;
 }
 
 /*# sourceMappingURL=products2.css.map */
