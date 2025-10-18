@@ -1,18 +1,18 @@
-- make cler all button look nice
-- increase spacing with products header
+- make the filters look nice on mobile
 - make products/blogs headers disappear if unselected.
+
 - make the filter area have a max width of like 30% screen?????
     - after that it scrolls.
     - perhaps would also need a way to make it fullscreen? Or maybe scrolling would be fine....
-- sort out the divider line. too thick, looks weird.
+    - do i mean *HEIGHT* here????
+
 - fix toggle dyslexia font
     - (or maybe it only adds to url? because on next page it seems applied)
 - when I navigate to next page after turning off big font, it doesn't carry over. stays on big font.
-- language selection button needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
+- language selection button (e.g. japanese) needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
     - perhaps this is just a translation? for the 'english' text?
-- perhaps sort should be with title if i'm having 1 sort per section...........
-
-
+- make the sort box pop up where the sort button is.
+- Make sort work per section. (e.g. products; sort blogs)
 
 
 

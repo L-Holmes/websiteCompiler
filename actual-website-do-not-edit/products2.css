@@ -752,87 +752,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   background: #333; /* optional: give it a color so you can see it */
 }
 
-/* Sort button styling */
-.sort-button {
-  display: flex;
-  gap: 8px;
-  padding: 10px 15px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.sort-button:hover {
-  background-color: #555;
-}
-
-.sort-img {
-  width: 16px;
-  height: 16px;
-}
-
-/* Overlay backdrop */
-.sort-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-/* Sort options box */
-.sort-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  border: 1px solid #ddd;
-}
-
-/* Sort option items */
-.sort-option {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-}
-
-.sort-option:hover {
-  background-color: #f5f5f5;
-}
-
-.sort-option:last-child {
-  border-bottom: none;
-}
-
-/* Active state */
-.sort-option.active {
-  background-color: #007bff;
-  color: white;
-}
-
-.sort-option.active:hover {
-  background-color: #0056b3;
-}
-
 .filter-sticker {
   grid-template-columns: auto;
   grid-template-rows: 0.3fr 0.7fr;
@@ -889,14 +808,16 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
 .clear-all-button {
   cursor: pointer;
-  background-color: #21282d;
-  padding: 5px;
   background-color: #333;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 14px;
   height: 30px;
+  padding: 20px;
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
 }
 
 .clear-all-button:hover {
@@ -1080,6 +1001,18 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 .filter-wrapper {
   grid-template-columns: 0.8fr 0.2fr;
   grid-template-rows: auto;
+}
+
+.align-left-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+.align-left-right > * {
+  flex-shrink: 0;
 }
 
 /*# sourceMappingURL=products2.css.map */

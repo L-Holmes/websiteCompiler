@@ -11,7 +11,9 @@
 
 		<script defer src="products2.js"></script>
         <script defer src="shared/global.js"></script>
-	</head>
+	<link rel="stylesheet" href="shared/reusables/sort-button/sort-button.css">
+<script defer src="shared/reusables/sort-button/sort-button.js"></script>
+</head>
 	<body>
 
 		<div class="vert-spacing-l"></div>
@@ -89,6 +91,7 @@
 											</div>
 											<div class="title-and-info-wrapper">
 												<div class="item-title"> 
+                                                    <div class="vert-spacing-s"></div>
 													Products
 													<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 													<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
@@ -119,6 +122,7 @@
 										<label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
 											<div class="title-and-info-wrapper">
 												<div class="item-title"> 
+                                                    <div class="vert-spacing-s"></div>
 													Blogs
 													<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
 													<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
@@ -279,63 +283,51 @@
 							<div class="top-bottom">
 								<div class="group align-at-right">
 									<button type="reset" class="filter-btn clear-all-button">Clear all</button>
-
-								</div>
-
-								<div class="group align-at-right">
-									<button  type="button"  class="sort-button" onclick="handleSortClickedNew()">
-										<div class="sort-img">
-											<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-												<path d="M3 6l5-4 5 4H3z" fill="white"/>
-												<path d="M3 10l5 4 5-4H3z" fill="white"/>
-											</svg>
-										</div>
-										<div class="sort-text">Sort</div>
-									</button>
 								</div>
 							</div>
-
-
 					</div>
 				</div>
 
 
-				<!-- Sort Overlay -->
-				<div class="sort-overlay" id="sortOverlay" onclick="handleOverlayClick(event)">
-					<div class="sort-box">
-						<div  type="button" class="sort-option" onclick="handleHighLowClicked()">Price high to low</div>
-						<div  type="button" class="sort-option" onclick="handleLowHighClicked()">Price low to high</div>
-						<div  type="button" class="sort-option" onclick="handleDateAddedClicked()">Date added</div>
-					</div>
-				</div>
-				<!-- Sort Overlay End -->
-
-				<div class="vert-spacing-s"></div>
-				<div class="bar"></div>
-				<div class="vert-spacing-xs"></div>
-
-				<!-- ------------------------------------------------------------------------------------------------- -->
-				<!-- ------------------------------------------------------------------------------------------------- -->
-
-
-				<!-- ------------------------------------------------------------------------------------------------- -->
-				<!-- FILTER START ------------------------------------------------------------------ -->
-				<!-- ------------------------------------------------------------------------------------------------- -->
-
-
-
-
-				<div class="vert-spacing-s"></div>
-				<!-- ------------------------------------------------------------------------------------------------- -->
-				<!-- ------------------------------------------------------------------------------------------------- -->
+				<div class="vert-spacing-m"></div>
 
 
 				<!-- ------------------------------------------------------------------------------------------------- -->
 				<!-- ITEMS/RESULTS START ------------------------------------------------------------------ -->
 				<!-- ------------------------------------------------------------------------------------------------- -->
-				<h2> Products </h2>
+                <div class="align-left-right">
+                    <h2> Products </h2>
+                    <div class="sort-wrapper">
+  <!-- hidden toggle -->
+  <input id="sortToggle" class="sort-toggle" type="checkbox" />
+
+  <!-- visible button (keeps normal flow so wrapper has size) -->
+  <label for="sortToggle" class="sort-button" aria-haspopup="true" aria-expanded="false">
+    <div class="sort-img">
+      <!-- svg -->
+      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 6l5-4 5 4H3z" fill="white"/>
+        <path d="M3 10l5 4 5-4H3z" fill="white"/>
+      </svg>
+    </div>
+    <div class="sort-text">Sort</div>
+  </label>
+
+  <!-- full-screen backdrop: clicking it closes (it's a label for the checkbox) -->
+  <label for="sortToggle" class="sort-backdrop" aria-hidden="true"></label>
+
+  <!-- dropdown box, positioned relative to the wrapper -->
+  <div class="sort-box" role="menu" aria-hidden="true">
+    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Pr>Price high to low</div>
+    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Pr>Price low to high</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">>Date added</div>
+  </div>
+</div>
+
+
+                </div>
+                <div class="vert-spacing-s"></div>
 				<div class="panel" id="panel" aria-live="polite">
-					<div class="vert-spacing-xs"></div>
 					<div id="products-wrapper" class="items">
 						<div class="table-entry item" data-text="sapp-boot" data-tags="products products.shoes">
 							<div class="item-title" add-text-section="item-SappBoot-title"></div>
