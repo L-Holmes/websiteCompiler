@@ -309,9 +309,6 @@
 }
 
 .language-text{
-  overflow-x:hidden;
-  margin-left:10px;
-
 }
 
 .hide-on-mobile{
@@ -325,10 +322,6 @@
 }
 
 .text-bigger-lower-section{
-  // @extend .ux-grid;
-  // grid-template-columns:0.125fr 0.25fr 0.675fr; 
-  // grid-template-rows: auto; 
-
   display:flex;
   align-items:flex-end;
   justify-content:center; 
@@ -400,14 +393,13 @@
 }
 
 .change-lang-wrapper{
-  padding:10%;
+  padding:10px;
+  width:max-content;
 }
 
 .language-select-wrapper{
-  min-width:100px;
-  min-height:50px;
-  width:20vh;
-  height:10vh;
+  width:max-content;
+  height:max-content;
 
   border: solid white 1px;
   border-radius:12px;

@@ -1,15 +1,8 @@
 
 - Make it so that the sort button works again...
     - DId the js get deleted?
-- Make the js for the filter on click:
-    - Unhide all of the filters
-- Add the js for the 'hide all filters' at the bottom of the filters.
 
-Sort out the new headers;
-- add a check for if no filters in a given category are selected. If so: act if everything selected.
-
-- language selection button (e.g. japanese) needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
-    - perhaps this is just a translation? for the 'english' text?
+- language selection button (e.g. japanese) needs to grow according to size of contents 
 - Make sort work per section. (e.g. products; sort blogs)
 - Add price to example elements (and date) so i can integrate sort.
 

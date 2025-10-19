@@ -553,7 +553,7 @@ function openLanguageBox() {
     if (mobileWrapper)
         mobileWrapper.style.display = "none";
     if (changeWrapper)
-        changeWrapper.style.display = "flex";
+        changeWrapper.style.display = "inline-flex";
     // Push a new state to history
     history.pushState({ languageBoxOpen: true }, "", "#change-language");
 }
@@ -570,7 +570,7 @@ window.addEventListener("popstate", (event) => {
         if (mobileWrapper)
             mobileWrapper.style.display = "none";
         if (changeWrapper)
-            changeWrapper.style.display = "flex";
+            changeWrapper.style.display = "inline-flex";
     }
     else {
         // Otherwise, revert to original content

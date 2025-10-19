@@ -449,7 +449,7 @@ function openLanguageBox() {
 
     if (desktopWrapper) desktopWrapper.style.display = "none";
     if (mobileWrapper) mobileWrapper.style.display = "none";
-    if (changeWrapper) changeWrapper.style.display = "flex";
+    if (changeWrapper) changeWrapper.style.display = "inline-flex";
 
 
     // Push a new state to history
@@ -467,7 +467,7 @@ window.addEventListener("popstate", (event) => {
     // If state indicates the language box, show it
     if (desktopWrapper) desktopWrapper.style.display = "none";
     if (mobileWrapper) mobileWrapper.style.display = "none";
-    if (changeWrapper) changeWrapper.style.display = "flex";
+    if (changeWrapper) changeWrapper.style.display = "inline-flex";
   } else {
     // Otherwise, revert to original content
     if (desktopWrapper) desktopWrapper.style.display = "grid";
