@@ -698,3 +698,23 @@
     flex-shrink: 0;           // prevent children from shrinking
   }
 }
+
+
+.filters{
+  display:none;
+}
+
+.products-tools {
+  display: flex;                /* enables horizontal flex layout */
+  flex-direction: row;          /* ensures items are in a row */
+  justify-content: space-between; /* distributes space evenly */
+  align-items: center;          /* optional: vertical alignment */
+  gap: 15px;                    /* 15px between items */
+  padding: 0 15px;              /* 15px before first and after last element */
+  width: fit-content;           /* shrink-wrap to contents */
+}
+
+
+.show-filters-button{
+  cursor: pointer;
+}

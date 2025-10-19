@@ -1,10 +1,12 @@
+
+- Make it so that the sort button works again...
+    - DId the js get deleted?
+- Make the js for the filter on click:
+    - Unhide all of the filters
+- Add the js for the 'hide all filters' at the bottom of the filters.
+
 Sort out the new headers;
-- make the filters centred again on mobile- reusing my old code wherever that is gone.
 - add a check for if no filters in a given category are selected. If so: act if everything selected.
-- clean up the scss
-- do something with the clear all button.
-- update the redirect from index code to work;
-    - should auto-select 'products'
 
 - language selection button (e.g. japanese) needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
     - perhaps this is just a translation? for the 'english' text?

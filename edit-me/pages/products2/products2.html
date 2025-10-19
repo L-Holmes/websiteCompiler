@@ -18,44 +18,37 @@
 		<div class="centre-wrapper">
 			<div class="filterable">
 
-				<div class="vert-spacing-m"></div>
+				<div class="vert-spacing-xs"></div>
 
-				<!-- ------------------------------------------------------------------------------------------------- -->
-				<!-- ITEMS/RESULTS START ------------------------------------------------------------------ -->
-				<!-- ------------------------------------------------------------------------------------------------- -->
-                <div class="header-filters">
-                    <r-filter-element filterImage=shoe.png filterText="Products" filterType="products">
-                    <r-filter-element filterImage=table.png filterText="Blogs" filterType="blogs">
-
+                <div class="products-div">
 
                     <div class="centre-wrapper">
-                        <button type="reset" class="filter-btn clear-all-button">Clear filters</button>
+                        <div class="products-tools">
+                            <div class="show-filters-button" onclick="showFilters()">
+                                <img class="sub-filter-icon" src="shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+                            </div>
+                            <r-sort-button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="vert-spacing-m"></div>
-                <div class=" products-div " data-tag="products">
-                    <div class="align-left-right">
-                        <h2> Products </h2>
-                        <r-sort-button>
+                    <div class="filters" data-tag="products">
+                            <button type="reset" class="filter-btn clear-all-button">Clear filters</button>
+                            <r-filter-element filterImage=shoe.png filterText="Shoes" filterType="shoes">
+                            <r-filter-element filterImage=table.png filterText="Tables" filterType="tables">
+                            <r-filter-element filterImage=boot.png filterText="Boots" filterType="boots">
+                            <button onclick="closeFilters()"> Search </button>
                     </div>
-                    <div class="vert-spacing-s"></div>
-                    <div class="filters">
-                        <r-filter-element filterImage=shoe.png filterText="Shoes" filterType="shoes">
-                        <r-filter-element filterImage=table.png filterText="Tables" filterType="tables">
-                        <r-filter-element filterImage=boot.png filterText="Boots" filterType="boots">
-                    </div>
-                    <div class="vert-spacing-s"></div>
-                    <div id="products-wrapper2" class="items">
+
+                    <div class="vert-spacing-xs"></div>
+
+                    <div class="items">
 
                         <div class="table-entry " data-text="sapp-boot" data-tag="shoes">
                             <div class="item-title" add-text-section="item-SappBoot-title"></div>
                             <div class="item-stats" add-text-section="item-SappBoot-stats"></div>
                             <div class="item-further">
                                 <img class="item-images" src="<root>/shared/images/page-images/products/sapp-boot.avif" alt="Awpen Industries Logo"  loading="lazy">
-                                <div class="item-description" add-text-section="item-SappBoot-desc"> 
-
-                                </div>
+                                <div class="item-description" add-text-section="item-SappBoot-desc"> </div>
                                 <div class="item-learn-or-buy">
                                     <button add-text-section="learn-more"> Learn more </button>
                                     <button add-text-section="buy-now"> Buy now </button>
