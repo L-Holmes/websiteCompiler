@@ -265,24 +265,24 @@ h4{
 
 
 div{
+  font-family: inherit;
   font-size: $font-size-s;
 }
 
-button{
-  font-size: $font-size-xs;
-}
-
 a {
+  font-family: inherit;
 	text-decoration: none;
 	color: inherit;
 }
 
 button {
+  font-family: inherit;
 	background-color:transparent;
     color: $text-colour-primary;
 }
 
 button:hover {
+  font-family: inherit;
 	background-color:transparent;
 }
 

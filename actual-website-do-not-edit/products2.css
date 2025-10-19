@@ -147,24 +147,24 @@ h4 {
 }
 
 div {
+  font-family: inherit;
   font-size: 1rem;
 }
 
-button {
-  font-size: 0.75rem;
-}
-
 a {
+  font-family: inherit;
   text-decoration: none;
   color: inherit;
 }
 
 button {
+  font-family: inherit;
   background-color: transparent;
   color: #f5f5f5;
 }
 
 button:hover {
+  font-family: inherit;
   background-color: transparent;
 }
 
