@@ -47,3 +47,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+//================================================================================================================================= 
+//================================================================================================================================= 
+//================================================================================================================================= 
+//================================================================================================================================= 
+
+// Define constants for CSS selectors and classes for better maintainability.
+const SELECTED_FILTER_CLASS: string = 'selected';
+const FILTERABLE_ITEM_SELECTOR: string = '[data-tag]';
+const DATA_TAG_ATTRIBUTE: string = 'data-tag';
+
+/**
+ * Handles the logic when a filter button is clicked.
+ * It toggles the button's selected state and shows/hides items that contain the corresponding tag.
+ * Note: This function's logic is a direct conversion of the provided JS and handles one filter's
+ * state at a time, rather than combinations of multiple active filters.
+ *
+ * @param filterButtonElement The HTML button element that was clicked.
+ * @param tag The tag associated with the filter button.
+ */
+function handleFilterClicked(filterButtonElement: HTMLElement, tag: string): void {
+    console.log("Filter clicked:", tag);
+
+    // --------------------------------------------
+    // Determine selected state of button
+    // --------------------------------------------
+    const isFilterCurrentlySelected: boolean = filterButtonElement.className.indexOf(SELECTED_FILTER_CLASS) !== -1;
+    console.log("Is it selected? ", isFilterCurrentlySelected);
+
+    // --------------------------------------------
+    // Toggle the 'selected' class on the button.
+    // --------------------------------------------
+    if (isFilterCurrentlySelected) {
+        // If it was selected, remove the class.
+        filterButtonElement.className = filterButtonElement.className.replace(SELECTED_FILTER_CLASS, "").trim();
+        console.log("Unselecting filter for tag:", tag);
+    } else {
+        // If it was not selected, add the class, ensuring a space separator.
+        filterButtonElement.className += ` ${SELECTED_FILTER_CLASS}`;
+        console.log("Selecting filter for tag:", tag);
+    }
+
+    // --------------------------------------------
+    // Iterate through each filterable item to decide whether to show or hide it.
+    // --------------------------------------------
+
+    // Get all HTML elements that have the data-tag attribute.
+    // This returns a NodeListOf<Element>, which we can iterate over.
+    const filterableItems: NodeListOf<Element> = document.querySelectorAll(FILTERABLE_ITEM_SELECTOR);
+    console.log("Found", filterableItems.length, "filterable items on the page.");
+    for (let i = 0; i < filterableItems.length; i++) {
+        const currentItem: HTMLElement = filterableItems[i] as HTMLElement;
+        const tagsAttribute: string | null = currentItem.getAttribute(DATA_TAG_ATTRIBUTE);
+
+        // Ensure the item has tags before proceeding.
+        if (tagsAttribute) {
+            const currentItemTags: string[] = tagsAttribute.split(/\s+/);
+
+            // Check if the current item has the tag associated with the clicked filter.
+            // Using indexOf for compatibility with older TypeScript/JavaScript environments.
+            if (currentItemTags.indexOf(tag) !== -1) {
+
+                // Now, toggle the display based on the button's state *before* it was clicked.
+                if (isFilterCurrentlySelected) {
+                    // The button *was* selected, so now it's unselected. Hide the item.
+                    currentItem.style.display = "none";
+                    console.log("Hiding item with tag:", tag);
+                } else {
+                    // The button *was not* selected, so now it is. Show the item.
+                    currentItem.style.display = ""; // Reset to default display (e.g., 'block', 'flex', etc.)
+                    console.log("Showing item with tag:", tag);
+                }
+            }
+        }
+    }
+}

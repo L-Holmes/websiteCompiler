@@ -1,8 +1,5 @@
 @use "<root>/shared/global.scss"  as *;
 
-
-
-
 .blog-types{
   // margin-left:75px;
 }
@@ -29,12 +26,6 @@
   white-space: nowrap;
 }
 
-// .filter-options {
-  // display: flex;
-  // flex-direction: column; // stack heading on top
-  // gap: 0.5rem;           // space between heading and tiles
-// }
-
 .sub-filter-header{
   padding-right:25px;
 }
@@ -56,167 +47,151 @@
 /* --- HYBRID FILTERING LOGIC --- */
 
 /* 1. If any filter is checked, hide ALL items by default. This is the base for our logic. */
-.filter-input:checked ~ .panel .item {
-  display: none;
-}
+// .filter-input:checked ~ .panel .item {
+  // display: none;
+// }
 
-/* 2. SHOW ALL TOP LEVEL WHEN ALL TOP LEVEL ARE CHECKED
-// -----------------------------------------------------------------------------------
-If both products and blogs are checked, items with EITHER tag will be shown. */
-#cat-products:checked ~ .panel .item[data-tags~="products"],
-#cat-blogs:checked ~ .panel .item[data-tags~="blogs"] {
-  display: block;
-}
-// -----------------------------------------------------------------------------------
-
-
-
-/* 3. SHOW SUB LEVEL WHEN CHECKED
-// -----------------------------------------------------------------------------------
-// PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-
-/* If any blog sub-filter is checked, hide all blog items */
-.filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked)
-  .panel .item[data-tags~="products"] {
-  display: none;
-}
-
-/* Show matching blog items for each checked sub-filter (one line per subtype) */
-.filterable:has(#type-shoes:checked) .panel .item[data-tags~="products.shoes"],
-.filterable:has(#type-boots:checked) .panel .item[data-tags~="products.boots"],
-.filterable:has(#type-tables:checked)   .panel .item[data-tags~="products.tables"] {
-  display: block;
-}
-
-/* Hide the products parent button when any blog sub-filter is active */
-.filterable:has(#type-shoes:checked) .header label[for="cat-products"],
-.filterable:has(#type-boots:checked) .header label[for="cat-products"],
-.filterable:has(#type-tables:checked)   .header label[for="cat-products"] {
-  display: none;
-}
-
-// BLOGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
-
-/* If any blog sub-filter is checked, hide all blog items */
-.filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked) .panel .item[data-tags~="blogs"] {
-  display: none;
-}
-
-/* Show matching blog items for each checked sub-filter (one line per subtype) */
-.filterable:has(#type-article:checked) .panel .item[data-tags~="blogs.article"],
-.filterable:has(#type-newsub:checked) .panel .item[data-tags~="blogs.newsub"],
-.filterable:has(#type-fourth:checked) .panel .item[data-tags~="blogs.fourth"],
-.filterable:has(#type-video:checked)   .panel .item[data-tags~="blogs.video"] {
-  display: block;
-}
-
-/* Hide the Blogs parent button when any blog sub-filter is active */
-.filterable:has(#type-article:checked) .header label[for="cat-blogs"],
-.filterable:has(#type-newsub:checked) .header label[for="cat-blogs"],
-.filterable:has(#type-fourth:checked) .header label[for="cat-blogs"],
-.filterable:has(#type-video:checked)   .header label[for="cat-blogs"] {
-  display: none;
-}
-
-// -----------------------------------------------------------------------------------
-
-
-/* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
-// -----------------------------------------------------------------------------------
-/* PRODUCTS CATEGORY - Hide when sub-filters are active */
-#type-shoes:checked ~ .header label[for="cat-products"],      /* Hide Products when Shoes selected */
-#type-boots:checked ~ .header label[for="cat-products"],      /* Hide Products when boots selected */
-#type-tables:checked ~ .header label[for="cat-products"] {    /* Hide Products when Tables selected */
-  display: none;  /* Makes the Products button disappear */
-}
-
-/* BLOGS CATEGORY - Hide when sub-filters are active */  
-#type-article:checked ~ .header label[for="cat-blogs"],       
-#type-newsub:checked ~ .header label[for="cat-blogs"],
-#type-fourth:checked ~ .header label[for="cat-blogs"],
-#type-video:checked ~ .header label[for="cat-blogs"] {        
-  display: none;  /* Makes the Blogs button disappear */
-}
-
-// !!! NEW NEW NEW !!! Hide the 'unselect group' by default
-.unselect-parent{
-    max-width:40vw; //take up no more than half of the width of the page
-    height:auto; // height can grow if text gets too long.
-
-    border: 2px solid #000023;
-    border-radius:4px;
-    background-color:#000023;
-
-    // ON MOBILE
-    @media screen and (max-width: 441px){
-      max-width:90vw;
-	}
-
-    display:none;
-}
-
-
-// !!! NEW NEW NEW !!! Show the 'unselect group' when any of the children are selected
-#type-shoes:checked ~ .header label[for="cat-products-UNSELECT"],      
-#type-boots:checked ~ .header label[for="cat-products-UNSELECT"],      
-#type-tables:checked ~ .header label[for="cat-products-UNSELECT"] {    
-    display:inline-flex;
-}
-
-#type-article:checked ~ .header label[for="cat-blogs-UNSELECT"],      
-#type-newsub:checked ~ .header label[for="cat-blogs-UNSELECT"],
-#type-fourth:checked ~ .header label[for="cat-blogs-UNSELECT"],
-#type-video:checked ~ .header label[for="cat-blogs-UNSELECT"] {        
-    display:inline-flex;
-}
-
-
-//TODO:
-// --> Make it so that on-click, it unselect just things in that group, and then it itself is hidden.
+// /* 2. SHOW ALL TOP LEVEL WHEN ALL TOP LEVEL ARE CHECKED
+// // -----------------------------------------------------------------------------------
+// If both products and blogs are checked, items with EITHER tag will be shown. */
+// #cat-products:checked ~ [data-tags~="products"],
+// #cat-blogs:checked ~ [data-tags~="blogs"] {
+  // display: none;
+  // // display:block;
+// }
+// 
+// // -----------------------------------------------------------------------------------
+// 
+// 
+// 
+// /* 3. SHOW SUB LEVEL WHEN CHECKED
+// // -----------------------------------------------------------------------------------
+// // PRODUCTS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+// 
+// /* If any blog sub-filter is checked, hide all blog items */
+// .filterable:has(#type-shoes:checked, #type-boots:checked, #type-tables:checked) [data-tags~="products"] {
+  // display: none;
+// }
+// 
+// /* Show matching blog items for each checked sub-filter (one line per subtype) */
+// .filterable:has(#type-shoes:checked) [data-tags~="products.shoes"],
+// .filterable:has(#type-boots:checked) [data-tags~="products.boots"],
+// .filterable:has(#type-tables:checked) [data-tags~="products.tables"] {
+  // display: none;
+  // // display: block;
+// }
+// 
+// /* Hide the products parent button when any blog sub-filter is active */
+// .filterable:has(#type-shoes:checked) [for="cat-products"],
+// .filterable:has(#type-boots:checked) [for="cat-products"],
+// .filterable:has(#type-tables:checked) [for="cat-products"] {
+  // display: none;
+  // // display: block;
+// }
+// 
+// // BLOGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+// 
+// /* If any blog sub-filter is checked, hide all blog items */
+// .filterable:has(#type-article:checked, #type-newsub:checked, #type-fourth:checked, #type-video:checked) .panel .item[data-tags~="blogs"] {
+  // display: none;
+// }
+// 
+// /* Show matching blog items for each checked sub-filter (one line per subtype) */
+// .filterable:has(#type-article:checked) [data-tags~="blogs.article"],
+// .filterable:has(#type-newsub:checked) [data-tags~="blogs.newsub"],
+// .filterable:has(#type-fourth:checked) [data-tags~="blogs.fourth"],
+// .filterable:has(#type-video:checked)  [data-tags~="blogs.video"] {
+  // display: none;
+  // // display: block;
+// }
+// 
+// /* Hide the Blogs parent button when any blog sub-filter is active */
+// .filterable:has(#type-article:checked) [for="cat-blogs"],
+// .filterable:has(#type-newsub:checked) [for="cat-blogs"],
+// .filterable:has(#type-fourth:checked) [for="cat-blogs"],
+// .filterable:has(#type-video:checked) [for="cat-blogs"] {
+  // display: none;
+// }
 
 // -----------------------------------------------------------------------------------
 
 
-/* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
+// /* --- HIDE PARENT FILTER WHEN SUB FILTER CLICKED --- */
+// // -----------------------------------------------------------------------------------
+// /* PRODUCTS CATEGORY - Hide when sub-filters are active */
+// #type-shoes:checked ~ [for="cat-products"],      /* Hide Products when Shoes selected */
+// #type-boots:checked ~ [for="cat-products"],      /* Hide Products when boots selected */
+// #type-tables:checked ~ [for="cat-products"] {    /* Hide Products when Tables selected */
+  // display: none;  /* Makes the Products button disappear */
+// }
+// 
+// /* BLOGS CATEGORY - Hide when sub-filters are active */  
+// #type-article:checked ~ [for="cat-blogs"],       
+// #type-newsub:checked ~ [for="cat-blogs"],
+// #type-fourth:checked ~ [for="cat-blogs"],
+// #type-video:checked ~ [for="cat-blogs"] {        
+  // display: none;  /* Makes the Blogs button disappear */
+// }
+// 
+// // !!! NEW NEW NEW !!! Hide the 'unselect group' by default
+// .unselect-parent{
+    // max-width:40vw; //take up no more than half of the width of the page
+    // height:auto; // height can grow if text gets too long.
+// 
+    // border: 2px solid #000023;
+    // border-radius:4px;
+    // background-color:#000023;
+// 
+    // // ON MOBILE
+    // @media screen and (max-width: 441px){
+      // max-width:90vw;
+	// }
+// 
+    // display:none;
+// }
+// 
+// 
+// // !!! NEW NEW NEW !!! Show the 'unselect group' when any of the children are selected
+// #type-shoes:checked ~ [for="cat-products-UNSELECT"],      
+// #type-boots:checked ~ [for="cat-products-UNSELECT"],      
+// #type-tables:checked ~ [for="cat-products-UNSELECT"] {    
+    // display:inline-flex;
+// }
+// 
+// #type-article:checked ~ [for="cat-blogs-UNSELECT"],      
+// #type-newsub:checked ~ [for="cat-blogs-UNSELECT"],
+// #type-fourth:checked ~ [for="cat-blogs-UNSELECT"],
+// #type-video:checked ~ [for="cat-blogs-UNSELECT"] {        
+    // display:inline-flex;
+// }
+// 
+// 
+// /* --- HIDE SUB FILTERS BY DEFAULT, ONLY UNHIDE WHEN PARENT CLICKED --- */
+// // -----------------------------------------------------------------------------------
+// /* Hide all sub-filter groups by default */
+// .filterable .product-types,
+// .filterable .blog-types {
+  // display: none; /* This hides the entire group container */
+// }
+// 
+// 
+// /* Show Product Types group ONLY when Products category is checked */
+// #cat-products:checked ~ .header .product-types {
+  // // display: flex; 
+  // display: none; 
+// }
+// 
+// /* Show Blog Types group ONLY when Blogs category is checked */
+// #cat-blogs:checked ~ .header .blog-types {
+  // // display: flex; 
+  // display: none; 
+// }
+
+
 // -----------------------------------------------------------------------------------
-/* Hide all sub-filter groups by default */
-.filterable .product-types,
-.filterable .blog-types {
-  display: none; /* This hides the entire group container */
-}
-
-
-/* Show Product Types group ONLY when Products category is checked */
-#cat-products:checked ~ .header .product-types {
-  display: flex; /* This shows the product types group */
-}
-
-/* Show Blog Types group ONLY when Blogs category is checked */
-#cat-blogs:checked ~ .header .blog-types {
-  display: flex; /* This shows the blog types group */
-}
-
-
-// -----------------------------------------------------------------------------------
-
-
 
 /* --- ACTIVE STATE STYLING --- */
-#cat-products:checked ~ .header label[for="cat-products"],
-#cat-blogs:checked ~ .header label[for="cat-blogs"],
-#type-shoes:checked ~ .header label[for="type-shoes"],
-#type-boots:checked ~ .header label[for="type-boots"],
-#type-tables:checked ~ .header label[for="type-tables"],
-#type-article:checked ~ .header label[for="type-article"],
-#type-newsub:checked ~ .header label[for="type-newsub"],
-#type-fourth:checked ~ .header label[for="type-fourth"],
-#type-video:checked ~ .header label[for="type-video"]
-{
-  // background: #eef6ff;
-  // border-color: #cde0ff;
-  // box-shadow: 0 4px 10px rgba(22,90,255,0.06);
-  // color: #0056e0;
-
+.TEMPMOVETHIS{
   border: 2px solid white;
   &:hover {
       border: 2px solid #48E0C8; 
@@ -242,29 +217,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
 
 }
-
-// .filter-squares-wrapper{
-  // display: flex;
-  // flex-wrap: wrap;
-  // // width: 100%;
-  // gap: 0.5rem;
-// 
-// 
-  // /* prevent flex from stretching it */
-  // flex: 0 0 auto;
-// 
-  // /* prefer intrinsic sizing */
-  // width: max-content;    /* preferred: width of the widest content line */
-  // width: -moz-max-content;
-  // width: -webkit-max-content;
-// 
-  // /* fallback for browsers that support fit-content instead of max-content */
-  // width: fit-content;
-  // width: -moz-fit-content;
-  // width: -webkit-fit-content;
-// 
-// }
-
 
 .filter-squares-wrapper {
   display: flex;
@@ -400,12 +352,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 
   overflow-y:hidden;
 }
-
-// .filter-icon{
-  // width: 75px;
-  // height: 75px;
-  // object-fit: contain;
-// }
 
 .filter-further-wrapper{
   @extend .ux-grid;
@@ -683,14 +629,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 	height:auto;
     border-top: solid black 1px;
     border-bottom: solid black 1px;
-}
-
-.item-title{
-
-}
-
-.item-stats{
-
 }
 
 .item-further{

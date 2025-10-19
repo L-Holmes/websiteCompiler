@@ -1,20 +1,20 @@
-- make the filters look nice on mobile
+Sort out the new headers;
+- make the filters centred again on mobile- reusing my old code wherever that is gone.
+- add a check for if no filters in a given category are selected. If so: act if everything selected.
+- clean up the scss
+- do something with the clear all button.
+- update the redirect from index code to work;
+    - should auto-select 'products'
+
+
 - make products/blogs headers disappear if unselected.
-
-- make the filter area have a max width of like 30% screen?????
-    - after that it scrolls.
-    - perhaps would also need a way to make it fullscreen? Or maybe scrolling would be fine....
-    - do i mean *HEIGHT* here????
-
 - fix toggle dyslexia font
     - (or maybe it only adds to url? because on next page it seems applied)
 - when I navigate to next page after turning off big font, it doesn't carry over. stays on big font.
 - language selection button (e.g. japanese) needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
     - perhaps this is just a translation? for the 'english' text?
-- make the sort box pop up where the sort button is.
 - Make sort work per section. (e.g. products; sort blogs)
-
-
+- Add price to example elements (and date) so i can integrate sort.
 
 
 - Can you make it such that:
