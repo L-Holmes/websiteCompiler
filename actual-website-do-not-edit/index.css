@@ -659,7 +659,6 @@ body.font-dyslexia h4 {
   grid-template-columns: auto;
   grid-template-rows: 0.6fr 0.4fr;
   width: 100%;
-  border-bottom: dotted white 1px;
   border-radius: 12px;
   max-width: 360px;
 }
@@ -667,7 +666,6 @@ body.font-dyslexia h4 {
   .language-wrapper {
     width: 100%;
     border: none;
-    border-bottom: dotted white 1px;
   }
 }
 

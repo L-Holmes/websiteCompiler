@@ -14,7 +14,7 @@
 	</head>
 	<body>
 
-		<div class="vert-spacing-l"></div>
+		<div class="vert-spacing-m"></div>
 		<div class="centre-wrapper">
 			<form class="filterable" id="catalog" aria-label="Product filters">
 
@@ -57,81 +57,80 @@
 						<!-- Main Categories -->
 
 
-						<div class="filter-wrapper">
-							<div>
-								<div class="filter-outer-grid">
-									<div class="group filter-squares-wrapper">
+                        <div class="centre-wrapper">
+                            <div class="filter-wrapper">
+                                <div>
+                                    <div class="filter-outer-grid">
+                                        <div class="group filter-squares-wrapper">
 
-										<img class="sub-filter-icon" src="<root>/shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy">
+                                            <!-- <img class="sub-filter-icon" src="<root>/shared/images/filtering/filter-icon.png" alt="filter-img" loading="lazy"> -->
 
-										<r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
+                                            <r-filter-element filterImage=shoe.png filterText="Products" filterType="cat-products">
 
-										<label for="cat-products-UNSELECT" class="filter-btn unselect-parent">
-											<div class="filter-icon-wrapper">
-												<img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
-											</div>
-											<div class="title-and-info-wrapper">
-												<div class="item-title"> 
-                                                    <div class="vert-spacing-s"></div>
-													Products
-													<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-													<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-												</div>
-											</div>
-										</label>
-
-
-										<r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
-
-										<label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
-											<div class="title-and-info-wrapper">
-												<div class="item-title"> 
-                                                    <div class="vert-spacing-s"></div>
-													Blogs
-													<img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
-													<img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
-												</div>
-											</div>
-										</label>
-
-									</div>
-								</div>
-
-								<!-- ==> Product Filters -->
-
-								<div class="filter-outer-grid">
-									<div class="group product-types filter-squares-wrapper">
-										<r-filter-element filterImage=shoe.png filterText="Shoes" filterType="type-shoes">
-										<r-filter-element filterImage=table.png filterText="Tables" filterType="type-tables">
-										<r-filter-element filterImage=boot.png filterText="Boots" filterType="type-boots">
-									</div>
-								</div>
-
-								<!-- ==> Blogs Filters -->
-								<div class="filter-outer-grid">
-									<div class="group blog-types filter-squares-wrapper"> 
+                                            <label for="cat-products-UNSELECT" class="filter-btn unselect-parent">
+                                                <div class="filter-icon-wrapper">
+                                                    <img class="filter-icon" src="<root>/shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
+                                                </div>
+                                                <div class="title-and-info-wrapper">
+                                                    <div class="item-title"> 
+                                                        <div class="vert-spacing-s"></div>
+                                                        Products
+                                                        <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
+                                                        <img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
+                                                    </div>
+                                                </div>
+                                            </label>
 
 
-										<r-filter-element filterImage=shoe.png filterText=" Articles" filterType="type-article">
-										<r-filter-element filterImage=table.png filterText="Videos" filterType="type-video">
-										<r-filter-element filterImage=boot.png filterText="New Sub" filterType="type-newsub">
-										<r-filter-element filterImage=boot.png filterText="Fourth" filterType="type-fourth">
-									</div>
-								</div>
+                                            <r-filter-element filterImage=table.png filterText="Blogs" filterType="cat-blogs">
+
+                                            <label for="cat-blogs-UNSELECT" class="filter-btn unselect-parent">
+                                                <div class="title-and-info-wrapper">
+                                                    <div class="item-title"> 
+                                                        <div class="vert-spacing-s"></div>
+                                                        Blogs
+                                                        <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">   
+                                                        <img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
+                                                    </div>
+                                                </div>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- ==> Product Filters -->
+
+                                    <div class="filter-outer-grid">
+                                        <div class="group product-types filter-squares-wrapper">
+                                            <r-filter-element filterImage=shoe.png filterText="Shoes" filterType="type-shoes">
+                                            <r-filter-element filterImage=table.png filterText="Tables" filterType="type-tables">
+                                            <r-filter-element filterImage=boot.png filterText="Boots" filterType="type-boots">
+                                        </div>
+                                    </div>
+
+                                    <!-- ==> Blogs Filters -->
+                                    <div class="filter-outer-grid">
+                                        <div class="group blog-types filter-squares-wrapper"> 
 
 
-							</div>
+                                            <r-filter-element filterImage=shoe.png filterText=" Articles" filterType="type-article">
+                                            <r-filter-element filterImage=table.png filterText="Videos" filterType="type-video">
+                                            <r-filter-element filterImage=boot.png filterText="New Sub" filterType="type-newsub">
+                                            <r-filter-element filterImage=boot.png filterText="Fourth" filterType="type-fourth">
+                                        </div>
+                                    </div>
 
-							<!-- ------------------------------------------------------------------------------------------------- -->
 
-							
-							<div class="top-bottom">
-								<div class="group align-at-right">
-									<button type="reset" class="filter-btn clear-all-button">Clear all</button>
-								</div>
-							</div>
-					</div>
-				</div>
+                                </div>
+
+                                <!-- ------------------------------------------------------------------------------------------------- -->
+                            </div>
+                    </div>
+                </div>
+                <div class="vert-spacing-s"></div>
+                <div class="centre-wrapper">
+                    <button type="reset" class="filter-btn clear-all-button">Clear filters</button>
+                </div>
 
 
 				<div class="vert-spacing-m"></div>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "OpenDyslexic-Bold";
   src: url("../shared/fonts/open-dyslexic/OpenDyslexic-Bold.otf") format("opentype");
@@ -193,7 +194,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .filter-wrapper, .ux-grid-specific {
+.ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .ux-grid-specific {
   display: grid;
   height: 100%;
 }
@@ -475,14 +476,6 @@ body.font-dyslexia h4 {
   outline-offset: 2px;
 }
 
-.blog-types {
-  margin-left: 75px;
-}
-
-.product-types {
-  margin-left: 75px;
-}
-
 .filterable {
   height: auto;
   width: 100%;
@@ -509,6 +502,19 @@ body.font-dyslexia h4 {
 
 .sub-filter-header {
   padding-right: 25px;
+}
+
+.controls {
+  max-height: 40vh;
+  overflow-y: scroll;
+  /* hided scroll bar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.controls::-webkit-scrollbar {
+  display: none;
 }
 
 /* --- HYBRID FILTERING LOGIC --- */
@@ -662,8 +668,10 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 .filter-squares-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   gap: 0.5rem;
+  max-width: 100%; /* don’t exceed parent width */
+  margin: 0 auto; /* center it */
+  justify-content: center; /* center items in each row */
 }
 
 .search-button {
@@ -812,7 +820,6 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 14px;
   height: 30px;
   padding: 20px;
   display: flex;
@@ -851,6 +858,16 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 .sub-filter-wrapper {
   border-left: solid white 1px;
   padding: 5px;
+  /* prevent flex from stretching it */
+  flex: 0 0 auto;
+  /* prefer intrinsic sizing */
+  width: max-content; /* preferred: width of the widest content line */
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  /* fallback for browsers that support fit-content instead of max-content */
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
 }
 .sub-filter-wrapper .sub-filter-icon {
   height: 25px;
@@ -999,8 +1016,14 @@ If both products and blogs are checked, items with EITHER tag will be shown. */
 }
 
 .filter-wrapper {
-  grid-template-columns: 0.8fr 0.2fr;
-  grid-template-rows: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@media screen and (max-width: 441px) {
+  .filter-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .align-left-right {
