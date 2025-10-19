@@ -32,35 +32,47 @@ function applySettingsFromParams() {
         document.body.classList.remove('font-dyslexia');
 }
 function appendParamsToInternalLinks() {
-    console.log("--> Called applying params to internal links");
-    const params = getParams();
-    if (![...params].length)
-        return;
+    console.log("--> Syncing params to internal links");
+    // Get the parameters currently in the browser's address bar.
+    const currentParams = getParams();
+    const managedKeys = [PARAM_BIG, PARAM_DYS];
     const anchors = document.querySelectorAll('a[href]');
-    anchors.forEach(a => {
-        var _a;
+    anchors.forEach(anchor => {
         try {
-            const href = (_a = a.getAttribute('href')) !== null && _a !== void 0 ? _a : '';
-            if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:'))
-                return;
-            // Absolute same-origin
-            if (/^(https?:)?\/\//i.test(href)) {
-                const url = new URL(href, window.location.origin);
-                if (url.origin !== window.location.origin)
-                    return;
-                const up = new URL(url.toString());
-                params.forEach((v, k) => up.searchParams.set(k, v));
-                a.href = up.toString();
+            const href = anchor.getAttribute('href');
+            if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+                return; // Skip anchors that are not internal page links.
+            }
+            // Create a URL object to easily manipulate its parts.
+            // This correctly handles both relative and absolute URLs.
+            const linkUrl = new URL(href, window.location.href);
+            // Skip links that navigate to a different website.
+            if (linkUrl.origin !== window.location.origin) {
                 return;
             }
-            // Relative link
-            const base = window.location.origin;
-            const url = new URL(href, base + window.location.pathname);
-            params.forEach((v, k) => url.searchParams.set(k, v));
-            // keep relative-ish form
-            a.href = url.pathname + url.search + url.hash;
+            // --- CORE FIX ---
+            // 1. First, REMOVE all managed params from the link to ensure a clean slate.
+            managedKeys.forEach(key => {
+                linkUrl.searchParams.delete(key);
+            });
+            // 2. Second, ADD BACK only the params that are currently active in the main URL.
+            currentParams.forEach((value, key) => {
+                linkUrl.searchParams.set(key, value);
+            });
+            // --- END CORE FIX ---
+            // Preserve the link's original format (relative vs. absolute)
+            if (!/^(https?:)?\/\//i.test(href)) {
+                // It was relative, so keep it that way.
+                anchor.href = linkUrl.pathname + linkUrl.search + linkUrl.hash;
+            }
+            else {
+                // It was absolute, so keep it that way.
+                anchor.href = linkUrl.toString();
+            }
         }
-        catch (_) { /* ignore malformed */ }
+        catch (_) {
+            // Silently ignore malformed hrefs.
+        }
     });
 }
 function applyLanguagePrefixToLinks() {

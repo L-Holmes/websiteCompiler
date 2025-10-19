@@ -6,8 +6,6 @@ Sort out the new headers;
 - update the redirect from index code to work;
     - should auto-select 'products'
 
-- fix toggle dyslexia font
-    - (or maybe it only adds to url? because on next page it seems applied)
 - when I navigate to next page after turning off big font, it doesn't carry over. stays on big font.
 - language selection button (e.g. japanese) needs to grow according to size of contents + the language name needs to udpate to reflect the current language.
     - perhaps this is just a translation? for the 'english' text?
