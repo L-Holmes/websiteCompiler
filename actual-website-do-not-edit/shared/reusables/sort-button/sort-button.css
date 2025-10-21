@@ -22,6 +22,7 @@
 /* style the label like your button */
 .sort-button {
   display: flex;
+  align-items: center; /* ✅ added to vertically center the SVG */
   gap: 8px;
   padding: 10px 15px;
   color: white;
@@ -44,23 +45,6 @@
   inset: 0; /* top:0;right:0;bottom:0;left:0 */
   background: rgba(0, 0, 0, 0.45);
   z-index: 1000;
-}
-
-/* the dropdown box — absolutely positioned relative to .sort-wrapper */
-.sort-box {
-  display: none;
-  position: absolute; /* stay positioned relative to .sort-wrapper */
-  top: 200%; /* align the top of the box with the top of the button */
-  right: 0; /* keep right-aligned as in your original */
-  transform: translateY(0); /* no centering transform */
-  width: 200px;
-  max-height: calc(100vh - 12px); /* prevent the box from growing past the viewport */
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
 }
 
 /* show the box when checked */
@@ -100,16 +84,18 @@
 
 /* Sort options box */
 .sort-box {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: none;
+  position: absolute; /* stay positioned relative to .sort-wrapper */
+  top: 0; /* align the top of the box with the top of the button */
+  transform: translateY(0); /* no centering transform */
   width: 200px;
-  height: 200px;
+  max-height: calc(100vh - 12px); /* prevent the box from growing past the viewport */
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 /* Sort option items */

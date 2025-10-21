@@ -1,7 +1,7 @@
-- find the blogs icon.
 - Add price to example elements (and date) so i can integrate sort.
 - Make sort work per section. (e.g. products; sort blogs)
 - create the seperate blogs page
+- jp-index doesn't redirect to jp-products..........
 
 ----------------------------------------------------
 
