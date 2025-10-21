@@ -47,19 +47,36 @@
 }
 
 /* the dropdown box — absolutely positioned relative to .sort-wrapper */
+// .sort-box {
+  // display: none;                 /* hidden by default */
+  // position: absolute;
+  // top: 0;                        /* aligns top of box with top of button */
+  // right: 0;                      /* align to the right edge of wrapper; change to left:0 to align left */
+  // transform: translateY(0);      /* use translateY(-100%) for above, top:100% for below */
+  // min-width: 200px;
+  // background: white;
+  // color: #111;
+  // border-radius: 6px;
+  // box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  // padding: 6px;
+  // z-index: 1001;                 /* above the backdrop */
+// }
+
 .sort-box {
-  display: none;                 /* hidden by default */
-  position: absolute;
-  top: 0;                        /* aligns top of box with top of button */
-  right: 0;                      /* align to the right edge of wrapper; change to left:0 to align left */
-  transform: translateY(0);      /* use translateY(-100%) for above, top:100% for below */
-  min-width: 200px;
-  background: white;
-  color: #111;
-  border-radius: 6px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
-  padding: 6px;
-  z-index: 1001;                 /* above the backdrop */
+  
+  display:none;
+  position: absolute;               /* stay positioned relative to .sort-wrapper */
+  top: 200%;                           /* align the top of the box with the top of the button */
+  right: 0;                         /* keep right-aligned as in your original */
+  transform: translateY(0);         /* no centering transform */
+  width: 200px;
+  max-height: calc(100vh - 12px);   /* prevent the box from growing past the viewport */
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
 /* show the box when checked */
@@ -99,7 +116,6 @@
 /* Sort options box */
 .sort-box {
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;

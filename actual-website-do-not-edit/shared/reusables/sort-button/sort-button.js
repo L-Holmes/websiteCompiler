@@ -15,7 +15,7 @@ function reorderItemsWithFlexbox() {
     }
     // 3. Get the parent container and apply flexbox styles directly.
     // This turns on the flexbox layout, enabling the `order` property to work.
-    const container = document.getElementById('products-wrapper');
+    const container = document.getElementById('items');
     if (!container) {
         console.error('Container not found');
         return;
@@ -52,19 +52,21 @@ function _getCategoryOfClickedItem(element) {
 // Show the sort overlay
 function handleSortClickedNew() {
     console.log("handle sort clicked new clicked");
-    const overlay = document.getElementById('sortOverlay');
+    const overlay = document.getElementById('sort-overlay');
     if (overlay) {
         overlay.style.display = 'block';
     }
 }
 // Hide the sort overlay
 function closeSortOverlay() {
+    console.log("closing sort overlay");
     const toggle = document.getElementById('sortToggle');
-    if (toggle) {
-        toggle.checked = false; // uncheck -> overlay closes
+    const overlay = document.getElementById('sort-overlay');
+    if (overlay) {
+        overlay.style.display = 'none';
     }
     else {
-        console.warn("closeSortOverlay: #sortToggle not found in DOM");
+        console.warn("sort toggle not found! cannot close!");
     }
 }
 // Handle clicking on the overlay backdrop (close if clicked outside the box)
