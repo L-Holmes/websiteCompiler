@@ -125,6 +125,7 @@
 // -------------------------
 
 .search-bar-wrapper{
+  @extend .button-hitbox;
   width:55%;
 
   @media screen and (max-width: 440px){
@@ -398,6 +399,7 @@
 }
 
 .language-select-wrapper{
+  @extend .button-hitbox;
   width:max-content;
   height:max-content;
 
