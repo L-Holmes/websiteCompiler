@@ -85,14 +85,20 @@ function applyLanguagePrefixToLinks() {
         var _a;
         try {
             const href = (_a = a.getAttribute('href')) !== null && _a !== void 0 ? _a : '';
+            console.log('found a link');
             if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:'))
                 return;
-            // Check if it's a relative link to an HTML file
-            if (!/^(https?:)?\/\//i.test(href) && href.match(/\.html?$/i)) {
-                const filename = href.substring(href.lastIndexOf('/') + 1);
+            console.log('found a valid link:', href);
+            // Check if it's an HTML page link (relative or same-origin), even if it has params or hashes
+            if (href.includes('.html')) {
+                // jump! this may not work if we remove .html!
+                const cleanHref = href.split(/[?#]/)[0]; // strip query + hash for filename detection
+                const filename = cleanHref.substring(cleanHref.lastIndexOf('/') + 1);
                 // If it doesn't already have a language prefix, add it
-                if (!filename.match(/^[a-z]{2}-/)) {
-                    const newHref = href.replace(filename, `${currentLang}-${filename}`);
+                if (!/^[a-z]{2}-/i.test(filename)) {
+                    const newFilename = `${currentLang}-${filename}`;
+                    const newHref = href.replace(filename, newFilename);
+                    console.log('replacing with new href:', newHref);
                     a.href = newHref;
                 }
             }
@@ -130,6 +136,10 @@ function dueDilligence() {
     applyLanguagePrefixToLinks();
 }
 document.addEventListener('DOMContentLoaded', () => {
+    // RUNS WHEN THE PAGE FIRST LOADS
+    console.log("dom content loaded 1");
     applySettingsFromParams();
+    console.log("dom content loaded 2");
     dueDilligence();
+    console.log("dom content loaded 3");
 });
