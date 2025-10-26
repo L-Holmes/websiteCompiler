@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title> Awpen </title>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="A cool website">
+		
+		  <meta charset="UTF-8">
+
+		<link rel=stylesheet href="products2.css">
+
+		<script defer src="products2.js"></script>
+        <script defer src="shared/global.js"></script>
+	<link rel="stylesheet" href="shared/reusables/list-page/list-page.css">
+<script defer src="shared/reusables/list-page/list-page.js"></script>
+<link rel="stylesheet" href="shared/reusables/sort-button/sort-button.css">
+<script defer src="shared/reusables/sort-button/sort-button.js"></script>
+</head>
+	<body>
+
+        <div class="vert-spacing-m"></div>
+<div class="centre-wrapper">
+    <div class="filterable">
+        <div class="vert-spacing-xs"></div>
+
+        <div class="products-div">
+
+            <div class="sort-wrapper" >
+
+  <!-- visible button (keeps normal flow so wrapper has size) -->
+  <div class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
+    <div class="sort-img">
+      <!-- svg -->
+      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 6l5-4 5 4H3z" fill="white"/>
+        <path d="M3 10l5 4 5-4H3z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- full-screen backdrop: clicking it closes (it's a label for the checkbox) -->
+  <div for="sortToggle" class="sort-backdrop" aria-hidden="true"></div>
+
+  <!-- dropdown box, positioned relative to the wrapper -->
+  <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
+    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
+    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">Date added</div>
+  </div>
+</div>
+
+
+            <div class="vert-spacing-xs"></div>
+
+            <div class="items" id="items">
+
+            <div class="table-entry " data-text="sapp-boot" data-tag="shoes">
+    <div class="item-title" add-text-section="item-SappBoot-title"></div>
+    <div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+    <div class="item-further">
+        <img class="item-images" src="shared/images/page-images/products/sapp-boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+        <div class="item-description" add-text-section="item-SappBoot-desc"> </div>
+        <div class="item-learn-or-buy">
+            <button add-text-section="learn-more"> Learn more </button>
+            <button add-text-section="buy-now"> Buy now </button>
+        </div>
+    </div>
+</div>
+
+<div class="table-entry " data-text="table" data-tag="tables">
+    <div class="item-title" add-text-section="item-SappBoot-title"></div>
+    <div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+    <div class="item-further">
+        <img class="item-images" src="shared/images/page-images/products/table.avif" alt="Awpen Industries Logo"  loading="lazy">
+        <div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+        </div>
+        <div class="item-learn-or-buy">
+            <button add-text-section="learn-more"> Learn more </button>
+            <button add-text-section="buy-now"> Buy now </button>
+        </div>
+    </div>
+</div>
+
+<div class="table-entry " data-text="boot" data-tag="boots">
+    <div class="item-title" add-text-section="item-SappBoot-title"></div>
+    <div class="item-stats" add-text-section="item-SappBoot-stats"></div>
+    <div class="item-further">
+        <img class="item-images" src="shared/images/page-images/products/boot.avif" alt="Awpen Industries Logo"  loading="lazy">
+        <div class="item-description" add-text-section="item-SappBoot-desc"> 
+
+        </div>
+        <div class="item-learn-or-buy">
+            <button add-text-section="learn-more"> Learn more </button>
+            <button add-text-section="buy-now"> Buy now </button>
+        </div>
+    </div>
+</div>
+
+
+
+            </div>
+        </div>
+
+        <div class="vert-spacing-s"></div>
+
+        <!-- <div class=" blogs-div " data-tag="blogs">
+            <h2> Blogs </h2>
+
+            <a href='blog/about-us.html'> About us blog </a>
+        </div>-->
+
+
+    </div>
+</div>
+
+
+    </body>
+</html>
+
