@@ -922,4 +922,25 @@ body.font-dyslexia h4 {
   cursor: pointer;
 }
 
+.single-item-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 441px) {
+  .single-item-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.single-item {
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: transparent;
+}
+
 /*# sourceMappingURL=list-page.css.map */
