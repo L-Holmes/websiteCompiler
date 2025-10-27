@@ -729,21 +729,19 @@
 
 .single-item-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px 20px; // vertical | horizontal
-  padding: 20px;
-  box-sizing: border-box;
+  grid-template-columns: 0.5fr 0.5fr;
+  //gap: 10px 20px; // vertical | horizontal
+  //padding: 20px;
 
   @media screen and (max-width: 441px) {
     grid-template-columns: 1fr;
   }
 }
-
-.single-item {
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    background: transparent;
-  }
-
+// 
+// .single-item {
+    // border: 1px solid white;
+    // border-radius: 8px;
+    // padding: 10px;
+    // box-sizing: border-box;
+    // background: transparent;
+  // }
