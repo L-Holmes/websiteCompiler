@@ -1,3 +1,12 @@
+- fix the filtering
+    - need to add tags to items.
+    - check everything works as expected.
+- add the filter button...
+- Add the feature where on filter button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
+
+
+
+
 - sort button styling broken... again...
 - consider centring the sort button
 - consider making the blogs page just have big squares in 2 columns... just so it looks good and i can move on with my life.

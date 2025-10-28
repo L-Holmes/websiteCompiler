@@ -1,51 +1,3 @@
-// ===================================================
-// PROCESSING THE URL PARAMETERS  
-// ===================================================
-document.addEventListener('DOMContentLoaded', () => {
-	const params = new URLSearchParams(window.location.search);
-	
-	// Parent categories
-	const category = (params.get('category') || '').toLowerCase();
-	const categoryMap: Record<string, string> = { 
-		products: 'cat-products', 
-		blogs: 'cat-blogs' 
-	};
-	
-	if (categoryMap[category]) {
-		const el = document.getElementById(categoryMap[category]) as HTMLInputElement;
-		if (el) el.checked = true;
-	}
-	
-	// Mapping subcategory ID → parent checkbox ID
-	const subToParent: Record<string, string> = {
-		shoes: 'cat-products',
-		boots: 'cat-products',
-		tables: 'cat-products',
-		article: 'cat-blogs',
-		video: 'cat-blogs',
-		newsub: 'cat-blogs',
-		fourth: 'cat-blogs',
-	};
-	
-	// Check subcategories
-	const typeParam = params.get('type');
-	if (typeParam) {
-		typeParam.split(',').map(s => s.trim().toLowerCase()).forEach(sub => {
-			const el = document.getElementById('type-' + sub) as HTMLInputElement;
-			if (el) el.checked = true;
-			
-			// Check parent based on mapping
-			const parentId = subToParent[sub];
-			if (parentId) {
-				const parentEl = document.getElementById(parentId) as HTMLInputElement;
-				if (parentEl) parentEl.checked = true;
-			}
-		});
-	}
-});
-
-
-
 //================================================================================================================================= 
 //================================================================================================================================= 
 //================================================================================================================================= 
@@ -55,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const SELECTED_FILTER_CLASS: string = 'selected';
 const FILTERABLE_ITEM_SELECTOR: string = '[data-tag]';
 const DATA_TAG_ATTRIBUTE: string = 'data-tag';
+const DATA_FILTER_ATTRIBUTE: string = 'data-filter';
+
+
+// NEW AIMS
+// --> Where possible, all state is stored by the html.
+// --> Now, this can be more efficient, having to re-check through everything...
+//     but it keeps our code simpler.
 
 /**
  * Handles the logic when a filter button is clicked.
@@ -62,63 +21,226 @@ const DATA_TAG_ATTRIBUTE: string = 'data-tag';
  * Note: This function's logic is a direct conversion of the provided JS and handles one filter's
  * state at a time, rather than combinations of multiple active filters.
  *
+ * --> SO basically;
+ * By default it hides everything 
+ * If a filter is applied, it unhides any items that have that tag.
+ * If a filter is unapplied, it 
+ *
  * @param filterButtonElement The HTML button element that was clicked.
  * @param tag The tag associated with the filter button.
  */
 function handleFilterClicked(filterButtonElement: HTMLElement, tag: string): void {
-    console.log("Filter clicked:", tag);
+	console.log("					...");
+    console.log("Filter clicked::::", tag);
+
 
     // --------------------------------------------
     // Determine selected state of button
     // --------------------------------------------
     const isFilterCurrentlySelected: boolean = filterButtonElement.className.indexOf(SELECTED_FILTER_CLASS) !== -1;
-    console.log("Is it selected? ", isFilterCurrentlySelected);
+    console.log(`Is '${filterButtonElement.className}' selected? ${isFilterCurrentlySelected}`);
 
     // --------------------------------------------
     // Toggle the 'selected' class on the button.
     // --------------------------------------------
+	let isFilterTurnedOn: boolean;
     if (isFilterCurrentlySelected) {
+		// NOW WE ARE UN-APPLYING THIS FILTER
         // If it was selected, remove the class.
         filterButtonElement.className = filterButtonElement.className.replace(SELECTED_FILTER_CLASS, "").trim();
         console.log("Unselecting filter for tag:", tag);
+		isFilterTurnedOn= false;
     } else {
+		// NOW WE ARE APPLYING THIS FILTER
         // If it was not selected, add the class, ensuring a space separator.
         filterButtonElement.className += ` ${SELECTED_FILTER_CLASS}`;
         console.log("Selecting filter for tag:", tag);
+		isFilterTurnedOn= true;
     }
+
+	applyFilter(tag, isFilterTurnedOn);
+}
+
+function applyFilter(tag: string, isFilterTurnedOn:boolean){
+	// --------------------------------------------
+	// Get the list of filterable items 
+	// --------------------------------------------
+    // Get all HTML elements that have the data-tag attribute.
+    // This returns a NodeListOf<Element>, which we can iterate over.
+    const filterableItems: NodeListOf<Element> = document.querySelectorAll(FILTERABLE_ITEM_SELECTOR);
+    console.log("Found", filterableItems.length, "filterable items on the page.");
+
+
+	// --------------------------------------------
+	// If user has just unselected the last filter, then there are no filters active; show all
+	// --------------------------------------------
+	const TEMP_DEBUG_NUM_SELECTED = _getListOfSelectedTags().length;
+	console.log(`DEBUG: is filter for: '${tag}' turned on: ${isFilterTurnedOn}`);
+	console.log(`DEBUG: what is the number of currently selected tags: ${TEMP_DEBUG_NUM_SELECTED}`);
+    if (!isFilterTurnedOn) {
+		// If user just unselected this filter, it is possible that now there are no filters selected.
+		// If so, we want to unhide everything
+
+		if (_getListOfSelectedTags().length === 0) {
+
+			console.log("!!! unhiding all");
+			_applyToAllItemsNewDisplayValue(filterableItems, "");
+
+			updateFilterParams(); // <-- keep the URL in sync with current filters
+			return;
+		}
+	}
+
+	// --------------------------------------------
+	// If this is the first time a filter is being applied, hide everything 
+	// --------------------------------------------
+    if (isFilterTurnedOn) {
+		if (_getListOfSelectedTags().length === 1) {
+			console.log("!!! initial call, hiding all");
+			_applyToAllItemsNewDisplayValue(filterableItems, "none");
+		}
+	}
+
 
     // --------------------------------------------
     // Iterate through each filterable item to decide whether to show or hide it.
     // --------------------------------------------
 
-    // Get all HTML elements that have the data-tag attribute.
-    // This returns a NodeListOf<Element>, which we can iterate over.
-    const filterableItems: NodeListOf<Element> = document.querySelectorAll(FILTERABLE_ITEM_SELECTOR);
-    console.log("Found", filterableItems.length, "filterable items on the page.");
-    for (let i = 0; i < filterableItems.length; i++) {
-        const currentItem: HTMLElement = filterableItems[i] as HTMLElement;
-        const tagsAttribute: string | null = currentItem.getAttribute(DATA_TAG_ATTRIBUTE);
+	if (isFilterTurnedOn) {
+		// Filter has been TURNED ON
+		for (let i = 0; i < filterableItems.length; i++) {
 
-        // Ensure the item has tags before proceeding.
-        if (tagsAttribute) {
-            const currentItemTags: string[] = tagsAttribute.split(/\s+/);
+			const currentItem: HTMLElement = filterableItems[i] as HTMLElement;
+			const doesItemHaveThatTag = _itemHasTagBeingFilteredFor(currentItem, tag);
 
-            // Check if the current item has the tag associated with the clicked filter.
-            // Using indexOf for compatibility with older TypeScript/JavaScript environments.
-            if (currentItemTags.indexOf(tag) !== -1) {
+			if(!doesItemHaveThatTag){
+				continue; // keep hidden if it doesn't have the tag
+			}
+			currentItem.style.display = "";
+			console.log("!!! Showing item with tag:", tag);
+		}
+	}else{
+		// Filter has been TURNED OFF
 
-                // Now, toggle the display based on the button's state *before* it was clicked.
-                if (isFilterCurrentlySelected) {
-                    // The button *was* selected, so now it's unselected. Hide the item.
-                    currentItem.style.display = "none";
-                    console.log("Hiding item with tag:", tag);
-                } else {
-                    // The button *was not* selected, so now it is. Show the item.
-                    currentItem.style.display = ""; // Reset to default display (e.g., 'block', 'flex', etc.)
-                    console.log("Showing item with tag:", tag);
-                }
-            }
+		// find all new active filters (i.e. anything that has 'selected'
+		var selectedTags: string[] = _getListOfSelectedTags();
+
+		// reset everything, and freshly apply those filters.
+		_applyToAllItemsNewDisplayValue(filterableItems, "none");
+		for(let selectedIndex = 0; selectedIndex < selectedTags.length; selectedIndex++) {
+			let selectedTag : string = selectedTags[selectedIndex];
+			console.log(`DEBUG ==> Unhiding the selected thing: ${selectedTag}`);
+			applyFilter(selectedTag, true)
+		}
+	}
+
+
+
+	updateFilterParams(); // <-- keep the URL in sync with current filters
+
+	// ------------------------------------------------------------------------------------
+	
+	function _applyToAllItemsNewDisplayValue(allItems: NodeListOf<Element>, newDisplayValue: string){
+		for (let i = 0; i < allItems.length; i++) {
+			(allItems[i] as HTMLElement).style.display = newDisplayValue;
+		}
+	}
+
+	function _itemHasTagBeingFilteredFor(currentItem:HTMLElement, tagBeingFilteredFor:string):boolean{
+
+		const tagsAttribute: string | null = currentItem.getAttribute(DATA_TAG_ATTRIBUTE);
+
+		if (!tagsAttribute) {
+			return false;
+		}
+
+		// get the tags for the item we are currently looking at 
+		const currentItemTags: string[] = tagsAttribute.split(/\s+/);
+
+		if (currentItemTags.indexOf(tagBeingFilteredFor) === -1) {
+			return false;
+		}
+		return true
+	}
+}
+
+
+function _getListOfSelectedTags(): string[]{
+	var selectedButtons: NodeListOf<Element> = document.querySelectorAll('.selected');
+    var selectedTags: string[] = [];
+
+    for (var i = 0; i < selectedButtons.length; i++) {
+        var btn: HTMLElement = selectedButtons[i] as HTMLElement;
+        var tag: string | null = btn.getAttribute(`${DATA_FILTER_ATTRIBUTE}`);
+        if (tag) {
+            selectedTags.push(tag);
+
+			console.log("~~~> pushed:", tag);
+        }
+    }
+
+	return selectedTags
+}
+
+
+/**
+ * Updates the URL's query string so it always reflects which filters are active.
+ * Keeps other params (like big_text, dyslexia_font) intact.
+ */
+function updateFilterParams(): void {
+    console.log("~~~ updating filter params");
+
+    var selectedTags: string[] = _getListOfSelectedTags();
+
+    // Merge-safe: preserve any other params
+    var params: URLSearchParams = new URLSearchParams(window.location.search);
+    params.delete('filters'); // remove old filters param
+
+    if (selectedTags.length > 0) {
+        params.set('filters', selectedTags.join(','));
+    }
+
+    var newUrl: string = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
+
+    if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, '', newUrl);
+    }
+
+	console.log("~~~> done:", newUrl);
+
+}
+
+/**
+ * Reads the ?filters=tag1,tag2 param on page load,
+ * finds matching filter buttons, and re-applies them.
+ */
+function restoreFiltersFromParams(): void {
+	console.log("++++ restoring filter params");
+    var query: string = window.location.search;
+    if (query.indexOf('filters=') === -1) {
+        return;
+    }
+
+    var match: RegExpMatchArray | null = query.match(/filters=([^&]+)/);
+    if (!match || !match[1]) {
+        return;
+    }
+
+    var tagList: string[] = decodeURIComponent(match[1]).split(',');
+
+
+	console.log("++++> got the tag list;", tagList);
+
+    for (var i = 0; i < tagList.length; i++) {
+        var tag: string = tagList[i];
+        var btn: HTMLElement | null = document.querySelector(`[${DATA_FILTER_ATTRIBUTE}="` + tag + '"]');
+        if (btn) {
+			console.log("++++> handling filter tag clicked;", tag);
+            handleFilterClicked(btn, tag);
         }
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    restoreFiltersFromParams();
+});
