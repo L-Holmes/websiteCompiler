@@ -932,4 +932,8 @@ body.font-dyslexia h4 {
   }
 }
 
+.single-item {
+  height: fit-content;
+}
+
 /*# sourceMappingURL=list-page.css.map */
