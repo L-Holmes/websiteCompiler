@@ -1,6 +1,18 @@
-- fix the filtering
-    - need to add tags to items.
-    - check everything works as expected.
+todo coding
+
+- on item, slightly increase spacing between things. just a tiny bit margin perhaps, or xs spacing
+- make the clickable on hover thing come on when hovering over items. 
+- make the filter thing 85% and the sort 10% at the end
+- make it only one column on mobile
+- make the 'shop' use the same reusable format as the blogs page. 
+- extract the 'item' into its own shared component so im not reusing code???
+- sort out the sort button styling... again...
+- fix the opening page - top part of it - on mobile
+    - --> when overflow x....
+- could have it where by deffault, it shows the logos of the filters, but then when you expand it to full, it shows the text as well????????
+
+
+
 - add the filter button...
 - Add the feature where on filter button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
 

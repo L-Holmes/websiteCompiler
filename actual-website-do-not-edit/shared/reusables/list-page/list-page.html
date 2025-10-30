@@ -8,57 +8,7 @@
 			{page-navigation}
 
 			<br>
-            <div class="vert-spacing-xs"></div>
-
-            <div class="sort-wrapper" >
-
-  <!-- visible button (keeps normal flow so wrapper has size) -->
-  <div class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
-    <div class="sort-img">
-      <!-- svg -->
-      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 6l5-4 5 4H3z" fill="white"/>
-        <path d="M3 10l5 4 5-4H3z" fill="white"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- full-screen backdrop: clicking it closes (it's a label for the checkbox) -->
-  <div for="sortToggle" class="sort-backdrop" aria-hidden="true"></div>
-
-  <!-- dropdown box, positioned relative to the wrapper -->
-  <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
-    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
-    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
-    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">Date added</div>
-  </div>
-</div>
-
-            <div class="sort-wrapper" >
-
-  <!-- visible button (keeps normal flow so wrapper has size) -->
-  <div class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
-    <div class="sort-img">
-      <!-- svg -->
-      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 6l5-4 5 4H3z" fill="white"/>
-        <path d="M3 10l5 4 5-4H3z" fill="white"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- full-screen backdrop: clicking it closes (it's a label for the checkbox) -->
-  <div for="sortToggle" class="sort-backdrop" aria-hidden="true"></div>
-
-  <!-- dropdown box, positioned relative to the wrapper -->
-  <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
-    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
-    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
-    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">Date added</div>
-  </div>
-</div>
-
-
+            <div class="vert-spacing-s"></div>
 
 			<div data-filter="table" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'table')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
@@ -109,7 +59,32 @@
 
 
 
-            <div class="vert-spacing-xs"></div>
+            <div class="sort-wrapper" >
+
+  <!-- visible button (keeps normal flow so wrapper has size) -->
+  <div class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
+    <div class="sort-img">
+      <!-- svg -->
+      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 6l5-4 5 4H3z" fill="white"/>
+        <path d="M3 10l5 4 5-4H3z" fill="white"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- full-screen backdrop: clicking it closes (it's a label for the checkbox) -->
+  <div for="sortToggle" class="sort-backdrop" aria-hidden="true"></div>
+
+  <!-- dropdown box, positioned relative to the wrapper -->
+  <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
+    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
+    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">Date added</div>
+  </div>
+</div>
+
+
+            <div class="vert-spacing-m"></div>
 
             <div class="items" id="items">
 

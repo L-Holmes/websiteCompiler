@@ -925,6 +925,7 @@ body.font-dyslexia h4 {
 .single-item-wrapper {
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
+  gap: 10px 20px;
 }
 @media screen and (max-width: 441px) {
   .single-item-wrapper {
@@ -934,6 +935,15 @@ body.font-dyslexia h4 {
 
 .single-item {
   height: fit-content;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 15px; /* adds 10px internal space around all contents */
+  box-sizing: border-box;
+}
+
+.page-nav {
+  display: inline;
+  font-size: 0.75rem;
 }
 
 /*# sourceMappingURL=list-page.css.map */
