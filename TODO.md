@@ -1,9 +1,3 @@
-if the text is too big, hide the text, replace with text with info?
-    -> at least the dyslexia text since most people aren't dyslexic...
-- quick fix:
-    - just on small screens replace the language translate thing with literally just the one language change icon...
-    - same with dyslexia symbol?
-
 todo coding
 
 - on item, slightly increase spacing between things. just a tiny bit margin perhaps, or xs spacing

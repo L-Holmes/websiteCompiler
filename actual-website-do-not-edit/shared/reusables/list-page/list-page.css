@@ -943,6 +943,7 @@ body.font-dyslexia h4 {
   border-radius: 8px;
   padding: 15px; /* adds 10px internal space around all contents */
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .page-nav {
