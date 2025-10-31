@@ -4,34 +4,15 @@
 	<head>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="A cool website">
-		<link rel=stylesheet href="products.css">
+		
+		  <meta charset="UTF-8">
 
-		<!-- Non-critical CSS: deferred -->
-		<link rel="stylesheet" href="noncritical.css" media="print" onload="this.media='all'">
-		<noscript><link rel="stylesheet" href="noncritical.css"></noscript>
+		<link rel=stylesheet href="products2.css">
 
-		<!-- Early loading critical things, end -->
-		<script defer src="products.js"></script>
+		<script defer src="products2.js"></script>
         <script defer src="shared/global.js"></script>
 	</head>
 	<body>
-
-        <!-- Navigation bar -->
-		<div class="opening-page-content-wrapper">
-			<div class="index-main-wrapper">
-
-				<!-- Content section -->
-				<div class="content">
-
-					<h2 add-text-section="products"></h2>
-
-					<r-category-filter>
-
-					<!-- Language features -->
-					<a href="products.html" add-text-section="contact_us"></a>  
-
-					<a class="" href="item-sapp-boot.html"> Sapp boot </a>
-				</div>
-			</div>
+        <r-list-page content=@template:content-products page-navigation=@template:page-nav-products>
 	</body>
 </html>

@@ -196,6 +196,8 @@ body.font-dyslexia h4 {
 .ux-grid, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-item-wrapper, .ux-grid-specific {
   display: grid;
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .ux-grid-specific {
@@ -446,6 +448,8 @@ body.font-dyslexia h4 {
 }
 
 .button-hitbox {
+  overflow-x: hidden;
+  overflow-y: hidden;
   background: transparent;
   border: none;
   cursor: pointer;

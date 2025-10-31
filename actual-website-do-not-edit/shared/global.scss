@@ -336,6 +336,9 @@ body.font-dyslexia h4 {
 .ux-grid{
     display: grid;
     height: 100%;
+
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .ux-grid-specific{
@@ -626,6 +629,8 @@ $page-contents-margin-right:100px;
 
 .button-hitbox {
   // Set your desired hit area
+  overflow-x:hidden;
+  overflow-y:hidden;
   
   // Reset button styles
   background: transparent;

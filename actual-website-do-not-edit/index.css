@@ -196,6 +196,8 @@ body.font-dyslexia h4 {
 .ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .ux-grid-specific {
   display: grid;
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .ux-grid-specific {
@@ -446,6 +448,8 @@ body.font-dyslexia h4 {
 }
 
 .button-hitbox, .open-page-centred-box-DESKTOP, .open-page-left-box-DESKTOP, .open-page-right-box-DESKTOP, .search-bar-wrapper, .language-select-wrapper {
+  overflow-x: hidden;
+  overflow-y: hidden;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -532,12 +536,14 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid {
   grid-template-columns: auto;
-  grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
+  grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
 }
 
 .top-bar-row-1-grid {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 441px) {
   .top-bar-row-1-grid {

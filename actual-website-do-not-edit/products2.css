@@ -197,6 +197,8 @@ body.font-dyslexia h4 {
 .ux-grid, .filter-tile-img-wrapper, .filter-sticker, .filter-further-wrapper, .table-entry, .item-further, .item-learn-or-buy, .ux-grid-specific {
   display: grid;
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .ux-grid-specific {
@@ -447,6 +449,8 @@ body.font-dyslexia h4 {
 }
 
 .button-hitbox, .filter-top-bar-option {
+  overflow-x: hidden;
+  overflow-y: hidden;
   background: transparent;
   border: none;
   cursor: pointer;

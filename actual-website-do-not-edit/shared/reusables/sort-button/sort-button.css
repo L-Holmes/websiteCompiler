@@ -1,29 +1,22 @@
-@charset "UTF-8";
-/* CSS */
-/* Make wrapper hold the button in-flow and be the positioning context */
 .sort-wrapper {
   position: relative;
-  display: inline-block; /* prevents page reflow, sizes to the button */
+  display: inline-block;
   font-family: system-ui, sans-serif;
 }
 
-/* hidden checkbox */
 .sort-toggle {
   position: absolute;
-  left: -9999px; /* keep it off-screen but available for labels */
+  overflow: hidden;
+  clip-path: inset(50%);
   width: 1px;
   height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  padding: 0;
+  margin: -1px;
   border: 0;
+  white-space: nowrap;
 }
 
-/* style the label like your button */
 .sort-button {
-  display: flex;
-  align-items: center; /* ✅ added to vertically center the SVG */
-  gap: 8px;
   padding: 10px 15px;
   color: white;
   border: none;
@@ -31,74 +24,54 @@
   cursor: pointer;
   font-size: 14px;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
 }
 
-/* backdrop hidden by default; becomes visible when checkbox is checked */
-.sort-backdrop {
-  display: none;
-}
-
-/* the backdrop covers the whole screen so clicking outside closes the menu */
-.sort-toggle:checked ~ .sort-backdrop {
-  display: block;
-  position: fixed;
-  inset: 0; /* top:0;right:0;bottom:0;left:0 */
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 1000;
-}
-
-/* show the box when checked */
-.sort-toggle:checked ~ .sort-box {
-  display: block;
-}
-
-/* simple option styles */
-.sort-option {
-  padding: 8px 10px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.sort-option + .sort-option {
-  margin-top: 6px;
-}
-
-/* optional: close the menu if user presses escape (no JS) — not possible, but keep accessible labeling */
-/* Accessibility tweak: reflect expanded state for screen readers using CSS attribute toggling if desired */
-.sort-toggle:checked + .sort-button { /* + because checkbox is immediate sibling of label in DOM */
-  /* change visual state if you want; also helps sighted users know it's open */
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12) inset;
-}
-
-/* Positioning variations */
-/* -- place the menu below the button: .sort-box { top: 100%; } */
-/* -- place the menu above the button: .sort-box { top: 0; transform: translateY(-100%); } */
 .sort-button:hover {
   background-color: #555;
 }
 
-.sort-img {
-  width: 16px;
-  height: 16px;
+.sort-backdrop {
+  display: none;
 }
 
-/* Sort options box */
+.sort-toggle:checked ~ .sort-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
 .sort-box {
   display: none;
-  position: absolute; /* stay positioned relative to .sort-wrapper */
-  top: 0; /* align the top of the box with the top of the button */
-  transform: translateY(0); /* no centering transform */
+  position: absolute;
+  /* NEW: Position it relative to the wrapper */
+  top: -50%; /* Places the top edge of the box exactly at the bottom edge of the button/wrapper */
+  left: 0;
+  transform: none;
   width: 200px;
-  max-height: calc(100vh - 12px); /* prevent the box from growing past the viewport */
+  max-height: calc(100vh - 12px);
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  z-index: 1001; /* Ensure it floats above the rest of the page content */
 }
 
-/* Sort option items */
+.sort-toggle:checked ~ .sort-box {
+  display: block;
+}
+
+.sort-toggle:checked + .sort-button {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12) inset;
+}
+
 .sort-option {
   width: 100%;
   padding: 15px;
@@ -120,7 +93,6 @@
   border-bottom: none;
 }
 
-/* Active state */
 .sort-option.active {
   background-color: #007bff;
   color: white;

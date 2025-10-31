@@ -73,7 +73,7 @@
 .top-bar-row-grid{
 	@extend .ux-grid;	
 	grid-template-columns: auto; 
-    grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
+    grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
 }
 
 .top-bar-row-1-grid{
@@ -84,6 +84,9 @@
   @media screen and (max-width: 441px){
       grid-template-columns:0.5fr 0.5fr; 
 	}
+
+overflow-y: hidden;
+overflow-x: hidden;
 }
 
 .top-bar-row-2-grid{
