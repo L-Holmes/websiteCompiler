@@ -519,7 +519,7 @@ body.font-dyslexia h4 {
   }
 }
 
-.top-bar-img, .top-bar-contact-img {
+.top-bar-img, .dyslexia-img, .top-bar-contact-img {
   width: 50px;
   height: 50px;
 }
@@ -590,7 +590,9 @@ body.font-dyslexia h4 {
 .search-container {
   position: relative;
   width: 100%;
-  height: 48px;
+  min-height: 52px; /* base height */
+  height: auto; /* allow it to grow naturally */
+  align-items: center; /* vertical centering */
 }
 
 .search-input {
@@ -744,6 +746,15 @@ body.font-dyslexia h4 {
   .change-lang-img {
     width: 40px;
     height: 40px;
+    margin-top: 30%;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .dyslexia-img {
+    width: 40px;
+    height: 40px;
+    margin-top: -30%;
   }
 }
 
