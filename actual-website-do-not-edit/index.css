@@ -486,7 +486,6 @@ body.font-dyslexia h4 {
 
 .index-content-wrapper-DESKTOP {
   width: 100%;
-  height: 97%;
 }
 @media screen and (max-width: 441px) {
   .index-content-wrapper-DESKTOP {
@@ -538,7 +537,7 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid {
   grid-template-columns: auto;
-  grid-template-rows: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
+  grid-template-rows: 0.15fr 0.21fr 0.21fr 0.21fr 0.22fr;
 }
 
 .top-bar-row-1-grid {
@@ -740,6 +739,11 @@ body.font-dyslexia h4 {
     height: 40px;
   }
 }
+@media screen and (max-height: 600px) {
+  .planet-earth-img {
+    display: none;
+  }
+}
 
 .change-lang-img {
   width: 55px;
@@ -750,6 +754,46 @@ body.font-dyslexia h4 {
     width: 40px;
     height: 40px;
     margin-top: 30%;
+  }
+}
+@media screen and (max-height: 600px) {
+  .change-lang-img {
+    display: none;
+  }
+}
+
+.planet-earth-img-lateral {
+  width: 55px;
+  height: 55px;
+  display: none;
+}
+@media screen and (max-width: 440px) {
+  .planet-earth-img-lateral {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-height: 600px) {
+  .planet-earth-img-lateral {
+    display: block;
+  }
+}
+
+.change-lang-img-lateral {
+  width: 55px;
+  height: 55px;
+  display: none;
+}
+@media screen and (max-width: 440px) {
+  .change-lang-img-lateral {
+    width: 40px;
+    height: 40px;
+    margin-top: 30%;
+  }
+}
+@media screen and (max-height: 600px) {
+  .change-lang-img-lateral {
+    display: block;
   }
 }
 
