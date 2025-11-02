@@ -465,6 +465,11 @@ body.font-dyslexia h4 {
 }
 .button-hitbox .text-itself {
   color: #f5f5f5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: block;
 }
 .button-hitbox:hover .button-itelf {
   background: #0056b3;

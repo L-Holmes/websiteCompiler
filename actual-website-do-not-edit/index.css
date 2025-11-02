@@ -465,6 +465,11 @@ body.font-dyslexia h4 {
 }
 .button-hitbox .text-itself, .open-page-centred-box-DESKTOP .text-itself, .open-page-left-box-DESKTOP .text-itself, .open-page-right-box-DESKTOP .text-itself, .search-bar-wrapper .text-itself, .language-select-wrapper .text-itself {
   color: #f5f5f5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: block;
 }
 .button-hitbox:hover .button-itelf, .open-page-centred-box-DESKTOP:hover .button-itelf, .open-page-left-box-DESKTOP:hover .button-itelf, .open-page-right-box-DESKTOP:hover .button-itelf, .search-bar-wrapper:hover .button-itelf, .language-select-wrapper:hover .button-itelf {
   background: #0056b3;
@@ -577,6 +582,7 @@ body.font-dyslexia h4 {
   grid-template-columns: auto;
   grid-template-rows: 0.15fr 0.85fr;
   height: auto;
+  width: 100%;
 }
 
 .search-bar-wrapper {

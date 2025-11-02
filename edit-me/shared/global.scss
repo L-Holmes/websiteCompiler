@@ -657,6 +657,12 @@ $page-contents-margin-right:100px;
   .text-itself{
     color:$text-colour-primary;
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: block;
+
   }
   
   &:hover .button-itelf {

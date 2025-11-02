@@ -466,6 +466,11 @@ body.font-dyslexia h4 {
 }
 .button-hitbox .text-itself, .filter-top-bar-option .text-itself, .button-hitbox .filter-top-bar-text, .filter-top-bar-option .filter-top-bar-text {
   color: #f5f5f5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: block;
 }
 .button-hitbox:hover .button-itelf, .filter-top-bar-option:hover .button-itelf {
   background: #0056b3;
