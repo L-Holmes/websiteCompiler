@@ -24,7 +24,7 @@
 
 
 .open-page-left-box-DESKTOP{
-  @extend .button-hitbox;
+  @extend .button-hitbox-page-link;
   justify-content: center; /* left align horizontally */
   align-items: center; /* align to the top (vertical) */
   padding-left:40%; 
@@ -35,7 +35,7 @@
 }
 
 .open-page-right-box-DESKTOP{
-  @extend .button-hitbox;
+  @extend .button-hitbox-page-link;
   justify-content: center; /* left align horizontally */
   align-items: center; /* align to the top (vertical) */
   padding-right:40%; 
@@ -44,7 +44,6 @@
     padding-right:0px;
 	}
 }
-
 
 // -------------------------------------------
 

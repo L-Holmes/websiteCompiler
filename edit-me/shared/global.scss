@@ -640,6 +640,7 @@ $page-contents-margin-right:100px;
   // Center the visual element
   display: flex;
 
+
   // USER DEFINES THESSE
   // align-items: center;
   // justify-content: center;
@@ -657,12 +658,11 @@ $page-contents-margin-right:100px;
   .text-itself{
     color:$text-colour-primary;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 90%;
-  display: block;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+    display: block;
   }
   
   &:hover .button-itelf {
@@ -677,5 +677,10 @@ $page-contents-margin-right:100px;
     outline: 2px solid #0056b3;
     outline-offset: 2px;
   }
+}
+
+.button-hitbox-page-link{
+  @extend .button-hitbox;
+  display:block;
 }
 // =============================================================
