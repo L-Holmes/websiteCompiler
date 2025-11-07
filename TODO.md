@@ -1,6 +1,4 @@
 todo coding
-- search bar still clips a bit. Fix that.
-
 
 - add the 'more filters' button (with a '...'?)
     - Add the feature where on filter button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
@@ -14,9 +12,6 @@ todo coding
 for the blogs / products, consider having no columns? and just having a fixed width for the boxes so that they flow better and sort easier?
     - so they are say 40% width, so then on flow they automatically go into 2 columns????
 ----------------------------------------------------
-
-- make search bar clickable from anywhere
-
 
 # Longer term road map
 - Get all of the links on the home page going to actual pages
