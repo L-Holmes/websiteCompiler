@@ -29,6 +29,11 @@
   align-items: center;
   line-height: 0;
 }
+@media screen and (max-width: 370px) {
+  .sort-button {
+    width: 100vw;
+  }
+}
 
 .sort-button:hover {
   background-color: #555;

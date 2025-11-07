@@ -358,6 +358,15 @@ body.font-dyslexia h4 {
     min-width: 0; // PREVENT FROM GROWING LARGER THAN CONTAINER
 }
 
+.flow-wrapper {
+  @extend .centre-wrapper;
+
+  // Override gaps for tighter layout
+  flex-wrap: wrap;           // allow items to move to next line
+  column-gap: 0.3rem;  // horizontal spacing
+  row-gap: 0.1rem;     // vertical spacing
+}
+
 .centre-at-top-wrapper{
 	display: flex;
 	justify-content: center;

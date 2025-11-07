@@ -206,13 +206,19 @@ body.font-dyslexia h4 {
   grid-template-rows: 0.25fr 0.5fr 0.25fr;
 }
 
-.centre-wrapper, .filter-under-filter-wrapper, .filter-parent-top-bar, .centred-with-bottom-border {
+.centre-wrapper, .filter-under-filter-wrapper, .filter-parent-top-bar, .centred-with-bottom-border, .flow-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
   min-width: 0;
+}
+
+.flow-wrapper {
+  flex-wrap: wrap;
+  column-gap: 0.3rem;
+  row-gap: 0.1rem;
 }
 
 .centre-at-top-wrapper {
@@ -448,7 +454,7 @@ body.font-dyslexia h4 {
   overflow-y: hidden;
 }
 
-.button-hitbox, .filter-top-bar-option {
+.button-hitbox, .filter-top-bar-option, .button-hitbox-page-link {
   overflow-x: hidden;
   overflow-y: hidden;
   background: transparent;
@@ -456,7 +462,7 @@ body.font-dyslexia h4 {
   cursor: pointer;
   display: flex;
 }
-.button-hitbox .button-itelf, .filter-top-bar-option .button-itelf {
+.button-hitbox .button-itelf, .filter-top-bar-option .button-itelf, .button-hitbox-page-link .button-itelf {
   background: #007bff;
   color: white;
   padding: 8px 16px;
@@ -464,7 +470,7 @@ body.font-dyslexia h4 {
   transition: background-color 0.2s;
   pointer-events: none;
 }
-.button-hitbox .text-itself, .filter-top-bar-option .text-itself, .button-hitbox .filter-top-bar-text, .filter-top-bar-option .filter-top-bar-text {
+.button-hitbox .text-itself, .filter-top-bar-option .text-itself, .button-hitbox .filter-top-bar-text, .filter-top-bar-option .filter-top-bar-text, .button-hitbox-page-link .text-itself, .button-hitbox-page-link .filter-top-bar-text {
   color: #f5f5f5;
   white-space: nowrap;
   overflow: hidden;
@@ -472,15 +478,19 @@ body.font-dyslexia h4 {
   max-width: 90%;
   display: block;
 }
-.button-hitbox:hover .button-itelf, .filter-top-bar-option:hover .button-itelf {
+.button-hitbox:hover .button-itelf, .filter-top-bar-option:hover .button-itelf, .button-hitbox-page-link:hover .button-itelf {
   background: #0056b3;
 }
-.button-hitbox:hover .text-itself, .filter-top-bar-option:hover .text-itself, .button-hitbox:hover .filter-top-bar-text, .filter-top-bar-option:hover .filter-top-bar-text {
+.button-hitbox:hover .text-itself, .filter-top-bar-option:hover .text-itself, .button-hitbox:hover .filter-top-bar-text, .filter-top-bar-option:hover .filter-top-bar-text, .button-hitbox-page-link:hover .text-itself, .button-hitbox-page-link:hover .filter-top-bar-text {
   color: #F0B300;
 }
-.button-hitbox:focus, .filter-top-bar-option:focus {
+.button-hitbox:focus, .filter-top-bar-option:focus, .button-hitbox-page-link:focus {
   outline: 2px solid #0056b3;
   outline-offset: 2px;
+}
+
+.button-hitbox-page-link {
+  display: block;
 }
 
 .filterable {
@@ -936,7 +946,7 @@ body.font-dyslexia h4 {
   grid-template-columns: 0.5fr 0.5fr;
   gap: 10px 20px;
 }
-@media screen and (max-width: 441px) {
+@media screen and (max-width: 720px) {
   .single-item-wrapper {
     grid-template-columns: 1fr;
   }
@@ -954,6 +964,11 @@ body.font-dyslexia h4 {
 .page-nav {
   display: inline;
   font-size: 0.75rem;
+}
+
+.products-div {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /*# sourceMappingURL=list-page.css.map */

@@ -727,6 +727,10 @@ body.font-dyslexia h4 {
   min-width: min-content;
 }
 
+.language-text {
+  min-width: max-content;
+}
+
 @media screen and (max-width: 440px) {
   .hide-on-mobile {
     display: none;
