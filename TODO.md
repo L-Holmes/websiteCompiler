@@ -1,9 +1,6 @@
 todo coding
-- next: sort out index page things squishing...
-    - the text and the change lang...
+- search bar still clips a bit. Fix that.
 
-for the blogs / products, consider having no columns? and just having a fixed width for the boxes so that they flow better and sort easier?
-    - so they are say 40% width, so then on flow they automatically go into 2 columns????
 
 - add the 'more filters' button (with a '...'?)
     - Add the feature where on filter button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
@@ -12,10 +9,11 @@ for the blogs / products, consider having no columns? and just having a fixed wi
 
 - Add price to example elements (and date) so i can integrate sort.
 
-----------------------------------------------------
 
-- work on the blogs
-    - get the blogs all importing the global blogs css 
+## Considerations
+for the blogs / products, consider having no columns? and just having a fixed width for the boxes so that they flow better and sort easier?
+    - so they are say 40% width, so then on flow they automatically go into 2 columns????
+----------------------------------------------------
 
 - make search bar clickable from anywhere
 
