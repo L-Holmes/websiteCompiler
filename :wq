@@ -734,10 +734,8 @@
   // @media screen and (max-width: 720px) {
     // grid-template-columns: 1fr;
   // }
-
-  display: inline-flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  display:flex;
+  flex-direction:flow;
   gap: 10px 20px;
 }
 
@@ -750,12 +748,6 @@
   padding: 15px; /* adds 10px internal space around all contents */
   box-sizing: border-box; 
   cursor: pointer;
-
-  width:47%;
-
-  @media screen and (max-width: 550px) {
-    width:95%;
-  }
 }
 
 .page-nav{

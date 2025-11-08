@@ -244,3 +244,81 @@ function restoreFiltersFromParams(): void {
 document.addEventListener('DOMContentLoaded', function () {
     restoreFiltersFromParams();
 });
+
+
+// ============================================================
+// ============================================================
+// ============================================================
+// ============================================================
+// ============================================================
+
+
+
+// function openAllFilters() {
+	// const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
+	// const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
+// 
+	// console.log("opening all filters");
+// 
+	// if (mainWrapper) mainWrapper.style.display = "none";
+	// if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
+// 
+	// // Push a new state to history
+	// history.pushState({ languageBoxOpen: true }, "", "#all-filters");
+// }
+// 
+// 
+// function closeAllFilters() {
+	// const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
+	// const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
+// 
+	// console.log("opening all filters");
+// 
+	// if (mainWrapper) mainWrapper.style.display = "block";
+	// if (sideContentWrapper) sideContentWrapper.style.display = "none";
+// 
+	// // Push a new state to history
+	// history.pushState({ languageBoxOpen: true }, "", "#list-page");
+// }
+
+
+function openAllFilters() {
+  document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+    (el as HTMLElement).style.display = "none";
+  });
+
+  document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+    (el as HTMLElement).style.display = "inline-flex";
+  });
+
+  history.pushState({ languageBoxOpen: true }, "", "#all-filters");
+}
+
+function closeAllFilters() {
+  document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+    (el as HTMLElement).style.display = "block";
+  });
+
+  document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+    (el as HTMLElement).style.display = "none";
+  });
+
+  history.pushState({ languageBoxOpen: false }, "", "#list-page");
+}
+
+
+// Restore when back button is clicked
+window.addEventListener("popstate", (event) => {
+	const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
+	const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
+
+	if (event.state?.languageBoxOpen) {
+		// If state indicates the language box, show it
+		if (mainWrapper) mainWrapper.style.display = "none";
+		if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
+	} else {
+		// Otherwise, revert to original content
+		if (mainWrapper) mainWrapper.style.display = "grid";
+		if (sideContentWrapper) sideContentWrapper.style.display = "none";
+	}
+});

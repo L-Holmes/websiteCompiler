@@ -1,7 +1,4 @@
-todo coding
-
-- add the 'more filters' button (with a '...'?)
-    - Add the feature where on filter button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
+- Add the feature where on more filters button clicked, it hides everythin, like the language select, and shows only the filters, with button always visible 'search' / 'apply' / 'view results'
 - extract the 'item' into its own shared component so im not reusing code???
 
 
