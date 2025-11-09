@@ -35,7 +35,7 @@
 
 
 				<div class="flow-wrapper">
-					<div data-filter="table" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'table')">
+					<div data-filter="table" class="filter-tile filter-btn {extraClass}" onclick="handleFilterClicked(this, 'table')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
@@ -51,7 +51,7 @@
 </div>
 
 
-					<div data-filter="boot" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'boot')">
+					<div data-filter="boot" class="filter-tile filter-btn {extraClass}" onclick="handleFilterClicked(this, 'boot')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
@@ -67,7 +67,7 @@
 </div>
 
 
-					<div data-filter="shoe" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'shoe')">
+					<div data-filter="shoe" class="filter-tile filter-btn {extraClass}" onclick="handleFilterClicked(this, 'shoe')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
@@ -113,15 +113,13 @@
   <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
     <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
     <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
-    <div class="sort-option" role="menuitem" onclick="handleDateAddedClicked()">Date added</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateOldNewClicked()">Oldest to newest</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateNewOldClicked()">Newest to oldest</div>
   </div>
 </div>
 
 
-
-					<div class="all-filters-wrapper">
-
-						<div data-filter="table" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'table')">
+					<div data-filter="table" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'table')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
@@ -137,7 +135,7 @@
 </div>
 
 
-						<div data-filter="boot" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'boot')">
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
@@ -153,7 +151,7 @@
 </div>
 
 
-						<div data-filter="shoe" class="filter-tile filter-btn" onclick="handleFilterClicked(this, 'shoe')">
+					<div data-filter="shoe" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'shoe')">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="filter-icon-wrapper">
 		<img class="filter-icon" src="shared/images/filtering/filters/shoe.png" alt="filter-img" loading="lazy"> 
@@ -169,12 +167,363 @@
 </div>
 
 
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
 
-						<button onclick="closeAllFilters(this)">
-							See results
-						</button>
 
-					</div>
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			fjeksfjl fjekslfjsejkfjlsk 
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			fjeksfjl fjekslfjsejkfjlsk fjeklfjlksfjkle fjesklfjels
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/table.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			fjeksfjl fjekslfjsejkfjlsk
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+					<div data-filter="boot" class="filter-tile filter-btn all-filters-wrapper" onclick="handleFilterClicked(this, 'boot')">
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="filter-icon-wrapper">
+		<img class="filter-icon" src="shared/images/filtering/filters/boot.png" alt="filter-img" loading="lazy"> 
+	</div>
+	<!-- {image-icon} --> <!-- Optional image icon -->
+	<div class="title-and-info-wrapper">
+		<div class="item-title"> 
+			wow!
+			<img class="info-icon" src="shared/images/filtering/info-icon.png" alt="info">   
+			<img class="info-hover-icon" src="shared/images/filtering/info-icon-hover.png" alt="info">   
+		</div>
+	</div>
+</div>
+
+
+
+					<button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
+						See results
+					</button>
+
 				</div>
 
 				<div class="vert-spacing-m"></div>
@@ -186,7 +535,7 @@
 
 <div class="single-item-wrapper">
 
-	<a class="single-item" data-text="sapp-boot" data-tag="shoe">
+	<a class="single-item" data-text="sapp-boot" data-tag="shoe" data-price="36" data-date-epoch='1'>
 		<div class="align-centre">
 			<img class="item-images" src="shared/images/page-images/products/sapp-boot.avif" alt="sapp boot"  loading="lazy">
 		</div>
@@ -199,7 +548,7 @@
 		</div>
 	</a>
 	
-	<a class="single-item" data-text="boot" data-tag="boot">
+	<a class="single-item" data-text="boot" data-tag="boot" data-price="120" data-date-epoch='3'>
 		<div class="align-centre">
 			<img class="item-images" src="shared/images/page-images/products/boot.avif" alt="regular boot"  loading="lazy">
 		</div>
@@ -212,7 +561,7 @@
 		</div>
 	</a>
 
-	<a class="single-item" data-text="table" data-tag="table">
+	<a class="single-item" data-text="table" data-tag="table" data-price="1000" data-date-epoch='2'>
 		<div class="align-centre">
 			<img class="item-images" src="shared/images/page-images/products/table.avif" alt="regular table"  loading="lazy">
 		</div>
