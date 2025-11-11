@@ -23,7 +23,7 @@
 
 					<div class="top-bar-row-1-grid">
 
-						<label class="open-page-centred-box-DESKTOP" for="main-search">
+						<!-- <label class="open-page-centred-box-DESKTOP" for="main-search">
 
 							<div class="search-bar-wrapper">
 								<div class="search-container">
@@ -35,7 +35,25 @@
 								</div>
 							</div>
 
-						</label>
+                        </label> -->
+
+
+                        <!-- Search input (already in your page) -->
+                        <label class="open-page-centred-box-DESKTOP" for="main-search">
+                          <div class="search-bar-wrapper">
+                            <div class="search-container">
+                              <input id="main-search" type="text" class="search-input" placeholder="Search...">
+                              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"
+                                   onclick="runSearch()">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                              </svg>
+                            </div>
+                          </div>
+                        </label>
+
+                        <!-- Search results popup -->
+                        <div id="search-results-popup" class="search-results-popup hidden"></div>
 
 					</div>
 

@@ -477,3 +477,224 @@ window.addEventListener("popstate", (event) => {
 });
 
 
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
+// SEARCH SEARCH SEARCH
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
+
+// search.ts (TypeScript safe, pre-ES6 style, minimal)
+
+// <reference path="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js" />
+
+// Tell TS that Fuse exists globally
+declare var Fuse: any;
+
+interface PageData {
+  title: string;
+  url: string;
+  tags: string[];
+}
+
+var pages: PageData[] = [
+  { title: "Other resources", url: "http://localhost:8000/blog/other-resources/other-resources.html", tags: ["links","link","other","cool"] },
+  { title: "Products Table", url: "http://localhost:8000/blogs.html?category=products&filters=table", tags: ["products","table"] }
+];
+
+var fuse: any = null;
+
+// Lazy initialize Fuse
+function initFuse(): void {
+  if (!fuse) {
+    console.log("[search] Initializing Fuse.js");
+    fuse = new Fuse(pages, { keys: ["title", "tags"], includeScore: true, threshold: 0.3 });
+  }
+}
+
+// Perform search
+function performSearch(query: string): PageData[] {
+  initFuse();
+  if (!query) return [];
+  var results = fuse.search(query);
+  console.log("[search] Found " + results.length + " results for query: " + query);
+  var items: PageData[] = [];
+  for (var i = 0; i < results.length; i++) {
+    items.push(results[i].item);
+  }
+  return items;
+}
+
+// Render results in popup
+function renderResults(results: PageData[]): void {
+  var popup = document.getElementById("search-results-popup");
+  if (!popup) return;
+
+  popup.innerHTML = "";
+
+  if (results.length === 0) {
+    popup.innerHTML = `
+        <p>Hmmm looks like we didn't find anything...</p>
+        <p>Perhaps you could check out our 
+          <a href="http://localhost:8000/blogs.html?category=products">new here pages</a>
+          or the 
+          <a href="http://localhost:8000/blogs.html?category=products">blogs page</a>.
+        </p>
+      `;
+  } else {
+    var ul = document.createElement("ul");
+    for (var i = 0; i < results.length; i++) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = results[i].url;
+      a.textContent = results[i].title;
+      // a.target = "_blank";
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    popup.appendChild(ul);
+  }
+
+  showResultsPopup();
+}
+
+// Show popup
+// function showResultsPopup(): void {
+  // var popup = document.getElementById("search-results-popup");
+  // if (!popup) return;
+// 
+  // popup.classList.remove("hidden");
+// 
+  // var overlay = document.createElement("div");
+  // overlay.className = "search-results-overlay";
+  // document.body.appendChild(overlay);
+// 
+  // overlay.addEventListener("click", function() {
+    // popup.classList.add("hidden");
+    // document.body.removeChild(overlay);
+  // });
+// }
+
+
+function showResultsPopup(): void {
+  var popup = document.getElementById("search-results-popup");
+  if (!popup) return;
+
+  popup.classList.remove("hidden");
+
+  // Create overlay to darken background and detect clicks outside
+  var overlay = document.createElement("div");
+  overlay.className = "search-results-overlay";
+  document.body.appendChild(overlay);
+
+  // Optional: remove overlay if user clicks outside
+  overlay.onclick = function() {
+    popup.classList.add("hidden");
+    document.body.removeChild(overlay);
+  };
+
+  // Add close button
+  var closeBtn = document.createElement("button");
+  closeBtn.textContent = "×"; // simple "X"
+  closeBtn.className = "search-close-button";
+
+  closeBtn.onclick = function() {
+    popup.classList.add("hidden");
+    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  };
+
+  popup.appendChild(closeBtn);
+}
+
+// Handle search
+// function handleSearch(): void {
+  // var input = document.getElementById("main-search") as HTMLInputElement | null;
+  // if (!input) return;
+// 
+  // var query = input.value.trim();
+  // if (!query) return;
+// 
+  // console.log("[handleSearch] Searching for:", query);
+  // var results = performSearch(query);
+  // renderResults(results);
+// }
+
+
+function handleSearch(): void {
+  var input = document.getElementById("main-search") as HTMLInputElement | null;
+  if (!input) return;
+  var query = input.value.trim();
+  if (!query) return;
+
+  // Load Fuse.js lazily, then perform search
+  loadSearchLibrary(function() {
+    console.log("[handleSearch] Performing search after library loaded");
+    var results = performSearch(query);
+    renderResults(results);
+  });
+}
+
+// Setup events
+function setupSearchEvents(): void {
+  var searchIcon = document.querySelector(".search-icon") as SVGElement | null;
+  var searchInput = document.getElementById("main-search") as HTMLInputElement | null;
+
+  if (searchIcon) searchIcon.onclick = handleSearch;
+  if (searchInput) {
+    searchInput.onkeypress = function(e: KeyboardEvent) {
+      var key = e.key || e.keyCode;
+      if (key === "Enter" || key === 13) handleSearch();
+    };
+  }
+}
+
+// Initialize
+window.onload = function() {
+  console.log("[init] Initializing search system");
+  setupSearchEvents();
+};
+
+
+// Hide popup on ESC key
+document.addEventListener(
+  "keydown",
+  function(e: KeyboardEvent) {
+    if (e.key === "Escape" || e.key === "Esc" || e.keyCode === 27) {
+      // keep the default blur/focus behavior
+      console.log("[Esc] Closing search popup");
+
+      var popup = document.getElementById("search-results-popup");
+      if (popup && !popup.classList.contains("hidden")) {
+        popup.classList.add("hidden");
+
+        // remove overlay if present
+        var overlay = document.querySelector(".search-results-overlay");
+        if (overlay && overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+      }
+    }
+  },
+  true // capture phase ensures this runs before input handles it
+);
+
+
+
+function loadSearchLibrary(callback: () => void) {
+  if ((window as any).Fuse) {
+    callback();
+    return;
+  }
+
+  var script = document.createElement("script");
+  script.src = "https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js";
+  script.onload = callback;
+  document.body.appendChild(script);
+}
+
+// Expose for inline onclick
+(window as any).runSearch = handleSearch;
+

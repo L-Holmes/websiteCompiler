@@ -475,3 +475,90 @@ overflow-x: hidden;
   border: solid white 1px;
   border-radius:12px;
 }
+
+
+
+// =========================================================
+// =========================================================
+// =========================================================
+// SEARCH
+// =========================================================
+// =========================================================
+// =========================================================
+
+
+.search-results-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  max-width: 1200px;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 9999;
+
+  &.hidden {
+    display: none;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0.5rem 0;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p {
+    color: #666;
+    font-style: italic;
+  }
+}
+
+// Overlay to detect outside click (optional)
+.search-results-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+}
+
+
+.search-close-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-close-button:hover {
+  background: #555;
+}

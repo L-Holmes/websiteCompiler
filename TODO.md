@@ -1,6 +1,4 @@
 
-- need to make the filters themselves seperate, and passed in to the template based on whether blogs or products
-- add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
 - work out what to do with the search...
     - just add some basic js, loaded on search, that just searches through all blogs / products???
 - Add the donation buttons
@@ -10,7 +8,14 @@
 - bug when returning back to home page, it doesn't update the url with correct filters.
     - so it messes up when you then return back to the products/blogs. (+ since blogs and products share things...)
     - just remove the urls when returning back, I reckon.
-- Price high-to-low doesn't seem to work (when we have just boot and sapp-boot at least...)
+- add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
+
+
+# Other things to consider;
+- Sponsers / Advertisements / Affiliate links page????
+    - would these be part of the 'support us' page?
+    - i think links to reddit etc. would be on there...
+- Links to podcast / youtube????
 
 # Longer term road map
 - Launch my website as a github website
