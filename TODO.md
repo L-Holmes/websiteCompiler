@@ -1,6 +1,4 @@
-- Work out what t odo with aeasthetics of filters
-    - add more spacing when showing all filters
-    - perhaps more lateral space to seperate sort from the intro filters
+
 - need to make the filters themselves seperate, and passed in to the template based on whether blogs or products
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
 - work out what to do with the search...
