@@ -1,4 +1,3 @@
-- extract the 'item' into its own shared component so im not reusing code???
 - Work out what t odo with aeasthetics of filters
     - add more spacing when showing all filters
     - perhaps more lateral space to seperate sort from the intro filters
@@ -9,6 +8,11 @@
 - Add the donation buttons
     - + consider what else I need... is it just donations?
     - perhaps a contact??
+- Clear all filters button
+- bug when returning back to home page, it doesn't update the url with correct filters.
+    - so it messes up when you then return back to the products/blogs. (+ since blogs and products share things...)
+    - just remove the urls when returning back, I reckon.
+- Price high-to-low doesn't seem to work (when we have just boot and sapp-boot at least...)
 
 # Longer term road map
 - Launch my website as a github website

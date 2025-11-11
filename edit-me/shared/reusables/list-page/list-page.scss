@@ -810,3 +810,12 @@
     background: #121212;
   }
 }
+
+
+
+.thin-item{
+  @media screen and (max-width: 330px) {
+    margin-left:20%;
+    margin-right:20%;
+  }
+}

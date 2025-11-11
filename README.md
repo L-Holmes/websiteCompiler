@@ -6,7 +6,7 @@ cargo run
 
 # reference for me on running the server
 NOT!!!!!!!!!!! webfsd -F -p 8080 -r "$PWD" -i index.html
-python3 -m http.server 8000
+cd .. && cd actual-website-do-not-edit/ && python3 -m http.server 8000
 sudo lsof -i :8000
 
 
