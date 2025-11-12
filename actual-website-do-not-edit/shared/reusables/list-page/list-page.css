@@ -980,6 +980,7 @@ body.font-dyslexia h4 {
 .page-nav {
   display: inline;
   font-size: 0.75rem;
+  margin: 5px;
 }
 
 .products-div {

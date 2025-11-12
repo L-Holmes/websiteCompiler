@@ -1,12 +1,18 @@
-- Add the donation buttons
+
+
+
+- (don't) Add the donation buttons
     - + consider what else I need... is it just donations?
     - perhaps a contact??
-- Clear all filters button
-- bug when returning back to home page, it doesn't update the url with correct filters.
-    - so it messes up when you then return back to the products/blogs. (+ since blogs and products share things...)
-    - just remove the urls when returning back, I reckon.
+    -->
+    Hmmmmmmmmmm
+    Would it be cleaner to have 'how to support us' as the default option in the blogs/products list????
+    --> But for products, name it like the benefits you get "Join our community (We want you!(re intelligence!) "
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
 - Make the sort popup and the search results popup be styled correctly... (not white background...)
+    - + implement sort popup for mobile...
+- Sort out the 'close popup' icon for the search results.
+- Update the primary text to something more readable...
 
 # Other things to consider;
 - Sponsers / Advertisements / Affiliate links page????
