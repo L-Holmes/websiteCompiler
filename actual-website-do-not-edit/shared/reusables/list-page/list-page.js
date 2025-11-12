@@ -198,32 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
 // ============================================================
 // ============================================================
 // ============================================================
-// function openAllFilters() {
-// const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
-// const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
-// 
-// console.log("opening all filters");
-// 
-// if (mainWrapper) mainWrapper.style.display = "none";
-// if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
-// 
-// // Push a new state to history
-// history.pushState({ languageBoxOpen: true }, "", "#all-filters");
-// }
-// 
-// 
-// function closeAllFilters() {
-// const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
-// const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
-// 
-// console.log("opening all filters");
-// 
-// if (mainWrapper) mainWrapper.style.display = "block";
-// if (sideContentWrapper) sideContentWrapper.style.display = "none";
-// 
-// // Push a new state to history
-// history.pushState({ languageBoxOpen: true }, "", "#list-page");
-// }
 function openAllFilters() {
     document.querySelectorAll(".list-page-wrapper").forEach((el) => {
         el.style.display = "none";
@@ -262,3 +236,23 @@ window.addEventListener("popstate", (event) => {
             sideContentWrapper.style.display = "none";
     }
 });
+//================================================================================================================================= 
+//================================================================================================================================= 
+//================================================================================================================================= 
+//================================================================================================================================= 
+// CLEARING FILTERS
+function clearFilters() {
+    // Get all selected filter buttons
+    const selectedButtons = document.querySelectorAll('.' + SELECTED_FILTER_CLASS);
+    // Unselect each one visually
+    selectedButtons.forEach((btnEl) => {
+        btnEl.classList.remove(SELECTED_FILTER_CLASS);
+    });
+    // Show all filterable items
+    const filterableItems = document.querySelectorAll(FILTERABLE_ITEM_SELECTOR);
+    filterableItems.forEach((item) => {
+        item.style.display = "";
+    });
+    // Update URL so it no longer has ?filters=
+    updateFilterParams();
+}

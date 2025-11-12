@@ -1,6 +1,3 @@
-
-- work out what to do with the search...
-    - just add some basic js, loaded on search, that just searches through all blogs / products???
 - Add the donation buttons
     - + consider what else I need... is it just donations?
     - perhaps a contact??
@@ -9,7 +6,7 @@
     - so it messes up when you then return back to the products/blogs. (+ since blogs and products share things...)
     - just remove the urls when returning back, I reckon.
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
-
+- Make the sort popup and the search results popup be styled correctly... (not white background...)
 
 # Other things to consider;
 - Sponsers / Advertisements / Affiliate links page????

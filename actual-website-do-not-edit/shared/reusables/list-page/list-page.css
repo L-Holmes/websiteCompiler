@@ -678,7 +678,7 @@ body.font-dyslexia h4 {
   font-size: 0.75rem;
 }
 
-.filter-tile {
+.filter-tile, .clear-filters-tile {
   cursor: pointer;
   display: inline-flex;
   max-width: 40vw;
@@ -687,16 +687,20 @@ body.font-dyslexia h4 {
   border-radius: 12px;
 }
 @media screen and (max-width: 441px) {
-  .filter-tile {
+  .filter-tile, .clear-filters-tile {
     max-width: 90vw;
   }
 }
-.filter-tile.selected {
+.filter-tile.selected, .selected.clear-filters-tile {
   border: 2px solid white;
   background-color: #000023;
 }
-.filter-tile.selected:hover {
+.filter-tile.selected:hover, .selected.clear-filters-tile:hover {
   border: 2px solid #48E0C8;
+}
+
+.clear-filters-tile:hover {
+  border: solid red 2px;
 }
 
 .clear-all-button {
@@ -716,13 +720,17 @@ body.font-dyslexia h4 {
   background-color: #555;
 }
 
-.filter-tile:hover {
+.filter-tile:hover, .clear-filters-tile:hover {
   border: 2px solid #D2FFF8;
 }
 
 /* But when hovering the sub-filter area, cancel that */
-.filter-tile:has(.sub-filter-wrapper:hover) {
+.filter-tile:has(.sub-filter-wrapper:hover), .clear-filters-tile:has(.sub-filter-wrapper:hover) {
   border: 2px solid #404040; /* revert to normal */
+}
+
+.clear-filters-tile:hover {
+  border: 2px solid red;
 }
 
 .filter-icon-wrapper {
@@ -784,6 +792,13 @@ body.font-dyslexia h4 {
 .filter-icon {
   height: 40px;
   width: 40px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.clear-filters-icon {
+  height: 20px;
+  width: 20px;
   object-fit: contain;
   pointer-events: none;
 }

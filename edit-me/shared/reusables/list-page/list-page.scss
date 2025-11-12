@@ -341,7 +341,6 @@
 
 
 // todo: rename to 'filter title and image'
-// todo: on hover, background turns slight light blue highlight...
 .filter-sticker{
    @extend .ux-grid;
    grid-template-columns: auto; 
@@ -422,6 +421,15 @@
 
 }
 
+
+.clear-filters-tile{
+  @extend .filter-tile;
+
+  &:hover {
+      border: solid red 2px;
+  }
+}
+
 .clear-all-button {
   cursor: pointer;
   background-color: #333;
@@ -447,6 +455,11 @@
 /* But when hovering the sub-filter area, cancel that */
 .filter-tile:has(.sub-filter-wrapper:hover) {
   border: 2px solid #404040; /* revert to normal */
+}
+
+
+.clear-filters-tile:hover {
+  border: 2px solid red;
 }
 
 
@@ -524,6 +537,14 @@
 .filter-icon{
     height:40px;
     width:40px;
+    object-fit: contain;
+    pointer-events: none;  // prevent on-hover etc. of parent triggering
+}
+
+
+.clear-filters-icon{
+    height:20px;
+    width:20px;
     object-fit: contain;
     pointer-events: none;  // prevent on-hover etc. of parent triggering
 }
