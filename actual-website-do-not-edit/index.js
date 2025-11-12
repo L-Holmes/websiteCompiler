@@ -680,43 +680,108 @@ function showResultsPopup() {
     };
     popup.appendChild(closeBtn);
 }
-// Handle search
 // function handleSearch(): void {
 // var input = document.getElementById("main-search") as HTMLInputElement | null;
 // if (!input) return;
-// 
 // var query = input.value.trim();
 // if (!query) return;
 // 
-// console.log("[handleSearch] Searching for:", query);
+// // Load Fuse.js lazily, then perform search
+// loadSearchLibrary(function() {
+// console.log("[handleSearch] Performing search after library loaded");
 // var results = performSearch(query);
 // renderResults(results);
+// });
 // }
-function handleSearch() {
-    var input = document.getElementById("main-search");
-    if (!input)
+// function handleSearch(): void {
+// // Get all inputs with id="main-search"
+// var inputs = document.querySelectorAll<HTMLInputElement>("#main-search");
+// if (!inputs.length) return;
+// 
+// // Loop through each input
+// inputs.forEach(function(input) {
+// var query = input.value.trim();
+// if (!query) return;
+// 
+// // Load Fuse.js lazily, then perform search
+// loadSearchLibrary(function() {
+// console.log("[handleSearch] Performing search for input:", input, "query:", query);
+// var results = performSearch(query);
+// renderResults(results);
+// });
+// });
+// }
+// 
+// function setupSearchEvents(): void {
+// // All icons (desktop + mobile)
+// var searchIcons = document.querySelectorAll<SVGElement>(".search-icon, .search-icon-mobile");
+// searchIcons.forEach(function(icon) {
+// // Use traditional function to preserve `this` if needed
+// icon.onclick = handleSearch;
+// });
+// 
+// // All inputs
+// var searchInputs = document.querySelectorAll<HTMLInputElement>("#main-search");
+// searchInputs.forEach(function(input) {
+// input.onkeypress = function(e: KeyboardEvent) {
+// var key = e.key || (e as any).keyCode;
+// if (key === "Enter" || key === 13) handleSearch.call(input);
+// };
+// });
+// }
+// 
+// // Initialize
+// window.onload = function() {
+// console.log("[init] Initializing search system");
+// setupSearchEvents();
+// };
+function handleSearch(source, input) {
+    // Determine which input to search
+    var targetInput = input || document.querySelector("#main-search, input.search-input");
+    if (!targetInput)
         return;
-    var query = input.value.trim();
+    var query = targetInput.value.trim();
     if (!query)
         return;
+    console.log("[handleSearch] Triggered by:", source || "unknown", "query:", query);
     // Load Fuse.js lazily, then perform search
     loadSearchLibrary(function () {
-        console.log("[handleSearch] Performing search after library loaded");
         var results = performSearch(query);
         renderResults(results);
     });
 }
-// Setup events
 function setupSearchEvents() {
-    var searchIcon = document.querySelector(".search-icon");
-    var searchInput = document.getElementById("main-search");
-    if (searchIcon)
-        searchIcon.onclick = handleSearch;
-    if (searchInput) {
-        searchInput.onkeypress = function (e) {
+    // Desktop icons
+    var desktopIcons = document.querySelectorAll(".search-icon");
+    for (var i = 0; i < desktopIcons.length; i++) {
+        desktopIcons[i].onclick = function () {
+            var _a;
+            var el = this; // <-- cast
+            var input = (_a = el.closest(".search-container")) === null || _a === void 0 ? void 0 : _a.querySelector("#main-search");
+            handleSearch("desktop", input || undefined);
+        };
+    }
+    // Mobile icons
+    var mobileIcons = document.querySelectorAll(".search-icon-mobile");
+    for (var i = 0; i < mobileIcons.length; i++) {
+        mobileIcons[i].onclick = function () {
+            var _a;
+            var el = this; // <-- cast
+            var input = (_a = el.closest(".search-container")) === null || _a === void 0 ? void 0 : _a.querySelector("input.search-input");
+            handleSearch("mobile", input || undefined);
+        };
+    }
+    // Enter key on inputs
+    var searchInputs = document.querySelectorAll("#main-search, input.search-input");
+    for (var i = 0; i < searchInputs.length; i++) {
+        searchInputs[i].onkeypress = function (e) {
+            var el = this; // <-- cast
             var key = e.key || e.keyCode;
-            if (key === "Enter" || key === 13)
-                handleSearch();
+            if (key === "Enter" || key === 13) {
+                var container = el.closest(".search-container");
+                var source = (container === null || container === void 0 ? void 0 : container.querySelector(".search-icon")) ? "desktop" : "mobile";
+                handleSearch(source, el);
+            }
         };
     }
 }

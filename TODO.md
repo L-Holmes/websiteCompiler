@@ -1,4 +1,9 @@
 
+- language icon appears to be missing on mobile..
+- there is a starnge overlap where it switches from mobile back to desktop for a split second...
+- search results;
+    - + implement sort popup for mobile...
+    - Sort out the 'close popup' icon for the search results.
 
 - (don't) Add the donation buttons
     - + consider what else I need... is it just donations?
@@ -8,10 +13,11 @@
     Would it be cleaner to have 'how to support us' as the default option in the blogs/products list????
     --> But for products, name it like the benefits you get "Join our community (We want you!(re intelligence!) "
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
-- Make the sort popup and the search results popup be styled correctly... (not white background...)
-    - + implement sort popup for mobile...
-- Sort out the 'close popup' icon for the search results.
 - Update the primary text to something more readable...
+- discrepancy with compiled languages;
+    - Start-here/start-here.html exists
+    - en-start-here.html exists... 
+    - but we need them to be the same or else the page is missing.
 
 # Other things to consider;
 - Sponsers / Advertisements / Affiliate links page????

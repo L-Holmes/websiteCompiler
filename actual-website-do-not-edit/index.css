@@ -640,6 +640,16 @@ body.font-dyslexia h4 {
   cursor: pointer;
 }
 
+.search-icon-mobile {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .index-content-wrapper-MOBILE {
   display: none;
   width: 100%;
