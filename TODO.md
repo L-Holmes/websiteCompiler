@@ -1,6 +1,5 @@
 
 
-
 - (don't) Add the donation buttons
     - + consider what else I need... is it just donations?
     - perhaps a contact??

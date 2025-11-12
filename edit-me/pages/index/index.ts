@@ -539,9 +539,9 @@ function renderResults(results: PageData[]): void {
     popup.innerHTML = `
         <p>Hmmm looks like we didn't find anything...</p>
         <p>Perhaps you could check out our 
-          <a href="http://localhost:8000/blogs.html?category=products">new here pages</a>
+          <a class="clickable-link" href="http://localhost:8000/blogs.html?category=products">new here pages</a>
           or the 
-          <a href="http://localhost:8000/blogs.html?category=products">blogs page</a>.
+          <a class="clickable-link" href="http://localhost:8000/blogs.html?category=products">blogs page</a>.
         </p>
       `;
   } else {
@@ -551,6 +551,7 @@ function renderResults(results: PageData[]): void {
       var a = document.createElement("a");
       a.href = results[i].url;
       a.textContent = results[i].title;
+      a.className= "clickable-link";
       // a.target = "_blank";
       li.appendChild(a);
       ul.appendChild(li);
