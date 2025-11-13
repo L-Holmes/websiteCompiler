@@ -2,7 +2,7 @@
 
 .buy-now-button{
   background-color: black;
-  color: white;
+  color: $text-colour-primary;
   width: 150px;
   height: auto;
   padding:10px 0px 10px 0px;
@@ -53,7 +53,7 @@
 
 .opening-title {
     font-size: 3rem;
-    color: white;
+    color: $text-colour-primary;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 

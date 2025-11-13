@@ -63,7 +63,7 @@
   //position: absolute;
   width: 50%;
   height: 75%;
-  background-color: white;
+  background-color: $text-colour-primary ;
   border-radius: 10px;
   border-color: transparent;
   margin-left: 24%;
@@ -166,7 +166,7 @@
   gap: 8px;
   padding: 10px 15px;
   background-color: #333;
-  color: white;
+  color: $text-colour-primary;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -202,7 +202,7 @@
   transform: translate(-50%, -50%);
   width: 200px;
   height: 200px;
-  background-color: white;
+  background-color: $text-colour-primary;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
@@ -234,7 +234,7 @@
 /* Active state */
 .sort-option.active {
   background-color: #007bff;
-  color: white;
+  color: $text-colour-primary;
 }
 
 .sort-option.active:hover {
@@ -254,7 +254,7 @@
   // grid-template-columns: auto; 
   // grid-template-rows: 0.5fr 0.4fr 0.1fr; //This is above-and-below by default 
 // 
-  // border: solid white 1px;
+  // border: solid $text-colour-primary  1px;
   // border-radius:12px;
 // 
   // width:200px;
@@ -300,7 +300,7 @@
 
  .centred-with-bottom-border{
    @extend .centre-wrapper;
-   border-bottom: solid white 1px;
+   border-bottom: solid $text-colour-primary 1px;
 
  }
 
@@ -343,7 +343,7 @@
 
     // SELECTED STATE
     &.selected {
-      border: 2px solid white;
+      border: 2px solid $text-colour-primary ;
       &:hover {
           border: 2px solid #48E0C8; 
         }
@@ -380,7 +380,7 @@
 
 .sub-filter-wrapper{
     @extend .align-centre;
-    border-left: solid white 1px;
+    border-left: solid $text-colour-primary  1px;
     padding:5px;
 
     .sub-filter-icon{

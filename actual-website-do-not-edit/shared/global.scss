@@ -223,7 +223,7 @@ $button-colour-primary:#FFDD56;
 $colour-main-background:#121212;
 
 //colors -> font colours
-$text-colour-primary:#f5f5f5;
+$text-colour-primary:#DEDEDE;
 $text-colour-secondary:#ffffff;
 
 
@@ -280,21 +280,21 @@ h1{
 h2{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-bold;
+  font-family: $atkinson-regular;
     font-size: $font-size-m-l;
 }
 
 h3{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-bold;
+  font-family: $atkinson-regular;
     font-size: $font-size-m;
   }
 
 h4{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-bold;
+  font-family: $atkinson-regular;
   }
 
 
@@ -691,7 +691,7 @@ $page-contents-margin-right:100px;
   .button-itelf {
     // Your actual button styling
     background: #007bff;
-    color: white;
+    color: $text-colour-primary;
     padding: 8px 16px;
     border-radius: 4px;
     transition: background-color 0.2s;

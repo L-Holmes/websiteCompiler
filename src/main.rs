@@ -509,8 +509,11 @@ fn process_html_template_file_for_all_languages<P1: AsRef<Path>, P2: AsRef<Path>
     
     // Generate a translated file for each available language
     for target_language_code in translation_cache.keys() {
-        let localized_output_filename: String = format!("{}-{}.html", target_language_code, html_base_filename);
-        let localized_output_file_path: PathBuf = output_directory_path.as_ref().join(localized_output_filename);
+        // let localized_output_filename: String = format!("{}-{}.html", target_language_code, html_base_filename);
+        // let localized_output_file_path: PathBuf = output_directory_path.as_ref().join(localized_output_filename);
+
+        let localized_output_filename = format!("{}-{}.html", target_language_code, html_base_filename);
+        let localized_output_file_path = html_file_path_reference .parent() .unwrap_or_else(|| Path::new(output_directory_path.as_ref())) .join(localized_output_filename);
         println!("got the localised path...");
         
         

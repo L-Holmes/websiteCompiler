@@ -3,10 +3,6 @@
 
 - search results;
     - Sort out the 'close popup' icon for the search results.
-- discrepancy with compiled languages;
-    - Start-here/start-here.html exists
-    - en-start-here.html exists... 
-    - but we need them to be the same or else the page is missing.
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
 
 # Other things to consider;

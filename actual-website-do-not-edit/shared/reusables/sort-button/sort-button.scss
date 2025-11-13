@@ -20,7 +20,7 @@
 
 .sort-button {
   padding: 10px 15px;
-  color: white;
+  color: $text-colour-primary;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -63,7 +63,7 @@
   transform: none; 
   width: 200px;
   max-height: calc(100vh - 12px); 
-  // background-color: white;
+  // background-color: $text-colour-primary;
   background-color: $colour-main-background;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -103,7 +103,7 @@
 
 .sort-option.active {
   background-color: #007bff;
-  color: white;
+  color: $text-colour-primary;
 }
 
 .sort-option.active:hover {
