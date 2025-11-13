@@ -2,9 +2,7 @@
 - language icon appears to be missing on mobile..
 - there is a starnge overlap where it switches from mobile back to desktop for a split second...
 - search results;
-    - + implement sort popup for mobile...
     - Sort out the 'close popup' icon for the search results.
-
 - (don't) Add the donation buttons
     - + consider what else I need... is it just donations?
     - perhaps a contact??

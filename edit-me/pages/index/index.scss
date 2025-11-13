@@ -369,21 +369,6 @@ overflow-x: hidden;
   }
 }
 
-.change-lang-img{
-  width:55px;
-  height:55px;
-
-  @media screen and (max-width: 440px){
-    width:40px;
-    height:40px;
-    margin-top:30%;
-  }
-  
-
-  @media screen and (max-height: 600px){
-    display:none;
-  }
-}
 
 
 .planet-earth-img-lateral{
@@ -400,6 +385,21 @@ overflow-x: hidden;
   @media screen and (max-height: 600px){
     display:block;
   }
+}
+
+
+.change-lang-img{
+  display:none;
+  width:55px;
+  height:55px;
+
+  @media screen and (max-width: 440px){
+    width:40px;
+    height:40px;
+    margin-top:30%;
+    display:block;
+  }
+  
 }
 
 .change-lang-img-lateral{

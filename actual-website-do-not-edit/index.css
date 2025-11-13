@@ -775,23 +775,6 @@ body.font-dyslexia h4 {
   }
 }
 
-.change-lang-img {
-  width: 55px;
-  height: 55px;
-}
-@media screen and (max-width: 440px) {
-  .change-lang-img {
-    width: 40px;
-    height: 40px;
-    margin-top: 30%;
-  }
-}
-@media screen and (max-height: 600px) {
-  .change-lang-img {
-    display: none;
-  }
-}
-
 .planet-earth-img-lateral {
   width: 55px;
   height: 55px;
@@ -805,6 +788,20 @@ body.font-dyslexia h4 {
 }
 @media screen and (max-height: 600px) {
   .planet-earth-img-lateral {
+    display: block;
+  }
+}
+
+.change-lang-img {
+  display: none;
+  width: 55px;
+  height: 55px;
+}
+@media screen and (max-width: 440px) {
+  .change-lang-img {
+    width: 40px;
+    height: 40px;
+    margin-top: 30%;
     display: block;
   }
 }
