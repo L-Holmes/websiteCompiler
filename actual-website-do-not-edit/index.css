@@ -134,35 +134,31 @@ html {
 
 body {
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   background-color: #121212;
-  color: #DEDEDE;
+  color: #DBDBDB;
 }
 
 h1 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
   font-size: 2.5rem;
 }
 
 h2 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   font-size: 2rem;
 }
 
 h3 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   font-size: 1.5rem;
 }
 
 h4 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
 }
 
 div {
@@ -179,7 +175,7 @@ a {
 button {
   font-family: inherit;
   background-color: transparent;
-  color: #DEDEDE;
+  color: #DBDBDB;
 }
 
 button:hover {
@@ -404,7 +400,7 @@ body.font-dyslexia h4 {
 
 .page-header {
   background: #493DAF;
-  color: #DEDEDE;
+  color: #DBDBDB;
   border-radius: 15px 15px 15px 15px;
   padding: 30px 20px 30px 20px;
   font-size: 1.5rem;
@@ -483,14 +479,14 @@ body.font-dyslexia h4 {
 }
 .button-hitbox .button-itelf, .open-page-centred-box-DESKTOP .button-itelf, .search-bar-wrapper .button-itelf, .language-select-wrapper .button-itelf, .button-hitbox-page-link .button-itelf, .open-page-left-box-DESKTOP .button-itelf, .open-page-right-box-DESKTOP .button-itelf {
   background: #007bff;
-  color: #DEDEDE;
+  color: #DBDBDB;
   padding: 8px 16px;
   border-radius: 4px;
   transition: background-color 0.2s;
   pointer-events: none;
 }
 .button-hitbox .text-itself, .open-page-centred-box-DESKTOP .text-itself, .search-bar-wrapper .text-itself, .language-select-wrapper .text-itself, .button-hitbox-page-link .text-itself, .open-page-left-box-DESKTOP .text-itself, .open-page-right-box-DESKTOP .text-itself {
-  color: #DEDEDE;
+  color: #DBDBDB;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -643,7 +639,7 @@ body.font-dyslexia h4 {
   padding-left: 20px;
   padding-right: 40px;
   background: transparent;
-  color: #DEDEDE;
+  color: #DBDBDB;
 }
 
 .search-input:focus {

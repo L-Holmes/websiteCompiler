@@ -223,7 +223,7 @@ $button-colour-primary:#FFDD56;
 $colour-main-background:#121212;
 
 //colors -> font colours
-$text-colour-primary:#DEDEDE;
+$text-colour-primary:#DBDBDB;
 $text-colour-secondary:#ffffff;
 
 
@@ -265,7 +265,7 @@ html{
 
 body {
 	margin: 0px;
-    font-family: $atkinson-regular;
+    // font-family: $atkinson-regular;
     background-color: $colour-main-background;
     color: $text-colour-primary;
 }
@@ -280,21 +280,21 @@ h1{
 h2{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-regular;
+//   font-family: $atkinson-regular;
     font-size: $font-size-m-l;
 }
 
 h3{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-regular;
+  // font-family: $atkinson-regular;
     font-size: $font-size-m;
   }
 
 h4{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $atkinson-regular;
+  // font-family: $atkinson-regular;
   }
 
 

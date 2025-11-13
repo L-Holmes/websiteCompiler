@@ -134,35 +134,31 @@ html {
 
 body {
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   background-color: #121212;
-  color: #DEDEDE;
+  color: #DBDBDB;
 }
 
 h1 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
   font-size: 2.5rem;
 }
 
 h2 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   font-size: 2rem;
 }
 
 h3 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   font-size: 1.5rem;
 }
 
 h4 {
-  color: #DEDEDE;
+  color: #DBDBDB;
   margin: 0px;
-  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
 }
 
 div {
@@ -179,7 +175,7 @@ a {
 button {
   font-family: inherit;
   background-color: transparent;
-  color: #DEDEDE;
+  color: #DBDBDB;
 }
 
 button:hover {
@@ -404,7 +400,7 @@ body.font-dyslexia h4 {
 
 .page-header {
   background: #493DAF;
-  color: #DEDEDE;
+  color: #DBDBDB;
   border-radius: 15px 15px 15px 15px;
   padding: 30px 20px 30px 20px;
   font-size: 1.5rem;
@@ -483,14 +479,14 @@ body.font-dyslexia h4 {
 }
 .button-hitbox .button-itelf, .button-hitbox-page-link .button-itelf {
   background: #007bff;
-  color: #DEDEDE;
+  color: #DBDBDB;
   padding: 8px 16px;
   border-radius: 4px;
   transition: background-color 0.2s;
   pointer-events: none;
 }
 .button-hitbox .text-itself, .button-hitbox-page-link .text-itself {
-  color: #DEDEDE;
+  color: #DBDBDB;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -514,7 +510,7 @@ body.font-dyslexia h4 {
 
 .buy-now-button {
   background-color: black;
-  color: #DEDEDE;
+  color: #DBDBDB;
   width: 150px;
   height: auto;
   padding: 10px 0px 10px 0px;
@@ -559,7 +555,7 @@ body.font-dyslexia h4 {
 
 .opening-title {
   font-size: 3rem;
-  color: #DEDEDE;
+  color: #DBDBDB;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
