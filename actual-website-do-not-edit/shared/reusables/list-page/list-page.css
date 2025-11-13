@@ -109,13 +109,33 @@
   src: url("../shared/fonts/Cormorant_Garamond/static/CormorantGaramond-SemiBoldItalic.ttf") format("truetype");
   font-display: swap;
 }
+@font-face {
+  font-family: "AtkinsonHyperlegible-Regular";
+  src: url("../shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtkinsonHyperlegible-Bold";
+  src: url("../shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtkinsonHyperlegible-Italic";
+  src: url("../shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Italic.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AtkinsonHyperlegible-BoldItalic";
+  src: url("../shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-BoldItalic.ttf") format("truetype");
+  font-display: swap;
+}
 html {
   font-size: 20px;
 }
 
 body {
   margin: 0px;
-  font-family: "CormorantGaramond-Regular", serif;
+  font-family: "AtkinsonHyperlegible-Regular", sans-serif;
   background-color: #121212;
   color: #f5f5f5;
 }
@@ -129,21 +149,21 @@ h1 {
 h2 {
   color: #f5f5f5;
   margin: 0px;
-  font-family: "CormorantGaramond-Bold", serif;
+  font-family: "AtkinsonHyperlegible-Bold", sans-serif;
   font-size: 2rem;
 }
 
 h3 {
   color: #f5f5f5;
   margin: 0px;
-  font-family: "CormorantGaramond-Bold", serif;
+  font-family: "AtkinsonHyperlegible-Bold", sans-serif;
   font-size: 1.5rem;
 }
 
 h4 {
   color: #f5f5f5;
   margin: 0px;
-  font-family: "CormorantGaramond-Bold", serif;
+  font-family: "AtkinsonHyperlegible-Bold", sans-serif;
 }
 
 div {

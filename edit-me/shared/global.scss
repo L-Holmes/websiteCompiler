@@ -147,7 +147,33 @@
 }
 
 
-//
+// Atkinson Hyperlegible
+
+@font-face {
+  font-family: 'AtkinsonHyperlegible-Regular';
+  src: url('<root>/shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegible-Bold';
+  src: url('<root>/shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegible-Italic';
+  src: url('<root>/shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Italic.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AtkinsonHyperlegible-BoldItalic';
+  src: url('<root>/shared/fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-BoldItalic.ttf') format('truetype');
+  font-display: swap;
+}
+
+
 
 // Define font variables
 $open-dyslexic-bold: 'OpenDyslexic-Bold', sans-serif;
@@ -177,6 +203,13 @@ $cormorant-mediumitalic: 'CormorantGaramond-MediumItalic', serif;
 $cormorant-regular: 'CormorantGaramond-Regular', serif;
 $cormorant-semibold: 'CormorantGaramond-SemiBold', serif;
 $cormorant-semibolditalic: 'CormorantGaramond-SemiBoldItalic', serif;
+
+
+// Atkinson Hyperlegible font variables
+$atkinson-regular: 'AtkinsonHyperlegible-Regular', sans-serif;
+$atkinson-bold: 'AtkinsonHyperlegible-Bold', sans-serif;
+$atkinson-italic: 'AtkinsonHyperlegible-Italic', sans-serif;
+$atkinson-bolditalic: 'AtkinsonHyperlegible-BoldItalic', sans-serif;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,7 +265,7 @@ html{
 
 body {
 	margin: 0px;
-    font-family: $cormorant-regular;
+    font-family: $atkinson-regular;
     background-color: $colour-main-background;
     color: $text-colour-primary;
 }
@@ -247,21 +280,21 @@ h1{
 h2{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $cormorant-bold; 
+  font-family: $atkinson-bold;
     font-size: $font-size-m-l;
 }
 
 h3{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $cormorant-bold; 
+  font-family: $atkinson-bold;
     font-size: $font-size-m;
   }
 
 h4{
 	color:$text-colour-primary;
 	margin: 0px;
-  font-family: $cormorant-bold;
+  font-family: $atkinson-bold;
   }
 
 
