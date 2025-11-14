@@ -1,8 +1,4 @@
 
-
-
-- search results;
-    - Sort out the 'close popup' icon for the search results.
 - add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
 
 # Other things to consider;

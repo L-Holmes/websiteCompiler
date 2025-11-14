@@ -726,7 +726,7 @@ function showResultsPopup(): void {
 
   // Add close button
   var closeBtn = document.createElement("button");
-  closeBtn.textContent = "×"; // simple "X"
+  closeBtn.textContent = "X"; // simple "X"
   closeBtn.className = "search-close-button";
 
   closeBtn.onclick = function() {
