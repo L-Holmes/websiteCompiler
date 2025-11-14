@@ -1,6 +1,4 @@
 
-- add filters for the 'new here' and 'help' etc. + work out how to do that... seperate pages? 
-
 # Other things to consider;
 - Sponsers / Advertisements / Affiliate links page????
     - would these be part of the 'support us' page?
