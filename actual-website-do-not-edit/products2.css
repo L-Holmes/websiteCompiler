@@ -491,7 +491,6 @@ body.font-dyslexia h4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
   display: block;
 }
 .button-hitbox:hover .button-itelf, .filter-top-bar-option:hover .button-itelf, .button-hitbox-page-link:hover .button-itelf {

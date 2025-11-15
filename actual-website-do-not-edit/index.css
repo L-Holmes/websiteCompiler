@@ -490,7 +490,6 @@ body.font-dyslexia h4 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 90%;
   display: block;
 }
 .button-hitbox:hover .button-itelf, .open-page-centred-box-DESKTOP:hover .button-itelf, .search-bar-wrapper:hover .button-itelf, .language-select-wrapper:hover .button-itelf, .button-hitbox-page-link:hover .button-itelf, .open-page-left-box-DESKTOP:hover .button-itelf, .open-page-right-box-DESKTOP:hover .button-itelf {
@@ -808,7 +807,6 @@ body.font-dyslexia h4 {
 }
 
 .change-lang-img {
-  display: none;
   width: 55px;
   height: 55px;
 }
@@ -817,7 +815,6 @@ body.font-dyslexia h4 {
     width: 40px;
     height: 40px;
     margin-top: 30%;
-    display: block;
   }
 }
 
