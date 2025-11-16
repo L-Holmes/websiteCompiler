@@ -1,7 +1,3 @@
-- Spacing on the new here blogs... at least vertical.
-    - Excluding medical conditions needs to be smaller
-- Coloured headings to make reading easier.
-- Styling to links as well? (e.g. <a> in the blog)
 - why is search bar too low down on mobile?
 - Add the info popup on the filters?
     - Or is it too small to even click accurately?
