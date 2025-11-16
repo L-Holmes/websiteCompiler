@@ -508,7 +508,10 @@ body.font-dyslexia h4 {
 }
 
 .index-main-wrapper {
+  /* Fallback for older/unsupported browsers */
   height: 100vh;
+  /* Better for modern browsers */
+  height: 100svh;
   width: 100vw;
   min-height: 600px;
   overflow-y: scroll;

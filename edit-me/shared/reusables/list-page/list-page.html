@@ -12,10 +12,11 @@
 				<div class="flow-wrapper">
                     <r-clear-filters>
                     {main-filters}
+                    {other-filters}
 					<r-see-more-filters filterText="...">
 
+
 					<r-sort-button>
-                    {other-filters}
 
 					<button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
 						See results
@@ -27,11 +28,16 @@
 
 				<div class="list-page-wrapper">
 					<div class="items list-page-wrapper" id="items">
-
 						{content}
-
 					</div>
-				</div>
+				</div> 
+
+
+				<!-- <div class="">
+					<div class="items" id="items">
+						{content}
+					</div>
+				</div> -->
 
 		</div>
 

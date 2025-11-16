@@ -1,12 +1,15 @@
+
+Current idea;
+- make it so selected filters just show by default... (not hidden)
+
+
 - Add the info popup on the filters?
     - Or is it too small to even click accurately?
     - MAYBE we just have a key instead???????
     - Could just be a regular blog type page that lists all of the different filter options????
         - Then it has a close button which just redirects back to the same page??
-- Make 'see results' button bigger. At least on mobile... 25% wider, 20% taller...
 - Some indication to show that filters are active? (making the '...' be selected???)
 - Sort options don't fit on page on mobile, you have to scroll laterallly... 
-
 
 
 coding TODO:

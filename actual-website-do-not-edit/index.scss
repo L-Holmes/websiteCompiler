@@ -2,7 +2,11 @@
 
 .index-main-wrapper{
   @extend .horizontally-centre;	
-  height:100vh;
+  //height:100vh;
+   /* Fallback for older/unsupported browsers */
+  height: 100vh;
+  /* Better for modern browsers */
+  height: 100svh;
   width:100vw;
   min-height: 600px;
   overflow-y: scroll;

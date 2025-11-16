@@ -269,8 +269,25 @@ function closeAllFilters() {
     (el as HTMLElement).style.display = "block";
   });
 
+  // document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+    // (el as HTMLElement).style.display = "none";
+// 
+// 
+	// // TODO only change display to none if it DOESN'T have the class 'selected'.
+	// // assume most of the filter options don't have the class (if considering efficiency etc...)
+    // const isFilterCurrentlySelected: boolean = filterButtonElement.className.indexOf(SELECTED_FILTER_CLASS) !== -1;
+    // console.log(`Is '${filterButtonElement.className}' selected? ${isFilterCurrentlySelected}`);
+  // });
+
+
   document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
-    (el as HTMLElement).style.display = "none";
+	  const element = el as HTMLElement;
+
+	  // Only hide if it does NOT have the selected class.
+	  if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
+		element.style.display = "none";
+	  } 
+
   });
 
   history.pushState({ languageBoxOpen: false }, "", "#list-page");

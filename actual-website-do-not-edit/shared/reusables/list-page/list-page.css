@@ -1014,10 +1014,10 @@ body.font-dyslexia h4 {
   right: 0;
   margin: 0 auto;
   width: fit-content;
+  padding: 15px 25px 15px 25px;
   background: #121212;
   outline: 1px solid #FFDD56;
   border: none;
-  padding: 5px 10px;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 6px;
