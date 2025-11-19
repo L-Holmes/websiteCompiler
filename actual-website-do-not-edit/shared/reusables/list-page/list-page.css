@@ -714,6 +714,10 @@ body.font-dyslexia h4 {
   border: 2px solid #48E0C8;
 }
 
+.clear-filters-tile {
+  border: solid #8B0000 2px;
+  display: inline-flex;
+}
 .clear-filters-tile:hover {
   border: solid red 2px;
 }
@@ -830,41 +834,6 @@ body.font-dyslexia h4 {
 
 .item-title {
   display: inline; /* Makes text + icon flow together */
-}
-.item-title .info-icon {
-  height: 15px;
-  width: 15px;
-  object-fit: contain;
-  padding-bottom: 10px;
-  display: none;
-}
-@media screen and (max-width: 441px) {
-  .item-title .info-icon {
-    display: inline;
-  }
-}
-.item-title .info-hover-icon {
-  height: 15px;
-  width: 15px;
-  object-fit: contain;
-  padding-bottom: 10px;
-  display: none;
-}
-@media screen and (max-width: 441px) {
-  .item-title .info-hover-icon {
-    display: none;
-  }
-}
-.item-title:hover .info-icon {
-  display: none;
-}
-.item-title:hover .info-hover-icon {
-  display: none;
-}
-@media screen and (max-width: 441px) {
-  .item-title:hover .info-hover-icon {
-    display: inline;
-  }
 }
 
 .filter-top-bar {
@@ -1007,6 +976,10 @@ body.font-dyslexia h4 {
   display: none;
 }
 
+.key-wrapper {
+  display: none;
+}
+
 .see-results-btn {
   position: fixed;
   bottom: 10%;
@@ -1036,6 +1009,11 @@ body.font-dyslexia h4 {
     margin-left: 20%;
     margin-right: 20%;
   }
+}
+
+.info-icon {
+  max-width: 30px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=list-page.css.map */

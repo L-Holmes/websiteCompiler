@@ -9,35 +9,39 @@
 
 			<div class="vert-spacing-xs"></div>
 
-				<div class="flow-wrapper">
-                    <r-clear-filters>
-                    {main-filters}
-                    {other-filters}
-					<r-see-more-filters filterText="...">
+            <div class="flow-wrapper">
+                <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info"  onclick="openKey()">
+                <r-clear-filters extraClass="all-filters-wrapper"> 
+                {main-filters}
 
 
-					<r-sort-button>
+                {other-filters}
+                <r-see-more-filters filterText="...">
+                <r-sort-button>
 
-					<button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
-						See results
-					</button>
+                <button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
+                    See results
+                </button>
 
-				</div>
+            </div>
 
-				<div class="vert-spacing-m"></div>
+            <div class="key-wrapper">
+                 <div class="key-contents">
+                    Now here is the actual content....
 
-				<div class="list-page-wrapper">
-					<div class="items list-page-wrapper" id="items">
-						{content}
-					</div>
-				</div> 
+                    <button class="see-results-btn" onclick="closeKey(this)">
+                        Return back to results
+                    </button>
+                 </div>
+            </div>
 
+            <div class="vert-spacing-m"></div>
 
-				<!-- <div class="">
-					<div class="items" id="items">
-						{content}
-					</div>
-				</div> -->
+            <div class="list-page-wrapper">
+                <div class="items list-page-wrapper" id="items">
+                    {content}
+                </div>
+            </div> 
 
 		</div>
 

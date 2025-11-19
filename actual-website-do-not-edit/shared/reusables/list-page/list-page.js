@@ -198,55 +198,102 @@ document.addEventListener('DOMContentLoaded', function () {
 // ============================================================
 // ============================================================
 // ============================================================
+// Global constants
+const LIST_PAGE_WRAPPER = ".list-page-wrapper";
+const ALL_FILTERS_WRAPPER = ".all-filters-wrapper";
+const KEY_WRAPPER = ".key-wrapper"; // new
+const MAIN_FILTERS_WRAPPER = ".flow-wrapper";
+/**
+ * Open all filters side content
+ */
 function openAllFilters() {
-    document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+    document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
         el.style.display = "none";
     });
-    document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+    document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
         el.style.display = "inline-flex";
     });
-    history.pushState({ languageBoxOpen: true }, "", "#all-filters");
+    history.pushState({ filtersOpen: true }, "", "#all-filters");
 }
+/**
+ * Close all filters side content
+ */
 function closeAllFilters() {
-    document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+    document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
         el.style.display = "block";
     });
-    // document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
-    // (el as HTMLElement).style.display = "none";
-    // 
-    // 
-    // // TODO only change display to none if it DOESN'T have the class 'selected'.
-    // // assume most of the filter options don't have the class (if considering efficiency etc...)
-    // const isFilterCurrentlySelected: boolean = filterButtonElement.className.indexOf(SELECTED_FILTER_CLASS) !== -1;
-    // console.log(`Is '${filterButtonElement.className}' selected? ${isFilterCurrentlySelected}`);
-    // });
-    document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+    document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
         const element = el;
-        // Only hide if it does NOT have the selected class.
         if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
             element.style.display = "none";
         }
     });
-    history.pushState({ languageBoxOpen: false }, "", "#list-page");
+    history.pushState({ filtersOpen: false }, "", "#list-page");
 }
-// Restore when back button is clicked
+/**
+ * Open key side content
+ */
+function openKey() {
+    document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
+        el.style.display = "none";
+    });
+    document.querySelectorAll(MAIN_FILTERS_WRAPPER).forEach((el) => {
+        el.style.display = "none";
+    });
+    document.querySelectorAll(KEY_WRAPPER).forEach((el) => {
+        el.style.display = "inline-flex";
+    });
+    history.pushState({ keyOpen: true }, "", "#key");
+}
+/**
+ * Close key side content
+ */
+function closeKey() {
+    document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
+        el.style.display = "block";
+    });
+    document.querySelectorAll(MAIN_FILTERS_WRAPPER).forEach((el) => {
+        el.style.display = "flex";
+    });
+    document.querySelectorAll(KEY_WRAPPER).forEach((el) => {
+        const element = el;
+        if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
+            element.style.display = "none";
+        }
+    });
+    history.pushState({ keyOpen: false }, "", "#list-page");
+}
+/**
+ * Restore view on back/forward navigation
+ */
 window.addEventListener("popstate", (event) => {
-    var _a;
-    const mainWrapper = document.querySelector(".list-page-wrapper");
-    const sideContentWrapper = document.querySelector(".all-filters-wrapper");
-    if ((_a = event.state) === null || _a === void 0 ? void 0 : _a.languageBoxOpen) {
-        // If state indicates the language box, show it
+    var _a, _b;
+    const mainWrapper = document.querySelector(LIST_PAGE_WRAPPER);
+    const sideContentWrapper = document.querySelector(ALL_FILTERS_WRAPPER);
+    const keyWrapper = document.querySelector(KEY_WRAPPER);
+    if ((_a = event.state) === null || _a === void 0 ? void 0 : _a.filtersOpen) {
         if (mainWrapper)
             mainWrapper.style.display = "none";
         if (sideContentWrapper)
             sideContentWrapper.style.display = "inline-flex";
+        if (keyWrapper)
+            keyWrapper.style.display = "none";
+    }
+    else if ((_b = event.state) === null || _b === void 0 ? void 0 : _b.keyOpen) {
+        if (mainWrapper)
+            mainWrapper.style.display = "none";
+        if (sideContentWrapper)
+            sideContentWrapper.style.display = "none";
+        if (keyWrapper)
+            keyWrapper.style.display = "inline-flex";
     }
     else {
-        // Otherwise, revert to original content
         if (mainWrapper)
             mainWrapper.style.display = "grid";
         if (sideContentWrapper)
             sideContentWrapper.style.display = "none";
+        if (keyWrapper)
+            keyWrapper.style.display = "none";
     }
 });
 //================================================================================================================================= 

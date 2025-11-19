@@ -387,18 +387,22 @@ overflow-x: hidden;
 }
 
 
-.change-lang-img{
-  //display:none;
-  width:55px;
-  height:55px;
+.change-lang-img {
+  width: 55px;
+  height: 55px;
+  display: block;
 
-  @media screen and (max-width: 440px){
-    width:40px;
-    height:40px;
-    margin-top:30%;
-    //display:block;
+  @media screen and (max-width: 440px) {
+    width: 40px;
+    height: 40px;
+    margin-top: 30%;
+    display: block;
   }
-  
+
+  // Only hide if width is bigger than 440px AND height between 440 and 600
+  @media screen and (min-width: 441px) and (min-height: 440px) and (max-height: 600px) {
+    display: none;
+  }
 }
 
 .change-lang-img-lateral{
@@ -411,7 +415,6 @@ overflow-x: hidden;
     height:40px;
     margin-top:30%;
   }
-
 
   @media screen and (max-height: 600px){
     display:block;

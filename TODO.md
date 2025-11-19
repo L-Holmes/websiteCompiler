@@ -1,5 +1,3 @@
-- Make search javascript / sort / filter etc. lazy load when user clicks.
-
 - Add the info key
     - Could just be a regular blog type page that lists all of the different filter options????
         - Then it has a close button which just redirects back to the same page??

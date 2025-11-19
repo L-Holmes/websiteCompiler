@@ -9,8 +9,9 @@
 
 			<div class="vert-spacing-xs"></div>
 
-				<div class="flow-wrapper">
-                    <div class="clear-filters-tile filter-btn " onclick="clearFilters()">
+            <div class="flow-wrapper">
+                <img class="info-icon" src="../../../shared/images/filtering/info-icon.png" alt="info"  onclick="openKey()">
+                <div class="clear-filters-tile filter-btn all-filters-wrapper" onclick="clearFilters()">
 	<!-- {image-icon} --> <!-- Optional image icon -->
     <div class="filter-icon-wrapper">
 		<img class="clear-filters-icon" src="../../../shared/images/filtering/clear-filters-icon.png" alt="clear filters icon" loading="lazy"> 
@@ -24,10 +25,12 @@
 		</div>
 	</div>
 </div>
+ 
+                {main-filters}
 
-                    {main-filters}
-                    {other-filters}
-					<div class="filter-tile filter-btn thin-item list-page-wrapper" onclick="openAllFilters(this)">
+
+                {other-filters}
+                <div class="filter-tile filter-btn thin-item list-page-wrapper" onclick="openAllFilters(this)">
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<!-- {image-icon} --> <!-- Optional image icon -->
 	<div class="title-and-info-wrapper">
@@ -40,12 +43,10 @@
 </div>
 
 
-
-
-					<div class="sort-wrapper list-page-wrapper">
+                <div class="sort-wrapper list-page-wrapper">
 
   <button class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
-    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
       <path d="M3 6l5-4 5 4H3z" fill="white"/>
       <path d="M3 10l5 4 5-4H3z" fill="white"/>
     </svg>
@@ -62,26 +63,29 @@
 </div>
 
 
-					<button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
-						See results
-					</button>
+                <button class="see-results-btn all-filters-wrapper" onclick="closeAllFilters(this)">
+                    See results
+                </button>
 
-				</div>
+            </div>
 
-				<div class="vert-spacing-m"></div>
+            <div class="key-wrapper">
+                 <div class="key-contents">
+                    Now here is the actual content....
 
-				<div class="list-page-wrapper">
-					<div class="items list-page-wrapper" id="items">
-						{content}
-					</div>
-				</div> 
+                    <button class="see-results-btn" onclick="closeKey(this)">
+                        Return back to results
+                    </button>
+                 </div>
+            </div>
 
+            <div class="vert-spacing-m"></div>
 
-				<!-- <div class="">
-					<div class="items" id="items">
-						{content}
-					</div>
-				</div> -->
+            <div class="list-page-wrapper">
+                <div class="items list-page-wrapper" id="items">
+                    {content}
+                </div>
+            </div> 
 
 		</div>
 

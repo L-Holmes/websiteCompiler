@@ -424,6 +424,8 @@
 
 .clear-filters-tile{
   @extend .filter-tile;
+  border: solid #8B0000 2px;
+  display:inline-flex;
 
   &:hover {
       border: solid red 2px;
@@ -563,46 +565,46 @@
 .item-title {
   display: inline;        /* Makes text + icon flow together */
 
-  .info-icon{
-    height:15px;
-    width:15px;
-    object-fit: contain;
-    padding-bottom:10px;
+  // .info-icon{
+    // height:15px;
+    // width:15px;
+    // object-fit: contain;
+    // padding-bottom:10px;
+// 
+    // display:none;
+// 
+    // // ON MOBILE
+    // @media screen and (max-width: 441px){
+      // display:inline;
+    // }
+  // }
+// 
+  // .info-hover-icon{
+    // height:15px;
+    // width:15px;
+    // object-fit: contain;
+    // padding-bottom:10px;
+// 
+    // display:none;
+// 
+    // // ON MOBILE
+    // @media screen and (max-width: 441px){
+      // display:none;
+    // }
+  // }
+// 
+// 
+  // &:hover .info-icon{
+    // display:none;
+  // }
 
-    display:none;
-
-    // ON MOBILE
-    @media screen and (max-width: 441px){
-      display:inline;
-    }
-  }
-
-  .info-hover-icon{
-    height:15px;
-    width:15px;
-    object-fit: contain;
-    padding-bottom:10px;
-
-    display:none;
-
-    // ON MOBILE
-    @media screen and (max-width: 441px){
-      display:none;
-    }
-  }
-
-
-  &:hover .info-icon{
-    display:none;
-  }
-
-  &:hover .info-hover-icon{
-    display:none;
-
-    @media screen and (max-width: 441px){
-      display:inline;
-    }
-  }
+  // &:hover .info-hover-icon{
+    // display:none;
+// 
+    // @media screen and (max-width: 441px){
+      // display:inline;
+    // }
+  // }
 }
 
 // =======================================
@@ -803,6 +805,10 @@
   // height:100%;
 }
 
+.key-wrapper{
+  display:none;
+}
+
 
 
 .see-results-btn {
@@ -840,4 +846,9 @@
     margin-left:20%;
     margin-right:20%;
   }
+}
+
+.info-icon{
+  max-width:30px;
+  cursor: pointer;
 }

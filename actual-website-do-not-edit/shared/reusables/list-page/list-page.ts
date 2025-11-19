@@ -252,62 +252,108 @@ document.addEventListener('DOMContentLoaded', function () {
 // ============================================================
 // ============================================================
 
+// Global constants
+const LIST_PAGE_WRAPPER = ".list-page-wrapper";
+const ALL_FILTERS_WRAPPER = ".all-filters-wrapper";
+const KEY_WRAPPER = ".key-wrapper"; // new
+const MAIN_FILTERS_WRAPPER = ".flow-wrapper";
+
+/**
+ * Open all filters side content
+ */
 function openAllFilters() {
-  document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+  document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
     (el as HTMLElement).style.display = "none";
   });
 
-  document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
+  document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
     (el as HTMLElement).style.display = "inline-flex";
   });
 
-  history.pushState({ languageBoxOpen: true }, "", "#all-filters");
+  history.pushState({ filtersOpen: true }, "", "#all-filters");
 }
 
+/**
+ * Close all filters side content
+ */
 function closeAllFilters() {
-  document.querySelectorAll(".list-page-wrapper").forEach((el) => {
+  document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
     (el as HTMLElement).style.display = "block";
   });
 
-  // document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
-    // (el as HTMLElement).style.display = "none";
-// 
-// 
-	// // TODO only change display to none if it DOESN'T have the class 'selected'.
-	// // assume most of the filter options don't have the class (if considering efficiency etc...)
-    // const isFilterCurrentlySelected: boolean = filterButtonElement.className.indexOf(SELECTED_FILTER_CLASS) !== -1;
-    // console.log(`Is '${filterButtonElement.className}' selected? ${isFilterCurrentlySelected}`);
-  // });
-
-
-  document.querySelectorAll(".all-filters-wrapper").forEach((el) => {
-	  const element = el as HTMLElement;
-
-	  // Only hide if it does NOT have the selected class.
-	  if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
-		element.style.display = "none";
-	  } 
-
+  document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
+    const element = el as HTMLElement;
+    if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
+      element.style.display = "none";
+    }
   });
 
-  history.pushState({ languageBoxOpen: false }, "", "#list-page");
+  history.pushState({ filtersOpen: false }, "", "#list-page");
 }
 
+/**
+ * Open key side content
+ */
+function openKey() {
+  document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
+    (el as HTMLElement).style.display = "none";
+  });
 
-// Restore when back button is clicked
+  document.querySelectorAll(MAIN_FILTERS_WRAPPER).forEach((el) => {
+    (el as HTMLElement).style.display = "none";
+  });
+
+  document.querySelectorAll(KEY_WRAPPER).forEach((el) => {
+    (el as HTMLElement).style.display = "inline-flex";
+  });
+
+  history.pushState({ keyOpen: true }, "", "#key");
+}
+
+/**
+ * Close key side content
+ */
+function closeKey() {
+  document.querySelectorAll(LIST_PAGE_WRAPPER).forEach((el) => {
+    (el as HTMLElement).style.display = "block";
+  });
+  
+
+  document.querySelectorAll(MAIN_FILTERS_WRAPPER).forEach((el) => {
+    (el as HTMLElement).style.display = "flex";
+  });
+
+  document.querySelectorAll(KEY_WRAPPER).forEach((el) => {
+    const element = el as HTMLElement;
+    if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
+      element.style.display = "none";
+    }
+  });
+
+  history.pushState({ keyOpen: false }, "", "#list-page");
+}
+
+/**
+ * Restore view on back/forward navigation
+ */
 window.addEventListener("popstate", (event) => {
-	const mainWrapper = document.querySelector(".list-page-wrapper") as HTMLElement | null;
-	const sideContentWrapper = document.querySelector(".all-filters-wrapper") as HTMLElement | null;
+  const mainWrapper = document.querySelector(LIST_PAGE_WRAPPER) as HTMLElement | null;
+  const sideContentWrapper = document.querySelector(ALL_FILTERS_WRAPPER) as HTMLElement | null;
+  const keyWrapper = document.querySelector(KEY_WRAPPER) as HTMLElement | null;
 
-	if (event.state?.languageBoxOpen) {
-		// If state indicates the language box, show it
-		if (mainWrapper) mainWrapper.style.display = "none";
-		if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
-	} else {
-		// Otherwise, revert to original content
-		if (mainWrapper) mainWrapper.style.display = "grid";
-		if (sideContentWrapper) sideContentWrapper.style.display = "none";
-	}
+  if (event.state?.filtersOpen) {
+    if (mainWrapper) mainWrapper.style.display = "none";
+    if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
+    if (keyWrapper) keyWrapper.style.display = "none";
+  } else if (event.state?.keyOpen) {
+    if (mainWrapper) mainWrapper.style.display = "none";
+    if (sideContentWrapper) sideContentWrapper.style.display = "none";
+    if (keyWrapper) keyWrapper.style.display = "inline-flex";
+  } else {
+    if (mainWrapper) mainWrapper.style.display = "grid";
+    if (sideContentWrapper) sideContentWrapper.style.display = "none";
+    if (keyWrapper) keyWrapper.style.display = "none";
+  }
 });
 
 
