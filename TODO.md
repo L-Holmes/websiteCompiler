@@ -1,15 +1,6 @@
-- Add the info key
-    - Could just be a regular blog type page that lists all of the different filter options????
-        - Then it has a close button which just redirects back to the same page??
-
-    <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">
-        <img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
 - Sort options don't fit on page on mobile, you have to scroll laterallly... 
-- On mobile, blogs and shop need to switch with others...
-- then decide where th esearch bar is going ...
 - really need to clear the products/blogs filters when going back to the main page........
     - just when the page loads, check for them, check against the whitelist(?) (contains 'products' or 'blogs'?? or not even?), and remove them...
-
 
 coding TODO:
 - Start writing blogs
@@ -21,6 +12,12 @@ other TODO:
     - usability of limited people
     - how to do user interviews.
 
+other other coding related...
+- Add actual content for each 
+- Add actual filters for each
+- Add actual key for each
+- Add search results...
+- Add guide for all of the above!
 
 --------------------
 - Get help pages / all required ones sorted + some example product pages.
