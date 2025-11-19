@@ -435,7 +435,7 @@ function get_icon_of_thing_being_filtered_for() {
         const filterTileImage = "shared/images/filtering/filter-shoe.avif";
         let tile_heading_html = "<div class='filter-tile-img-wrapper'>";
         tile_heading_html += "	<div class='info-img-wrapper'>";
-        tile_heading_html += `		<img class='info-img' src='${infoImagePath}' alt='info'>`;
+        // tile_heading_html += `		<img class='info-img' src='${infoImagePath}' alt='info'>`;
         tile_heading_html += `	</div>`;
         tile_heading_html += `	<div class='centre-wrapper'> <img class='filter-icon' src='${filterTileImage}' alt='filter-img'> </div>`;
         tile_heading_html += "</div>";

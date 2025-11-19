@@ -1,15 +1,16 @@
+- Make search javascript / sort / filter etc. lazy load when user clicks.
 
-Current idea;
-- make it so selected filters just show by default... (not hidden)
-
-
-- Add the info popup on the filters?
-    - Or is it too small to even click accurately?
-    - MAYBE we just have a key instead???????
+- Add the info key
     - Could just be a regular blog type page that lists all of the different filter options????
         - Then it has a close button which just redirects back to the same page??
-- Some indication to show that filters are active? (making the '...' be selected???)
+
+    <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info">
+        <img class="info-hover-icon" src="<root>/shared/images/filtering/info-icon-hover.png" alt="info">   
 - Sort options don't fit on page on mobile, you have to scroll laterallly... 
+- On mobile, blogs and shop need to switch with others...
+- then decide where th esearch bar is going ...
+- really need to clear the products/blogs filters when going back to the main page........
+    - just when the page loads, check for them, check against the whitelist(?) (contains 'products' or 'blogs'?? or not even?), and remove them...
 
 
 coding TODO:
@@ -21,6 +22,16 @@ other TODO:
 - look into market research;
     - usability of limited people
     - how to do user interviews.
+
+
+--------------------
+- Get help pages / all required ones sorted + some example product pages.
+    - especially donate etc.
+    - do i have 'support us' AND 'donate'?
+- Make notes and plan on user interviews.
+    - (ideally both for 'usability for dumb people' and for 'optimal website design')
+- Get some user interview feedback.
+- Add all the content!
 
 # Other things to consider;
 - Sponsers / Advertisements / Affiliate links page????

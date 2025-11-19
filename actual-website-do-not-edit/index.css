@@ -209,7 +209,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .ux-grid-specific {
+.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .ux-grid-specific {
   display: grid;
   height: 100%;
   overflow-y: hidden;
@@ -681,25 +681,23 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid-MOBILE {
   grid-template-columns: auto;
-  grid-template-rows: 0.4fr 0.2fr 0.2fr 0.2fr;
-}
-
-.top-bar-row-1-grid-MOBILE {
-  grid-template-columns: 0.5fr 0.5fr;
-  grid-template-rows: auto;
-  height: 35vh;
-}
-
-.top-bar-row-2-grid-MOBILE {
-  grid-template-columns: 0.5fr 0.5fr;
-  grid-template-rows: auto;
-  height: 25vh;
+  grid-template-rows: 0.24fr 0.27fr 0.34fr 0.15fr;
 }
 
 .top-bar-row-3-grid-MOBILE {
   grid-template-columns: 0.5fr 0.5fr;
   grid-template-rows: auto;
-  height: 25vh;
+}
+
+.top-bar-row-2-grid-MOBILE {
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-rows: auto;
+}
+
+.top-bar-row-1-grid-MOBILE {
+  grid-template-columns: 1fr;
+  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-rows: auto;
 }
 
 .top-bar-row-4-grid-MOBILE {
