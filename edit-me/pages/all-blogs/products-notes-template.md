@@ -1,0 +1,3 @@
+- Durability tests (like rose anvil... runrepeat.. etc)
+    - Estimated lifespan
+    - etc...
