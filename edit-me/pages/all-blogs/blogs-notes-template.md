@@ -10,3 +10,14 @@ Ideally the blogs will include...
     - How much it will help
 - Limitations in knowledge / altenate theories / why this may be wrong
 - 
+
+
+
+- Title
+- Abtract etc. (like scientific paper)
+- table: life negativity that is reduces + how/why
+- What lifestyle changes / decision someone could make, knowing this
+- references table
+    - ref_id    reference    [conclusion/summary of reference]
+- last update text
+- Tags
