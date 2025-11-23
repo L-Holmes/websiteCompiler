@@ -47,12 +47,15 @@
 # Product stats
 - e.g. weight / height etc.
 
-# Fit of the product (on different people)
+
+# Fit of the product / sizing (on different people)
 (some more real-life, non-studio photos)
+
 
 # Scientific tests
 (like runrepeat)
 -> What these tests mean.
+(e.g. thermal testing... for insulated products...)
 
 # Why? (our design choices) 
 ## every single possible consideration
