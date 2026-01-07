@@ -1,0 +1,30 @@
+
+- Install required packages:
+sudo apt install pipewire pipewire-pulse wireplumber pipewire-jack carla ffmpeg
+
+- Configure audio permissions:
+sudo usermod -aG audio $USER
+newgrp audio
+
+- Verify PipeWire works:
+pipewire --version
+pactl info | grep "Server Name"
+
+- Record first track (drums):
+jack_capture -f drums.wav
+(Press Ctrl+C to stop)
+
+- Play drums while recording vocals:
+jack_play drums.wav &
+jack_capture -f vocals.wav
+(Press Ctrl+C to stop)
+
+- Mix layers into final track:
+ffmpeg -i drums.wav -i vocals.wav -filter_complex amix=inputs=2:duration=longest final_mix.wav
+
+- For effects (optional):
+carla
+(Load vocal track, add effects, export)
+
+---
+

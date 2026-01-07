@@ -1,0 +1,146 @@
+
+Prerequisites:
+- keyboard switch f12 and arrow keys. 
+
+
+1) Get a USB 
+
+2) Go to Debian.org/distrib
+- Download the 64 bit netist iso 
+
+3) Go to rufus.ie 
+Download the top executable 
+
+4) Run the Rufus executable
+
+5) Configure Rufus screen
+- Device = select your usb (if not already selected)
+- boot selection = iso, then click 'select' and choose your iso image from your downloads folder
+- for partition scheme = GPT
+- persistence partition size = leave as default 0
+- Target system = UEFI (non CSM)
+- leave volume label as default value
+- for file system, leave as FAT 32
+- leave cluster size as default (probs 16 kilo) 
+Click START
+Click Write in ISO image mode 
+Cluck ok 
+Click ok 
+
+When it says status ready, don't click START. Just click the red x at the top. 
+
+6) Find out what key you need to press on restart in order to enter boot menu 
+
+TODO
+(E.g. f12) 
+
+7) Restart and spam f12
+
+8) assuming it opens in boot menu:
+You'll likely see around 3 options.
+
+Top one probably windows
+I also had network as an option
+
+Look for the option that is likely your usb. It may be the name of the usb brand (e.g. SanDisk) or a name you have given it. 
+
+Use the arrow keys to navigate to that.
+Press enter.
+
+9) follow install guide
+- Press enter on 'graphical install'
+- Select your language using arrow keys then press enter or continue 
+- Select your country 
+- Let it install stuff 
+
+For the 'host name' enter what you want. 
+E.g. johns-comp
+(Only numbers, letters and dash allowed) 
+
+For the domain name, make something up
+E.g. johns-comp.com 
+
+For the root password, enter a good password that you will remember / have noted down 
+
+Enter a username (e.g. John)  (e.g. main) .
+Enter a good user password 
+
+For partitioning, click:
+- guided: use entire disk 
+
+Select your device (to note, mine said Samsung because my thinkcentre had a Samsung SSD!) just make sure you don't choose the removable usb. 
+
+Click 'all files in one partition'
+Click 'finish partitioning and write changes to disk' 
+
+When it asks whether you want to write the changes to the disks, click 'yes' 
+
+Wait as it installs the base system. 
+
+For package manager, Choose your country (e.. UK) 
+
+For Debian archive mirror, click first option 
+
+Leave the proxy blank, press enter
+
+Leave it to select and install software. 
+
+When asked about the popularity contest, enter 'no' 
+
+
+For the software to install, leave the defaults selected, select:
+- Debian desktop environment
+- standard system utilities
+- xfce (most minimal and well maintained / compatible / no hassle) 
+
+Click 'continue' 
+
+
+When it says installation completed, click 'continue' 
+
+Let Debian gnu grub be auto selected after a few seconds
+
+
+Login with the username and password we setup earlier. 
+
+Main 
+*******
+
+----------
+If you get password incorrect when logging in...
+
+In the top right, click power then restart. As restarting click shift every 0.5 seconds or so.
+When the menu comes up, press 'e'
+
+...
+
+You should see a terminal.
+
+mount -o remount,rw /
+passwd main
+sync
+reboot -f
+
+11)
+Open terminal 
+Add your user to sudo group:
+- su - root 
+- usermod -aG sudo main 
+- sudo reboot
+
+Login again 
+(Be wary of capital letters!) 
+
+12)
+Open terminal again
+Sudo apt update && sudo apt upgrade -y 
+
+13) 
+Nice install (optional but recommended)
+
+sudo apt install -y \
+  vim git curl wget \
+  build-essential \
+  firefox-esr
+
+
