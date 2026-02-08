@@ -1,0 +1,3 @@
+- Wasting my potential on this crappy system
+- about this thing I don't care about
+- when i could be doing something useful...
