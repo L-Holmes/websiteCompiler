@@ -1,0 +1,6 @@
+i.e. Things that possibly aren't very impactful for your life
+But they are too serious / really though provoking to put in 'NOT RELATED'
+
+Some may be niche and only for certain people...
+
+Some may not be niche but difficult to say essential reading...
