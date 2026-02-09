@@ -64,3 +64,20 @@ e.g.
 --------------------------------------------------------
 reviews of places in england...
 --------------------------------------------------------
+
+What genre of YouTube gets the highest average views count???
+
+What genre best for sponsors???
+
+Best 'effort to consistent (respected) viewership' ratio areas
+
+Best areas to get new people
+
+Best areas were most creators are not clever, so should be easy to use logic and well put together structured videos to dominate
+
+-------------
+
+Youtuber wins  
+(Praise YouTubers, copying their style!?!?!?!?)
+
+--------------------------------------------------------
