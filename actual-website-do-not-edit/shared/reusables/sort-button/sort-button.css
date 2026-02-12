@@ -538,11 +538,6 @@ body.font-dyslexia h4 {
   align-items: center;
   line-height: 0;
 }
-@media screen and (max-width: 370px) {
-  .sort-button {
-    width: 100vw;
-  }
-}
 
 .sort-button:hover {
   background-color: #555;
@@ -575,17 +570,15 @@ body.font-dyslexia h4 {
   border: 1px solid #ddd;
   box-sizing: border-box;
   z-index: 1001; /* Ensure it floats above the rest of the page content */
+  overflow-x: auto;
+  max-width: 75vw;
   /* stop it clipping off the screen on mobile */
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 800px) {
   .sort-box {
-    position: fixed;
-    top: 50%;
+    /* centre relative to viewport */
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    max-width: 95vw;
-    overflow-x: auto;
+    transform: translateX(-50%);
   }
 }
 

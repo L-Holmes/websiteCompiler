@@ -1005,16 +1005,9 @@ body.font-dyslexia h4 {
 }
 
 @media screen and (max-width: 450px) {
-  .thin-item {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-}
-
-@media screen and (max-width: 450px) {
   .push-onto-next-line {
-    margin-left: 45%;
-    margin-right: 45%;
+    padding-left: 50vw;
+    margin-right: 50vw;
   }
 }
 
