@@ -81,3 +81,25 @@ Youtuber wins
 (Praise YouTubers, copying their style!?!?!?!?)
 
 --------------------------------------------------------
+
+# Get loads of views 
+- Look at the trending games.
+    - use my knowledge of thumbnails etc. and titles etc.
+    - break down something insightful (e.g. minecrafts basic but perfect design)
+        - or again, go against the status-quo.
+
+--------------------------------------------------------
+Recommend the opposite of what everyone else is recommending
+
+AI won't kill us... It will be beneficial...
+
+You shouldn't quit drinking
+
+You shouldn't quit your smartphone / social media...
+
+
+i.e. Repeat theme vids:
+- opposite of what everyone is recommending (currently and just in general like exercise and veg etc.) 
+- bad things to avoid (bad shoes etc.) 
+- what to look out for when buying ... (Shoes) 
+-----------------
