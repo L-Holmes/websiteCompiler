@@ -5,10 +5,15 @@ cargo run
 
 
 # reference for me on running the server
-NOT!!!!!!!!!!! webfsd -F -p 8080 -r "$PWD" -i index.html
 cd .. && cd actual-website-do-not-edit/ && python3 -m http.server 8000
+
+# If you get a port issues...
 sudo lsof -i :8000
 
+# Copying the contents of actual website do not edit/ to our website:
+1) Navigate to the folder of where you want the contents to go
+2) Run this:
+find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + && cp -a "$HOME/code/websiteCompiler/actual-website-do-not-edit/." .
 
 # images source
 https://icons8.com/icons/set/shoe

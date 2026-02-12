@@ -11,11 +11,13 @@
 
             <div class="flow-wrapper">
                 <img class="info-icon" src="<root>/shared/images/filtering/info-icon.png" alt="info"  onclick="openKey()">
+                <div class="push-onto-next-line"></div>
                 <r-clear-filters extraClass="all-filters-wrapper"> 
                 {main-filters}
 
 
                 {other-filters}
+                <div class="push-onto-next-line"></div>
                 <r-see-more-filters filterText="...">
                 <r-sort-button>
 
@@ -28,8 +30,6 @@
             <div class="key-wrapper">
                 {key}
             </div>
-
-            <div class="vert-spacing-m"></div>
 
             <div class="list-page-wrapper">
                 <div class="items list-page-wrapper" id="items">

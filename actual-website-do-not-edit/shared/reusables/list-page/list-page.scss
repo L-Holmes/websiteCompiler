@@ -848,7 +848,18 @@
   }
 }
 
+.push-onto-next-line{
+  @media screen and (max-width: 330px) {
+    margin-left:45%;
+    margin-right:45%;
+  }
+}
+
 .info-icon{
   max-width:30px;
   cursor: pointer;
+
+  @media screen and (max-width: 330px) {
+    max-width:20px;
+  }
 }

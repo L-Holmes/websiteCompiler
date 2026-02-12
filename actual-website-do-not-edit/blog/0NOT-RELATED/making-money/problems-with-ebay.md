@@ -1,0 +1,13 @@
+- I'm done with selling on eBay / Vinted...
+    - Charity all the way...
+    - Or just even giving stuff away.
+
+(annoyance of packaging, no one buys stuff, etc) 
+
+Its like the many rich tech people say...
+If something is cheap and easy.. don't waste your own time on it.
+
+I don't get enjoyment 
+Ordering packages, packing stuff up, listing stuff, dealing with offeres and potential complaints...
+Is it worth $5? $50?
+having to undersell things... (like my jordans)

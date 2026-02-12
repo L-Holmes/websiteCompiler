@@ -1011,9 +1011,21 @@ body.font-dyslexia h4 {
   }
 }
 
+@media screen and (max-width: 330px) {
+  .push-onto-next-line {
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+}
+
 .info-icon {
   max-width: 30px;
   cursor: pointer;
+}
+@media screen and (max-width: 330px) {
+  .info-icon {
+    max-width: 20px;
+  }
 }
 
 /*# sourceMappingURL=list-page.css.map */
