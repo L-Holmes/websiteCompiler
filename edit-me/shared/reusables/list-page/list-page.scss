@@ -842,14 +842,14 @@
 
 
 .thin-item{
-  @media screen and (max-width: 330px) {
+  @media screen and (max-width: 450px) {
     margin-left:20%;
     margin-right:20%;
   }
 }
 
 .push-onto-next-line{
-  @media screen and (max-width: 330px) {
+  @media screen and (max-width: 450px) {
     margin-left:45%;
     margin-right:45%;
   }
@@ -859,7 +859,7 @@
   max-width:30px;
   cursor: pointer;
 
-  @media screen and (max-width: 330px) {
+  @media screen and (max-width: 450px) {
     max-width:20px;
   }
 }

@@ -1004,14 +1004,14 @@ body.font-dyslexia h4 {
   background: #121212;
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 450px) {
   .thin-item {
     margin-left: 20%;
     margin-right: 20%;
   }
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 450px) {
   .push-onto-next-line {
     margin-left: 45%;
     margin-right: 45%;
@@ -1022,7 +1022,7 @@ body.font-dyslexia h4 {
   max-width: 30px;
   cursor: pointer;
 }
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 450px) {
   .info-icon {
     max-width: 20px;
   }
