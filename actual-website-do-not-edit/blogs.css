@@ -570,4 +570,9 @@ a:hover {
   text-decoration: underline;
 }
 
+.no-margin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 /*# sourceMappingURL=blogs.css.map */

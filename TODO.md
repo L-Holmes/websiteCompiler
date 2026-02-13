@@ -1,42 +1,33 @@
 TODO
+- Need  to decide how to organise the opening page.
+    - Getting the key info across first.
+    - Ensuring I'm phrasing everything correctly...
+
 - decide on the TODO, lol!
     - maybe want to look through the below todo..
 - Make great progress on the 'new? start here' page.
-- maybe get a priority lits of blogs to write?
+- maybe get a priority list of blogs to write?
     - defo things like the road map...
     - and the 'average day in the life'
     - and some of the more essential things
     - and the pages that I find helpful...
+    - relationship stuff / day planning...
 - + perhaps maybe some things that don't take as much thinking power?
 - May also want to start making the blogs accessible via the blogs page...
+- copy over the holiday notes?
 
 
 
 
 
 
-
-
-- Sort options don't fit on page on mobile, you have to scroll laterallly... 
 - really need to clear the products/blogs filters when going back to the main page........
     - just when the page loads, check for them, check against the whitelist(?) (contains 'products' or 'blogs'?? or not even?), and remove them...
-
-coding TODO:
-- Start writing blogs
-- Figure out what to do with the 
-- Start setting up pages for all my blogs.
 
 other TODO:
 - look into market research;
     - usability of limited people
     - how to do user interviews.
-
-other other coding related...
-- Add actual content for each 
-- Add actual filters for each
-- Add actual key for each
-- Add search results...
-- Add guide for all of the above!
 
 --------------------
 - Get help pages / all required ones sorted + some example product pages.
