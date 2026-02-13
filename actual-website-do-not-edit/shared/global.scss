@@ -794,3 +794,9 @@ $info-tip-background-colour: #2E2E2E;
     transform: translateX(-50%) translateY(-5px); // Subtle "float up" effect
   }
 }
+
+.page-nav{
+  display:inline;
+  font-size: $font-size-xs;
+  margin:5px;
+}

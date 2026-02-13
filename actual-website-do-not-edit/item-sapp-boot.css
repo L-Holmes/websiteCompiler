@@ -538,6 +538,12 @@ body.font-dyslexia h4 {
   transform: translateX(-50%) translateY(-5px);
 }
 
+.page-nav {
+  display: inline;
+  font-size: 0.75rem;
+  margin: 5px;
+}
+
 .buy-now-button {
   background-color: black;
   color: #DBDBDB;

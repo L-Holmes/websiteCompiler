@@ -538,6 +538,12 @@ body.font-dyslexia h4 {
   transform: translateX(-50%) translateY(-5px);
 }
 
+.page-nav {
+  display: inline;
+  font-size: 0.75rem;
+  margin: 5px;
+}
+
 .filter-outer-grid {
   padding-top: 10px;
   padding-bottom: 10px;
