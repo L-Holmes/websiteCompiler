@@ -151,13 +151,13 @@ h2 {
 }
 
 h3 {
-  color: #D7C85D;
+  color: #CBBE67;
   margin: 0px;
   font-size: 1.5rem;
 }
 
 h4 {
-  color: #E4DC6D;
+  color: #DCD07F;
   margin: 0px;
 }
 
@@ -505,6 +505,37 @@ body.font-dyslexia h4 {
 
 .button-hitbox-page-link {
   display: block;
+}
+
+.info-tip {
+  position: relative;
+  cursor: help;
+  color: #8ab4f8;
+  display: inline-block;
+}
+.info-tip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: max-content;
+  max-width: 60vw;
+  white-space: normal;
+  padding: 10px;
+  background-color: #2E2E2E;
+  color: #DBDBDB;
+  text-align: center;
+  border-radius: 6px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.info-tip:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
 }
 
 .sort-wrapper {

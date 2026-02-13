@@ -226,8 +226,13 @@ $colour-main-background:#121212;
 $text-colour-primary:#DBDBDB;
 $text-colour-secondary:#ffffff;
 
-$text-colour-h4: #E4DC6D; // just a tiny bit darker than #E5DD6F
-$text-colour-h3: #D7C85D; // just a tiny bit darker than #D8C95F
+// $text-colour-h4: #E4DC6D; 
+// $text-colour-h3: #D7C85D; 
+
+$text-colour-h4: #DCD07F; 
+$text-colour-h3: #CBBE67;
+
+
 
 //other
 $top-bar-height: 100px;
@@ -728,4 +733,64 @@ $page-contents-margin-right:100px;
   @extend .button-hitbox;
   display:block;
 }
+
 // =============================================================
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// AESTHETICS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$info-accent: #8ab4f8; 
+$info-tip-background-colour: #2E2E2E;  
+
+.info-tip {
+  position: relative;
+  cursor: help; // The standard "minimal" help icon (usually a ? or arrow with ?)
+  color: $info-accent;
+  // text-decoration: underline dotted $info-accent; // Visual cue it's interactive
+  display: inline-block;
+
+  // The Popup Box
+  &::after {
+    // Content pull from your data-tooltip attribute
+    content: attr(data-tooltip);
+    
+    // Positioning
+    position: absolute;
+    bottom: 150%; // Sits above the text
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    // Sizing & Wrapping
+    width: max-content;     // Shrinks to fit short text
+    max-width: 60vw;        // Caps at 60% of viewport width
+    white-space: normal;    // Allows text to wrap
+    // line-height: 1.4;
+    padding: 10px;
+
+    // Visuals
+    background-color: $info-tip-background-colour;
+    color: $text-colour-primary;
+    // font-size: 0.85rem;
+    // font-weight: normal;
+    text-align: center;
+    border-radius: 6px;
+    // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    
+    // Interaction
+    visibility: hidden;
+    opacity: 0;
+    // transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    pointer-events: none; // Prevents the box from flickering if mouse hits it
+  }
+
+  // Hover State
+  &:hover::after {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px); // Subtle "float up" effect
+  }
+}
