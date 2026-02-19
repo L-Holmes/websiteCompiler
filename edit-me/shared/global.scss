@@ -285,20 +285,26 @@ h1{
 }
 
 h2{
-	color:$text-colour-primary;
-	margin: 0px;
-//   font-family: $atkinson-regular;
-    font-size: $font-size-m-l;
-}
-
-h3{
 	color:$text-colour-h3;
 	margin: 0px;
   // font-family: $atkinson-regular;
     font-size: $font-size-m;
   }
 
-h4{
+h3{
+	color:$text-colour-h4;
+	margin: 0px;
+  // font-family: $atkinson-regular;
+  }
+
+
+  h4{
+	color:$text-colour-h4;
+	margin: 0px;
+  // font-family: $atkinson-regular;
+  }
+
+  h5{
 	color:$text-colour-h4;
 	margin: 0px;
   // font-family: $atkinson-regular;

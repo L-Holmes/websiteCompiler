@@ -146,18 +146,22 @@ h1 {
 }
 
 h2 {
-  color: #DBDBDB;
-  margin: 0px;
-  font-size: 2rem;
-}
-
-h3 {
   color: #CBBE67;
   margin: 0px;
   font-size: 1.5rem;
 }
 
+h3 {
+  color: #DCD07F;
+  margin: 0px;
+}
+
 h4 {
+  color: #DCD07F;
+  margin: 0px;
+}
+
+h5 {
   color: #DCD07F;
   margin: 0px;
 }
