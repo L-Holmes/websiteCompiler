@@ -1,5 +1,12 @@
 
 
+===============================
+===============================
+===============================
+===============================
+===============================
+
+
 Ideally the blogs will include...
 - Tags  (e.g. Eyes, Skin, General health, dementia)
 - Importance rating (estimate, 1-10, how much to prioritize)
@@ -21,3 +28,16 @@ Ideally the blogs will include...
     - ref_id    reference    [conclusion/summary of reference]
 - last update text
 - Tags
+
+===============================
+===============================
+===============================
+===============================
+===============================
+
+Always start with / approx order:
+- Title
+- Necessary tags etc. (SHOULD THESE BE AT BOTTOM???)
+- Super duper brief info
+- Actionable insights (THIS IS THE MAIN THING- MAYUBE EVEN BEFORE INTRO)
+- [rest of stuff]
