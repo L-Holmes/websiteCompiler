@@ -146,7 +146,7 @@ h1 {
 }
 
 h2 {
-  color: #CBBE67;
+  color: #DBDBDB;
   margin: 0px;
   font-size: 2rem;
 }
@@ -158,12 +158,12 @@ h3 {
 }
 
 h4 {
-  color: #DCD07F;
+  color: #CBBE67;
   margin: 0px;
 }
 
 h5 {
-  color: #DCD07F;
+  color: #CBBE67;
   margin: 0px;
 }
 
@@ -296,6 +296,14 @@ body.font-dyslexia h4 {
   display: flex;
   justify-content: center; /* horizontal center */
   align-items: center; /* vertical center */
+}
+
+@media screen and (max-width: 441px) {
+  .align-centre-only-on-mobile {
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center; /* vertical center */
+  }
 }
 
 .vertically-centre {

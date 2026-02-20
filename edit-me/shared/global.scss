@@ -229,8 +229,8 @@ $text-colour-secondary:#ffffff;
 // $text-colour-h4: #E4DC6D; 
 // $text-colour-h3: #D7C85D; 
 
-$text-colour-h4: #DCD07F; 
-$text-colour-h3: #CBBE67;
+$text-colour-h4: #CBBE67;
+$text-colour-h3: #DCD07F; 
 
 
 
@@ -261,6 +261,7 @@ $spacing-s-m: 15px;
 $spacing-s: 10px;
 $spacing-xs: 5px;
 $spacing-xxs: 3px;
+$spacing-xxxs: 2px;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -285,14 +286,14 @@ h1{
 }
 
 h2{
-	color:$text-colour-h3;
+	color:$text-colour-primary;
 	margin: 0px;
   // font-family: $atkinson-regular;
     font-size: $font-size-m-l;
   }
 
 h3{
-	color:$text-colour-h4;
+	color:$text-colour-h3;
 	margin: 0px;
   // font-family: $atkinson-regular;
     font-size: $font-size-m;
@@ -483,6 +484,15 @@ body.font-dyslexia h4 {
     display: flex;
     justify-content: center; /* horizontal center */
     align-items: center; /* vertical center */
+}
+
+.align-centre-only-on-mobile{
+  // ON MOBILE
+  @media screen and (max-width: 441px){
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center; /* vertical center */
+  }
 }
 
 
