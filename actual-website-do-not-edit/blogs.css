@@ -147,12 +147,13 @@ h1 {
 h2 {
   color: #CBBE67;
   margin: 0px;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 h3 {
   color: #DCD07F;
   margin: 0px;
+  font-size: 1.5rem;
 }
 
 h4 {
@@ -568,7 +569,8 @@ div {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  font-size: 0.75rem;
 }
 a:hover {
   text-decoration: underline;
