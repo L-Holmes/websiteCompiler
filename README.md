@@ -13,7 +13,8 @@ sudo lsof -i :8000
 # Copying the contents of actual website do not edit/ to our website:
 1) Navigate to the folder of where you want the contents to go
 2) Run this:
-find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + && cp -a "$HOME/code/websiteCompiler/actual-website-do-not-edit/." .
+cd /home/main/code/L-Holmes.github.io && find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + && cp -a "$HOME/code/websiteCompiler/actual-website-do-not-edit/." .
+
 
 # images source
 https://icons8.com/icons/set/shoe
