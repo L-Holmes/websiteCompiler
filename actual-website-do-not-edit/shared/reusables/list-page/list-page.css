@@ -990,7 +990,7 @@ body.font-dyslexia h4 {
 }
 
 .single-item-wrapper {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   gap: 10px 20px;
