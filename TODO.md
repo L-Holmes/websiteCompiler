@@ -14,7 +14,7 @@ Priority list for blogs:
     - support us _and_ donate?
 - relationship stuff
 - day planning
-- <legal / help pages> (THE REST!) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
 - <other things linked to on the 'start here' page>
 - <pages that I find helpful>
 - <essential things>
