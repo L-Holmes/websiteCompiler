@@ -1,0 +1,29 @@
+why London became capital of England
+(Romans, invasions, geology of river)
+
+- Thames estuary formed with deep, tidal, navigable river.  
+- Natural narrowing near modern London created an easy crossing point.  
+- Other southern estuaries existed (Solent, Severn, Humber) but had drawbacks: too tidal, too far from Europe, poorer inland access.  
+- Liverpool area faced the Irish Sea, shallow marshy coast, not suited for early European trade.
+
+- Pre‑Roman peoples lived in the Thames Valley for water, fertile land, and movement routes.  
+- Area was important but not an urban centre; tribal capitals were elsewhere (e.g., Colchester).
+
+- Romans invaded Britain (AD 43).  
+- Chose the London site because it was the best bridge point on the Thames.  
+- Deep tidal river allowed ships far inland.  
+- Closest major river access to Gaul and the Rhine for trade and supply.  
+- No dominant local tribe there, so easy to build a new commercial town.  
+- Built bridge, port, roads; Londinium quickly became main trading hub.  
+- Became largest city in Roman Britain by the 2nd century.
+
+- Boudica destroyed Londinium (AD 60).  
+- Romans rebuilt it larger and fortified; it became administrative centre.
+
+- After Roman withdrawal (400s), town declined but location remained valuable.  
+- Anglo‑Saxons resettled nearby and revived trade.  
+- London grew as a major trading town (Lundenwic).  
+- Vikings targeted it because it was wealthy and strategic.  
+- Alfred the Great re‑fortified the old Roman city (Lundenburh).  
+- By around 1000, London was England’s largest and richest city and effectively the capital.
+
