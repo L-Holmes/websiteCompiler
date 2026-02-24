@@ -1,20 +1,24 @@
+- Move over joplin notes
+- Here:
+    - Add the changes I've noted in joplin to the opening page
+        - Work out what to do with the additional sections- whether we have seperate pages or not...
+    - Add the actual definition of the negativity score
+    - Sort out some of they key blogs.
+        - Like the day in the life, just have a crack at it.
+- Easier soft brain stuff:
+    - Adding html outlines to all other blogs
+    - Adding links to all other blogs on the blogs page
+    - Adding a template products page that each product links to?
+    - Adding pictures for the first few blogs on my laptop
+- Coding related:
+    - Sort out the back button situation
+        - enter a blog, go back (filters as was), but then click back again and then it goes back to main page.
+            - i.e. when you update a filter, and click 'filter' etc. It replaces (not adds to_) the 'back' queue.
+    - Check whether there is still the issue after that fix, of when you go from the main page to the blogs page whether the filters are still there!?? and whether that is indeed an issue.
+
+
 
 Priority list for blogs:
-- Other resources
-    - Add to the blogs page list
-    - Get page looking like I want (with maybe links at the top to return back to blogs?)
-    - Add content 
-        - (particularly the actionable takeaways)
-- Minimising negativity
-- Road map
-- Average day in the life
-- Paleo diet 
-- <legal / help pages>
-    - Particularly the 'donate' / 'why support us page' first.
-    - support us _and_ donate?
-- relationship stuff
-- day planning
-
 - <other things linked to on the 'start here' page>
 - <pages that I find helpful>
 - <essential things>

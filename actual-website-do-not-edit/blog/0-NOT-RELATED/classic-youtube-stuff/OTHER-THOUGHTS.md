@@ -103,3 +103,10 @@ i.e. Repeat theme vids:
 - bad things to avoid (bad shoes etc.) 
 - what to look out for when buying ... (Shoes) 
 -----------------
+what are the chances that [x] (ideally something possibly concerning)
+- We get hit by a meteor
+- World war 3
+- Nuclear war
+
+(should you worry about [x]? Answered.)
+-----------------
