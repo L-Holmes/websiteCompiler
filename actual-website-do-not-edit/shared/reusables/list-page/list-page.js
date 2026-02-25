@@ -213,7 +213,7 @@ function openAllFilters() {
     document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
         el.style.display = "inline-flex";
     });
-    history.pushState({ filtersOpen: true }, "", "#all-filters");
+    history.replaceState({ filtersOpen: true }, "", "#all-filters");
 }
 /**
  * Close all filters side content
@@ -228,7 +228,7 @@ function closeAllFilters() {
             element.style.display = "none";
         }
     });
-    history.pushState({ filtersOpen: false }, "", "#list-page");
+    history.replaceState({ filtersOpen: false }, "", "#list-page");
 }
 /**
  * Open key side content
@@ -243,7 +243,7 @@ function openKey() {
     document.querySelectorAll(KEY_WRAPPER).forEach((el) => {
         el.style.display = "inline-flex";
     });
-    history.pushState({ keyOpen: true }, "", "#key");
+    history.replaceState({ keyOpen: true }, "", "#key");
 }
 /**
  * Close key side content
@@ -261,7 +261,7 @@ function closeKey() {
             element.style.display = "none";
         }
     });
-    history.pushState({ keyOpen: false }, "", "#list-page");
+    history.replaceState({ keyOpen: false }, "", "#list-page");
 }
 /**
  * Restore view on back/forward navigation

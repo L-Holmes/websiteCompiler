@@ -270,7 +270,7 @@ function openAllFilters() {
     (el as HTMLElement).style.display = "inline-flex";
   });
 
-  history.pushState({ filtersOpen: true }, "", "#all-filters");
+  history.replaceState({ filtersOpen: true }, "", "#all-filters");
 }
 
 /**
@@ -288,7 +288,7 @@ function closeAllFilters() {
     }
   });
 
-  history.pushState({ filtersOpen: false }, "", "#list-page");
+  history.replaceState({ filtersOpen: false }, "", "#list-page");
 }
 
 /**
@@ -307,7 +307,7 @@ function openKey() {
     (el as HTMLElement).style.display = "inline-flex";
   });
 
-  history.pushState({ keyOpen: true }, "", "#key");
+  history.replaceState({ keyOpen: true }, "", "#key");
 }
 
 /**
@@ -330,7 +330,7 @@ function closeKey() {
     }
   });
 
-  history.pushState({ keyOpen: false }, "", "#list-page");
+  history.replaceState({ keyOpen: false }, "", "#list-page");
 }
 
 /**
