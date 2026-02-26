@@ -821,3 +821,39 @@ $info-tip-background-colour: #2E2E2E;
   font-size: $font-size-xs;
   margin:5px;
 }
+
+
+/// specifics
+///////////////////////////
+
+
+.floating-back-btn {
+  // Positioning
+  position: fixed;
+  right: 20px;
+  bottom: 40%; 
+  z-index: 1000;
+
+  // Sizing (Google Material Standard)
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Transparency & Modern Style
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(1px); 
+  
+  // Aesthetics
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+
+  &:hover {
+    // This overrides global defaults and keeps the button visible
+    background-color: rgba(255, 255, 255, 0.65); 
+  }
+}

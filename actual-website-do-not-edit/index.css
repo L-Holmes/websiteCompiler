@@ -562,6 +562,28 @@ body.font-dyslexia h4 {
   margin: 5px;
 }
 
+.floating-back-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 40%;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+}
+.floating-back-btn:hover {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
 .index-main-wrapper {
   /* Fallback for older/unsupported browsers */
   height: 100vh;

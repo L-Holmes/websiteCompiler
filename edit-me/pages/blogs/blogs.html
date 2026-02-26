@@ -11,8 +11,14 @@
 
         <link rel=stylesheet href="products2.css">
         <script defer src="products2.js"></script>
+
+        <!-- load stuff specific to this file --> 
+        <link rel=stylesheet href="blogs.css">
+		<script defer src="blogs.js"></script>
+ 
     </head>
     <body>
         <r-list-page content=@template:content-blogs page-navigation=@template:content-blogs-page-nav main-filters=@template:content-blogs-main-filters other-filters=@template:content-blogs-other-filters key=@template:content-blogs-key>
+        <r-back-button>
     </body>
 </html>
