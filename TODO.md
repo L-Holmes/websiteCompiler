@@ -1,3 +1,9 @@
+- remove the useless thing from other resources - just show the resources and have that be in a dropdown...
+- get on with the minimising sadness page...
+
+
+
+
 - Move over joplin notes
 - Here:
     - Add the changes I've noted in joplin to the opening page
