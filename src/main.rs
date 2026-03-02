@@ -28,9 +28,9 @@ const SHARED_DIR: &str = "edit-me/shared";
 const COMPONENTS_DIR: &str = "edit-me/shared/reusables";
 const PAGE_TEXT_DIRECTORY: &str = "edit-me/shared/page_text"; // Directory containing en.json, es.json, etc.
 
-const BLOG_TEMPLATE_TOP = "edit-me/shared/resusables/template-blog-top/template-blog-top.html"
-const BLOG_TEMPLATE_BOTTOM = "edit-me/shared/resusables/template-blog-bottom/template-blog-bottom.html"
-const BLOG_OUTPUT_FOLDER = "actual-website-do-not-edit/blog" //Anything in this folder or one of its subfolders is a blog!
+const BLOG_TEMPLATE_TOP: &str = "edit-me/shared/reusables/template-blog-top/template-blog-top.html";
+const BLOG_TEMPLATE_BOTTOM: &str = "edit-me/shared/reusables/template-blog-bottom/template-blog-bottom.html";
+const BLOG_OUTPUT_FOLDER: &str  = "actual-website-do-not-edit/blog"; //Anything in this folder or one of its subfolders is a blog!
 
 // --> Placeholders
 const ROOT_PLACEHOLDER: &str = "<root>";
@@ -50,7 +50,7 @@ const TOP_COMMENT: &str = "# [@reusable_component_start]:"; // placeholder to re
 const BOTTOM_COMMENT: &str = "# [@reusable_component_end]:"; // placeholder to represent the end of a reusable component
 
 // --> Markers
-const BLOG_TEMPLATE_TOP_MARKER = "<!--startofblogtemplatetop-->"
+const BLOG_TEMPLATE_TOP_MARKER: &str = "<!--startofblogtemplatetop-->";
 
 // --> Debug flags
 // (These would be used as needed in your actual implementation)
@@ -683,35 +683,36 @@ fn get_translation_for_language_page_variable<'a>( translation_cache: &'a Transl
 }
 
 
-fn ensure_blog_file_boilerplate(path: &std::path::Path) -> Result<(), Box<dyn std::error::Error>> {
-    // 1. Read the existing blog post content
-    let content = std::fs::read_to_string(path)?;
 
-    // 2. Check the first non-blank line for the marker
-    let has_marker = content
+fn ensure_blog_file_boilerplate(path: &std::path::Path) -> anyhow::Result<()> {
+    // 1. Read the blog file - adding context so we know if THIS is the file missing
+    let content = std::fs::read_to_string(path)
+        .with_context(|| format!("Failed to read blog file at: {:?}", path))?;
+
+    // 2. CHECK: Does it have the marker?
+    let already_has_boilerplate = content
         .lines()
         .find(|line| !line.trim().is_empty())
-        .map(|line| line.contains(BLOG_TEMPLATE_TOP_MARKER))
+        .map(|line| line.trim().contains(BLOG_TEMPLATE_TOP_MARKER))
         .unwrap_or(false);
 
-    // 3. If the marker isn't there, we need to add the boilerplate
-    if !has_marker {
-        println!("Adding boilerplate to: {:?}", path);
+    if !already_has_boilerplate {
+        println!("--> Applying boilerplate: {:?}", path);
+        println!("Running from: {:?}", std::env::current_dir()?);
 
-        // Read the template pieces
-        let top_template = std::fs::read_to_string(BLOG_TEMPLATE_TOP)?;
-        let bottom_template = std::fs::read_to_string(BLOG_TEMPLATE_BOTTOM)?;
+        // 3. Read templates with specific error messages
+        // These are often the culprits for "os error 2" if the CWD is wrong!
+        let top = std::fs::read_to_string(BLOG_TEMPLATE_TOP)
+            .with_context(|| format!("MISSING TOP TEMPLATE: Checked path '{}'. Is your terminal in the right folder?", BLOG_TEMPLATE_TOP))?;
+            
+        let bottom = std::fs::read_to_string(BLOG_TEMPLATE_BOTTOM)
+            .with_context(|| format!("MISSING BOTTOM TEMPLATE: Checked path '{}'.", BLOG_TEMPLATE_BOTTOM))?;
 
-        // Combine: [Top] + [Marker] + [Original Content] + [Bottom]
-        // Note: I'm adding the marker explicitly so subsequent runs skip this file
-        let new_content = format!(
-            "{}\n{}\n{}",
-            top_template,
-            content,
-            bottom_template
-        );
+        let formatted_output = format!("{}\n{}\n{}", top, content, bottom);
 
-        std::fs::write(path, new_content)?;
+        // 4. Write back
+        std::fs::write(path, formatted_output)
+            .with_context(|| format!("Failed to write updated content back to: {:?}", path))?;
     }
 
     Ok(())

@@ -1,11 +1,3 @@
-add the code to my website compiler to add to the blog pages...
-- html boilerplate
-- top bar director
-- back button
----> Hmmm how will this be done?
----> if they don't have it already?? (add some check line that is a comment? At start and end of content?)
-
-
 - get on with the minimising sadness page...
 
 - Here:
@@ -27,6 +19,10 @@ Priority list for blogs:
 
 --------------------
 - + perhaps maybe some things that don't take as much thinking power? (when I'm too drained/multitasking to do blogs?)
+--------------------
+
+consider moving start here and help pages etc. into the blogs folder so that they get the boilerplate added??
+
 --------------------
 
 # Market research
