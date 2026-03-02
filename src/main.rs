@@ -28,6 +28,10 @@ const SHARED_DIR: &str = "edit-me/shared";
 const COMPONENTS_DIR: &str = "edit-me/shared/reusables";
 const PAGE_TEXT_DIRECTORY: &str = "edit-me/shared/page_text"; // Directory containing en.json, es.json, etc.
 
+const BLOG_TEMPLATE_TOP = "edit-me/shared/resusables/template-blog-top/template-blog-top.html"
+const BLOG_TEMPLATE_BOTTOM = "edit-me/shared/resusables/template-blog-bottom/template-blog-bottom.html"
+const BLOG_OUTPUT_FOLDER = "actual-website-do-not-edit/blog" //Anything in this folder or one of its subfolders is a blog!
+
 // --> Placeholders
 const ROOT_PLACEHOLDER: &str = "<root>";
 const SCSS_IMPORT_START: &str = "@use";
@@ -44,6 +48,9 @@ const DISPL_NAME_PLACEHOLD_END: &str = "]";     // end of reusable html componen
 const NEWLINE_PLACEHOLDER: char = '§';
 const TOP_COMMENT: &str = "# [@reusable_component_start]:"; // placeholder to represent the start of a reusable component
 const BOTTOM_COMMENT: &str = "# [@reusable_component_end]:"; // placeholder to represent the end of a reusable component
+
+// --> Markers
+const BLOG_TEMPLATE_TOP_MARKER = "<!--startofblogtemplatetop-->"
 
 // --> Debug flags
 // (These would be used as needed in your actual implementation)
@@ -334,6 +341,12 @@ pub fn compile_all(source_files: &HashSet<String>, translations_files: &Translat
         // println!("dest_path: {}", dest_path.display());
 
 
+        //FaQs: Why do we pass in desination uncompiled?
+        //      --> Rather confusingly, this is the file's final resting place
+        //      --> Its just scss and ts haven't been compiled yet.
+        //      --> THey get compiled in-place... So we make all necessary changes before that...
+        //      --> For html, the desination uncompiled is the same as desination compiled... so use interchangeably.
+
         // Step 0)b): Get uncompiled version of destination path
         let dest_uncompiled : PathBuf = Path::new(OUTPUT_DIRECTORY).join(path_relative_to_src_dir);
 
@@ -395,10 +408,31 @@ pub fn compile_all(source_files: &HashSet<String>, translations_files: &Translat
 		replace_root_placeholder_with_relative_path_new(ROOT_PLACEHOLDER, ROOT_PLACEHOLDER, &dest_uncompiled)?;
         // println!("        -----------------------------");
 
-        // Step 6) HTML files: generate all variations of that file in different languages
+
+        // println!("        -----------------------------");
+		// println!("	6)");
+		// Step 6) Handle blogs
+        // --> Determine if its a blog
+        // --> Add the reused start and end html code that we repeat across every page
+        // TODO NEW HERE!
+        // jump
+        // e.g. dest_uncompiled may be actual-website-do-not-edit/index.html 
+        // e.g. dest_uncompiled may be actual-website-do-not-edit/blog/start-here.html
+        // e.g. dest_uncompiled may be actual-website-do-not-edit/blog/gentle/waves.html
+        // etc.
+        if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
+            // Check if the file path starts with our designated blog output folder
+            if dest_uncompiled.starts_with(BLOG_OUTPUT_FOLDER) {
+                ensure_blog_file_boilerplate(&dest_uncompiled)?;
+            }
+        }
+        // println!("        -----------------------------");
+
+
+        // Step 7) HTML files: generate all variations of that file in different languages
         // TRANSLATION HTML FILES: Process all HTML template files and generate language-specific versions
-        println!("        -----------------------------");
-		println!("	6)");
+        // println!("        -----------------------------");
+		// println!("	7)");
         if dest_uncompiled.extension().and_then(|s| s.to_str()) == Some("html") {
             process_html_template_file_for_all_languages(&dest_uncompiled, OUTPUT_DIRECTORY, &translations_files);
         }
@@ -646,4 +680,39 @@ fn get_translation_for_language_page_variable<'a>( translation_cache: &'a Transl
             page_variables_map.get(variable_name)
         })
         .map(|translation_string: &String| translation_string.as_str())
+}
+
+
+fn ensure_blog_file_boilerplate(path: &std::path::Path) -> Result<(), Box<dyn std::error::Error>> {
+    // 1. Read the existing blog post content
+    let content = std::fs::read_to_string(path)?;
+
+    // 2. Check the first non-blank line for the marker
+    let has_marker = content
+        .lines()
+        .find(|line| !line.trim().is_empty())
+        .map(|line| line.contains(BLOG_TEMPLATE_TOP_MARKER))
+        .unwrap_or(false);
+
+    // 3. If the marker isn't there, we need to add the boilerplate
+    if !has_marker {
+        println!("Adding boilerplate to: {:?}", path);
+
+        // Read the template pieces
+        let top_template = std::fs::read_to_string(BLOG_TEMPLATE_TOP)?;
+        let bottom_template = std::fs::read_to_string(BLOG_TEMPLATE_BOTTOM)?;
+
+        // Combine: [Top] + [Marker] + [Original Content] + [Bottom]
+        // Note: I'm adding the marker explicitly so subsequent runs skip this file
+        let new_content = format!(
+            "{}\n{}\n{}",
+            top_template,
+            content,
+            bottom_template
+        );
+
+        std::fs::write(path, new_content)?;
+    }
+
+    Ok(())
 }

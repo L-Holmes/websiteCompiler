@@ -1,7 +1,13 @@
+add the code to my website compiler to add to the blog pages...
+- html boilerplate
+- top bar director
+- back button
+---> Hmmm how will this be done?
+---> if they don't have it already?? (add some check line that is a comment? At start and end of content?)
+
+
 - get on with the minimising sadness page...
 
-
-- Move over joplin notes
 - Here:
     - Add the changes I've noted in joplin to the opening page
         - Work out what to do with the additional sections- whether we have seperate pages or not...
