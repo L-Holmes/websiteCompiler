@@ -1,3 +1,17 @@
+- scrutinize the main blogs- move any out that shouldn't be there in the main
+- Add the rest of the main blogs
+- Add an image for like a 'no-image' for the products/blogs/filters to use
+- Start adding in some of the actual blogs filters
+    - Main categories (like useful (default selected?), not related, kind of releated..., then all of the main folders in my own folder system?) 
+    - Maybe consider grouping / organising them in some way if possible???? to show the important ones?
+- Perhaps consider giving the blog a custom sort?
+- Add some dates / tags to the blogs 
+
+----
+IN general I should try and get the website to a releaseable state!
+    - So i can get on with just other stuff like youtube / products etc!
+----
+
 - get on with the minimising sadness page...
 
 - Here:

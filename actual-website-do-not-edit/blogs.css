@@ -616,9 +616,9 @@ a:hover {
   margin-bottom: 0px;
 }
 
-ul {
-  margin-top: 0px;
-  margin-bottom: 0px;
+.spaced-bullets {
+  margin-top: 9px;
+  margin-bottom: 9px;
 }
 
 /* ==================== */
@@ -635,7 +635,6 @@ summary::-webkit-details-marker {
 /* ============================= */
 .intro-aka-wrapper {
   display: block;
-  line-height: 1.6;
 }
 
 .aka-trigger {
