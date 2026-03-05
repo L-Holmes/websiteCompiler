@@ -139,39 +139,123 @@ summary {
 .intro-divider {
   width: 100%;
 
-  .divider-trigger {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-
-    &:hover {
-      opacity: 1;
-    }
+.divider-label::before {
+    content: '+';
   }
+
+  &[open] .divider-label::before {
+    content: '−';
+  }
+}
+
+
+  // .divider-trigger {
+    // display: flex;
+    // align-items: center;
+    // cursor: pointer;
+    // opacity: 0.8;
+// 
+    // &:hover {
+      // opacity: 1;
+    // }
+  // }
+// 
+  // .divider-line {
+    // flex: 1;
+    // height: 1px;
+    // background: rgba(255, 255, 255, 0.4);
+  // }
+// 
+  // .divider-label {
+    // margin: 0 1rem;
+    // white-space: nowrap;
+    // letter-spacing: 0.1em;
+  // }
+// 
+// .vert-spacing-s {
+  // height: 1rem;
+// }
+
+
+.divider-trigger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
   .divider-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.7;
   }
 
-  .divider-chevron {
-    width: 10px;
-    height: 10px;
-    margin: 0 1rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg);
-    transition: transform 0.2s ease;
-  }
-
-  &[open] .divider-chevron {
-    transform: rotate(-135deg);
+  &:hover .divider-line {
+    opacity: 0.9;
   }
 }
 
-.vert-spacing-s {
-  height: 1rem;
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: opacity 0.2s ease;
 }
+
+.divider-label {
+  margin: 0 1rem;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+}
+
+/* ----------------------------------- */
+
+
+
+
+
+/* ----------------------------------- */
+
+.graph-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.axis-label {
+  position: absolute;
+}
+
+.axis-y {
+  top: 50%;
+  left: -16px;
+  transform: translateY(-50%);
+}
+
+.axis-x {
+  top: 100%; // guaranteed just below the image — no guessing
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.axis-tooltip {
+  display: none;
+  position: absolute;
+  background: $info-tip-background-colour;
+  white-space: nowrap;
+}
+
+.axis-y .axis-tooltip {
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.axis-x .axis-tooltip {
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.axis-label:hover .axis-tooltip,
+.axis-label:focus .axis-tooltip {
+  display: block;
+}
+
+/* ----------------------------------- */
+/* ----------------------------------- */

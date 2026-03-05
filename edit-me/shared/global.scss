@@ -271,7 +271,7 @@ html{
 	font-size:20px;
 
     @media (max-width: 420px) {
-      font-size: 16px; // Google's default (Chrome default)
+      font-size: 16px; 
     }
 }
 
@@ -348,6 +348,10 @@ button:hover {
 /* BIG FONT toggle  */
 html.big-font {
   font-size: 36px;
+
+  @media (max-width: 420px) {
+    font-size: 21px;
+  }
 }
 
 /* Dyslexia-friendly font toggle */
@@ -441,6 +445,14 @@ body.font-dyslexia h4 {
   @media screen and (min-width: 700px) {
     width: 70%;
   }
+}
+
+.centre-wrapper-horizontal{
+	display: flex;
+	justify-content: center;
+	align-items: center;    //(flex-end for bottom align)
+	width: 100%;
+    min-width: 0; // PREVENT FROM GROWING LARGER THAN CONTAINER
 }
 
 // -- other definitions --
@@ -834,7 +846,7 @@ $info-tip-background-colour: #2E2E2E;
   bottom: 40%; 
   z-index: 1000;
 
-  // Sizing (Google Material Standard)
+  // Sizing 
   width: 56px;
   height: 56px;
   display: flex;
