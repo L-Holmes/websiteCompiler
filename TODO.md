@@ -1,3 +1,11 @@
+- Add the sort for the blogs and the help pages
+- Add the actual tags to the blogs / help pages / etc.. for the sorting?
+- make the main (not not related etc.) be the default selected filter????
+    - OR maybe just have not related as a side filter which then becomes enabled??? --> Or does that go against the filtering out system? I guess it does...
+    - but then what if i want just main stuff for outdoor general??? AHHH MY FIlter system breaks!!!!
+
+
+
 
 - Start adding in some of the actual blogs filters
     - Main categories (like useful (default selected?), not related, kind of releated..., then all of the main folders in my own folder system?) 
