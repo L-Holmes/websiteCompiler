@@ -9,6 +9,11 @@
 - scrutinize the main blogs- move any out that shouldn't be there in the main
 
 ----
+
+TODO - add the tags to the blogs filters
+	 - then add the tags to the actual blogs themselves so that they get filtered properly
+
+----
 IN general I should try and get the website to a releaseable state!
     - So i can get on with just other stuff like youtube / products etc!
 ----
