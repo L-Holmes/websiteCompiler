@@ -99,6 +99,38 @@ summary {
   // }
 // }
 
+// .aka-trigger {
+  // position: relative;
+  // cursor: help;
+  // border-bottom: 1px dotted rgba(255, 255, 255, 0.6);
+  // display: inline-block;
+  // color: inherit;
+// 
+  // .aka-tooltip {
+    // display: none;
+    // position: fixed;
+    // width: 90vw;
+    // max-width: 600px;
+    // max-height: 85vh;
+    // overflow-y: auto;
+    // background-color: #222;
+    // color: #fff;
+    // padding: 12px;
+    // border-radius: 4px;
+    // border: 1px solid rgba(255, 255, 255, 0.1);
+    // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    // z-index: 1000;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // pointer-events: auto;
+  // }
+// 
+  // &:hover .aka-tooltip {
+    // display: block;
+  // }
+// }
+
 .aka-trigger {
   position: relative;
   cursor: help;
@@ -108,7 +140,11 @@ summary {
 
   .aka-tooltip {
     display: none;
-    position: fixed;
+    position: absolute;        /* was: fixed */
+    top: 100%;                 /* sits just below the trigger's bottom edge */
+    left: 50%;
+    transform: translateX(-50%);  /* was: translate(-50%, -50%) */
+    margin-top: 4px;           /* small breathing gap between underline and popup */
     width: 90vw;
     max-width: 600px;
     max-height: 85vh;
@@ -120,9 +156,6 @@ summary {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     pointer-events: auto;
   }
 
