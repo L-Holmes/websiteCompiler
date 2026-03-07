@@ -1,11 +1,12 @@
 
-- scrutinize the main blogs- move any out that shouldn't be there in the main
-- Add the rest of the main blogs
 - Start adding in some of the actual blogs filters
     - Main categories (like useful (default selected?), not related, kind of releated..., then all of the main folders in my own folder system?) 
     - Maybe consider grouping / organising them in some way if possible???? to show the important ones?
 - Perhaps consider giving the blog a custom sort?
+
+- Add the rest of the main blogs
 - Add some dates / tags to the blogs 
+- scrutinize the main blogs- move any out that shouldn't be there in the main
 
 ----
 IN general I should try and get the website to a releaseable state!
