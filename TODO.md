@@ -38,6 +38,50 @@ Priority list for blogs:
 
 consider moving start here and help pages etc. into the blogs folder so that they get the boilerplate added??
 
+
+# =============================================
+# --------------- BLOG TODO -------------------
+# =============================================
+
+# List pages list
+- List of all list pages
+- List of pages in the arrangement I have my folder structure in
+- List of pages in priority that you should read them
+- List of pages in order of my favourite to least (i.e. like a tier list?)
+
+# Coding
+- Work out how to get all of the blogs in the list easily..
+    - Or do I just add manually? (will be easier for odering + less compiler headache...)
+- Fix issues on mobile...
+
+
+# Writing 
+go through every single blog...
+- Generate as many video ideas as possible...
+    - + link them in the bottom of the blog...
+- 
+
+# charity
+work out the charity system????
+hnaah this is waaayyyy down the line.>.....
+add this to the roadmap instead...
+
+
+# =============================================
+# =============================================
+# =============================================
+
+
+----------------
+
+Idea:
+- Build on the concept of actually causing change to one's life
+    - Sure podcasts can inspire / inform very slowly and loosely...
+    - But do they actually inspire change in ones life?
+    - Perhaps we could create guides/resources that specifically target that.
+        (Like check in things, tick lists... spreadsheets... some type of community encouragement, or accountability buddy scheme...
+        maybe discussions of ideas / concepts... to get people involved and always on their mind.... 
+
 --------------------
 
 # Market research
