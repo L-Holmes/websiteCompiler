@@ -1,3 +1,13 @@
+- add the new stuff from dana
+- integrate the new sort into blogs and the help
+- start adding some tags to things
+
+
+
+
+
+
+
 - Add the sort for the blogs and the help pages
 - Add the actual tags to the blogs / help pages / etc.. for the sorting?
 - make the main (not not related etc.) be the default selected filter????

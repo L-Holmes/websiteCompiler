@@ -1,0 +1,127 @@
+@use "<root>/shared/global.scss"  as *;
+
+.sort-wrapper {
+  position: relative;
+  display: inline-block;
+  font-family: system-ui, sans-serif;
+}
+
+.sort-toggle {
+  position: absolute;
+  overflow: hidden;
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  white-space: nowrap;
+}
+
+.sort-button {
+  padding: 10px 15px;
+  color: $text-colour-primary;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+
+  // @media screen and (max-width: 370px){
+    // width:100vw;
+  // }
+}
+
+.sort-button:hover {
+  background-color: #555;
+}
+
+.sort-backdrop {
+  display: none;
+}
+
+.sort-toggle:checked ~ .sort-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.sort-box {
+  display: none;
+  position: absolute;
+  top: -50%;  /* Places the top edge of the box exactly at the bottom edge of the button/wrapper */
+  left: 0;
+  transform: none;
+  width: 200px;
+  max-height: calc(100vh - 12px); 
+  background-color: $colour-main-background;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  z-index: 1001; /* Ensure it floats above the rest of the page content */
+  overflow-x: auto;
+
+  max-width: 75vw;
+
+  /* stop it clipping off the screen on mobile */
+  @media screen and (max-width: 800px){
+    // position: fixed;
+// 
+    // /* keep vertical alignment from normal layout */
+// 
+    // /* centre horizontally only */
+    // left: 50%;
+    // transform: translateX(-50%);
+    
+      /* centre relative to viewport */
+    left:50%;
+    transform:translateX(-50%);
+
+
+  }
+}
+
+.sort-toggle:checked ~ .sort-box {
+  display: block;
+}
+
+.sort-toggle:checked + .sort-button {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12) inset;
+}
+
+.sort-option {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.sort-option:hover {
+  background-color: #404040;
+}
+
+.sort-option:last-child {
+  border-bottom: none;
+}
+
+.sort-option.active {
+  background-color: #007bff;
+  color: $text-colour-primary;
+}
+
+.sort-option.active:hover {
+  background-color: #0056b3;
+}
