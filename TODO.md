@@ -1,11 +1,7 @@
-- add the new stuff from dana
+
+
 - integrate the new sort into blogs and the help
 - start adding some tags to things
-
-
-
-
-
 
 
 - Add the sort for the blogs and the help pages
@@ -13,8 +9,6 @@
 - make the main (not not related etc.) be the default selected filter????
     - OR maybe just have not related as a side filter which then becomes enabled??? --> Or does that go against the filtering out system? I guess it does...
     - but then what if i want just main stuff for outdoor general??? AHHH MY FIlter system breaks!!!!
-
-
 
 
 - Start adding in some of the actual blogs filters

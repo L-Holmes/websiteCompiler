@@ -1,0 +1,18 @@
+<div class="sort-wrapper list-page-wrapper">
+
+  <button class="sort-button" aria-haspopup="true" aria-expanded="false" onclick="handleSortClickedNew()">
+    <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6l5-4 5 4H3z" fill="white"/>
+      <path d="M3 10l5 4 5-4H3z" fill="white"/>
+    </svg>
+  </button>
+
+  <div for="sortToggle" class="sort-backdrop" aria-hidden="true"></div>
+
+  <div id="sort-overlay" class="sort-box" role="menu" aria-hidden="true">
+    <div class="sort-option" role="menuitem" onclick="handleHighLowClicked()">Price high to low</div>
+    <div class="sort-option" role="menuitem" onclick="handleLowHighClicked()">Price low to high</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateOldNewClicked()">Oldest to newest</div>
+    <div class="sort-option" role="menuitem" onclick="handleDateNewOldClicked()">Newest to oldest</div>
+  </div>
+</div>
