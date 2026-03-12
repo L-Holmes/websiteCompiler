@@ -1,16 +1,32 @@
+make the search work. At least to a degree.
+- finish 'new? click here' page 
+Once company name sorted
+    - link to actual web url? (NOT YET)
+    - update the thumbnail for the website to blank black.
+    - update the text for each page title to be blank? (not Orfo as it currently is)
+    - setup things for orfo;
+        - custom email (not sure if i use outlook or whether thats not professional enough?)
+        - donate; patreon, buy me a coffee, etc.
+        - youtube channel
+- Finish other main pages. Or hide them??!?!?!?!??!
 
 
 
+------------
 
-- start adding some tags to things
-- Add the actual tags to the blogs / help pages / etc.. for the sorting? / filtering?
-
+Figure out what to do with the filtering?
+    - Or maybe just add a note in the future plan that we plan to add more complex filtering in the future...
+    - maybe add a note expalinign that its currently 'and'...
+    - although how do i show only related stuff initially? (i.e. not the not related stuff?)
+        - THATS NOT POSSIBLE CURRENTLY!!!!
+        - i guess for the mvp i don't add the not related blogs yet or what?!?!?!
+(continuing)
 - make the main (i.e. NOT not related etc.) be the default selected filter????
     - OR maybe just have not related as a side filter which then becomes enabled??? --> Or does that go against the filtering out system? I guess it does...
     - but then what if i want just main stuff for outdoor general??? AHHH MY FIlter system breaks!!!!
 
 
-- Add the rest of the main blogs
+- Add the rest of the main blogs????
 - Add some dates / tags to the blogs 
 - scrutinize the main blogs- move any out that shouldn't be there in the main
 
