@@ -126,6 +126,7 @@ function applyFilter(tag, isFilterTurnedOn) {
             return false;
         }
         // get the tags for the item we are currently looking at 
+        // SPLIT on whitespace
         const currentItemTags = tagsAttribute.split(/\s+/);
         if (currentItemTags.indexOf(tagBeingFilteredFor) === -1) {
             return false;

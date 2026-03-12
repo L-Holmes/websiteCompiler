@@ -155,6 +155,7 @@ function applyFilter(tag: string, isFilterTurnedOn:boolean){
 		}
 
 		// get the tags for the item we are currently looking at 
+		// SPLIT on whitespace
 		const currentItemTags: string[] = tagsAttribute.split(/\s+/);
 
 		if (currentItemTags.indexOf(tagBeingFilteredFor) === -1) {
