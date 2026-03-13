@@ -134,7 +134,7 @@ html {
 }
 @media (max-width: 420px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
@@ -601,7 +601,7 @@ body.font-dyslexia h4 {
 .blog-contents-wrapper {
   max-width: 650px;
   margin: 40px auto;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 h1 {
