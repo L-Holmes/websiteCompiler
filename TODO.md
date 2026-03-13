@@ -1,4 +1,4 @@
-
+work out why some blogs pages are blank / not linked...
 
 
 - make all of the links on the start here page work.
