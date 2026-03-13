@@ -790,6 +790,15 @@
   }
 }
 
+
+.always-newline{
+  @media screen and (max-width: 450px) {
+    padding-left:50vw;
+    padding-right:50vw;
+  }
+}
+
+
 .info-icon{
   max-width:30px;
   cursor: pointer;
@@ -797,4 +806,14 @@
   @media screen and (max-width: 450px) {
     max-width:20px;
   }
+}
+
+
+.filter-heading{
+  display:none;
+  flex: 0 0 100%;
+  width: 100%;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 12px;
 }

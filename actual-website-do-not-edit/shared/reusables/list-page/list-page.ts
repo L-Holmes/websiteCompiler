@@ -256,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Global constants
 const LIST_PAGE_WRAPPER = ".list-page-wrapper";
 const ALL_FILTERS_WRAPPER = ".all-filters-wrapper";
+const FILTER_HEADING = ".filter-heading"
 const KEY_WRAPPER = ".key-wrapper"; // new
 const MAIN_FILTERS_WRAPPER = ".flow-wrapper";
 
@@ -269,6 +270,10 @@ function openAllFilters() {
 
   document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
     (el as HTMLElement).style.display = "inline-flex";
+  });
+
+  document.querySelectorAll(FILTER_HEADING).forEach((el) => {
+    (el as HTMLElement).style.display = "block";
   });
 
   history.replaceState({ filtersOpen: true }, "", "#all-filters");
@@ -287,6 +292,10 @@ function closeAllFilters() {
     if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
       element.style.display = "none";
     }
+  });
+
+  document.querySelectorAll(FILTER_HEADING).forEach((el) => {
+    (el as HTMLElement).style.display = "none";
   });
 
   history.replaceState({ filtersOpen: false }, "", "#list-page");
@@ -340,19 +349,23 @@ function closeKey() {
 window.addEventListener("popstate", (event) => {
   const mainWrapper = document.querySelector(LIST_PAGE_WRAPPER) as HTMLElement | null;
   const sideContentWrapper = document.querySelector(ALL_FILTERS_WRAPPER) as HTMLElement | null;
+  const sideContentHeadings = document.querySelector(FILTER_HEADING) as HTMLElement | null;
   const keyWrapper = document.querySelector(KEY_WRAPPER) as HTMLElement | null;
 
   if (event.state?.filtersOpen) {
     if (mainWrapper) mainWrapper.style.display = "none";
     if (sideContentWrapper) sideContentWrapper.style.display = "inline-flex";
+    if (sideContentHeadings) sideContentHeadings.style.display = "block";
     if (keyWrapper) keyWrapper.style.display = "none";
   } else if (event.state?.keyOpen) {
     if (mainWrapper) mainWrapper.style.display = "none";
     if (sideContentWrapper) sideContentWrapper.style.display = "none";
+    if (sideContentHeadings) sideContentHeadings.style.display = "none";
     if (keyWrapper) keyWrapper.style.display = "inline-flex";
   } else {
     if (mainWrapper) mainWrapper.style.display = "grid";
     if (sideContentWrapper) sideContentWrapper.style.display = "none";
+    if (sideContentHeadings) sideContentHeadings.style.display = "none";
     if (keyWrapper) keyWrapper.style.display = "none";
   }
 });

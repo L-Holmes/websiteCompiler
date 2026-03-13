@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Global constants
 const LIST_PAGE_WRAPPER = ".list-page-wrapper";
 const ALL_FILTERS_WRAPPER = ".all-filters-wrapper";
+const FILTER_HEADING = ".filter-heading";
 const KEY_WRAPPER = ".key-wrapper"; // new
 const MAIN_FILTERS_WRAPPER = ".flow-wrapper";
 /**
@@ -213,6 +214,9 @@ function openAllFilters() {
     });
     document.querySelectorAll(ALL_FILTERS_WRAPPER).forEach((el) => {
         el.style.display = "inline-flex";
+    });
+    document.querySelectorAll(FILTER_HEADING).forEach((el) => {
+        el.style.display = "block";
     });
     history.replaceState({ filtersOpen: true }, "", "#all-filters");
 }
@@ -228,6 +232,9 @@ function closeAllFilters() {
         if (!element.classList.contains(SELECTED_FILTER_CLASS)) {
             element.style.display = "none";
         }
+    });
+    document.querySelectorAll(FILTER_HEADING).forEach((el) => {
+        el.style.display = "none";
     });
     history.replaceState({ filtersOpen: false }, "", "#list-page");
 }
@@ -271,12 +278,15 @@ window.addEventListener("popstate", (event) => {
     var _a, _b;
     const mainWrapper = document.querySelector(LIST_PAGE_WRAPPER);
     const sideContentWrapper = document.querySelector(ALL_FILTERS_WRAPPER);
+    const sideContentHeadings = document.querySelector(FILTER_HEADING);
     const keyWrapper = document.querySelector(KEY_WRAPPER);
     if ((_a = event.state) === null || _a === void 0 ? void 0 : _a.filtersOpen) {
         if (mainWrapper)
             mainWrapper.style.display = "none";
         if (sideContentWrapper)
             sideContentWrapper.style.display = "inline-flex";
+        if (sideContentHeadings)
+            sideContentHeadings.style.display = "block";
         if (keyWrapper)
             keyWrapper.style.display = "none";
     }
@@ -285,6 +295,8 @@ window.addEventListener("popstate", (event) => {
             mainWrapper.style.display = "none";
         if (sideContentWrapper)
             sideContentWrapper.style.display = "none";
+        if (sideContentHeadings)
+            sideContentHeadings.style.display = "none";
         if (keyWrapper)
             keyWrapper.style.display = "inline-flex";
     }
@@ -293,6 +305,8 @@ window.addEventListener("popstate", (event) => {
             mainWrapper.style.display = "grid";
         if (sideContentWrapper)
             sideContentWrapper.style.display = "none";
+        if (sideContentHeadings)
+            sideContentHeadings.style.display = "none";
         if (keyWrapper)
             keyWrapper.style.display = "none";
     }
