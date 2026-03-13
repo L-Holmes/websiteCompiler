@@ -22,6 +22,9 @@ Once company name sorted
 - Finish other main pages. Or hide them??!?!?!?!??!
 
 
+- Think how to group the filters for blogs - like how we have main categories and others etc...
+    - maybe have a subtitle or something or some space seperating/grouping??
+
 
 ------------
 
