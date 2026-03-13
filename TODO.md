@@ -1,12 +1,11 @@
 work out why some blogs pages are blank / not linked...
+    work out why diet page isn't linked.
 
 
 - make all of the links on the start here page work.
 - replace h3 with h1!!!!
 
 
-
-work out why diet page isn't linked.
 fix broken links on main blogs list like that...
 
 make the search work. At least to a degree.
@@ -20,10 +19,6 @@ Once company name sorted
         - donate; patreon, buy me a coffee, etc.
         - youtube channel
 - Finish other main pages. Or hide them??!?!?!?!??!
-
-
-- Think how to group the filters for blogs - like how we have main categories and others etc...
-    - maybe have a subtitle or something or some space seperating/grouping??
 
 
 ------------
