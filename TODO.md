@@ -1,3 +1,14 @@
+
+
+
+- make all of the links on the start here page work.
+- replace h3 with h1!!!!
+
+
+
+work out why diet page isn't linked.
+fix broken links on main blogs list like that...
+
 make the search work. At least to a degree.
 - finish 'new? click here' page 
 Once company name sorted
