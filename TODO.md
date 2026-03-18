@@ -1,8 +1,20 @@
+
+COME ON JUST GET SOME BLOGS DONE 
+STARTUP MINDSET 
+STARTUP MINDSET
+STARTUP MINDSET
+
+STOP JUST BEATIBNG AROUND THE BUSH WITH THE NEW CLICK HERE PAGE FOR GOODNESS SAKES>>>
+
+COME ON! MVP MVP MVP MVP
+JUST GET IT LAUNCHED! NO ONE USES WEBSITES OR BLOGS! 
+
 - finish 'new? click here' page 
+
 
 Once company name sorted
     - setup things for orfo;
-        - custom email
+        - custom email - AHhhhhHhhhhhhhahhHhhhhHhhHh
         - donate; patreon, buy me a coffee, etc.
         - youtube channel
 - Finish other main pages. Or hide them??!?!?!?!??!
@@ -20,20 +32,12 @@ Figure out what to do with the filtering?
     - OR maybe just have not related as a side filter which then becomes enabled??? --> Or does that go against the filtering out system? I guess it does...
     - but then what if i want just main stuff for outdoor general??? AHHH MY FIlter system breaks!!!!
 
-
 - Add the rest of the main blogs????
-- Add some dates / tags to the blogs 
-- scrutinize the main blogs- move any out that shouldn't be there in the main
 
 ----
 
-- get on with the minimising sadness page...
-        - Work out what to do with the additional sections- whether we have seperate pages or not...
-- Add the actual definition of the negativity score
-
 - Easier soft brain stuff:
     - Adding pictures for the first few blogs on my laptop
-
 
 # =============================================
 # --------------- BLOG TODO -------------------
