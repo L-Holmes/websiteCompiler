@@ -3,8 +3,6 @@
 - finish 'new? click here' page 
 
 Once company name sorted
-    - update the thumbnail for the website to blank black.
-    - update the text for each page title to be blank? (not Orfo as it currently is)
     - setup things for orfo;
         - custom email
         - donate; patreon, buy me a coffee, etc.
@@ -48,24 +46,6 @@ Figure out what to do with the filtering?
 - List of pages in the arrangement I have my folder structure in
 - List of pages in priority that you should read them
 - List of pages in order of my favourite to least (i.e. like a tier list?)
-
-# Coding
-- Work out how to get all of the blogs in the list easily..
-    - Or do I just add manually? (will be easier for odering + less compiler headache...)
-- Fix issues on mobile...
-
-
-# Writing 
-go through every single blog...
-- Generate as many video ideas as possible...
-    - + link them in the bottom of the blog...
-- 
-
-# charity
-work out the charity system????
-hnaah this is waaayyyy down the line.>.....
-add this to the roadmap instead...
-
 
 # =============================================
 # =============================================
