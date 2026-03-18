@@ -1,25 +1,15 @@
-work out why some blogs pages are blank / not linked...
-    work out why diet page isn't linked.
-
-
-- make all of the links on the start here page work.
 - replace h3 with h1!!!!
 
-
-fix broken links on main blogs list like that...
-
-make the search work. At least to a degree.
 - finish 'new? click here' page 
+
 Once company name sorted
-    - link to actual web url? (NOT YET)
     - update the thumbnail for the website to blank black.
     - update the text for each page title to be blank? (not Orfo as it currently is)
     - setup things for orfo;
-        - custom email (not sure if i use outlook or whether thats not professional enough?)
+        - custom email
         - donate; patreon, buy me a coffee, etc.
         - youtube channel
 - Finish other main pages. Or hide them??!?!?!?!??!
-
 
 ------------
 
