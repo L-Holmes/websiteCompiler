@@ -249,6 +249,8 @@ $font-size-l:2.5rem;
 $font-size-m-l:2rem;
 $font-size-m:1.5rem;
 $font-size-s-m:1.25rem;
+$font-size-s-m2:1.2rem;
+$font-size-s-m3:1.1rem;
 $font-size-s:1rem;
 $font-size-xs:0.75rem;
 
@@ -283,37 +285,40 @@ body {
 }
 
 h1{
-	color:$text-colour-primary;
+    color:$text-colour-h3;
 	margin: 0px;
 
-    font-size: $font-size-l;
+    font-size: $font-size-m;
 }
 
 h2{
-	color:$text-colour-primary;
+    color:$text-colour-h4;
 	margin: 0px;
   // font-family: $atkinson-regular;
-    font-size: $font-size-m-l;
+    font-size: $font-size-s-m;
   }
 
 h3{
-	color:$text-colour-h3;
+  color: $text-colour-primary;
 	margin: 0px;
   // font-family: $atkinson-regular;
-    font-size: $font-size-m;
+    font-size: $font-size-s-m2;
   }
 
 
   h4{
-	color:$text-colour-h4;
+    color: $text-colour-primary;
 	margin: 0px;
   // font-family: $atkinson-regular;
+  font-size: $font-size-s-m3;
   }
 
   h5{
+    color: $text-colour-primary;
 	color:$text-colour-h4;
 	margin: 0px;
   // font-family: $atkinson-regular;
+  font-size: $font-size-s;
   }
 
 

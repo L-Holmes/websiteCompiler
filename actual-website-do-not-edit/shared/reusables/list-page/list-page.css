@@ -145,31 +145,34 @@ body {
 }
 
 h1 {
-  color: #DBDBDB;
-  margin: 0px;
-  font-size: 2.5rem;
-}
-
-h2 {
-  color: #DBDBDB;
-  margin: 0px;
-  font-size: 2rem;
-}
-
-h3 {
   color: #DCD07F;
   margin: 0px;
   font-size: 1.5rem;
 }
 
-h4 {
+h2 {
   color: #CBBE67;
   margin: 0px;
+  font-size: 1.25rem;
+}
+
+h3 {
+  color: #DBDBDB;
+  margin: 0px;
+  font-size: 1.2rem;
+}
+
+h4 {
+  color: #DBDBDB;
+  margin: 0px;
+  font-size: 1.1rem;
 }
 
 h5 {
+  color: #DBDBDB;
   color: #CBBE67;
   margin: 0px;
+  font-size: 1rem;
 }
 
 div {
