@@ -224,7 +224,7 @@ body.font-dyslexia h4 {
   font-family: "SylexiadSerifThin-Bold", sans-serif;
 }
 
-.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .language-upper-section, .ux-grid-specific {
+.ux-grid, .lang-dysl-wrapper-MOBILE, .top-bar-row-grid, .top-bar-row-1-grid, .top-bar-row-2-grid, .top-bar-row-3-grid, .top-bar-row-4-grid, .top-bar-row-5-grid, .top-bar-item-wrapper, .top-bar-row-grid-MOBILE, .top-bar-row-3-grid-MOBILE, .top-bar-row-2-grid-MOBILE, .top-bar-row-1-grid-MOBILE, .top-bar-row-4-grid-MOBILE, .language-wrapper, .ux-grid-specific {
   display: grid;
   height: 100%;
   overflow-y: hidden;
@@ -660,7 +660,7 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid {
   grid-template-columns: auto;
-  grid-template-rows: 0.15fr 0.21fr 0.21fr 0.21fr 0.22fr;
+  grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr;
 }
 
 .top-bar-row-1-grid {
@@ -771,7 +771,7 @@ body.font-dyslexia h4 {
 
 .top-bar-row-grid-MOBILE {
   grid-template-columns: auto;
-  grid-template-rows: 0.24fr 0.27fr 0.34fr 0.15fr;
+  grid-template-rows: 0.2824fr 0.3176fr 0.4fr;
 }
 
 .top-bar-row-3-grid-MOBILE {
@@ -796,8 +796,6 @@ body.font-dyslexia h4 {
 }
 
 .language-wrapper {
-  grid-template-columns: auto;
-  grid-template-rows: 0.6fr 0.4fr;
   width: 100%;
   border-radius: 12px;
   max-width: 360px;
@@ -810,18 +808,12 @@ body.font-dyslexia h4 {
 }
 
 .language-upper-section {
-  grid-template-columns: 0.5fr 0.5fr;
-  grid-template-rows: auto;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: none;
 }
 
 .language-lower-section {
-  height: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  height: 50px;
+  margin-top: 10%;
 }
 
 .language-dropdown {
