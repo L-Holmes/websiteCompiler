@@ -1,5 +1,3 @@
-- replace h3 with h1!!!!
-
 - finish 'new? click here' page 
 
 Once company name sorted

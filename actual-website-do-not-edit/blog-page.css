@@ -771,5 +771,8 @@ summary::-webkit-details-marker {
 
 /* ----------------------------------- */
 /* ----------------------------------- */
+.blog-contents-wrapper:has(#no-back-btn) .floating-back-btn {
+  display: none;
+}
 
 /*# sourceMappingURL=blog-page.css.map */

@@ -291,3 +291,12 @@ summary {
 
 /* ----------------------------------- */
 /* ----------------------------------- */
+
+// #no-back-btn ~ .blog-contents-wrapper .floating-back-btn {
+  // right:15px;
+  // bottom:18%;
+// }
+
+.blog-contents-wrapper:has(#no-back-btn) .floating-back-btn {
+    display: none;
+  }
