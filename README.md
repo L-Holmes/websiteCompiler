@@ -15,12 +15,8 @@ sudo lsof -i :8000
 2) Run this:
 cd /home/main/code/L-Holmes.github.io && find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + && cp -a "$HOME/code/websiteCompiler/actual-website-do-not-edit/." .
 
-
 # images source
 https://icons8.com/icons/set/shoe
-
-
-
 
 general considerations:
 - Most of the internet uses text 
