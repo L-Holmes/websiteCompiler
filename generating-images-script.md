@@ -14,9 +14,9 @@ STYLE (STRICT — MUST FOLLOW):
 * square format (viewBox 0 0 100 100)
 * centered composition with padding
 - Make it not look too 'AI'; avoid complex curves; prefer straight lines and basic arcs
-- Please have no background! transparent background! but still an image. 
+- completely white background! even around the edges of the characters keep completely white
 - make the image take up the full size of the canvas dont have empty whitespace around it 
-- 
+- stick men should have pure white bodies
 
 COLOURS (ONLY USE THESE):
 #8E9AAF, #A2ABB5, #BCC4CE, #778899, #94A3B8,
@@ -52,12 +52,15 @@ Here you go — clean, copy-paste ready:
 
 [TITLE: Negativity score]
 [DESCRIPTION: A stick figure farmer standing and looking over a field of crops under a sunny sky, representing positivity and growth.]
+DONE(ish)
 
 [TITLE: Future plans and priorities]
 [DESCRIPTION: A stick figure viewed from behind standing at a fork in the road with two paths. One sign shows money, the other shows happiness. The figure is walking toward the money path.]
+DONE
 
 [TITLE: Ancestors day compared to ours]
 [DESCRIPTION: Two simple figures side by side: one modern stick figure and one caveman-style figure with a slightly rougher shape or holding a basic tool, showing contrast between past and present.]
+DONE
 
 [TITLE: Day in the life (optimised)]
 [DESCRIPTION: A circular day cycle with a stick figure and simple icons around it (sun, walking, food, rest), showing a structured and optimised daily routine.]
