@@ -16,7 +16,9 @@ sudo lsof -i :8000
 cd /home/main/code/L-Holmes.github.io && find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} + && cp -a "$HOME/code/websiteCompiler/actual-website-do-not-edit/." .
 
 # images source
-https://icons8.com/icons/set/shoe
+- Illegal ones on the home page: https://icons8.com/icons/set/shoe
+- Legal ones as the filter icons: https://lucide.dev/icons/sticker
+
 
 general considerations:
 - Most of the internet uses text 
