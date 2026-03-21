@@ -1,4 +1,18 @@
 
+=============================================
+decide on the blog pictures- just generate with AI.
+
+for now;
+- decide on colour scheme? Maybe generate a specfic list of pastel colours to choose from? like quite a few but clearly all part of a theme.
+- for each of my current blogs, do a quick description of what i expect.
+
+then use ai to generate...
+
+
+=============================================
+
+
+
 COME ON JUST GET SOME BLOGS DONE 
 STARTUP MINDSET 
 STARTUP MINDSET
