@@ -1,3 +1,12 @@
+Dall-E
+Paint-X (crop)
+remove.bg (remove background)
+
+
+=====================================
+
+
+
 generate me an image;
 A clean, minimal flat illustration.
 
@@ -14,9 +23,10 @@ STYLE (STRICT — MUST FOLLOW):
 * square format (viewBox 0 0 100 100)
 * centered composition with padding
 - Make it not look too 'AI'; avoid complex curves; prefer straight lines and basic arcs
-- completely white background! even around the edges of the characters keep completely white
+- completely pink background! even around the edges of the characters keep completely pink
 - make the image take up the full size of the canvas dont have empty whitespace around it 
 - stick men should have pure white bodies
+- COMPLETE pink BACKGROUND
 
 COLOURS (ONLY USE THESE):
 #8E9AAF, #A2ABB5, #BCC4CE, #778899, #94A3B8,
@@ -66,7 +76,7 @@ DONE
 [DESCRIPTION: A circular day cycle with a stick figure and simple icons around it (sun, walking, food, rest), showing a structured and optimised daily routine.]
 
 [TITLE: Every single recommendation]
-[DESCRIPTION: A central stick figure surrounded by simple icons: sun, food, weights, and two people together, representing a combination of healthy lifestyle recommendations.]
+[DESCRIPTION: A central stick figure like that famous  surrounded by simple icons: sun, food, weights, and two people together, representing a combination of healthy lifestyle recommendations.]
 
 [TITLE: Ancestral diet]
 [DESCRIPTION: Two simple caveman-style stick figures sitting around a small fire, holding meat on sticks, representing a primitive hunter-gatherer diet.]
