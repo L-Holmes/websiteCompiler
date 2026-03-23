@@ -25,7 +25,7 @@ STYLE (STRICT — MUST FOLLOW):
 - Make it not look too 'AI'; avoid complex curves; prefer straight lines and basic arcs
 - completely pink background! even around the edges of the characters keep completely pink
 - make the image take up the full size of the canvas dont have empty whitespace around it 
-- stick men should have pure white bodies
+- stick men should have pure white bodies / limbs etc.
 - COMPLETE pink BACKGROUND
 
 COLOURS (ONLY USE THESE):
@@ -73,7 +73,8 @@ DONE
 DONE
 
 [TITLE: Day in the life (optimised)]
-[DESCRIPTION: A circular day cycle with a stick figure and simple icons around it (sun, walking, food, rest), showing a structured and optimised daily routine.]
+[DESCRIPTION: diagram illustrating optimal day in the life. e.g. two stick people on park bench one with arm around other, looking content
+
 
 [TITLE: Every single recommendation]
 [DESCRIPTION: A central stick figure like that famous  surrounded by simple icons: sun, food, weights, and two people together, representing a combination of healthy lifestyle recommendations.]
@@ -88,7 +89,7 @@ DONE
 [DESCRIPTION: Two stick figures sitting together in a small simple boat with a heart symbol, representing shared activities in a relationship.]
 
 [TITLE: Fun days]
-[DESCRIPTION: Two stick figures standing side by side with arms raised, expressing excitement and happiness together.]
+[DESCRIPTION: Two or more stick figures expressing joy, excitement and happiness together.]
 
 [TITLE: Days out and trips]
 [DESCRIPTION: Two stick figures hiking up a small hill with a simple lake and sun in the background, representing outdoor trips.]
