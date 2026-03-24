@@ -65,7 +65,7 @@ Here you go — clean, copy-paste ready:
 DONE(ish)
 
 [TITLE: Future plans and priorities]
-[DESCRIPTION: A stick figure viewed from behind standing at a fork in the road with two paths. One sign shows money, the other shows happiness. The figure is walking toward the money path.]
+[DESCRIPTION: A stick figure viewed from behind standing at a fork in the nature path road with two paths. One sign shows money, the other shows happiness. The figure is walking toward the money path. Add some alusion to a great future]
 DONE
 
 [TITLE: Ancestors day compared to ours]
@@ -98,4 +98,4 @@ DONE
 [DESCRIPTION: A simple checklist with multiple boxes, some ticked and some unticked, representing tracking progress and updates.]
 
 [TITLE: Other resources]
-[DESCRIPTION: Three dots leading to simple shapes like scrolls, papers, and notes, representing a collection of miscellaneous resources.]
+[DESCRIPTION: aethetic collection of scattered things like scrolls, papers, and notes, representing a collection of miscellaneous resources.]
