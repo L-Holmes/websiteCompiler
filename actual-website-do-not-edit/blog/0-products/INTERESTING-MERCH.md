@@ -1,0 +1,6 @@
+
+Is there an online store where i can get interesting merch?
+- i.e. Not just basic mass produced plastic hoodies / tshirts etc...
+
+or higher quality merch even?
+- e.g. specific materials... / fit / cut / custom or bespoke fit...
