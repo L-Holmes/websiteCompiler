@@ -972,6 +972,11 @@ body.font-dyslexia h4 {
   height: 60px;
 }
 
+.item-text {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
 .item-learn-or-buy {
   grid-template-columns: auto;
   grid-template-rows: 0.5fr 0.5fr;
@@ -1042,6 +1047,10 @@ body.font-dyslexia h4 {
   flex-wrap: wrap;
   flex-direction: row;
   gap: 10px 20px;
+}
+
+.single-item-wrapper:has(> :only-child) {
+  justify-content: center;
 }
 
 .single-item {
