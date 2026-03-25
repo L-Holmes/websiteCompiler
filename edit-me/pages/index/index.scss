@@ -360,16 +360,16 @@ overflow-x: hidden;
 .planet-earth-img-lateral{
   width:55px;
   height:55px;
-  display:none;
+  display:block;
 
   @media screen and (max-width: 440px){
     width:40px;
     height:40px;
+    display:none;
 	}
 
 
   @media screen and (max-height: 600px){
-    display:block;
   }
 }
 
@@ -395,16 +395,16 @@ overflow-x: hidden;
 .change-lang-img-lateral{
   width:55px;
   height:55px;
-  display:none;
+  display:block;
 
   @media screen and (max-width: 440px){
     width:40px;
     height:40px;
     margin-top:30%;
+    display:none;
   }
 
   @media screen and (max-height: 600px){
-    display:block;
   }
 }
 

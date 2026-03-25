@@ -878,20 +878,15 @@ body.font-dyslexia h4 {
 .planet-earth-img-lateral {
   width: 55px;
   height: 55px;
-  display: none;
+  display: block;
 }
 @media screen and (max-width: 440px) {
   .planet-earth-img-lateral {
     width: 40px;
     height: 40px;
+    display: none;
   }
 }
-@media screen and (max-height: 600px) {
-  .planet-earth-img-lateral {
-    display: block;
-  }
-}
-
 .change-lang-img {
   width: 55px;
   height: 55px;
@@ -914,21 +909,16 @@ body.font-dyslexia h4 {
 .change-lang-img-lateral {
   width: 55px;
   height: 55px;
-  display: none;
+  display: block;
 }
 @media screen and (max-width: 440px) {
   .change-lang-img-lateral {
     width: 40px;
     height: 40px;
     margin-top: 30%;
+    display: none;
   }
 }
-@media screen and (max-height: 600px) {
-  .change-lang-img-lateral {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 440px) {
   .dyslexia-img {
     width: 40px;

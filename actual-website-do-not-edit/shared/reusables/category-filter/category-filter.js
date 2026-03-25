@@ -54,7 +54,7 @@ const filterTiersNew = {
 };
 const itemsToTagsNew = {
     'sapp-boot': {
-        '': ['shoe', 'boot'], //represents 'shoe', 'boot'
+        '': ['shoe', 'boot'],
         'colours': ['red', 'orange'], //represents 'colours.red', 'colours.orange'
     },
     'boot': {
