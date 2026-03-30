@@ -56,7 +56,6 @@ The US Militia Act of 1792
 (I feel this has been explored?
  - confusing thinking it means '7'
  - confusion over the exact amount being referenced
-     several severas at a Harry potter convention
 
 --------------------------------------------------------------------------------------------
 
@@ -67,6 +66,9 @@ The US Militia Act of 1792
 # alternatives
 - 'a few' and 'a handful' ARE BETTER WORDS THAT DO THE JOB BETTER AND MEAN THE SAME THING
 
+--------------------------------------------------------------------------------------------
+
+## ->
 truckload
 bucketload
 totebag load 
