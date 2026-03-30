@@ -1,5 +1,29 @@
 
 # Tier 1
+- Easy setup basic merch
+    - T-shirt with 'orfo'
+    - T-shirt with video things
+        - "several"
+- Interesting, more unique, company deal merch
+
+# Tier 2
+- Books
+    - Ultralight / clothing / rewarming guide
+    - etc.
+
+# Tier 3
+- Easy to make, mass producable (consumable?)
+    - Lindon's secret sauce
+- Easy to make, mass producable (useful item, non-consumable)
+    - leather goods?!??! (not sure)
+
+# Tier 4
+- Harder to make things...
+
+
+=========================================
+
+# Tier 1
 - Books;
     - orfo book (all the general stuff)
     - Cook books;
@@ -37,3 +61,7 @@
 
 # Tier Z
 - patternly patterns?!?!?!??!?!
+
+
+====================================
+

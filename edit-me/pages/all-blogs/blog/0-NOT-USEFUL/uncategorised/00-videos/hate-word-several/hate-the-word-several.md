@@ -1,13 +1,9 @@
 
-
-The word that should be banned and should never be uttered again
-
-=======================================
-
+--------------------------------------------------------------------------------------------
 # intro
 I hate the word several.
 
-# personal story
+# personal story v1
 Ever since little ol' jimmy was a sat in the back of english clash and thought he had found the solution of 
 'several' ducks.
 Several ducks. I drew seven. Some pompous motherflucker in the corner draws 4 and they're right?
@@ -19,6 +15,20 @@ The merciless barage of facts, followed even by a quick google search just to ru
 For 3 days following, i was of course teased about having several breakfasts .
 But I couldn't give several clucks.
 
+# personal story v2
+...is what this errrr.. totally hypothetical person said after a less-than-ideal english class.
+
+Now already you're probably thinking "how is a made up school child linked to the word 'several' and that random man inadvertantly caused this distress..
+"What.. who wa..!" 
+
+Weellllll.. Imagine. 
+[Teacher] So there were several ducks.. lets draw that.
+[Okay lets have a look] ...
+
+{OOOH! do i sort of interlude this personal story with the other stuff as if the teacher is explaining it?}
+
+--------------------------------------------------------------------------------------------
+
 # word origin
 https://www.etymonline.com/word/several
 
@@ -28,6 +38,8 @@ Suposedly the wordy originates from the latin separalis meaning 'seperable'. So 
 
 "I haven't done more research than that because frankly knowing that isn't going to benefit anyones lives"
 "I lazily spent 5 minuts on google books ngram viewer"
+
+--------------------------------------------------------------------------------------------
 
 # Backstory
 - when invented
@@ -53,24 +65,57 @@ Reflections on the Revolution in France (1790)
 Mary Wollstonecraft: A Vindication of the Rights of Woman (1792)
 The US Militia Act of 1792
 
+--------------------------------------------------------------------------------------------
 
 # Has it caused issues in the past?
 
+--------------------------------------------------------------------------------------------
+
 # What potential issues could this word cause?
 
+--------------------------------------------------------------------------------------------
+
 # why is it bad to have extra words?
+
+--------------------------------------------------------------------------------------------
 
 # alternatives
 - 'a few' and 'a handful' ARE BETTER WORDS THAT DO THE JOB BETTER AND MEAN THE SAME THING
 
+--------------------------------------------------------------------------------------------
 
 ## ->
 truckload
 bucketload
 totebag load 
 
+--------------------------------------------------------------------------------------------
 
 # solution
 - lets reserve 
 - lets fight against this by never using or uttering the word again.
 - don't share this video just so that the word gets lost to time.
+
+--------------------------------------------------------------------------------------------
+
+
+=======================================
+=======================================
+=======================================
+=======================================
+=======================================
+TODO:
+- Fully finish 
+
+
+=======================================
+=======================================
+=======================================
+=======================================
+=======================================
+
+random blabberings;
+
+
+The word that should be banned and should never be uttered again
+
