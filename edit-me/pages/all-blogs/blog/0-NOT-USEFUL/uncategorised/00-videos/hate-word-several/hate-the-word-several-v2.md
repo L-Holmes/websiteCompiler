@@ -6,7 +6,6 @@ how one 18th century novellist trying to sound cool created a word that should b
 # intro
 I hate the word several.
 
-
 How can it _Not_ mean seven things? Am i the only one that thinks this?
 The only one possibly humiliated for having this supposedly incorrect belief?
 
@@ -62,28 +61,66 @@ The US Militia Act of 1792
 
 # why is it bad to have extra words?
 
+But... even if you don't care about the 'seven' confusion or the exact amount...
+There's still one more.
+Since we already have words that mean the same, its just an additional wasted word.
+Now, sometimes wasted words are fine; they allow us to spice up our language, 
+and as you know.. variety is the spice of life.
+
+But as any top programmer will tell you, we don't need repeats for meanings or extra words clogging up the system.
+
+Why?
+- Wastes brain space. 
+    - We don't know how much memory humans have, but it is finite. 
+    - Imagine a library. Every additional book in the place makes it harder to find the one you're after.
+    - Its the exact same in computer memory and in the brain...
+    - It may be miniscule but its not nothing, and it adds up.
+- Harder to learn... For you... for foreign speakers...
+    - Again, great if you're trying to find spies (reference the word the english made the french say!)
+        - Shibboleth—a linguistic marker used to distinguish members of an in-group from an out-group!
+    - But in most other places its not needed...
+- + harder for translating between languages...
+- In the digital world, extra words, especially longer ones take up extra space... causing extra money
+    - More dictionary space
+    - Less compression available without repeated words...
+- Accessibility Barriers
+    - For readers with dyslexia, cognitive impairments, or lower literacy levels, extra words aren't just annoying; they are a direct barrier to understanding. Concise, direct language is significantly easier for everyone to read and comprehend.
+    - also makes it exclusionary for those who don't understand... same with all jargon...
+- Increased Cognitive Load and Processing Time
+    - Every extra word takes milliseconds to read, hear, and process. While that sounds minor, it matters heavily in high-stakes environments. There is a reason emergency signs say "STOP" instead of "Please Bring Your Vehicle To A Complete Halt Here." In daily life, bloated language slows down communication, making text messages, emails, and conversations drag on longer than necessary.
+    
+
+- We don't need packed out thesaruses. Thesauri? thesaurio?
+- Basically - “If a word doesn’t add meaning, it only adds confusion.” - thesaurio, 2026 <ancient philosopher thesaurio>
+
 --------------------------------------------------------------------------------------------
 
 # alternatives
-- 'a few' and 'a handful' ARE BETTER WORDS THAT DO THE JOB BETTER AND MEAN THE SAME THING
+- 'a few' and 'a handful' ARE BETTER WORDS THAT DO THE JOB BETTER AND MEAN THE SAME THING (pretty much)
 
-truckload
-bucketload
-totebag load 
+I mean, it we're going to add further defintions, why not extend on 'a handful' and start 
+comparing to things that we can picture in our head?
+Education knows that if you can associate and image and a concept with something, it not only helps you 
+remember it but also makes it so that it can be deduced by someone who has never come across the word before.
 
---------------------------------------------------------------------------------------------
+So why not build on handful?
+How about a bucketload of words.
+There were 'several' people... there was a truckload of people...
+A totebag load of rocks...
+A bookbag load of ... books
 
-# solution
-- lets reserve 
-- lets fight against this by never using or uttering the word again.
-- don't share this video just so that the word gets lost to time.
-
---------------------------------------------------------------------------------------------
-
+# Think of Jimmy
 So next time when you're tempted to give the word 'several' a spin,
    just spare a thought for little Jimmy in the back of the class
    who has proudly drawn his several chickens... and doesn't 
    know that he's about to get his world rocked and educated 
+
+# solution
+so what are we going to do?
+- lets reserve 
+- lets fight against this by never using or uttering the word again.
+- don't share this video just so that the word gets lost to time.
+- Lets defeat this word once and for all!
 
 =======================================
 =======================================
