@@ -1,6 +1,7 @@
 18th century novellist spread a word that shouldn't exist
-
-how one 18th century novellist trying to sound cool created a word that should be banned
+how one 18th century novellist trying to sound smart created a word that should be banned
+how one 18th century novellist trying to sound smart doomed every english speaker
+The word that should be banned and should never be uttered again
 
 --------------------------------------------------------------------------------------------
 # intro
@@ -8,17 +9,6 @@ I hate the word several.
 
 How can it _Not_ mean seven things? Am i the only one that thinks this?
 The only one possibly humiliated for having this supposedly incorrect belief?
-
---------------------------------------------------------------------------------------------
-
-# word origin
-https://www.etymonline.com/word/several
-
-- Suposedly the wordy originates from the latin separalis meaning 'seperable'.
-- OR is it 'to sever'?
-- So really its closer to 'seperate' rather than 'seven'
-- One of the earliest major uses that I could find represents this... 
-    - According to the [declaratoin US states thing...] "several states .." which actually meant: "the seperate states"
 
 --------------------------------------------------------------------------------------------
 
@@ -45,6 +35,16 @@ The US Militia Act of 1792
 - But i would estimate it was certainly a big part of its rise...
 
 --------------------------------------------------------------------------------------------
+
+# word origin
+https://www.etymonline.com/word/several
+
+- Suposedly the wordy originates from the latin separalis meaning 'seperable'.
+- OR is it 'to sever'?
+- So really its closer to 'seperate' rather than 'seven'
+- One of the earliest major uses that I could find represents this... 
+    - According to the [declaratoin US states thing...] "several states .." which actually meant: "the seperate states"
+
 
 # Has it caused issues in the past?
 (see sources below)
@@ -102,6 +102,9 @@ I mean, it we're going to add further defintions, why not extend on 'a handful' 
 comparing to things that we can picture in our head?
 Education knows that if you can associate and image and a concept with something, it not only helps you 
 remember it but also makes it so that it can be deduced by someone who has never come across the word before.
+
+I mean.. I think 'A handful' is brilliant because you can imagine the size in your head and understand it even if you've never seen the word before.
+Zero confusion and it makes use of existing words...
 
 So why not build on handful?
 How about a bucketload of words.
@@ -165,5 +168,4 @@ sources:
 random blabberings;
 
 
-The word that should be banned and should never be uttered again
 
