@@ -11,13 +11,30 @@ channeling that slightly cynical, highly logical, fast-paced style of creators
 
 - Blatten! The destroyed town!
 
+
+
+
 - argument _for_ being lazy...
 
 
 
+# upcoming ideas;
+- most dangerous animal in the western hemisphere 
+- maybe a map of.something?? 
+- tallest cathedral without a spire?? 
+- why you should run with headphones 
+- mens formal fashion has stagnated (all suits)
+
+# upcoming ideas 2;
+- predictions for the future????
+
+
+
+------------
+
+
 5 actually useful tips for starting a business. 
 - Start fast. It's founder mode.
-
 
 Founder mode 1)
 Strats for creating video scripts quickly.
@@ -38,23 +55,14 @@ vandals (vans sandals)
 
 swipe typing so good. 
 
-it's a little bit random but... 
-
 highest protein natural foods 
-
-gate the word several 
 
 milk bottle usability 
 
+
 Michael Jackson UK theme park 
 
-most dangerous animal in the western hemisphere 
 
-famous Chicago
-limited num accents
-
-maybe a map of.something?? 
-tallest cathedral without a spire?? 
 
 What's a Welly boulder
 
@@ -67,16 +75,10 @@ social embarrassment keeps me lonely
 embrace the negativity I've things in your life
 (create videos about them- monetize it for your benefit like a super villain) 
 
-
-
 talapia - the magic super food fish 
 
 
-why you should run with headphones 
 
-
-mens formal fashion has stagnated 
-(all suits)
 
 
 companies that didn't take funding...
@@ -90,11 +92,3 @@ first video ideas anyone?
 [stuff related to ancients] 
 
 Would budgie the little helicopter have survived today's political landscape? 
-
-
-finger inspiration 
-just go for it now! 
-the more you work
-the faster you work...
-tomorrow you will thank you! 
-speed speed speed  

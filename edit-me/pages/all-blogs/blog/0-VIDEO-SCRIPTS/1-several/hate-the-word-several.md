@@ -106,8 +106,9 @@ Let's fight back. Never utter this word again. In fact, don't even share this vi
 
 
 TODO:
+- sort out the things in square brackets.
+- have a read through to make flows well.
 - sources
 - picture ideas
-
 
 get the other initial videos planned...
