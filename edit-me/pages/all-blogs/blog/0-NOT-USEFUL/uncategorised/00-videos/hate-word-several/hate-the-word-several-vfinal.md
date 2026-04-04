@@ -1,8 +1,10 @@
-
 ### Title Ideas: 
 * The Word That Should Be Banned
 * Why "Several" is the Worst Word in the English Language
 * The 18th-Century Lie We All Believed
+
+
+DO I ASK LOADS OF PEOPLE HOW MANY THEY THINK "SEVERAL" IS????
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
@@ -20,10 +22,11 @@ Just imagine...
 None of those _really_ make sense. And yet one is real. 
 
 But that's not the only thing...
-Quick. Don't think. How many is "several"?
-I always thought seven. But apparently it doesn't? I mean, how? Look at it! It’s practically spelling it out for you.
+Quick. Don't think. If I say I ate "several" biscuits, how many are you picturing?
+I always thought seven. But apparently that's not necessarily right? I mean, how? Look at it! It’s practically spelling it out for you!
 
-As it turns out, I'm not the only one cursed by these supposedly incorrect beliefs. And many more people have faced its wrath as well. 
+As it turns out, I'm not the only one cursed by these supposedly incorrect beliefs. 
+And many more people have faced its wrath as well. 
 But to understand why we are cursed with this linguistic parasite, we have to go back. Way back. 
 
 ### The Backstory 
@@ -53,8 +56,6 @@ And this shift from "separate" to "an indistinct, vague number somewhere between
 
 ### word meaning / the confusion
 
-### 
-
 [some sort of bridge]
 The dictionary says several means "more than two but not very many." Which is... three? Eight? Eleven? Nobody knows. There is no agreed number. It is legally, mathematically, and practically meaningless.
 
@@ -74,10 +75,8 @@ Sometimes, extra words are fine. Variety is the spice of life, as they say. But 
 
 We don't know exactly how much memory a human brain has, but we know that its not infinite. Imagine a library. Every single additional book you shove into that library makes it marginally harder to find the exact book you're actually looking for. It’s the same in computer RAM, and it’s the same in your head. It might be a minuscule amount of wasted space, but it adds up. 
 
-
 Every extra word takes up mental space. It costs processing time. Every time someone reads "several," their brain has to pause, estimate, and guess. Milliseconds, yes. But multiplied across every email, every article, every conversation — it adds up.
  There’s a reason emergency signs just say "STOP" and not "Please bring your vehicle to a complete halt upon this here spot." Bloated language slows us down. It makes text messages drag, it inflates legal contracts, and it costs literal money in data storage, compression, and server space. 
-
 
 Foreign language learners have it worse. 
 It becomes a Shibboleth—a linguistic trap designed to out the people who aren't "in the know." 
@@ -101,4 +100,3 @@ Blissfully unaware that his entire logical framework of the world is about to be
 
 
 Let's fight back. Never utter this word again. In fact, don't even share this video. Let's let the algorithm bury it, so that the very concept of the word gets lost to time. Let's defeat it, once and for all.
-
