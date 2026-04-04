@@ -1,14 +1,17 @@
 
 
-COME ON JUST GET SOME BLOGS DONE 
-STARTUP MINDSET 
-STARTUP MINDSET
-STARTUP MINDSET
+- setup the editting situation
+    - kdenlive etc.
+- finish first script
+- get donation page setup
+- remove unneeded pages
+- finish needed pages...
 
-STOP JUST BEATIBNG AROUND THE BUSH WITH THE NEW CLICK HERE PAGE FOR GOODNESS SAKES>>>
 
-COME ON! MVP MVP MVP MVP
-JUST GET IT LAUNCHED! NO ONE USES WEBSITES OR BLOGS! 
+
+
+---------------
+
 
 - finish 'new? click here' page 
 
