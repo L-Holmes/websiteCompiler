@@ -1,26 +1,34 @@
-# Logic: Check for binaries; if missing, attempt a straightforward install.
-MISSING=()
-command -v ffmpeg        &>/dev/null || MISSING+=(ffmpeg)
-command -v pip3          &>/dev/null || MISSING+=(python3-pip)
-command -v deepFilter    &>/dev/null || MISSING+=(deepfilternet)
-command -v mediainfo     &>/dev/null || MISSING+=(mediainfo)
-command -v convert       &>/dev/null || MISSING+=(imagemagick)
-flatpak list --app 2>/dev/null | grep -q org.kde.kdenlive || MISSING+=(kdenlive-flatpak)
-flatpak list --app 2>/dev/null | grep -q org.kde.krita    || MISSING+=(krita-flatpak)
+#!/bin/bash
 
-if [ ${#MISSING[@]} -gt 0 ]; then
-  echo "⚠️  Missing dependencies: ${MISSING[*]}"
-  for pkg in "${MISSING[@]}"; do
-    case "$pkg" in
-      ffmpeg)           sudo apt-get update && sudo apt-get install -y ffmpeg ;;
-      python3-pip)      sudo apt-get update && sudo apt-get install -y python3-pip ;;
-      deepfilternet)    pip3 install deepfilternet --break-system-packages ;;
-      mediainfo)        sudo apt-get install -y mediainfo ;;
-      imagemagick)      sudo apt-get install -y imagemagick ;;
-      kdenlive-flatpak) flatpak install -y flathub org.kde.kdenlive ;;
-      krita-flatpak)    flatpak install -y flathub org.kde.krita ;;
-    esac
-  done
+# 1. Define what we need
+# python3-venv is added because Debian 12 handles Python packages strictly now.
+PACKAGES=(
+    ffmpeg 
+    mediainfo 
+    imagemagick 
+    kdenlive 
+    krita 
+    python3-pip 
+    python3-venv
+)
+
+echo "Updating package lists..."
+sudo apt update
+
+# 2. Install the native Debian packages
+echo "Installing tools via apt..."
+sudo apt install -y "${PACKAGES[@]}"
+
+# 3. Handle DeepFilterNet 
+# Debian 12 (Bookworm) blocks 'pip install' globally to protect the system.
+# We will check if it exists; if not, we'll install it the 'official' simple way.
+if ! command -v deepFilter &> /dev/null; then
+    echo "Installing DeepFilterNet..."
+    # Using --break-system-packages is the 'quick and dirty' way for Debian 12.
+    # It's fine for a dedicated video box, though venv is 'cleaner'.
+    pip3 install deepfilternet --break-system-packages
 fi
 
+echo "--------------------------------------"
 echo "All dependencies are ready to go ✅"
+echo "No Flatpaks. No bloat. Just Debian."
