@@ -26,6 +26,7 @@ if ! command -v deepFilter &> /dev/null; then
     echo "Installing DeepFilterNet..."
     # Using --break-system-packages is the 'quick and dirty' way for Debian 12.
     # It's fine for a dedicated video box, though venv is 'cleaner'.
+    pip3 install torch==2.1.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cpu --break-system-packages
     pip3 install deepfilternet --break-system-packages
 fi
 

@@ -36,30 +36,21 @@ fi
 # ── RECORD ──────────────────────────────────────────────────────────
 echo "🎙  Recording: ${EPISODE}_raw.wav"
 echo "Press 'q' to stop recording."
-ffmpeg -f pulse -i "$INPUT" -ac 1 -ar 48000 "${EPISODE}_raw.wav"
+ffmpeg -f pulse -i "$INPUT" -ac 1 -ar 48000 "raw_${EPISODE}.wav"
 
-# ── PROCESS ─────────────────────────────────────────────────────────
-echo "🤖  Running AI Noise Reduction (DeepFilterNet)..."
-# We specify the output directory to avoid 'out/' collisions
-deepFilter "${EPISODE}_raw.wav" -o "$TEMP_DIR"
+# # ── PROCESS ─────────────────────────────────────────────────────────
+echo "Processing..."
+ffmpeg -i "raw_${EPISODE}.wav" -af "highpass=f=70,agate=threshold=-42dB:ratio=2:attack=10:release=200,equalizer=f=120:width_type=h:width=100:g=4,equalizer=f=3000:width_type=h:width=2000:g=2,acompressor=threshold=-20dB:ratio=2.5:attack=15:release=200,alimiter=limit=0.84,loudnorm=I=-19:TP=-1.5:LRA=11" stage1.wav
 
-echo "🎚  Mastering: EQ + Loudness + MP3 Export..."
-# Scrutiny: -19 LUFS is the industry standard for Mono podcasts.
-ffmpeg -i "${TEMP_DIR}/${EPISODE}_raw.wav" \
-  -af "highpass=f=80, loudnorm=I=-19:TP=-1.5:LRA=11" \
-  -codec:a libmp3lame -q:a 2 \
-  "${EPISODE}.mp3"
-
-# ── CLEANUP ─────────────────────────────────────────────────────────
-# Logic: Only remove the specific temp directory we created.
-if [ -d "$TEMP_DIR" ]; then
-    rm -rf "$TEMP_DIR"
-fi
+echo "🤖 Running DeepFilterNet for q3..."
+deepFilter "stage1.wav" 
+mv stage1.wav FINAL_PODCAST.wav
 
 echo "---------------------------------------------------------------"
 echo "✅  SUCCESS!"
-echo "Final Export: ${EPISODE}.mp3"
-echo "Archive Raw:  ${EPISODE}_raw.wav"
+echo "Final Export: FINAL_PODCAST.wav"
+echo "Archive Raw:  raw_${EPISODE}.wav"
+echo "use: aplay <filename> to preview"
 
 # old method:
 # ffmpeg -f pulse -i "alsa_input.usb-Focusrite_Scarlett_Solo_USB_Y7NMT21137C1B5-00.analog-stereo" -ac 1 -ar 48000 INPUT.wav
