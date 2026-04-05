@@ -3,81 +3,13 @@ feed them into AI
 polish up by hand. 
 
 
-
-===========
-
-...
-
-
-
- ====================
- ====================
- ====================
-
-# AI Videos
-
- audio cleanup:
-- audacity!?!? authonic!?!? 
-- ffmpeg -i input.wav -af "highpass=f=80, lowpass=f=15000, afftdn, arnndn loudnorm" output.wav.
-
-Subtitles (I'll already have full script) 
-- alass (for when I have script..) ++
-- whisper as backup 
-
-Images:
-- noun project
-
-Stock footage / audio tracks etc.
-- envato elements ++ 
-
-Free B-roll:
-- pexels
-- unsplash
-- storyblocks
-- NASA media library + 
-- Wikipedia commins ++ 
-
-Background music:
-- epidemic sound ++ 
-- pixabay -- 
-
-====
-
-1) Contruct parts
-- Draw all variations of base character and setups
-- --> Body w/arm poses
-- --> Facial expressions (eyes and mouth together) 
-- export as PNG
-- make all on single master.kra file.
-- layer groups for "bodies"; "eyes"; "mouth" etc.
-- use export layers plugin 
-
-2) Make all the images
-- in Krita, use file layer (auto updates if the file changes)
-- --> But only make the base scenes! If anything changes mid scene, like a single expression or image or arm pointing, animate them seperately in kdenlive
-
-
-3) Import everything into kdenlive
-- combine the audio and the images
-- animate by layering two max pngs...
-- 1) Main scene background
-  2) Main character  
-
-" 
-additional things;
-- subtle zoom or pan
-
 TODO:
 -- Stage 0 --
-- Add the above guide onto my notes
-- organise the notes more- like mention step by step of things, like producing th audio first, as podcast, exporting then saving, then doing the video stuff etc...
-+ Include like what tabs to open with her image providers (when making the pictures...), and what subscriptions to monitor... etc. 
-- Install all necessary thingson computer... 
+- Install all necessary things on computer... 
 
 -- Stage 1 -- 
 - Research how to use kdenlive (vids / masterclass...)
-- research using Krita
-- research simple animations for YouTube
+- research using Krita ???
 - find masterclasses from like cgpgrey etc. (ask AI) and watch / do them...
 
 -- Stage 2 --
@@ -86,6 +18,15 @@ TODO:
 -- Stage 3 --
 - Start making first video, but keep simple.
 - Just enough to elevate it beyond just a slideshow 
+
+
+----
+
+possible thoughts:
+- How to store / backup all of these big files??!?!?
+    - Do i use that german company where I can sort of ssh in if i remember correctly?
+    - Or just google drive?
+- do i need to optimise krita / anything in the process to work fast with my specific laptop?
 
 ========================================================
                      FULL PROCESS
@@ -106,21 +47,59 @@ TODO:
 - (see the below appendix A - writing the script)
 
 ## Record the audio
-- (run the audio.sh script)
+./audio.sh <name-it>
 
 ## Generate the subtitles file 
-- pip install openai-whisper
-- whisper video.mp4 --model medium --output_format srt
-
+whisper audio.mp3 --output_format srt
 - then just ask regular ai to tweak it based on the actual script...
 
 ## Make the images 
 - Open Krita
+- Draw background
+- Import in specifics as 'file layer' (e.g. the character)
+- Open you tabs for tools;
+    - envato elements  
+    - noun project
+    - pexels
+    - unsplash
+    - storyblocks
+    - NASA media library
+    - Wikipedia commons 
+- Add stock images to the animations where necessary;
+    - envato elements  
+    - noun project
+    - pexels
+    - unsplash
+    - storyblocks
+    - NASA media library
+    - Wikipedia commons 
 
 ## Make the video
-- animate by layering two max pngs...
-- 1) Main scene background
-  2) Main character  
+- Open you tabs for tools;
+    - envato elements  
+    - noun project
+    - pexels
+    - unsplash
+    - storyblocks
+    - NASA media library
+    - Wikipedia commons 
+    - epidemic sound
+- animate by layering two max pngs... main scene and narrator
+- Sync the sound
+- Add stock footage:
+    - envato elements  
+    - noun project
+    - pexels
+    - unsplash
+    - storyblocks
+    - NASA media library
+    - Wikipedia commons 
+- Add music:
+    - epidemic sound
+- Add sound effects:
+    - epidemic sound
+
+
 
 ========================================================
                      APPENDIX
@@ -157,8 +136,81 @@ Make it channel that slightly cynical, highly logical, fast-paced style of creat
 
 
 --------------------------------------------------------
- Appendix B) To be determined
+ Appendix B) old notes on video creating
 --------------------------------------------------------
+
+===========
+
 ...
 
 
+
+ ====================
+ ====================
+ ====================
+
+# AI Videos
+
+ audio cleanup:
+- audacity!?!? authonic!?!? 
+- ffmpeg -i input.wav -af "highpass=f=80, lowpass=f=15000, afftdn, arnndn loudnorm" output.wav.
+
+Subtitles (I'll already have full script) 
+- alass (for when I have script..) ++
+- whisper as backup 
+
+Images:
+- noun project
+
+Stock footage / audio tracks etc.
+- envato elements ++ 
+
+Free B-roll:
+- pexels
+- unsplash
+- storyblocks
+- NASA media library + 
+- Wikipedia commons ++ 
+
+Background music:
+- epidemic sound ++ 
+
+====
+
+1) Contruct parts
+- Draw all variations of base character and setups
+- --> Body w/arm poses
+- --> Facial expressions (eyes and mouth together) 
+- export as PNG
+- make all on single master.kra file.
+- layer groups for "bodies"; "eyes"; "mouth" etc.
+- use export layers plugin 
+
+2) Make all the images
+- in Krita, use file layer (auto updates if the file changes)
+- --> But only make the base scenes! If anything changes mid scene, like a single expression or image or arm pointing, animate them seperately in kdenlive
+
+3) Import everything into kdenlive
+- combine the audio and the images
+- animate by layering two max pngs...
+- 1) Main scene background
+  2) Main character  
+
+" 
+additional things;
+- subtle zoom or pan
+
+
+--------------------------------------------------------
+ Appendix C) CI
+--------------------------------------------------------
+...
+
+Ask AI every once and a while;
+
+Any possible areas of improvement / concern / optimisation for my rational, debian 12 based suckless, quick, 95th percentile video making setup?
+
+--------------------------------------------------------
+ Appendix D) To be determined
+--------------------------------------------------------
+...
