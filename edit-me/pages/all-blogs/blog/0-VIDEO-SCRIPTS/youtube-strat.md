@@ -149,7 +149,6 @@ Make it channel that slightly cynical, highly logical, fast-paced style of creat
  ====================
  ====================
 
-# AI Videos
 
  audio cleanup:
 - audacity!?!? authonic!?!? 
