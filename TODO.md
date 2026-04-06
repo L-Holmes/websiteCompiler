@@ -1,20 +1,28 @@
+In Home:
+- record audio for first video
+- Listen back, and optimise
 
 
+When out:
+- pass giraffe junction into gemini and create a script.
+- go through the gemini script and optimise my own script
+- read through giraffe junction and manually edit
+- repeat above steps for milk bottle design
+
+
+
+When new laptop:
 - setup the editting situation
     - kdenlive etc.
-- finish first script
-- get donation page setup
+
+
+Coding stuff:
+- get donation page setup??? 
 - remove unneeded pages
 - finish needed pages...
 
 
-
-
 ---------------
-
-
-- finish 'new? click here' page 
-
 
 Once company name sorted
     - setup things for orfo;
