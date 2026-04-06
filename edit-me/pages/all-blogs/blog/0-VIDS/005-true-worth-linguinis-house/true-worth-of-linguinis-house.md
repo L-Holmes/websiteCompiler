@@ -1,0 +1,4 @@
+
+from ratatoiulle.
+["It's not much" -> costs same as 10 140,000 houses!]
+[He was LOADED! No wonder his dad was a famous chef!]

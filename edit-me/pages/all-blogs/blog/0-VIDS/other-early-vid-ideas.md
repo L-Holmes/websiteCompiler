@@ -7,6 +7,11 @@ channeling that slightly cynical, highly logical, fast-paced style of creators
 ==================================================================================
 
 
+TODO;
+- Add some more maps of stuff.
+    - maps are interesting..
+    - not sure how hapiness map would work in video form though...
+
 - Giraffe junction
 
 - Blatten! The destroyed town!
