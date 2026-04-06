@@ -1,0 +1,8 @@
+should i stick to youtubers???
+how about birth
+
+
+
+like where in england, where in america / canada etc.
+
+particularly for the most subscribed people (should be easy to get...)

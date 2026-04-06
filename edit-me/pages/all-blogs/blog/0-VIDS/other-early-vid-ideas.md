@@ -18,6 +18,10 @@ TODO;
 - autistm like psychopaths???
 - should we learn languages other than english? is that optimal? waste of time?
 - why-dont-government-make-look-nice-for-tourism.html
+- facial attractiveness????
+    - Or maybe how to be more attractive???
+- i-wish-there-was-more-content-online-about.html
+- predictions for the future?
 
 - Giraffe junction
 

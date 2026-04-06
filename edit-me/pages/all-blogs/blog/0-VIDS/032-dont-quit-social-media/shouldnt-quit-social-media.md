@@ -36,3 +36,8 @@ if youtube videos didnt increase and capture my interest in vim or money etc.. i
 
 - other bad:
     - overuse in general
+
+
+# Its good for old people
+- same with games!
+I always said I'd return to them later.
