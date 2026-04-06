@@ -20,9 +20,12 @@ The UK has a problem with motorway exit names. Giraffe junction is the solution.
 
 ## THE PROBLEM
 
-Numbers work. Until they don't.
+Numbers work. Uuuuuuntil they don't.
 
-And on a motorway — where you're doing 70, you've got about four seconds to read a sign, and the junction you want is coming up in... actually, is it this one or the next one?
+And on a motorway — where you're doing 70, you've got about four seconds to read a sign, 
+
+{
+and the junction you want is coming up in... actually, is it this one or the next one?
 
 That's the moment. That's when people pick up their phones.
 
@@ -31,6 +34,8 @@ Just to figure out where they are.
 
 And honestly? I don't blame them.
 Because the system has completely failed them at that point.
+} 
+{this reads so weird}
 
 ---
 

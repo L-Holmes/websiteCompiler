@@ -1,4 +1,6 @@
 
+What happens when an avalanche hits a swiss town
+(40+ houses buried)
 
 
 ### Intro
@@ -17,3 +19,13 @@ Lets find out.
 
 
 ### x
+
+May 27th, 2025 (the day before)
+
+
+(what else was going on in the world at the time)
+
+
+hmmmm
+https://www.youtube.com/watch?v=YI1TrJDoGL8
+https://www.youtube.com/watch?v=XEtCFxZVryU
