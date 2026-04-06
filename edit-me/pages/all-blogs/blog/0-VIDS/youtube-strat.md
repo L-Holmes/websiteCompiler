@@ -134,9 +134,19 @@ People are intersted by drama, interpersonal relations, emotional things, memora
 Also i don't feel there is a good enough hook at the start to keep people reeled in. There needs to be something that will get even people not into inguistics...
 Make it channel that slightly cynical, highly logical, fast-paced style of creators
 
+--------------------------------------------------------
+ Appendix B) Writing the script
+--------------------------------------------------------
+
+New strat:
+- Just go through my list, see what I'm interested in
+- Make bullet points, headings.
+    - Do some basic research
+- Slap into AI and ask for a script
+- Refine the script
 
 --------------------------------------------------------
- Appendix B) old notes on video creating
+ Appendix C) old notes on video creating
 --------------------------------------------------------
 
 ===========
@@ -201,7 +211,7 @@ additional things;
 
 
 --------------------------------------------------------
- Appendix C) CI
+ Appendix D) CI
 --------------------------------------------------------
 ...
 
@@ -210,6 +220,6 @@ Ask AI every once and a while;
 Any possible areas of improvement / concern / optimisation for my rational, debian 12 based suckless, quick, 95th percentile video making setup?
 
 --------------------------------------------------------
- Appendix D) To be determined
+ Appendix E) To be determined
 --------------------------------------------------------
 ...
