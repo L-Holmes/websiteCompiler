@@ -8,9 +8,16 @@ channeling that slightly cynical, highly logical, fast-paced style of creators
 
 
 TODO;
+- I AM UP TO 'TECH'
 - Add some more maps of stuff.
     - maps are interesting..
     - not sure how hapiness map would work in video form though...
+- something about weather????
+    - star wars lakes
+    - constant annoying cold rain...
+- autistm like psychopaths???
+- should we learn languages other than english? is that optimal? waste of time?
+- why-dont-government-make-look-nice-for-tourism.html
 
 - Giraffe junction
 
