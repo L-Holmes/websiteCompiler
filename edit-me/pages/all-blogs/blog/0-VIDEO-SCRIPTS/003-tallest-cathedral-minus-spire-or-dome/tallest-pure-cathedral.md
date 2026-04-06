@@ -25,6 +25,10 @@ Or you may not even be able to see the spire from the nice vantage point...
 and again, stuff thats tall and big is simply much more impressive in my experience..
 
 
+# The length
+- Liverpool happens to also be the longest cathedral in uk, and one of the longest in the world, behind only St Peter's basillica and and of course Yamoussoukro Basilica.. althought those are perhaps a bit cheating
+
+
 # excitment
 You know as soon as I sort of realised that I just thought *wow Oh my god a _local_ cathedral! ohhhhhh.. I have to visit that place now!
 So I jumped in the car, and then got out and went in the house to grab my camera, which was then not charged so I grabbed a spare bat... anyway! 
