@@ -1,5 +1,3 @@
-channeling that slightly cynical, highly logical, fast-paced style of creators
-
 ==================================================================================
 ==================================================================================
 ==================================================================================
@@ -8,7 +6,6 @@ channeling that slightly cynical, highly logical, fast-paced style of creators
 
 
 TODO;
-- I AM UP TO 'TECH'
 - Add some more maps of stuff.
     - maps are interesting..
     - not sure how hapiness map would work in video form though...
@@ -22,6 +19,11 @@ TODO;
     - Or maybe how to be more attractive???
 - i-wish-there-was-more-content-online-about.html
 - predictions for the future?
+
+
+
+
+
 
 - Giraffe junction
 

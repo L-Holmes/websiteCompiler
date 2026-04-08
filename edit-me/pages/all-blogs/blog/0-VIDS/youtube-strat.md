@@ -145,6 +145,19 @@ New strat:
 - Slap into AI and ask for a script
 - Refine the script
 
+
+
+Script checking:
+- Linybeige guide:
+    - Are you learning insights that you wouldn't know from just basic research?
+- General interest guide:
+    - Is it using personal emotional stories?
+    - Is it creating questions that are about to be answered constantly?
+- Listen through guide:
+    - Am I always engaged and wanting to learn more?
+- Fellow youtuber guide:
+    - Is it believable that some of the youtube greats would make vid like this?
+
 --------------------------------------------------------
  Appendix C) old notes on video creating
 --------------------------------------------------------
