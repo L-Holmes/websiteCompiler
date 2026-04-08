@@ -49,6 +49,8 @@ deepFilter "$STAGE1_FILE"
 
 # ── FINALIZE ────────────────────────────────────────────────────────
 mv "$DF_FILE" "$OUTPUT"
+rm $RAW_FILE
+rm $STAGE1_FILE
 
 echo "---------------------------------------------------------------"
 echo "✅ DONE"
