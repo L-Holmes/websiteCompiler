@@ -1,8 +1,3 @@
-
-Here's a first draft — going for that same fast, personal, slightly self-aware tone:
-
----
-
 **"YOU'RE WASTING YOUR INTELLIGENCE"**
 
 ---
@@ -125,7 +120,6 @@ That's the bit I'd change.
 
 ---
 
-*[next video: TBD]*
 
 ---
 

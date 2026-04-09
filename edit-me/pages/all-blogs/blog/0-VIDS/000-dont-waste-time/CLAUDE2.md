@@ -1,8 +1,4 @@
 
-**"YOU'RE WASTING YOUR INTELLIGENCE" — Version 2**
-
----
-
 In 2007, a 23-year-old called Eduardo sat in a deposition room in Manhattan.
 
 Lawyers. Suits. The works.
@@ -148,8 +144,6 @@ Point it somewhere that matters.
 Then see what happens.
 
 ---
-
-*[next video: TBD]*
 
 ---
 
