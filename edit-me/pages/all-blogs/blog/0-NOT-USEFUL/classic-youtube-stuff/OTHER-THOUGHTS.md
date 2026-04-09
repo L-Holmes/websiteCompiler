@@ -114,3 +114,23 @@ Predictions? probs have this somewhere already but like dementia etc...
 
 -----------------
 
+
+- Saying no to everyone who donated when I said not to
+--> "Dissing every person who donated after I specifically asked not to"
+--> "Regarding people's concerns about donation"
+--> "Praising the good we've done, what our non wasted money has helped"
+- Channel trailer [1]
+
+- I hate the term bubble
+- I hate the term cloud
+
+
+
+[1] 
+True purpose of this channel 
+
+Let me get better at videos till I start my real channel.
+give me a place to put controversial things to not harm the reputation of my company / main channel.. or at least gauge the audience reaction.
+Put or lower effort things.
+but also same in general, improve the world, make money, and get myself away from controversy and into happiness.
+

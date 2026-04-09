@@ -65,3 +65,34 @@ a unique creator.
 
 like with my blogs- what was unique and money able was the ideas and there execution.. not the website design... 
 
+
+
+
+====================
+
+prioritisation.
+
+for my younger self;
+- the knowledge was there
+- it wasn't being applied in the right areas...
+- living whimsly
+- making bad decisions because of prioritisation;
+
+what is prioritsation:
+- what is your ultimate goal?
+    - You may say... money, be rich, graduate with a first, 
+    - you may say getting a family.. thats admiral. but is that what you want?
+        - I know of many families out there which id say aren't aimable lives...
+    - It should be happiness  /  a content life...
+
+i wasted time...
+- on games...
+- nostalgia i have with friends over games...
+
+
+I don't regret where i am
+- id give the same advice to anyone...
+- just because im on this path doesn't mean i couldn't have ended on a idfferent one..
+    - there was a good chance id succeeed... fortunate enough to be not bogged down by other things...
+    - im grateful every day for those things...
+
