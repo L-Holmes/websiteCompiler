@@ -212,3 +212,11 @@ FOr shorts:
 OpusClip
 
 -----------------------------------------------------
+
+OR just freelance!?!?!?
+
+https://www.fiverr.com/categories/video-animation/video-editing?source=toggle_filters&ref=service_type%3Ayoutube_videos%7Cseller_level%3Atop_rated_seller
+
+e.g. 
+https://www.fiverr.com/sharyarhanif/the-paint-explainer-style-video?context_referrer=subcategory_listing&source=toggle_filters&ref_ctx_id=45dcbcd07ba846a3a6cf2036c9ba5080&pckg_id=1&pos=7&calc=1&context_type=rating&funnel=45dcbcd07ba846a3a6cf2036c9ba5080&ref=service_type%3Ayoutube_videos%7Cseller_level%3Atop_rated_seller&imp_id=fa6c9966-20ae-44f8-9d2e-190c6da174ad
+
