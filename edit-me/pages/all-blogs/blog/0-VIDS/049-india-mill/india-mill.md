@@ -136,3 +136,10 @@ Briggs Knowles would be pleased.
 - [Peregrine falcons — confirmed returned per local accounts, nice detail to keep]
 - [20 tons of iron cresting removed in 1943 for the war effort — good detail, consider whether it fits or clutters]
 - [The opening in May 1868 apparently featured Gainsborough and Van Dyck paintings on display — extraordinary detail, consider whether there's room for it]
+
+
+
+
+https://blog.mechanicallandscapes.com/2021/02/16/india-mill-chimney-darwen/
+
+https://undertheboard.wordpress.com/2014/04/20/india-mills-chimney/
