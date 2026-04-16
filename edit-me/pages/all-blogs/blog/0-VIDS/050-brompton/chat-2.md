@@ -1,13 +1,5 @@
 
 
----
-
-## **Title:**
-
-**“I bought the perfect bike. Then I stopped leaving the house.”**
-
----
-
 ## **Intro (hard hook, immediate story)**
 
 I’ve done this more than once.

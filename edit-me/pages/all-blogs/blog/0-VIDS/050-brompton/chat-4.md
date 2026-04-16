@@ -1,13 +1,4 @@
 
-
-Alright — this version leans into that historical parallel as the *spine* of the video, keeps it fast, and constantly ties back to your two core ideas:
-
-* **more usable time**
-* **less money**
-* …but still “don’t buy it”
-
----
-
 ## **Title:**
 
 **“This 2,000-year-old idea could fix your commute. Don’t use it.”**
@@ -18,7 +9,11 @@ Alright — this version leans into that historical parallel as the *spine* of t
 
 Two thousand years ago, the Romans built the fastest delivery system on Earth.
 
-Not with faster horses.
+No, they didn't have folding bikes, or even bikes for that matter.
+
+It was a variation of a transport they had.
+
+But it wasn't with faster horses.
 
 But by *swapping* them.
 

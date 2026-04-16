@@ -241,7 +241,7 @@ DO I SELL MY BROMPTON??!?!?!
 
 ====================
 
-- Lake of flexibility.. e.g. if you have IBS and have bike with public transport its dificult to get back
+- Lack of flexibility.. e.g. if you have IBS and have bike with public transport its dificult to get back
 - The general public is full of absolute morons.
     - And any private options on public transport are just unbelievably expensive
 - Many cities aren't built for cycling or public transport...

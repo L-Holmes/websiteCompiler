@@ -34,7 +34,6 @@ It solves problems that normal bikes can’t even touch.
 
 And yet…
 
-I’m selling mine.
 
 ---
 

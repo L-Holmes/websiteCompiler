@@ -1,13 +1,4 @@
 
-
-Got it — new angle, less “me”, more *system + story + tension*, and anchoring around:
-
-* **time gained**
-* **money saved**
-* but still “don’t buy it”
-
----
-
 ## **Title:**
 
 **“This bike can give you your life back. Don’t buy one.”**
