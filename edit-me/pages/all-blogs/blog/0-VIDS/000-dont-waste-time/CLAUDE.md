@@ -2,13 +2,13 @@
 
 ---
 
-There's a physicist I read about once.
+There's a physicist I used to know.
 
-Genuinely brilliant. Could explain the thermodynamics of a black hole over breakfast. Knew the boiling point of every element. Could tell you exactly why the sky is blue, why ice floats, why time slows down near a gravitational mass.
+Genuinely brilliant. Could tell you exactly why the sky is blue, why ice floats, why time slows down near a gravitational mass.
 
 He spent four hours a day on a football statistics forum.
 
-Not playing. Not coaching. Just... accumulating facts about matches that had already happened, that nobody was paying him to know, that changed nothing about his life or anyone else's.
+Not playing or coaching. Just... accumulating facts about matches that had already happened, that nobody was paying him to know, that changed nothing about his life or anyone else's.
 
 Brilliant mind. Completely misdirected.
 
@@ -30,7 +30,7 @@ The engineers at Meta who built the recommendation algorithm are not stupid peop
 
 That's where the intelligence went.
 
----
+# ---
 
 I want to talk about memory for a second.
 
@@ -56,7 +56,7 @@ Games, mostly. Hours of them. And look — I have warm memories attached to some
 
 But there's a difference between that and what it became later. Sitting alone. Getting good at something that doesn't transfer. Building skills inside a system specifically designed to keep you inside it.
 
-The nostalgia is real. The value of the time is a different question.
+The nostalgia is real. But The value of the time spent doing those things is a different question.
 
 ---
 

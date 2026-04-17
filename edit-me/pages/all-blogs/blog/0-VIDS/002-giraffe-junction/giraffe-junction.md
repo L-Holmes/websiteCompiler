@@ -39,22 +39,10 @@ Because the system has completely failed them at that point.
 
 ---
 
-## THE CLOSE JUNCTIONS PROBLEM
 
-Here's something nobody talks about: junction spacing.
 
-On some stretches of motorway, junctions come every mile or two.
-M25 around London — some gaps are barely 90 seconds apart at motorway speed.
 
-So you're doing 70. You see a sign. Junction 12.
-Is that yours? You're not sure. You think it might be 13.
-You hesitate. You miss it.
 
-Now you're doing an extra 8 miles to the next roundabout and back.
-
-If that junction had a *name* — something you'd looked up before you left —
-you wouldn't have hesitated.
-You'd have known.
 
 ---
 
@@ -156,6 +144,27 @@ Something a lorry driver could say on the phone —
 And actually mean it.
 
 ---
+
+
+
+## THE CLOSE JUNCTIONS PROBLEM
+
+Here's something nobody talks about: junction spacing.
+
+On some stretches of motorway, junctions come every mile or two.
+M25 around London — some gaps are barely 90 seconds apart at motorway speed.
+
+So you're doing 70. You see a sign. Junction 12.
+Is that yours? You're not sure. You think it might be 13.
+You hesitate. You miss it.
+
+Now you're doing an extra 8 miles to the next roundabout and back.
+
+If that junction had a *name* — something you'd looked up before you left —
+you wouldn't have hesitated.
+You'd have known.
+
+
 
 ## OUTRO
 

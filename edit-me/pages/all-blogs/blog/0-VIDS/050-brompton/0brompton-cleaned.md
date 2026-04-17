@@ -12,13 +12,15 @@ The system was called the Cursus Publicus. And it was absurdly efficient.
 If everything worked.
 
 It got me thinking… in the modern day, without a car, what is the equivalent of that?
-The Modern Pitch (The Discovery)
+
+
+# The Modern Pitch (The Discovery)
 
 For me, the realization hit when I was staring down my own commute.
 
 Driving was draining my soul, but taking the train had a fatal flaw: the station was too far to walk to at both ends.
 
-Then it clicked. I needed to build my own Cursus Publicus. Just with slightly less impressive horses.
+Then it clicked. I needed to build my own Cursus Publicus. Just with slightly less impressive stallions.
 
 What if I just swapped transports?
 
@@ -28,18 +30,24 @@ Bike the last bit.
 
 On paper, it was the perfect hack. And once I had the idea, the logic was undeniable—especially when you look at what a standard commute actually takes from you.
 
-Here’s the bit no one talks about properly: driving doesn’t just cost money. It costs time you can’t use. You’re locked in. Focused. Slightly stressed.
+But speed isn' the best part.
 
-On a train? Different story. You can work. Watch something. Switch off. That middle chunk of your journey becomes actual life. Do that every day and you’re not saving minutes. You’re gaining days back every year.
+The thing no one talks about properly: driving doesn’t just cost money. It costs time you can’t use. Whilst driving, you’re locked in. Focused. 
 
-Then there’s the cost. A car is easily £3,600 a year, and fuel alone is ridiculous.
+On a train? Different story. You can work. Watch something. Switch off. That middle chunk of your journey becomes actual life. Do that every day and you’re not saving minutes. 
+You’re gaining days back every year.
 
-A second-hand Brompton? About £950. Add trains, and it's still usually cheaper overall.
+Then there’s the cost. A car is easily £3,600 a year, and fuel alone is just crazy.
+
+
+[TODO- there's no transition here!]
+A second-hand Brompton Folding Bike? About £950. Add trains, and it's still usually cheaper overall.
 
 My pitch to myself was simple: Spend less. Gain time. And the absolute best tool to make this personal transport network work? A Brompton. It doesn't just fold "small." It fits under a desk, goes in a car boot, and slides onto a train without a fight. It removes the friction from the transitions.
 
 Which is the whole game.
-The Turn (The Catch)
+
+# The Turn (The Catch)
 
 It’s the exact same idea as the Romans.
 
@@ -83,7 +91,7 @@ Not because the bike doesn’t work. Because I don’t.
 
 All it takes is one close miss with a car. 
 
-Not dramatic. Not cinematic. Just… a normal Tuesday. The driver didn’t look. I didn’t trust the road enough. Close enough.
+Not dramatic. Not cinematic. Just… a normal Tuesday. The driver didn’t look. I didn’t trust the road enough. I could have.. never made it back! That was close enough for me.
 
 And that’s roughly the moment I realised this *brilliant*, beautifully engineered folding bike might be completely useless to me.
 

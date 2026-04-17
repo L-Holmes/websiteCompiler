@@ -1,4 +1,7 @@
 
+TODO:
+- get a list of examples in history / books (e.g. like bible or greek epics), where someone realised that they had been working towards something that ended up not 
+  being useful to them and/or not actually making them happier
 
 
 smart people are applying their intelligence wrong

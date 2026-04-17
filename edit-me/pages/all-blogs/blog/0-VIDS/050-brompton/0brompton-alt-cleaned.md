@@ -7,7 +7,7 @@
 
 Two thousand years ago, the Romans built the fastest delivery system on Earth.
 
-No, they didn't have folding bikes. Or even bikes, for that matter.
+No, they didn't have folding bikes
 
 It wasn't faster horses, either.
 
@@ -103,9 +103,9 @@ Then there's cost.
 
 Car: around £3,600 a year, easily. *[show calculations on screen]*
 
-Fuel alone is ridiculous. And the initial cost of an electric car is even steeper, at least right now.
+Fuel alone is.. crazy. And the initial cost of an electric car is even steeper, at least right now.
 
-A second-hand Brompton? Around £950.
+A second-hand _Brompton_? Around £950.
 
 Add trains — still often cheaper overall.
 
@@ -149,13 +149,13 @@ The whole system slowed down.
 
 ## **Bring It to Modern Reality**
 
-Now apply that to today.
+Now apply that to modern day.
 
 Trains delayed.
 
-Roads not built for cycling.
+Dangerous roads that aren't built for cycling.
 
-Weather doing whatever it wants.
+The weather doing whatever it wants.
 
 Your "perfect system" starts to wobble.
 
@@ -170,30 +170,6 @@ Same idea. Same problem.
 Miss one link…
 
 …and the whole journey falls apart.
-
----
-
-## **Modern Friction**
-
-Because real life isn't clean.
-
-You're tired.
-It's raining.
-You're running late.
-
-Now instead of one decision — drive or not — you've got a chain:
-
-- Cycle
-- Fold
-- Train
-- Unfold
-- Cycle again
-
-Each step small.
-
-Together?
-
-Friction.
 
 ---
 

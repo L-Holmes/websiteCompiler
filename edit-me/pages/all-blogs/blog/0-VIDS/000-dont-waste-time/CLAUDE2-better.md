@@ -27,7 +27,7 @@ That's an interesting engineering challenge. Genuinely.
 
 And they solved it. Spectacularly.
 
-The average person now touches their phone **2,617 times a day.** [verify — Dscout research or similar]
+The average person now touches their phone over **2,000 times a day.** [verify — Dscout research or similar]
 
 They solved the problem completely. They just maybe picked the wrong problem.
 
@@ -51,11 +51,11 @@ I spent — and I'm going to be honest about this — probably 18 months of even
 
 A website. A homework tool. A custom keyboard layout that I was genuinely convinced was going to change how I worked.
 
-The keyboard layout took three weeks. It improved my typing speed by maybe four percent.
+The keyboard layout took three weeks. 
 
 Three weeks.
 
-For four percent.
+For what? an insignificant change in my writst RSI?
 
 I was solving the wrong problem with everything I had.
 
@@ -67,7 +67,8 @@ It just makes you *faster.* Better at learning, better at optimising, better at 
 
 But faster in which direction?
 
-A physicist I came across — [find real example] — spent years becoming one of the most knowledgeable people alive on the subject of Premier League statistics. Not professionally. Just... because the problem was there and his brain wanted something to grip onto.
+I once knew a physicist I came across — [find real example] — spent years becoming one of the most knowledgeable people alive on the subject of Premier League statistics. 
+Not professionally. Just... because the problem was there and his brain wanted something to grip onto.
 
 He wasn't lazy. He was the opposite of lazy.
 
