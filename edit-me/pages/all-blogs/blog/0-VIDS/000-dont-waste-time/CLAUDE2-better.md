@@ -1,23 +1,36 @@
 
-In 2007, a 23-year-old called Eduardo sat in a deposition room in Manhattan.
+=== Don't waste your intelligence ===
 
-Lawyers. Suits. The works.
 
-He'd just been squeezed out of a company he helped build. The settlement was, by most accounts, somewhere north of a billion dollars.
+# Intro
+You are probably intelligent.
+So then when I say that 
+    - All those books you've read...                                  [most common 'intellectual' books]
+    - Those facts you know..                                          [common facts]
+    - Having the most optimal fast code,  best text editor...         [show thumbnails of popular coding videos.. show vim]
+    - Your proficiency in games and your spreadsheets...              [most common strategy based games...]
+    are... maybe not how you should be using your mind...
+You'll probably have a counter argument ready.                         [show arguments on screen]
 
-He was 23.
+I thought the same as you.
+Don't get me wrong I think all those things are cool and take smarts...
 
-The company was Facebook.
+But...
+I wasted my time.
+I'm not going to let that happen... to you
 
-The lawyers asked him, at one point, what he thought the platform would become.
 
-He said he wasn't sure it would become anything.
+# Pre intro
+But before I get to the first and most important tip....
+I've first got for you the short story that changed my thinking forever...
 
-[verify Saverin deposition details — broad strokes accurate, specifics need checking]
+The thing I keep thinking about... is Todd Beaupré. 
+Super smart. Spent his days optimising an algorithm, with his team.
+An algorithm that was precisely designed to keep the preson at the other end hooked.
+Yeah, you've guessed it, he was one of the lead's at youtube when the algorithm started getting more 'known'...
 
----
 
-Here's what I keep thinking about.
+Now...
 
 The people who built the attention economy didn't build it because they wanted to waste your time.
 
@@ -25,11 +38,39 @@ They built it because they were smart, and solving hard problems felt good, and 
 
 That's an interesting engineering challenge. Genuinely.
 
-And they solved it. Spectacularly.
+And they solved the hell out of it. 
 
 The average person now touches their phone over **2,000 times a day.** [verify — Dscout research or similar]
 
 They solved the problem completely. They just maybe picked the wrong problem.
+
+But I don't think anyone would argue that... the minds of Todd.. of the whole team.. 
+They could have been curing cancer... helping the world.. or at least developing technologies that actually benefit people rather than steal their life away...
+
+
+# First tip - Know your goal.
+
+So let's start with probably the most crucial thing...
+
+Know your overall goal...
+Your current goal is probably not quite right...
+You may think top paying job... Become the smartest in your company...
+
+It feels like that is the best and you can justify it....
+
+
+
+================================
+================================
+================================
+================================
+================================
+================================
+================================
+
+---
+
+
 
 ---
 
