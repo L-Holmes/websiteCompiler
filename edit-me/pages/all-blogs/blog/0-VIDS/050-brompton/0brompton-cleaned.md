@@ -3,22 +3,32 @@ Intro (The Hook)
 
 Two thousand years ago, the Romans built the fastest delivery system on Earth.
 
-No, they didn't have folding bikes.
+They did it by swapping transports. 
 
-They did it by swapping transports. Ride hard. Stop. New horse. Keep going. Over and over.
+A series of checkpoints, all with a horse at each.
+
+The idea was simple: Ride hard. Switch to a fresh steed. Keep going. Over and over.
 
 The system was called the Cursus Publicus. And it was absurdly efficient.
 
-If everything worked.
+Well... If everything worked.
 
 It got me thinking… in the modern day, without a car, what is the equivalent of that?
+OR
+It got me thinking… what is the modern day equivalent of that?
+(well, the equivalent whilst avoiding cars, but we'll get to that later)
 
 
 # The Modern Pitch (The Discovery)
 
-For me, the realization hit when I was staring down my own commute.
+To know the beginning we have to go back to
+6:23am, on the 20th May, 2025. 
+A little red toyota stranded amongst a sea of loud, emissoin polluting death traps.
+Inside, of course was me. Not knowing that I was about to have a big realisation.
 
-Driving was draining my soul, but taking the train had a fatal flaw: the station was too far to walk to at both ends.
+Driving was draining my soul. 
+The busses took 4 hours. A taxi would cost half my yearly wage.
+So that left trains. But they had a fatal flaw: the station was too far to walk to at both ends.
 
 Then it clicked. I needed to build my own Cursus Publicus. Just with slightly less impressive stallions.
 
@@ -28,19 +38,49 @@ Bike to the station.
 Train into the city.
 Bike the last bit.
 
-On paper, it was the perfect hack. And once I had the idea, the logic was undeniable—especially when you look at what a standard commute actually takes from you.
+Now you may think, "train with a bike, that's not a new concept".. well, I'd agree. But it's how it developed that I don't see mentioned.
 
-But speed isn' the best part.
+# Time savings
 
-The thing no one talks about properly: driving doesn’t just cost money. It costs time you can’t use. Whilst driving, you’re locked in. Focused. 
+But before we get to that, lets quickly go back to what got me excited about the bi-train concept: 
+Sure it can still be relively fast, but I'd argue that speed isn't its most impressive advantage. 
 
-On a train? Different story. You can work. Watch something. Switch off. That middle chunk of your journey becomes actual life. Do that every day and you’re not saving minutes. 
+The thing not many people mention is that: driving doesn’t just cost money. 
+It costs something much more valuable.
+It uses up your time.
+Whilst driving, you’re locked in. Focused. 
+
+But on public transport? Different story. 
+You can work. Watch something. Switch off. 
+That middle chunk of your journey becomes actual life. 
+Do that every day and you’re not saving minutes. 
 You’re gaining days back every year.
 
-Then there’s the cost. A car is easily £3,600 a year, and fuel alone is just crazy.
+
+# Cost 
+
+But now some of you are probably totting up in your head about the logistics and cost of this..
+Well- actually I assume many of you are actually saying it won't actually be possible for you to do this in your area, and yes- that is important but we'll have to cover later!
+
+Anyway, back to the numbers.
+
+Here's a quick spreadsheet I whipped up earlier.
+As you can see a car is easily £3,600 a year, and that's with me being fairly strict with costs.
+When you really look, the fuel alone is just crazy.
+    - $800,000 over a lifetime? Yeah... _if_ I can avoid that, I will.
 
 
 [TODO- there's no transition here!]
+[TODO - reasearch costs of train passes in different areas]
+https://www.nationalrail.co.uk/tickets-railcards-and-offers/ticket-types/season-ticket-calculator/
+- 4 days a week
+- 1 year
+- 16-17 railcard
+- darwen - man
+- £1,110 - yeah I also fell off my seat at that point... but relative to the car its actually like over half... around £5.30 per day...
+
+jump
+
 A second-hand Brompton Folding Bike? About £950. Add trains, and it's still usually cheaper overall.
 
 My pitch to myself was simple: Spend less. Gain time. And the absolute best tool to make this personal transport network work? A Brompton. It doesn't just fold "small." It fits under a desk, goes in a car boot, and slides onto a train without a fight. It removes the friction from the transitions.
@@ -165,3 +205,14 @@ The machine is a masterpiece. I just don't know if the world is ready for it. Ye
 ***
 
 How are you planning to shoot the visual transition between the "idealized" train commute and the harsh reality of the UK roads?
+
+
+
+
+
+Sources:
+curcus publicus:
+    - https://en.wikipedia.org/wiki/Cursus_publicus
+    - https://www.historyofinformation.com/detail.php?id=1394
+    - https://uwspace.uwaterloo.ca/items/7a1ed1b8-d489-4170-b468-a2fcb9c45361
+    - https://d1wqtxts1xzle7.cloudfront.net/34330326/SF_X_Cursus_Publicus_llemcke-libre.pdf?1406799254=&response-content-disposition=inline%3B+filename%3DThe_cursus_publicus_in_the_4th_century_t.pdf&Expires=1776523772&Signature=U17lU9OAnF2y8v2Y2e~ouPjUbZPLNWf1KNTnieBbF2LiJmqghG8P2aAiOKfwlvFPmtvlkp-s8gPhbWZXI2FLCaFgXgaKWi5kB9jkbTYZyuc77mdEJi~x5oDsUoqnhPEC1jYf0YNSSfzEWyMPXZF6X6Ks3xod1~LnKYvcPrYEBn01391ihYLYP0A9XgBBip58yWv4gk3wXDZLTxUueemheKlWFMykYegqhIKZr7OAVFGn49XUIcItHaDveCTM-YdMtaTYQ~JexQueUUBHM3e3CxG4hOsKp86NDkWDOedwiWtTJO3jyCAXBNUpehSg77IYaiWbwljT9zcALFnF8CfsxQ__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
