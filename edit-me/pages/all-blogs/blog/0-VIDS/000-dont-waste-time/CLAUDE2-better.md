@@ -50,16 +50,38 @@ They could have been curing cancer... helping the world.. or at least developing
 
 # First tip - Know your goal.
 
+
+[hmmmm how do i split this into knowing goal and having a good goal? 
+do i be like.
+
+Think about what your life goal is...
+When I was your age, it was probably... landing my dream programming job...
+
+is that tool _really_ working towards that? And is it really the _best_ way???
+
+bla bla  bla..
+
+But here's the catch- that _wasn't_ the important bit.
+You know when I said I wanted a high-paying programming job? 
+THAT was the mistake....
+
+If there's anything in this video I want you to take away with you...
+Its... 
+You need to rethink what your life goal is...
+
+
+
+
+}
 So let's start with probably the most crucial thing...
 
 Know your overall goal...
-Your current goal is probably not quite right...
+Sounds simple... but your current goal is probably not quite right...
 You may think top paying job... Become the smartest in your company...
 
 It feels like that is the best and you can justify it....
+}
 
-
-
 ================================
 ================================
 ================================
@@ -67,10 +89,6 @@ It feels like that is the best and you can justify it....
 ================================
 ================================
 ================================
-
----
-
-
 
 ---
 
