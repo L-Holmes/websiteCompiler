@@ -1,5 +1,5 @@
 
-Intro (The Hook)
+# Intro (The Hook)
 
 Two thousand years ago, the Romans built the fastest delivery system on Earth.
 
@@ -21,9 +21,10 @@ It got me thinking… what is the modern day equivalent of that?
 
 # The Modern Pitch (The Discovery)
 
-To know the beginning we have to go back to
+To know the beginning                 we have to go back to
+To know the where this idea came from we have to go back to
 6:23am, on the 20th May, 2025. 
-A little red toyota stranded amongst a sea of loud, emissoin polluting death traps.
+A little red toyota stranded amongst a sea of other loud metal boxes...
 Inside, of course was me. Not knowing that I was about to have a big realisation.
 
 Driving was draining my soul. 
