@@ -156,3 +156,21 @@ Change emotions as video goes on
 - excited -> concerned -> relieved
 ========================================
 
+
+
+
+=================
+MAKE THEM THINK THEY'RE GAMING THE SYSTEM
+=================
+
+make them think they're gaming the system... 
+
+- Watch all the way through.
+- Every comment good enough to have another comment reply, from someone who's watched at least half the video will be entered.
+
+I'll update the description on a random day in the first week of may with the winners. The first one to then accept gets the price!?!? 
+...
+nahhh. this is a bad idea...
+
+
+=====================================

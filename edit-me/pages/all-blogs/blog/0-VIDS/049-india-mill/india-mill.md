@@ -24,7 +24,7 @@ But before we get into that, we need to talk about a land dispute, a wager, and 
 
 In the mid 1800s, two families — the Shorrocks and the Hiltons — were arguing over a plot of land in Darwen.
 
-The way they settled it was this: whoever came up with the most impressive chimney design for the mill they were planning to build would win the land outright.
+The way they settled it was this: whoever came up with the most impressive chimney design for the mill would win the land outright.
 
 Eccles Shorrock won.
 
