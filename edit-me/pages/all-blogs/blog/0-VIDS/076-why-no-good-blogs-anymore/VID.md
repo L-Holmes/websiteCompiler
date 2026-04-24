@@ -1,0 +1,9 @@
+
+
+
+why are there no good blogs anymore?
+
+I feel uniquely qualified... 
+Really... It may be more useful to people... 
+
+I actually find it's harder to write good blog, as it has to be perfect and structured and organised.. where's with a video or podcast script it's conversational... 

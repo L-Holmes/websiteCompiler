@@ -1,0 +1,3 @@
+
+
+Diet - do I focus on packed lunch type things? that are carb free? I feel that's the difficult area...
