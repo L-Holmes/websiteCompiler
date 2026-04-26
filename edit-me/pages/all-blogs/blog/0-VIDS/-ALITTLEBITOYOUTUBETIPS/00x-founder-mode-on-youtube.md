@@ -37,3 +37,29 @@ Outro:
 - So going back to the start, use this as a launching off point 
 
 
+
+
+-----------------
+
+
+- Use money to start
+- --> video editor... etc..
+
+- Get people with big followings to look / react to it...
+- --> pay people on twitch...
+- --> make videos they'd react to (like primeagen)
+
++-------
+
+find outliers, in other people's YouTube channels... 
+- re-make them, but better(!)
+- or add a spin...
+
+
+-----
+- Dind highest paying niches
+- find YouTubers in that niche
+- find their outlier videos
+- make them, but better.
+- use my money to advertise my vid... Or Collab with smaller creators???
+- ??? 
