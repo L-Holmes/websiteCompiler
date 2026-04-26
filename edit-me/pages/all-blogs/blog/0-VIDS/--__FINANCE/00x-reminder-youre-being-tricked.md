@@ -1,0 +1,9 @@
+
+
+"a reminder you are being tricked" 
+- mention things like 99p etc. just those comoon things, to act like I'm helping viewer...
+- then at end sarcastically say donate £6.39 to help this creator buy ...
+- monthly subscriptions rather than yearly or lifetime?
+- use tokens instead of money
+- or multibuy to get free delivery...
+- 
