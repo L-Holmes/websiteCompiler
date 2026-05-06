@@ -45,13 +45,33 @@ link wikipedia article underneath were relevant...
 
 ------------------------
 
+give me 2 variations of script.
+Just the lines, no headings / titles. just plain markdown copy paseteable..
+Here are my requirements:
+
 generate me a quick, 4 minute script, 
 
 Make it like a Tom Scott script- super fast paced, conversational. 
+(but I won't be in person-- I'll be using stock footage...), but i still want it conversational
 
 don't have an intro- start with super high retention hook at start; answer video questions real quick but give them more and build intregue.
+it must satisfyingly answer the title whilst also creating more inriguie to watch on. 
+
+the intro must must ansewr the title intrigue or build intrigue... 
+its must be concise with wording.. fast paced, answers, imply more, build intrigue, quick.. 
+emotional parables that build intrigue and resonance or 'wow' or twists... 
+
+don't have throwaway line.
+Like "everything you've been taught about geography"... no.. its just a moment where the viewer would skip
+don't have boring bits- its not school its a fun video... 
+
+
+the lines must be precise
 
 (don't use this title- it's not hooky / intreguing enough) 
+ensure they are at least 900 words in length
 here are my notes:
 
+
+-------
 

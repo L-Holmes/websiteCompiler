@@ -1,13 +1,62 @@
 
-### 1. The Man Who Moved a Mountain for Love
-*   **The Hook:** "This man spent 22 years hitting a mountain with a hammer. Everyone in his village called him a lunatic, but he didn't stop until he’d carved a 360-foot road right through the center of the rock—all because the woman he loved died on the other side."
-*   **The Specific:** **Dashrath Manjhi** carved a path through the Gehlour Hills after his wife, Falguni Devi, died because she couldn't reach a doctor in time due to the mountain blocking the way. He reduced a 44-mile journey to just 9 miles.
-*   **Wikipedia:** [Dashrath Manjhi](https://en.wikipedia.org/wiki/Dashrath_Manjhi)
+
+
+The Honey That Can Paralyze You
+- Hook: "This honey is a delicacy, but eat too much of it and it will paralyze you, give you hallucinations, or stop your heart."
+- Specific thing: "Mad Honey" (delipini) harvested by the Gurung people of Nepal from the cliffs of the Himalayas, made from rhododendron nectar.
 +++
+
+
+
+7. The Skyscraper That Melted Jaguars
+
+    Hook: "London built a mirror so strong it fried eggs on the sidewalk."
+    Specific: 20 Fenchurch Street "Walkie-Talkie", London – solar death ray melted cars in 2013
+    https://en.wikipedia.org/wiki/20_Fenchurch_Street
+
+
+**What Made a 1,200km Treeless Plain in Australia?**
+- **Hook**: "No rivers, no hills, just limestone for 200,000 sq km."
+- **Specific**: Nullarbor Plain, South/Western Australia – world's largest karst
+https://en.wikipedia.org/wiki/Nullarbor_Plain
+
+
+Why Everest Is the Wrong Mountain  
+- Hook: “Everest isn’t the closest place on Earth to space. This random mountain in Ecuador is.”  
+- Specific thing: Mount Chimborazo (Ecuador) — its summit is the farthest point on Earth’s surface from Earth’s center because of the equatorial bulge. 【turn0search1】【turn0search4】
++++
+
+**Why Do Māori Never Climb Their Tallest Mountain?**
+- **Hook**: "It's tapu – the summit is an ancestor, not a trophy."
+- **Specific**: Aoraki / Mount Cook, New Zealand – 3,724m, Ngāi Tahu sacred
+https://en.wikipedia.org/wiki/Aoraki_/_Mount_Cook
+
+
+**The American cathedral still unfinished after 123 years**
+- Hook: It is bigger than Notre Dame and they are still carving it
+- Reference: Cathedral of St John the Divine, New York City, USA – started 1892
++++
+
+
+**The 80-year-old who summited Everest after four heart surgeries**
+- Hook: Doctors said no, he trained in a freezer
+- Reference: [Yuichiro Miura](https://en.wikipedia.org/wiki/Yuichiro_Miura), Japan – oldest Everest summiter at 80 in 2013
++++
+
+
+
+----
+
 
 **The carpenter who built Noah's Ark in his backyard**
 - Hook: He spent 4 million euros because he dreamed the Netherlands would flood
 - Reference: Johan Huibers, Dordrecht, Netherlands – built Johan's Ark, 119 meters long, opened 2012
++++
+
+### 1. The Man Who Moved a Mountain for Love
+*   **The Hook:** "This man spent 22 years hitting a mountain with a hammer. Everyone in his village called him a lunatic, but he didn't stop until he’d carved a 360-foot road right through the center of the rock—all because the woman he loved died on the other side."
+*   **The Specific:** **Dashrath Manjhi** carved a path through the Gehlour Hills after his wife, Falguni Devi, died because she couldn't reach a doctor in time due to the mountain blocking the way. He reduced a 44-mile journey to just 9 miles.
+*   **Wikipedia:** [Dashrath Manjhi](https://en.wikipedia.org/wiki/Dashrath_Manjhi)
 +++
 
 **The island where everyone shares seven surnames**
@@ -20,10 +69,6 @@
 * **The Specific:** **Kami-Shirataki Station** in Hokkaido, Japan.
 +++
 
-Why Everest Is the Wrong Mountain  
-- Hook: “Everest isn’t the closest place on Earth to space. This random mountain in Ecuador is.”  
-- Specific thing: Mount Chimborazo (Ecuador) — its summit is the farthest point on Earth’s surface from Earth’s center because of the equatorial bulge. 【turn0search1】【turn0search4】
-+++
 
 * **“This Beach Looks Safe — It Isn’t”**
 
@@ -45,8 +90,6 @@ Why Everest Is the Wrong Mountain
   * Sahara Desert, North Africa
   +++
 
-    It snows in this desert
-(gobi)
 +++
 
 **The mountain with a post office on top**
@@ -54,10 +97,6 @@ Why Everest Is the Wrong Mountain
 - Reference: Jungfraujoch, Bernese Alps, Switzerland – Europe's highest post office
 +++
 
-**The American cathedral still unfinished after 123 years**
-- Hook: It is bigger than Notre Dame and they are still carving it
-- Reference: Cathedral of St John the Divine, New York City, USA – started 1892
-+++
 
 
 The Island That Looks Like Another Planet  
@@ -77,10 +116,6 @@ The Island That Looks Like Another Planet
 *   **Wikipedia:** [Nail house](https://en.wikipedia.org/wiki/Nail_house)
 +++
 
-**The 80-year-old who summited Everest after four heart surgeries**
-- Hook: Doctors said no, he trained in a freezer
-- Reference: [Yuichiro Miura](https://en.wikipedia.org/wiki/Yuichiro_Miura), Japan – oldest Everest summiter at 80 in 2013
-+++
 
 
 The House That Refuses to Wash Away
@@ -88,10 +123,6 @@ The House That Refuses to Wash Away
 - Specific thing: The Drina River house in Bajina Bašta, Serbia. It has been completely destroyed by floods seven times, and every single time, locals rebuild it on the exact same tiny rock.
 +++
 
-The Honey That Can Paralyze You
-- Hook: "This honey is a delicacy, but eat too much of it and it will paralyze you, give you hallucinations, or stop your heart."
-- Specific thing: "Mad Honey" (delipini) harvested by the Gurung people of Nepal from the cliffs of the Himalayas, made from rhododendron nectar.
-+++
 
 ### 1. The Waterfall That Doesn’t Exist
 * **The Hook:** "You’re looking at a massive waterfall in the middle of the ocean that plunges thousands of feet into a dark abyss. But if you jumped into it, you wouldn't fall—you’d just float. It’s one of the world's most perfect optical illusions, created by shifting sand and silt that tricks your brain into seeing a disaster that isn't actually there."
@@ -207,10 +238,6 @@ The Lake That Turns Birds to Stone
 - Reference: [William Kamkwamba](https://en.wikipedia.org/wiki/William_Kamkwamba), Malawi – built windmill 2001
 +++
 
-**The woman who lived with gorillas for 18 years**
-- Hook: She was murdered for protecting them
-- Reference: [Dian Fossey](https://en.wikipedia.org/wiki/Dian_Fossey), Rwanda – mountain gorilla research 1967-1985
-
 **The man who memorized pi to 100,000 digits**
 (where is he now)
 - Hook: He recited for 16 hours straight and got the number wrong at the end
@@ -322,11 +349,6 @@ The Lake That Turns Birds to Stone
 +++
 
 
-7. The Skyscraper That Melted Jaguars
-
-    Hook: "London built a mirror so strong it fried eggs on the sidewalk."
-    Specific: 20 Fenchurch Street "Walkie-Talkie", London – solar death ray melted cars in 2013
-    https://en.wikipedia.org/wiki/20_Fenchurch_Street
 
 
 3. China's Fake Paris That Went Empty
@@ -481,15 +503,6 @@ https://en.wikipedia.org/wiki/Deer_stone
 - **Specific**: Mount Wilhelm, Papua New Guinea – highest peak in Oceania outside NZ
 https://en.wikipedia.org/wiki/Mount_Wilhelm
 
-**What Made a 1,200km Treeless Plain in Australia?**
-- **Hook**: "No rivers, no hills, just limestone for 200,000 sq km."
-- **Specific**: Nullarbor Plain, South/Western Australia – world's largest karst
-https://en.wikipedia.org/wiki/Nullarbor_Plain
-
-**Why Do Māori Never Climb Their Tallest Mountain?**
-- **Hook**: "It's tapu – the summit is an ancestor, not a trophy."
-- **Specific**: Aoraki / Mount Cook, New Zealand – 3,724m, Ngāi Tahu sacred
-https://en.wikipedia.org/wiki/Aoraki_/_Mount_Cook
 
 **Where Do Nomads Still Move 500km With No Fences?**
 - **Hook**: "Grass sea bigger than France, -40C winters, horses outnumber people."
@@ -505,3 +518,67 @@ https://en.wikipedia.org/wiki/Banaue_Rice_Terraces
 - **Hook**: "Flat black soil, floods once a year, then turns green overnight."
 - **Specific**: Barkly Tableland, Northern Territory, Australia – 240,000 sq km Mitchell grass
 https://en.wikipedia.org/wiki/Barkly_Tableland
+
+
+
+
+**1. Top 10 Mountains You're Banned From Climbing**
+- Kailash, Machapuchare, Uluru, Gangkhar Puensum. Hook: sacred law beats summit fever. Stock: prayer flags, pilgrim trails
+
+**2. Top 10 Mountains That Are Volcanoes Inside Volcanoes**
+- Aogashima, Taal, Santorini caldera, Mount Rinjani. Hook: island in a lake in a volcano. Stock: drone caldera reveals
+
+**3. Top 10 Mountains With Permanent Towns on the Summit**
+- Jungfraujoch post office, Mount Washington observatory, Cerro de Pasco. Hook: people live above the clouds. Stock: alpine trains, snow streets
+
+**4. Top 10 Plains Where the Wind Actually Sings**
+- Singing dunes Kazakhstan, White Sands NM, Namib. Hook: sand vibrates like a cello. Stock: boots in sand macro, audio waveform
+
+**5. Top 10 Ancient Cities Carved Straight DOWN Into Rock**
+- Lalibela churches, Ellora Kailasa, Petra Treasury (top-down), Derinkuyu. Hook: they didn't build up, they subtracted. Stock: top-down reveal shots
+
+**6. Top 10 Desert Ghost Towns Being Buried Alive Right Now**
+- Kolmanskop, Shi Cheng underwater, Humberstone. Hook: sand pouring through windows in real time. Stock: sand-filled rooms
+
+**7. Top 10 Forests Where Every Tree Bends the Same Way**
+- Crooked Forest Poland, Dancing Forest Russia, Sabine. Hook: 400 trees, identical 90-degree bend. Stock: low tracking shots
+
+**9. Top 10 Villages That Live Entirely Underground**
+- Coober Pedy, Matmata, Derinkuyu (modern use). Hook: 120°F outside, 72°F inside. Stock: dugout interiors, tunnel lights
+
+**10. Top 10 Salt Flats That Turn Into Perfect Mirrors**
+- Salar de Uyuni, Bonneville, Etosha Pan. Hook: sky and ground swap places. Stock: reflection walking shots
+
+**11. Top 10 Staircases Carved by One Person**
+- Haiku Stairs, Chand Baori stepwell, Tiger Leaping Gorge. Hook: thousands of steps, one obsession. Stock: vertigo drone climbs
+
+**12. Top 10 Islands Built by Hand on Coral**
+- Nan Madol, Maldives artificial, Uros floating reeds. Hook: basalt logs moved without wheels. Stock: lagoon aerials
+
+**13. Top 10 Ancient Aqueducts Still Carrying Water Today**
+- Pont du Gard, Segovia, Nazca puquios. Hook: 2,000 years, no pump. Stock: water flowing through stone
+
+**14. Top 10 Living Bridges Grown From Tree Roots**
+- Meghalaya root bridges, plus banyan examples. Hook: takes 30 years to "build." Stock: moss macro, people crossing
+
+**15. Top 10 Rock Churches You Enter Through the Roof**
+- Lalibela, Geghard Armenia, Temppeliaukio Helsinki. Hook: you walk down to pray. Stock: roof hatch reveal
+
+**16. Top 10 Plains That Used to Be Oceans**
+- Nullarbor, Bonneville Salt Flats, Altiplano fossils. Hook: find seashells at 4,000m. Stock: fossil macro, cracked earth
+
+**17. Top 10 Megaliths Older Than Stonehenge**
+- Göbekli Tepe, Nabta Playa, Carnac, Mnajdra. Hook: built before farming. Stock: T-pillars, star timelapse
+
+**18. Top 10 Places Where You Can Stand on Two Continents**
+- Thingvellir rift, Panama Canal divide, Bosphorus (but lesser: Ural marker). Hook: one foot on each plate. Stock: crack in earth drone
+
+**19. Top 10 Forests Preserved in Stone**
+- Deadvlei Namibia, Petrified Forest AZ, Lake Natron calcified. Hook: trees that can't rot. Stock: dead trees in white clay
+
+**20. Top 10 Mountains That Glow at Night**
+- Waitomo glowworms (ceiling), Mount Roraima quartz, New Zealand glow caves on slopes. Hook: not lava, living light. Stock: long-exposure blue
+
+These all work because the B-roll is already on Artgrid/Pond5: aerial calderas, timelapse tides, macro salt, underground tunnels, root bridges.
+
+Want me to pick the 3 with highest RPM (ancient sites + mirrors + banned mountains) and write the full Top 10 scripts with the exact 10 locations, hooks, and stock shot lists so you can edit straight away?
