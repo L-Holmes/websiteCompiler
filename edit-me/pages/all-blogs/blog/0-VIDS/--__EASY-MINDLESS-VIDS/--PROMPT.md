@@ -49,7 +49,7 @@ give me 2 variations of script.
 Just the lines, no headings / titles. just plain markdown copy paseteable..
 Here are my requirements:
 
-generate me a quick, 4 minute script, 
+generate me a quick, 4-7 minute script, 
 
 Make it like a Tom Scott script- super fast paced, conversational. 
 (but I won't be in person-- I'll be using stock footage...), but i still want it conversational
@@ -69,9 +69,21 @@ don't have boring bits- its not school its a fun video...
 the lines must be precise
 
 (don't use this title- it's not hooky / intreguing enough) 
-ensure they are at least 900 words in length
+ensure they are at least 500-900 words in length
 here are my notes:
 
+
+-------
+
+no the intro is too long, it must be super concise. either building intrigue, answering the title in a satisfying way whilst leading the viewer on to read more... or some emotional / personal beet. 
+
+keep them hooked. 
+
+
+again, the intro is just a little too long and not doing those techniques... 
+you just go on a bit before you get to the first example.. your rules of three lists are just wasted words and go on too much ...
+
+remember, real fast paced hooky intro....
 
 -------
 

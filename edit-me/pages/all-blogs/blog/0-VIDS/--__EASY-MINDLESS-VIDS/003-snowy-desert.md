@@ -1,6 +1,6 @@
 
 It snows in the Gobi Desert.
-Not rarely—regularly.
+Not rarely. Regularly.
 
 Which sounds wrong, because deserts are supposed to be hot.
 

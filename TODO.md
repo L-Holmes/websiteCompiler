@@ -1,3 +1,4 @@
+
 In Home:
 - record audio for first video
 - Listen back, and optimise
