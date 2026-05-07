@@ -1,3 +1,76 @@
+
+
+# General working strat:
+
+TODO delete the below para, but not the 'so' bit..
+(based off  fama and french 5 factor model on happiness in precise bullet points...
+and how it applies to YouTube...) 
+
+so:
+- target big and growing crouds (ignore dead or small ones)
+- target niches (feel this contradicts previous!)
+- target high value areas that not many people have matched on to (high demand low quality) 
+- target niches where viewers would be buyers. 
+- build trust + engagement.. 
+- test fast + scale what works..
+
+
+=============================================
+
+
+# money per clicks
+
+## what makes people want to watch:??
+- time savers
+- money makers (e.g. increase views / num people reached... e.g. they avoid paying more expensive long term...) 
+- pain relievers (annoying task, literal pain..)
+- status enhancers (them and work look better and more professional)
+
+--> formula that sells:
+- Instant result ✅
+- Solves a felt pain ✅
+- Targets people already spending ✅
+
+## target audience (who spends the most)
+
+People spending company money (expensed = no pain)
+People in acute pain (health, debt, divorce, career crisis)
+People who already pay for similar things (existing buyers)
+High earners buying back time (convenience, shortcuts)
+Businesses where your product = direct revenue for them
+
+
+People trying to make money (best)
+Businesses (if ROI is clear)
+Creators (want growth/status)
+People in pain (health, focus, stress)
+Rich / high performers (buy convenience)
+
+B2B / Agency Owners: High budget, strictly value ROI and time saved.
+Content Creators / YouTubers: Willing to pay for tools that increase views or save editing time.
+Software Developers / Indie Hackers: Will pay for boilerplates to launch their apps faster.
+Freelancers: Pay for assets (templates, scripts) that let them take on more clients.
+High-Income Hobbyists: Photographers, musicians, or gamers willing to spend disposable income on premium assets.
+
+
+## money per clicks
+
+Finance / investing — £20–£45
+Legal — £20–£40
+Business / B2B SaaS — £15–£35
+Real estate — £15–£30
+Health / medical — £12–£25
+Tech / software — £10–£20
+Education — £8–£15
+Fitness — £5–£10
+Lifestyle — £3–£8
+
+
+
+=============================================================
+
+
+
 webscrape scripts from best YouTubers
 feed them into AI
 polish up by hand. 

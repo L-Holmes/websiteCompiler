@@ -189,3 +189,24 @@ Please better tone..
 Great thank you!
 now generate a completely alternative approach to the same video script.
 ========
+========
+========
+========
+
+
+
+
+# ULTIMATE STRAT
+
+
+
+
+# ULTIMATE STRAT
+- just put equal time into all
+- track profits over time..
+- and go where the profits go...
+
+========
+========
+========
+========
