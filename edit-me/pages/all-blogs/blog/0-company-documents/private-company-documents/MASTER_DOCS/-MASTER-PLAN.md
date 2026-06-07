@@ -9,11 +9,6 @@
 # Ordered next steps
 
 
-
-
-- Brompton storyboard
-- Brompton filming 
-
 - Finish the video making tool
 - Make the mindless videos x5 
 
