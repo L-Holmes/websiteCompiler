@@ -1,5 +1,4 @@
 
-
 - add debugging capabilities to the compiler
 - + Ideally crash if there is an error...
 

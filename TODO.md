@@ -1,4 +1,31 @@
 
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+# EMERGENCY FABLE BIG TASKS
+
+- The filtering system for my website?
+- The payment taking system for my website?
+    - (probably doable with regular claude!??!?)
+
+
+- Debugging capabilities to the compiler??? 
+
+
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 In Home:
 - record audio for first video
 - Listen back, and optimise
@@ -10,29 +37,12 @@ When out:
 - read through giraffe junction and manually edit
 - repeat above steps for milk bottle design
 
-
-
-When new laptop:
-- setup the editting situation
-    - kdenlive etc.
-
-
 Coding stuff:
 - get donation page setup??? 
 - remove unneeded pages
 - finish needed pages...
 
-
 ---------------
-
-Once company name sorted
-    - setup things for orfo;
-        - custom email - AHhhhhHhhhhhhhahhHhhhhHhhHh
-        - donate; patreon, buy me a coffee, etc.
-        - youtube channel
-- Finish other main pages. Or hide them??!?!?!?!??!
-
-------------
 
 Figure out what to do with the filtering?
     - Or maybe just add a note in the future plan that we plan to add more complex filtering in the future...
